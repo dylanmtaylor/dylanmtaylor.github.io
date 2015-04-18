@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="320"
+   height="65"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="logo.svg">
+  <defs
+     id="defs4">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4143">
+      <path
+         sodipodi:type="arc"
+         style="fill:#ffffff;stroke:none"
+         id="path4145"
+         sodipodi:cx="32.893093"
+         sodipodi:cy="36.487934"
+         sodipodi:rx="25.948294"
+         sodipodi:ry="28.789347"
+         d="m 58.841387,36.487934 a 25.948294,28.789347 0 1 1 -51.8965876,0 25.948294,28.789347 0 1 1 51.8965876,0 z"
+         transform="matrix(0.96877636,0,0,0.9211487,2.9947615,979.10565)" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.06"
+     inkscape:cx="139.38857"
+     inkscape:cy="9.9398878"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="718"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(34.508393,-991.12903)">
+    <image
+       y="984.79077"
+       x="6.7857146"
+       id="image3147"
+       xlink:href="file:///home/dylan/website/dylanmtaylor.github.io/me.jpg"
+       height="58.285713"
+       width="54.642857"
+       clip-path="url(#clipPath4143)"
+       transform="matrix(1.2055076,0,0,1.2055076,-46.229205,-197.83372)" />
+    <text
+       xml:space="preserve"
+       style="font-size:28.46329117px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff9600;fill-opacity:1;stroke:none;font-family:sans-serif"
+       x="34.027527"
+       y="1074.8728"
+       id="text3986"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0541612,0.94862153)"><tspan
+         sodipodi:role="line"
+         id="tspan3988"
+         x="34.027527"
+         y="1074.8728"
+         style="font-size:33.8656311px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ff9600;fill-opacity:1;font-family:Khmer OS;-inkscape-font-specification:Khmer OS">Dylan Taylor's</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:19.92430305px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#b87e32;fill-opacity:1;stroke:none;font-family:sans-serif"
+       x="45.520058"
+       y="1107.9219"
+       id="text3986-6"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0541612,0.94862153)"><tspan
+         sodipodi:role="line"
+         id="tspan3988-9"
+         x="45.520058"
+         y="1107.9219"
+         style="font-size:24.83479691px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#b87e32;fill-opacity:1;font-family:Khmer OS System;-inkscape-font-specification:Khmer OS System">Personal Homepage</tspan></text>
+  </g>
+</svg>
