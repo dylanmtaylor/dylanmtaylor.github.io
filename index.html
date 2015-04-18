@@ -4,6 +4,14 @@
   <link href="style.css" rel="stylesheet" type="text/css">
   <link rel="icon" href="images/favicon.png"><!--[if IE]><link rel="shortcut icon" href="images/favicon.ico"><![endif]-->
   <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+  <script src="js/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript">
+	function navigate(page) {
+		$.get(page, function(data) {
+			   document.getElementById("pagecontent").innerHTML = data;
+	       });
+	}
+  </script>
 </head>
 <body>
   <div class="header">
@@ -13,13 +21,13 @@
   </div>
 <div class="left"><strong>Site Navigation:</strong><br/>
 	<ul> 
- 	 <li><a href="/" class="navlink">Home</a></li>
-  	<li><a href="/blog/" class="navlink">Blog</a></li>
-	<li><a href="/contact/" class="navlink">Contact</a></li>
-	<li><a href="/donate/" class="navlink">Donate</a></li>
+ 	<li><a href='#' onclick='navigate("pages/home/");' class="navlink">Home</a></li>
+  	<li><a href='#' onclick='navigate("pages/blog/");' class="navlink">Blog</a></li>
+	<li><a href='#' onclick='navigate("pages/contact/");' class="navlink">Contact</a></li>
+	<li><a href='#' onclick='navigate("pages/donate/");' class="navlink">Donate</a></li>
   	<li><a href="https://github.com/dylanmtaylor" class="navlink">GitHub Page</a></li>
-	<li><a href="/portfolio/" class="navlink">Portfolio</a></li>
-	<li><a href="/resume/" class="navlink">Resume</a></li>
+	<li><a href='#' onclick='navigate("pages/portfolio/");' class="navlink">Portfolio</a></li>
+	<li><a href='#' onclick='navigate("pages/resume/");' class="navlink">Resume</a></li>
 </ul><br/>
 <em class="footer">This site is 100% open source</em>
 </div>
