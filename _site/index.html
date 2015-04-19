@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<head>
+  <title>Dylan M. Taylor's Personal Homepage</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <link rel="icon" href="images/favicon.png"><!--[if IE]><link rel="shortcut icon" href="images/favicon.ico"><![endif]-->
+  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+  <script src="js/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript">
+	function navigate(page) {
+		$.get(page, function(data) {
+			   document.getElementById("pagecontent").innerHTML = data;
+	       });
+	}
+	function resizeIframe(iframe) {
+    		iframe.height = iframe.contentWindow.document.body.scrollHeight + "px";
+  	}
+  </script>
+</head>
+<body onload='navigate("pages/home/index.html");'>
+  <div class="header">
+	<a href="/" target="_top" class="svg">
+		<object data="images/logo.svg" type="image/svg+xml" width="320px" height="65px"></object>
+	</a>
+  </div>
+<div class="left"><strong>Site Navigation:</strong><br/>
+	<ul> 
+ 	<li><a href='#' onclick='navigate("pages/home/index.html");' class="navlink">Home</a></li>
+  	<li><a href='#' onclick='navigate("pages/blog/index.html");' class="navlink">Blog</a></li>
+	<li><a href='#' onclick='navigate("pages/contact/index.html");' class="navlink">Contact</a></li>
+	<li><a href='#' onclick='navigate("pages/donate/index.html");' class="navlink">Donate</a></li>
+  	<li><a href="https://github.com/dylanmtaylor" class="navlink">GitHub Page</a></li>
+	<!--<li><a href='#' onclick='navigate("pages/portfolio/index.html");' class="navlink">Portfolio</a></li>-->
+	<li><a href='#' onclick='navigate("pages/resume/index.html");' class="navlink">R&eacute;sum&eacute;</a></li>
+</ul><br/>
+<em class="footer">This site is 100% open source</em>
+</div>
+  <div class="pagecontent" id="pagecontent">
+	<noscript>
+	  <h2>Javascript does not seem to be enabled. It is required to view this site properly.</h2>
+
+	  <p>Please either upgrade your browser to a newer version or enabled JavaScript in your
+	browser settings. Extensions such as NoScript could be blocking JavaScript from working.</p>
+	</noscript>
+ </div>
+</body>
+</html>
+
