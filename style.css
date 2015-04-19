@@ -49,6 +49,9 @@ body {
 	border-top: 2px solid #34444F;
         border-right: 2px solid #000;
 }
+.left > strong {
+	font-size: 1.1em;
+}
 .left > ul {
 	list-style-type: none; margin-left:0; padding-left: 1.25vw;
 }
