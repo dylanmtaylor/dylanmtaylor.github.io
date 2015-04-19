@@ -39,6 +39,7 @@ body {
 	margin-top: -2.7em;
 	width: 15vw;
 	height: 100vh;
+	display: block;
 	margin-right: 1.5em;
 	padding-top: 3vh;
 	padding-left: 2vw;
