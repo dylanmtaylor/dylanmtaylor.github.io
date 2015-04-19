@@ -41,7 +41,7 @@ body {
 	height: 100vh;
 	display: block;
 	margin-right: 1.5em;
-	text-align:left;
+	text-align:left; !important
 	padding-top: 3vh;
 	padding-left: 2vw;
 	background-color: #34444F;
@@ -54,7 +54,7 @@ body {
 }
 
 .navlink {
-	color:#00C9FF;
+	color:#00C9FF; !important
 	background-color:#315B66;
 	text-align:center;
 	text-decoration:none;
