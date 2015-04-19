@@ -6,12 +6,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
   <script src="js/jquery-2.1.3.min.js"></script>
   <script type="text/javascript">
-  	/*function navigate(page) {
-		$("#pagecontent").fadeTo("fast" , 1.00, loadIt(page));
-  	}*/
 	function navigate(page) {
 		$.get(page, function(data) {
-			$("#pagecontent").innerHTML = data;
+			   document.getElementById("pagecontent").innerHTML = data;
 	       });
 	}
   </script>
