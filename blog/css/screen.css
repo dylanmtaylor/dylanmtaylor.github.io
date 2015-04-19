@@ -34,7 +34,7 @@ p {
 	margin: 1em 0;
 }
 
-a {
+/*a {
 	color: #00a;
 }
 
@@ -44,7 +44,7 @@ a:hover {
 
 a:visited {
 	color: #a0a;
-}
+}*/
 
 table {
 	font-size: inherit;
