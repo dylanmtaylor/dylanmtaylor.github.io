@@ -54,7 +54,7 @@ body {
 }
 
 .navlink {
-	color:#00C9FF; 
+	color:#00C9FF;
 	background-color:#315B66;
 	text-align:center;
 	text-decoration:none;
@@ -69,6 +69,10 @@ body {
 }
 .navlink:hover {
 	background-color:#0B5B70;
+	color:#00C9FF;
+}
+.navlink:visited {
+	color:#00C9FF;
 }
 h2 {
         text-align: left;
