@@ -1,0 +1,12 @@
+# Site settings
+title: Dylan Taylor's Personal Blog
+#email: dylan.m.taylor92@gmail.com
+description: A technology blog with updates about my projects, as well as interesting tricks, tips, news, and tutorials
+baseurl: "/pages/blog/" # the subpath of your site, e.g. /blog/
+url: "http://dylanmtaylor.com" # the base hostname & protocol for your site
+#twitter_username: jekyllrb
+github_username:  dylanmtaylor
+
+# Build settings
+markdown: kramdown
+destination: ../pages/blog/
