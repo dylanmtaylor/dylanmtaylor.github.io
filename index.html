@@ -11,6 +11,9 @@
 			   document.getElementById("pagecontent").innerHTML = data;
 	       });
 	}
+	function resizeIframe(iframe) {
+    		iframe.height = iframe.contentWindow.document.body.scrollHeight + "px";
+  	}
   </script>
 </head>
 <body onload='navigate("pages/resume/index.html");'>
