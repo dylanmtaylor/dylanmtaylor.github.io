@@ -6,17 +6,20 @@
   <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
   <script src="js/jquery-2.1.3.min.js"></script>
   <script type="text/javascript">
-  	function navigate(page) {
+	$(document).ready(function(){
+		navigate("pages/home/index.html");
+	}
+  	/*function navigate(page) {
 		$("#pagecontent").fadeTo("fast" , 1.00, loadIt(page));
-  	}
-	function loadIt(page) {
+  	}*/
+	function navigate(page) {
 		$.get(page, function(data) {
 			$("#pagecontent").innerHTML = data;
 	       });
 	}
   </script>
 </head>
-<body onload='navigate("pages/home/index.html");'>
+<body>
   <div class="header">
 	<a href="/" target="_top" class="svg">
 		<object data="images/logo.svg" type="image/svg+xml" width="320px" height="65px"></object>
