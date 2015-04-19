@@ -1,4 +1,5 @@
 url: http://dylanmtaylor.com
+baseurl: "/pages/blog/" # the subpath of your site, e.g. /blog/
 #markdown: rdiscount
 permalink: pretty
 highlighter: true
