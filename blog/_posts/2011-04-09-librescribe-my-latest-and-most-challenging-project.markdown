@@ -18,7 +18,7 @@ date_gmt: '2011-04-09 04:35:07 +0000'
 <div class="zemanta-img" style="margin: 1em; display: block;">
 <div class="mceTemp" style="text-align: left;">
 <dl class="wp-caption alignright" style="width: 213px;">
-<dt class="wp-caption-dt"><a href="http://www.crunchbase.com/company/livescribe"><img title="Image representing Livescribe  as depicted in ..." src="http://dylanmtaylor.com/wp-content/uploads/2011/04/49513v1-max-450x4501.png" alt="Image representing Livescribe  as depicted in ..." width="203" height="67" /></a></dt>
+<dt class="wp-caption-dt"><a href="http://www.crunchbase.com/company/livescribe"><img title="Image representing Livescribe  as depicted in ..." src="/images/blog/2011/04/49513v1-max-450x4501.png" alt="Image representing Livescribe  as depicted in ..." width="203" height="67" /></a></dt>
 <dd class="wp-caption-dd zemanta-img-attribution" style="font-size: 0.8em;">Image via CrunchBase</dd>
 </dl>
 </div>
@@ -31,4 +31,4 @@ date_gmt: '2011-04-09 04:35:07 +0000'
 <li>The program is not currently capable of retrieving the name of the Smartpen. More <a href="http://en.wikipedia.org/wiki/OBject_EXchange">OBEX</a> analysis is necessary to determine how the <a href="http://www.livescribe.com/en-us/starthere/">official desktop client</a> retrieves the name of the Smartpen.</li>
 </ul>
 <p>Once I have all of these bugs fixed, I will begin working on adding more of the code from libsmartpen into the project, fixing up existing code, and writing new code. This is probably one of the toughest coding projects I've started, but I enjoy the challenge, and I hope to create something genuinely useful to the <a class="zem_slink" title="Free software community" rel="wikipedia" href="http://en.wikipedia.org/wiki/Free_software_community">open source community</a>, improve my own coding ability, and learn new things. I frequently push changes to github, as long as I don't notice any significant regressions, so you can track my progress in almost real-time. At the moment, the user interface is <a href="http://dylanmtaylor.com/?attachment_id=1026"><em>far</em> from being finished (link is a screenshot)</a>, but it's not too bad. Also, feel free to fork the <a class="zem_slink" title="Codebase" rel="wikipedia" href="http://en.wikipedia.org/wiki/Codebase">code base</a>, and make improvements.</p>
-<div class="zemanta-pixie" style="margin-top: 10px; height: 15px;"><img class="zemanta-pixie-img" style="border: medium none; float: right;" src="http://dylanmtaylor.com/wp-content/uploads/2011/06/pixy11.gif" alt="" /></div>
+<div class="zemanta-pixie" style="margin-top: 10px; height: 15px;"><img class="zemanta-pixie-img" style="border: medium none; float: right;" src="/images/blog/2011/06/pixy11.gif" alt="" /></div>

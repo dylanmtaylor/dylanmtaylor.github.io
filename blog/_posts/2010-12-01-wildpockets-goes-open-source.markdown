@@ -18,7 +18,7 @@ date_gmt: '2010-12-01 21:51:05 +0000'
 <div class="zemanta-img" style="margin: 1em; display: block;">
 <div>
 <dl class="wp-caption alignright" style="width: 268px;">
-<dt class="wp-caption-dt"><a href="http://www.crunchbase.com/company/wild-pockets"><img title="Image representing Wild Pockets as depicted in..." src="http://dylanmtaylor.com/wp-content/uploads/2010/12/85626v1-max-450x4502.png" alt="Image representing Wild Pockets as depicted in..." width="258" height="57" /></a></dt>
+<dt class="wp-caption-dt"><a href="http://www.crunchbase.com/company/wild-pockets"><img title="Image representing Wild Pockets as depicted in..." src="/images/blog/2010/12/85626v1-max-450x4502.png" alt="Image representing Wild Pockets as depicted in..." width="258" height="57" /></a></dt>
 <dd class="wp-caption-dd zemanta-img-attribution" style="font-size: 0.8em;">Image via <a href="http://www.crunchbase.com">CrunchBase</a></dd>
 </dl>
 </div>
@@ -33,4 +33,4 @@ date_gmt: '2010-12-01 21:51:05 +0000'
 <p>Sincerely,<br />
 - The Wild Pockets Team</p></blockquote>
 </blockquote>
-<div class="zemanta-pixie" style="margin-top: 10px; height: 15px;"><img class="zemanta-pixie-img" style="border: medium none; float: right;" src="http://dylanmtaylor.com/wp-content/uploads/2010/12/pixy12.gif" alt="" /></div>
+<div class="zemanta-pixie" style="margin-top: 10px; height: 15px;"><img class="zemanta-pixie-img" style="border: medium none; float: right;" src="/images/blog/2010/12/pixy12.gif" alt="" /></div>

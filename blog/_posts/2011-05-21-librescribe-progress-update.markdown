@@ -26,4 +26,4 @@ date_gmt: '2011-05-21 06:59:38 +0000'
 <li>Duplicate <a class="zem_slink" href="http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html" title="Udev" rel="homepage">udev</a> events (such as multiple add events of the same device) are ignored now. Previously, we ended up refreshing the device information up to four times in a row because of duplicate events. This significantly reduces the delay between plugging in a device and seeing a response on the screen.</li>
 </ul>
 <p>There are still tons of issues that still need to be fixed before LibreScribe becomes usable in a production environment, but I've been steadily making progress, and I hope to have something useful out soon.<br _mce_bogus="1"/></p>
-<div style="margin-top: 10px; height: 15px;" class="zemanta-pixie"><img style="border: medium none; float: right;" class="zemanta-pixie-img" alt="" src="http://dylanmtaylor.com/wp-content/uploads/2011/06/pixy14.gif"/></div>
+<div style="margin-top: 10px; height: 15px;" class="zemanta-pixie"><img style="border: medium none; float: right;" class="zemanta-pixie-img" alt="" src="/images/blog/2011/06/pixy14.gif"/></div>

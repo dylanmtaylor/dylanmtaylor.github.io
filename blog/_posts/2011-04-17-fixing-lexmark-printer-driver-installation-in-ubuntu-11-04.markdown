@@ -24,4 +24,4 @@ date_gmt: '2011-04-17 18:20:55 +0000'
 <blockquote><p>if tonumber(ownhership[1]) == 0 then</p></blockquote>
 <p>delete the errant h in the word ownership and save the file. Now, go back to your terminal and run <strong>sudo sh startupinstaller.sh</strong> in the tmp folder. The installer will work as expected now.</p>
 <p>Update: Special thanks toÂ Mathieu Triclot for your $5 donation! Glad I could help! :)</p>
-<div class="zemanta-pixie" style="margin-top: 10px; height: 15px;"><img class="zemanta-pixie-img" style="border: none; float: right;" src="http://dylanmtaylor.com/wp-content/uploads/2011/06/pixy12.gif" alt="" /></div>
+<div class="zemanta-pixie" style="margin-top: 10px; height: 15px;"><img class="zemanta-pixie-img" style="border: none; float: right;" src="/images/blog/2011/06/pixy12.gif" alt="" /></div>
