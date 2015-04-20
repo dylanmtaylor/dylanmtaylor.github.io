@@ -18,7 +18,7 @@ date_gmt: '2010-12-01 03:15:28 +0000'
 <div class="zemanta-img" style="margin: 1em; display: block;">
 <div>
 <dl class="wp-caption alignright" style="width: 226px;">
-<dt class="wp-caption-dt"><a href="/images/blog/2010/12/FileGroupon-logo_low_res.jpg"><img title="Groupon logo." src="http://www.dylanmtaylor.com/wp-content/uploads/2010/12/Groupon-logo_low_res.jpg" alt="Groupon logo." width="216" height="104" /></a></dt>
+<dt class="wp-caption-dt"><a href="/images/blog/2010/12/FileGroupon-logo_low_res.jpg"><img title="Groupon logo." src="/images/blog/2010/12/Groupon-logo_low_res.jpg" alt="Groupon logo." width="216" height="104" /></a></dt>
 <dd class="wp-caption-dd zemanta-img-attribution" style="font-size: 0.8em;">Image via <a href="/images/blog/2010/12/FileGroupon-logo_low_res.jpg">Wikipedia</a></dd>
 </dl>
 </div>
