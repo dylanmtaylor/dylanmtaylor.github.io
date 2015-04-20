@@ -1,0 +1,20 @@
+---
+layout: nav_menu_item
+status: publish
+published: true
+author:
+  display_name: Dylan Taylor
+  login: aliendude5300
+  email: dylan.m.taylor92@gmail.com
+  url: ''
+author_login: aliendude5300
+author_email: dylan.m.taylor92@gmail.com
+wordpress_id: 62
+wordpress_url: http://www.dylanmtaylor.com/?p=62
+date: '2010-07-29 18:51:50 +0000'
+date_gmt: '2010-07-29 18:51:50 +0000'
+categories: []
+tags: []
+comments: []
+---
+<p>Information and updates about applications written by me</p>
