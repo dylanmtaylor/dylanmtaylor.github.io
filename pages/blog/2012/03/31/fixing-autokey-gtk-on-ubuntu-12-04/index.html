@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-gb">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Fixing Autokey (GTK) on Ubuntu 12.04</title>
+	<meta name="author" content="Dylan Taylor" /><!-- Thanks to Roger Chapman for the layout -->
+	<link rel="stylesheet" href="/pages/blog/css/syntax.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/pages/blog/css/screen.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/pages/blog/css/tablet.css" type="text/css" media="screen and (min-width:651px) and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px)" />
+	<link rel="stylesheet" href="/pages/blog/css/mobile.css" type="text/css" media="handheld, screen and (max-width: 650px), screen and (max-device-width: 480px)" />
+</head>
+<body>
+	<div class="site">
+		<div class="title"><h2><a href="#" onclick='navigate("/pages/blog");'>Dylan Taylor's Personal Blog</a></h2></div>
+		<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
+		<div id="post">
+	<h1>Fixing Autokey (GTK) on Ubuntu 12.04</h1>
+	<p class="meta">31 Mar 2012</p>
+	<p>Autokey is a wonderful scripting tool for <a class="zem_slink" title="Linux" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Linux" rel="wikipedia" target="_blank">Linux&lt;&#47;a&gt;. Unfortunately, it doesn't work out of the box in <a class="zem_slink" title="List of Ubuntu releases" href="http:&#47;&#47;www.ubuntu.com&#47;" rel="homepage" target="_blank">Ubuntu 12.04&lt;&#47;a&gt;. The reason why is because Autokey isn't on the Unity panel's system tray whitelist. I submitted <a href="https:&#47;&#47;bugs.launchpad.net&#47;ubuntu&#47;+source&#47;autokey&#47;+bug&#47;970581">a bug report on Launchpad&lt;&#47;a&gt;, but for now, if you want to get Autokey working without breaking the Unity panel for any other applications, it's as simple as running the following command in the terminal:
+<pre>if grep -q 'Autokey' &lt;(echo `gsettings get com.canonical.Unity.Panel systray-whitelist`); then echo "'Autokey' exists in Unity panel whitelist. Nothing to do here."; else echo "Adding 'Autokey' to Unity panel whitelist." &amp;&amp; gsettings set com.canonical.Unity.Panel systray-whitelist "`echo \`gsettings get com.canonical.Unity.Panel systray-whitelist | tr -d ]\`,\'Autokey\']`"; fi&lt;&#47;pre&gt;<br />
+This will check your current whitelist to see if Autokey is present, and if it isn't intelligently append it to the whitelist without messing up your current whitelist entries. If it's already there, it won't add a duplicate entry. This one-liner can be easily modified to add any value you want to Unity's system tray whitelist, in order to fix the same problems with other applications. Note that you may have to log out and log back in before the changes take effect. Enjoy! :)
+<div class="zemanta-pixie" style="margin-top: 10px; height: 15px;">&lt;img class="zemanta-pixie-img" style="float: right;" src="http:&#47;&#47;img.zemanta.com&#47;pixy.gif?x-id=24cf85f1-d93f-40e5-a099-705c19573173" alt="" &#47;&gt;&lt;&#47;div&gt;
+</div></pre></a></a></a></p>
+
+
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <g:plusone></g:plusone>
+
+</div>
+
+
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>06 Jul 2014</span> <span class="seperator">~</span> <a href="/2014/07/06/my-domain-is-now-registered-with-iwantmyname/">My Domain is Now Registered With iWantMyName</a></li>
+    
+      <li><span>04 Jul 2014</span> <span class="seperator">~</span> <a href="/2014/07/04/goodbye-dropbox-hello-owncloud/">Goodbye Dropbox, Hello OwnCloud.</a></li>
+    
+      <li><span>27 Jun 2014</span> <span class="seperator">~</span> <a href="/2014/06/27/speed-up-your-site-with-instant-click/">Speed Up Your Site With Instant Click</a></li>
+    
+  </ul>
+</div>
+
+
+
+
+<div class="comments">
+	<h3>Comments</h3>
+	<noscript>Please enable JavaScript to view the comments</noscript>
+	<div id="disqus_thread"></div>
+</div>
+
+		<div class="footer">
+			<div class="contact">
+				<p>
+					Dylan Taylor<br/>
+					Software Engineer<br/>
+				</p>
+			</div>
+			<div class="contact">
+				<p>
+					<a href="http://dylanmtaylor.com/">dylanmtaylor.com</a><br/>
+					<a href="http://github.com/dylanmtaylor/">github.com/dylanmtaylor</a><br />
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+<html>

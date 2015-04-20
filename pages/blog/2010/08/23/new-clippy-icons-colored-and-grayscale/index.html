@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-gb">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>New Clippy Icons (Colored and Grayscale!)</title>
+	<meta name="author" content="Dylan Taylor" /><!-- Thanks to Roger Chapman for the layout -->
+	<link rel="stylesheet" href="/pages/blog/css/syntax.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/pages/blog/css/screen.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/pages/blog/css/tablet.css" type="text/css" media="screen and (min-width:651px) and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px)" />
+	<link rel="stylesheet" href="/pages/blog/css/mobile.css" type="text/css" media="handheld, screen and (max-width: 650px), screen and (max-device-width: 480px)" />
+</head>
+<body>
+	<div class="site">
+		<div class="title"><h2><a href="#" onclick='navigate("/pages/blog");'>Dylan Taylor's Personal Blog</a></h2></div>
+		<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
+		<div id="post">
+	<h1>New Clippy Icons (Colored and Grayscale!)</h1>
+	<p class="meta">23 Aug 2010</p>
+	<p><a href="http:&#47;&#47;dylantaylor.files.wordpress.com&#47;2010&#47;08&#47;grayscale-icon-vector-ultra-large.png">&lt;img class="alignleft size-large wp-image-491" title="New Clippy Icon (Colored) Ultra-High Resolution" src="http:&#47;&#47;dylantaylor.files.wordpress.com&#47;2010&#47;08&#47;grayscale-icon-vector-ultra-large.png" alt="" width="250" height="340" &#47;&gt;&lt;&#47;a&gt;When I originally designed the Clippy <a class="zem_slink" title="Icon" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Icon">icon&lt;&#47;a&gt;, I made it using a free, <a class="zem_slink" title="Open source" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Open_source">open source&lt;&#47;a&gt; <a class="zem_slink" title="Graphics software" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Graphics_software">graphics editing program&lt;&#47;a&gt; called <a class="zem_slink" title="GIMP" rel="homepage" href="http:&#47;&#47;www.gimp.org&#47;">GIMP&lt;&#47;a&gt;, and saved it as a 720x720 <a class="zem_slink" title="Portable Network Graphics" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Portable_Network_Graphics">PNG&lt;&#47;a&gt; image. While 720x720 is a large resolution, large enough for almost anything I need to use my icon for, it's still a <a class="zem_slink" title="Raster graphics" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Raster_graphics">raster image&lt;&#47;a&gt; format, and it doesn't scale well. This also results in it being more difficult to edit the image and make changes, such as editing colors, resizing it, etc. If you don't care about all the technical details, scroll down to the end of this post to check out the new icons. Otherwise, continue reading. To solve this problem, I opened up the original image in <a class="zem_slink" title="Inkscape" rel="homepage" href="http:&#47;&#47;www.inkscape.org&#47;">Inkscape&lt;&#47;a&gt;, a free and open source <em>vector&lt;&#47;em&gt; graphics editing program, and traced the paths of the "clip" and the "writing" from the original clipboard image, converting them into vectorized paths. I used the "Exclusion" tool to create the hole in the clip. I then created a new rounded rectangle as the new 'base' of the clipboard, with a fill color that matched the inside color of the base in the raster image, and a stroke color that matched the color around the edge of the clipboard in the old raster image. After making sure that I had the stroke width exactly the same length as the border of the base of the old image, I lined up the rounded rectangle with the upper left corner of the base of the old image, and resized it so that the bottom right corner lined up with the bottom right corner in the previous image. I then messed with the radius of the new base's corners until it lined up almost perfectly with what I had before.&Acirc;&nbsp; At this point, I had the "writing" scribbles, the "clip", and the new clipboard base recreated in glorious <a class="zem_slink" title="Scalable Vector Graphics" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Scalable_Vector_Graphics">SVG&lt;&#47;a&gt; format. I then put all three parts on their own layers, organizing them (from top to bottom): "Clip", "Writing", "Board". Because I had the base of the clipboard done at this point, I locked that layer so I wouldn't accidentally mess it up, and then I selected all of the writing. I then changed the fill color of all of the writing at once to match the fill color in the previous image. Since at this point I already had the "writing" exactly where I wanted it, and the writing was already in path form, I used the "Simplify" feature under the path menu, to clean up the paths of the writing a little bit, as it doesn't have to be exact, since the "writing" is only a bunch of wavy lines anyways. Now that I had the "writing" taken care of, and the "board" complete, with their colors similar to what I had in my previous icon, I was mostly done. All I had to worry about now was shading the "clip" (at that point in time, I only had the outline of the clip, with no fill color), and recreating the "paper", for the "writing" to go on. I used the "hide layer" function to get the clip out of the way for now, and I began creating a new rectangle (not rounded this time) with the exact same dimensions as the old image's "paper", by, once again, lining up the upper left and bottom right corners. After making sure that I had the border length exactly the same as the border length of the old "paper", and then I set the fill color and stroke color to match the colors in the original image. All that was left was filling in the "clip" with a gradient. After playing around with the linear gradient settings for a while, I finally had something that I was satisfied with, and I truly believed that it might even be better than the original Clippy icon. Since the new icon came out so great, I figured that it would be a good idea to make a <a class="zem_slink" title="Grayscale" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Grayscale">grayscale&lt;&#47;a&gt; version of the icon, for things like the notification bar icon, which typically don't have any coloration. So, I saved the colored image, and fired up Inkscape again, and got to work. Keeping all the sizes and positioning of the layers the same, I messed with the fill and stroke colors until I had a nice looking, Android-style grayscale image. Unfortunately, due to <a class="zem_slink" title="WordPress.com" rel="homepage" href="http:&#47;&#47;wordpress.com&#47;">Wordpress.com&lt;&#47;a&gt;'s <a class="zem_slink" title="File format" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;File_format">file type&lt;&#47;a&gt; limitations, I can't upload any SVG files, so, unfortunately, you won't be able to see these images in their original, lossless forms, but I can, however, upload<a href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Rasterisation"> rasterized renderings&lt;&#47;a&gt; of the images saved as PNG files. To accurately show the difference between the new vector images and the old raster images, I rendered these images at a very <a class="zem_slink" title="Image resolution" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Image_resolution">high resolution&lt;&#47;a&gt;. As you can clearly see, just by looking at the images, there is absolutely no loss of clarity in the vector image rendering, where the original raster image becomes significantly pixelated when scaled. Also, even though it's possible to scale the vector icons&Acirc;&nbsp;to almost any size without the quality degrading, their size is actually significantly less than the original raster images. Anyways, here are the links to the images, so you can check them out for yourself:
+<ul>
+<li><a href="http:&#47;&#47;dylantaylor.files.wordpress.com&#47;2010&#47;08&#47;color-icon-vector-ultra-large-new1.png">New Vector Clippy Icon (Colored) Ultra-High Resolution PNG&lt;&#47;a&gt; [<a href="http:&#47;&#47;www.dylanmtaylor.com&#47;?attachment_id=558">Image Page&lt;&#47;a&gt;]&lt;&#47;li&gt;
+<li><a href="http:&#47;&#47;dylantaylor.files.wordpress.com&#47;2010&#47;08&#47;grayscale-icon-vector-ultra-large-new.png">New Vector Clippy Icon (Grayscale) Ultra-High Resolution PNG&lt;&#47;a&gt; [<a href="http:&#47;&#47;www.dylanmtaylor.com&#47;?attachment_id=559">Image Page&lt;&#47;a&gt;]&lt;&#47;li&gt;
+<li><a href="http:&#47;&#47;dylantaylor.files.wordpress.com&#47;2010&#47;08&#47;color-icon-vector-ultra-large.png">Previous Vector Clippy Icon (Colored) Ultra-High Resolution PNG&lt;&#47;a&gt; [<a href="http:&#47;&#47;www.dylanmtaylor.com&#47;?attachment_id=491">Image Page&lt;&#47;a&gt;]&lt;&#47;li&gt;
+<li><a href="http:&#47;&#47;dylantaylor.files.wordpress.com&#47;2010&#47;08&#47;grayscale-icon-vector-ultra-large.png">Previous Vector Clippy Icon (Grayscale) Ultra-High Resolution PNG&lt;&#47;a&gt; [<a href="http:&#47;&#47;www.dylanmtaylor.com&#47;?attachment_id=492">Image Page&lt;&#47;a&gt;]&lt;&#47;li&gt;
+<li><a href="http:&#47;&#47;dylantaylor.files.wordpress.com&#47;2010&#47;08&#47;colored-icon-old-raster-scaled-7x.png">Old Raster Clippy Icon (Colored) Scaled 7X PNG&lt;&#47;a&gt; [<a href="http:&#47;&#47;www.dylanmtaylor.com&#47;?attachment_id=495">Image Page&lt;&#47;a&gt;]&lt;&#47;li&gt;
+<li><a href="http:&#47;&#47;dylantaylor.files.wordpress.com&#47;2010&#47;08&#47;colored-icon-old-raster-original-size.png">Old Raster Clippy Icon (Colored) Original Resolution PNG&lt;&#47;a&gt; [<a href="http:&#47;&#47;www.dylanmtaylor.com&#47;?attachment_id=494">Image Page&lt;&#47;a&gt;]&lt;&#47;li&gt;<br />
+&lt;&#47;ul&gt;<br />
+Let me know what you think about the new icon by leaving a comment on this post!
+<p><strong>Note:&lt;&#47;strong&gt; There is no "old" grayscale image, as I created it originally when I converted the colored image to SVG.
+<p><strong>UPDATE:&lt;&#47;strong&gt; I made some slight changes to the gradient used in the 'clip' of the colored logo. It now looks shinier, and closer to the original raster image. Also, I slightly improved the subtle gradient used in the 'board' of both vector images. The images on this page are now updated to reflect that change.
+</strong></p></strong></p></a></a></li></a></a></li></a></a></li></a></a></li></a></a></li></a></a></li></ul></a></a></a></a></a></a></em></a></a></a></a></a></a></a></a></p>
+
+
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <g:plusone></g:plusone>
+
+</div>
+
+
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>06 Jul 2014</span> <span class="seperator">~</span> <a href="/2014/07/06/my-domain-is-now-registered-with-iwantmyname/">My Domain is Now Registered With iWantMyName</a></li>
+    
+      <li><span>04 Jul 2014</span> <span class="seperator">~</span> <a href="/2014/07/04/goodbye-dropbox-hello-owncloud/">Goodbye Dropbox, Hello OwnCloud.</a></li>
+    
+      <li><span>27 Jun 2014</span> <span class="seperator">~</span> <a href="/2014/06/27/speed-up-your-site-with-instant-click/">Speed Up Your Site With Instant Click</a></li>
+    
+  </ul>
+</div>
+
+
+
+
+<div class="comments">
+	<h3>Comments</h3>
+	<noscript>Please enable JavaScript to view the comments</noscript>
+	<div id="disqus_thread"></div>
+</div>
+
+		<div class="footer">
+			<div class="contact">
+				<p>
+					Dylan Taylor<br/>
+					Software Engineer<br/>
+				</p>
+			</div>
+			<div class="contact">
+				<p>
+					<a href="http://dylanmtaylor.com/">dylanmtaylor.com</a><br/>
+					<a href="http://github.com/dylanmtaylor/">github.com/dylanmtaylor</a><br />
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+<html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-gb">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Minor Clippy&Acirc;&nbsp;Regressions</title>
+	<meta name="author" content="Dylan Taylor" /><!-- Thanks to Roger Chapman for the layout -->
+	<link rel="stylesheet" href="/pages/blog/css/syntax.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/pages/blog/css/screen.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/pages/blog/css/tablet.css" type="text/css" media="screen and (min-width:651px) and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px)" />
+	<link rel="stylesheet" href="/pages/blog/css/mobile.css" type="text/css" media="handheld, screen and (max-width: 650px), screen and (max-device-width: 480px)" />
+</head>
+<body>
+	<div class="site">
+		<div class="title"><h2><a href="#" onclick='navigate("/pages/blog");'>Dylan Taylor's Personal Blog</a></h2></div>
+		<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
+		<div id="post">
+	<h1>Minor Clippy&Acirc;&nbsp;Regressions</h1>
+	<p class="meta">15 Aug 2010</p>
+	<p>I'm currently postponing the release of Clippy due to several small, but significant regressions that I am experiencing. I want to ensure that those of you who have downloaded and used a previous version of Clippy, such as the current version in the market feel comfortable using the new version that I am about to release. Because of some significant changes in the way I have Clippy written, such as using of <a class="zem_slink" title="XML" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;XML">XML&lt;&#47;a&gt;-based menu resources instead of generating the menus using <a class="zem_slink" title="Source code" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Source_code">source code&lt;&#47;a&gt; when the application runs, I have run into several problems that I am looking into. Rest assured, I will be releasing a new version of Clippy soon. However, at the moment, there are several regressions such as this one:
+<ul>
+<li>When there is no text in the text editor, the "Save", "Edit", and "Clear" buttons are no longer disabled. This worked perfectly while I was using menus generated using code, as I could set whether or not the menu items are enabled, however, when I switched to XML-based menus, attempting to set any attributes of the menu items results in the entire application crashing with a NullPointerException.&lt;&#47;li&gt;<br />
+&lt;&#47;ul&gt;<br />
+Once I get most of the regressions fixed, I will release an update of the code on the market.
+<p><strong>UPDATE:&lt;&#47;strong&gt; I figured out how to set whether or not the MenuItems were enabled or not. Instead of using the findViewByID() method, I had to use menu.findItem().
+<p><strong>UPDATE 2:&lt;&#47;strong&gt; Email sending now works properly, and I added a send button to the <a class="zem_slink" title="Context menu" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Context_menu">context menu&lt;&#47;a&gt; of the "Current" tab.
+</a></strong></p></strong></p></li></ul></a></a></p>
+
+
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <g:plusone></g:plusone>
+
+</div>
+
+
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>06 Jul 2014</span> <span class="seperator">~</span> <a href="/2014/07/06/my-domain-is-now-registered-with-iwantmyname/">My Domain is Now Registered With iWantMyName</a></li>
+    
+      <li><span>04 Jul 2014</span> <span class="seperator">~</span> <a href="/2014/07/04/goodbye-dropbox-hello-owncloud/">Goodbye Dropbox, Hello OwnCloud.</a></li>
+    
+      <li><span>27 Jun 2014</span> <span class="seperator">~</span> <a href="/2014/06/27/speed-up-your-site-with-instant-click/">Speed Up Your Site With Instant Click</a></li>
+    
+  </ul>
+</div>
+
+
+
+
+<div class="comments">
+	<h3>Comments</h3>
+	<noscript>Please enable JavaScript to view the comments</noscript>
+	<div id="disqus_thread"></div>
+</div>
+
+		<div class="footer">
+			<div class="contact">
+				<p>
+					Dylan Taylor<br/>
+					Software Engineer<br/>
+				</p>
+			</div>
+			<div class="contact">
+				<p>
+					<a href="http://dylanmtaylor.com/">dylanmtaylor.com</a><br/>
+					<a href="http://github.com/dylanmtaylor/">github.com/dylanmtaylor</a><br />
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+<html>

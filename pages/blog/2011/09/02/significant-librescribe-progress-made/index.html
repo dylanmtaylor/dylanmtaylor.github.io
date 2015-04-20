@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-gb">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Significant LibreScribe Progress Made</title>
+	<meta name="author" content="Dylan Taylor" /><!-- Thanks to Roger Chapman for the layout -->
+	<link rel="stylesheet" href="/pages/blog/css/syntax.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/pages/blog/css/screen.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/pages/blog/css/tablet.css" type="text/css" media="screen and (min-width:651px) and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px)" />
+	<link rel="stylesheet" href="/pages/blog/css/mobile.css" type="text/css" media="handheld, screen and (max-width: 650px), screen and (max-device-width: 480px)" />
+</head>
+<body>
+	<div class="site">
+		<div class="title"><h2><a href="#" onclick='navigate("/pages/blog");'>Dylan Taylor's Personal Blog</a></h2></div>
+		<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
+		<div id="post">
+	<h1>Significant LibreScribe Progress Made</h1>
+	<p class="meta">02 Sep 2011</p>
+	<p>As you may have noticed, I took a break from working on <a href="https:&#47;&#47;github.com&#47;aliendude5300&#47;LibreScribe">LibreScribe&lt;&#47;a&gt; for a while, and the project looked as though it was abandoned. Well, it isn't, and I've got tons of good news! Since <a href="http:&#47;&#47;dylanmtaylor.com&#47;2011&#47;05&#47;21&#47;librescribe-progress-update&#47;">the last time I wrote an update about LibreScribe&lt;&#47;a&gt;, in late May, I made several incredibly significant changes. Some of these may not seem that exciting, but they are absolutely crucial in order to further develop the program. Some of these new features (such as retrieving and changing the name of the device) didn't exist in libSmartpen <em>at all&lt;&#47;em&gt;, so implementing them required me to capture packets sent over USB and do a bit of <a class="zem_slink" title="Reverse engineering" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Reverse_engineering" rel="wikipedia">reverse engineering&lt;&#47;a&gt;. At first, I used the trial version of <a href="http:&#47;&#47;www.sysnucleus.com&#47;index.html">USBTrace&lt;&#47;a&gt;, but I quickly realized that it wasn't the tool for the job when I got notifications that I used more than my 256K data limit just by opening <a class="zem_slink" title="Livescribe " href="http:&#47;&#47;www.livescribe.com" rel="homepage">LiveScribe&lt;&#47;a&gt; Desktop. To make it even less appealing, it costs <em>$195 USD&lt;&#47;em&gt; <em>for a single license&lt;&#47;em&gt;! That's ridiculous! So of course, I did a bit of searching, and I found <a href="http:&#47;&#47;code.google.com&#47;p&#47;busdog&#47;">busdog&lt;&#47;a&gt;, which does the same job (although using unsigned filter drivers that require modifying windows settings and rebooting several times) for <em>free&lt;&#47;em&gt;! Although getting it setup was significantly more frustrating than getting USBTrace working, it was well worth not paying $195, and it does everything I need it to, albeit without as nice of an interface. Anyways, here's a list of significant changes I made:
+<ul>
+<li>LibreScribe no longer crashes when retrieving the list of applications installed on the device. This was incredibly frustrating when I was trying to develop it. It also filters out the LiveScribe Connect and System files, so that they are not listed if they are present on the device.&lt;&#47;li&gt;
+<li>Instead of displaying a hard-coded list of notebooks, LibreScribe now retrieves the names of all of the notebooks actually in use on the device.&lt;&#47;li&gt;
+<li>When a device is not present on the system, or LibreScribe can't find it, the page tree now shows a "No Smartpen Detected" item, along with an brand new icon that indicates that no device is connected instead of the regular pen icon.&lt;&#47;li&gt;
+<li>I added <a class="zem_slink" title="Context menu" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Context_menu" rel="wikipedia">context menu&lt;&#47;a&gt; <a class="zem_slink" title="Event (computing)" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Event_%28computing%29" rel="wikipedia">event handlers&lt;&#47;a&gt; to the page tree, so now when you right click or press the menu button, LibreScribe can display a menu of options relevant to the item you clicked. More work on this still needs to be done, but if you click the root element (the smartpen itself, or the placeholder when one isn't connected), you will now see a new menu allowing you to rename the device, refresh the connection, or display information about the device.&lt;&#47;li&gt;
+<li>When the device is unplugged or plugged in, the page tree and the applications&#47;audio lists will now automatically refresh themselves.&lt;&#47;li&gt;
+<li>LibreScribe now retrieves the name of the smartpen from the device, rather than defaulting to "My LiveScribe Smartpen". It can also set the name of the pen, but this feature is still a little bit buggy (it won't brick your device, so it's safe to test). Interesting discovery: In the LiveScribe desktop software, you can set the name of the pen to anything up to 50 characters. This does not mean that the device doesn't allow more than that, it's just a 'soft' limit in the LiveScribe desktop software. There probably is an <em>actual&lt;&#47;em&gt; limit, but I was able to set the device name to almost a paragraph of text, including every symbol you can type on a standard <a class="zem_slink" title="Keyboard layout" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Keyboard_layout" rel="wikipedia">US keyboard&lt;&#47;a&gt;, and retrieving it from the pen worked perfectly. The pen stored the entire thing, and returned it when I checked the name, although it did <em>not&lt;&#47;em&gt; display the entire string when I turned the device on, just the first part of it. The string of text I tested was "<em>~`!@#$%^&amp;*()-_+={}[]:;"'&lt;&gt;?&#47;,.\ Testing the maximum name length for a LiveScribe Smartpen... I wonder if I could fit a paragraph in here...? You have got to be kidding me... I typed this much and it STILL works? That's incredible. There's virtually no limit to how long the smartpen's name is. I can't believe I can set and receive values this long! I'm speechless...&lt;&#47;em&gt;". Needless to say, you can store almost anything in the name of the Smartpen. I wonder how the LiveScribe desktop software would react if it tried to retrieve this string.&lt;&#47;li&gt;
+<li>I added a dialog box to rename the device, as well as another dialog box to confirm the new name.&lt;&#47;li&gt;
+<li>LiveScribe no longer crashes when removing or connecting a smartpen while the program is running.&lt;&#47;li&gt;
+<li>I merged in the inline functions <a href="https:&#47;&#47;github.com&#47;luispedro&#47;LibreScribe&#47;commit&#47;a11739481261eb40bca07967ce5ad04ae5664e0c">written by Luis Pedro Coelho on his fork of LibreScribe&lt;&#47;a&gt;, which are a better implementation of device type checking than I had&lt;&#47;li&gt;
+<li><em>Tons&lt;&#47;em&gt; of new debugging output was added. You can see this output on the console. This makes figuring out what went wrong in a crash <em>so&lt;&#47;em&gt; much easier.&lt;&#47;li&gt;<br />
+&lt;&#47;ul&gt;<br />
+Remember, LibreScribe is still alpha quality and should not be used in a production environment. If you have any issues or suggestions, feel free to file a <a href="https:&#47;&#47;github.com&#47;aliendude5300&#47;LibreScribe&#47;issues&#47;new">bug report&lt;&#47;a&gt;. Or, if you're skilled enough, I'd appreciate it if you fixed the bug yourself, and submitted a patch. Ah, the benefits of open source coding! This is only just the beginning. Expect <em>tons&lt;&#47;em&gt; of new enhancements and bug fixes over the next several months.
+<div class="zemanta-pixie" style="margin-top: 10px; height: 15px;">&lt;img class="zemanta-pixie-img" style="float: right;" src="http:&#47;&#47;img.zemanta.com&#47;pixy.gif?x-id=5073270c-b014-4354-9d04-19e8a53ec461" alt="" &#47;&gt;&lt;&#47;div&gt;
+</div></em></a></em></em></li></a></li></li></li></em></em></a></em></li></li></a></a></li></li></li></li></ul></em></a></em></em></a></a></a></em></a></a></p>
+
+
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <g:plusone></g:plusone>
+
+</div>
+
+
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>06 Jul 2014</span> <span class="seperator">~</span> <a href="/2014/07/06/my-domain-is-now-registered-with-iwantmyname/">My Domain is Now Registered With iWantMyName</a></li>
+    
+      <li><span>04 Jul 2014</span> <span class="seperator">~</span> <a href="/2014/07/04/goodbye-dropbox-hello-owncloud/">Goodbye Dropbox, Hello OwnCloud.</a></li>
+    
+      <li><span>27 Jun 2014</span> <span class="seperator">~</span> <a href="/2014/06/27/speed-up-your-site-with-instant-click/">Speed Up Your Site With Instant Click</a></li>
+    
+  </ul>
+</div>
+
+
+
+
+<div class="comments">
+	<h3>Comments</h3>
+	<noscript>Please enable JavaScript to view the comments</noscript>
+	<div id="disqus_thread"></div>
+</div>
+
+		<div class="footer">
+			<div class="contact">
+				<p>
+					Dylan Taylor<br/>
+					Software Engineer<br/>
+				</p>
+			</div>
+			<div class="contact">
+				<p>
+					<a href="http://dylanmtaylor.com/">dylanmtaylor.com</a><br/>
+					<a href="http://github.com/dylanmtaylor/">github.com/dylanmtaylor</a><br />
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+<html>

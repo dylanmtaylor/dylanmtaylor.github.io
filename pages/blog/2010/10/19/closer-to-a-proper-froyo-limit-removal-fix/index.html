@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-gb">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Closer to a Proper Froyo Limit Removal Fix</title>
+	<meta name="author" content="Dylan Taylor" /><!-- Thanks to Roger Chapman for the layout -->
+	<link rel="stylesheet" href="/pages/blog/css/syntax.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/pages/blog/css/screen.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/pages/blog/css/tablet.css" type="text/css" media="screen and (min-width:651px) and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px)" />
+	<link rel="stylesheet" href="/pages/blog/css/mobile.css" type="text/css" media="handheld, screen and (max-width: 650px), screen and (max-device-width: 480px)" />
+</head>
+<body>
+	<div class="site">
+		<div class="title"><h2><a href="#" onclick='navigate("/pages/blog");'>Dylan Taylor's Personal Blog</a></h2></div>
+		<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
+		<div id="post">
+	<h1>Closer to a Proper Froyo Limit Removal Fix</h1>
+	<p class="meta">19 Oct 2010</p>
+	<p>So, I recently managed to get the limit removed (manually) in the <a class="zem_slink" title="Android" rel="homepage" href="http:&#47;&#47;code.google.com&#47;android&#47;">Android 2.2&lt;&#47;a&gt; emulator found in the <a class="zem_slink" title="Android SDK" rel="homepage" href="http:&#47;&#47;developer.android.com&#47;sdk&#47;index.html">Android SDK&lt;&#47;a&gt;. This proves that it is possible, and I hope to have an automated fix out soon. For those of you who can't wait (rooted device required) -- try this:
+<ul>
+<li>Download the<a href="http:&#47;&#47;developer.android.com&#47;sdk&#47;index.html"> Android SDK&lt;&#47;a&gt;&lt;&#47;li&gt;
+<li>Put your device into development mode (Go to Settings &gt; Applications &gt; Development, and make sure USB Debugging is enabled)&lt;&#47;li&gt;
+<li>Plug your device into your computer's USB port&lt;&#47;li&gt;
+<li>Make sure you are connected to your device by running <strong>adb devices&lt;&#47;strong&gt;&lt;&#47;li&gt;
+<li>Use cd to <a class="zem_slink" title="Cd (command)" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Cd_%28command%29">change directory&lt;&#47;a&gt; to the tools directory of the SDK&lt;&#47;li&gt;
+<li>Run <strong>adb shell&lt;&#47;strong&gt;&lt;&#47;li&gt;
+<li>Type <strong>su&lt;&#47;strong&gt; and hit enter&lt;&#47;li&gt;
+<li>Type<strong> remount rw&lt;&#47;strong&gt; and hit enter. Depending on your phone, this may not work, and you might get a command not found error. If so, try "<strong>mount -o remount,rw -t yaffs2 &#47;dev&#47;block&#47;mtdblock3 &#47;system&lt;&#47;strong&gt;". If you are testing this on the Android Emulator, the command you want is "<strong>mount -o remount,rw -t yaffs2 &#47;dev&#47;block&#47;mtdblock0 &#47;system&lt;&#47;strong&gt;". If none of these commands work, look for your device's command to remount the filesystem in read-write mode by searching on Google, and type that instead. This step in <strong>not&lt;&#47;strong&gt; optional. It will not work if you skip this step.&lt;&#47;li&gt;
+<li>Now type <strong>exit&lt;&#47;strong&gt; and hit enter, repeat if you aren't out of adb shell yet&lt;&#47;li&gt;
+<li>Type<strong> adb pull &#47;data&#47;data&#47;com.android.providers.settings&#47;databases&#47;settings.db&lt;&#47;strong&gt; and hit enter
+<ul>
+<li>If you get an error saying "failed to copy '&#47;data&#47;data&#47;com.android.providers.settings&#47;databases&#47;settings.db' to '.&#47;settings.db': Permission denied", make sure that you remounted your filesystem in read-write mode. This could be the problem. If it still does not work after you make sure that you remounted your filesystem properly, try these steps which worked for me:
+<ul>
+<li>Go back into <strong>adb shell&lt;&#47;strong&gt;&lt;&#47;li&gt;
+<li>Type <strong>su &lt;&#47;strong&gt;and hit enter to get root access<strong><br />
+&lt;&#47;strong&gt;&lt;&#47;li&gt;
+<li>Type, letter for letter, "<strong>cat &#47;data&#47;data&#47;com.android.providers.settings&#47;databases&#47;settings.db &gt; &#47;data&#47;local&#47;settings.db&lt;&#47;strong&gt;" and hit enter&lt;&#47;li&gt;
+<li>Now type <strong>exit&lt;&#47;strong&gt; twice to get out of adb shell&lt;&#47;li&gt;
+<li>In your regular terminal (not adb shell) type "<strong>adb pull &#47;data&#47;local&#47;settings.db&lt;&#47;strong&gt;" and hit enter.&lt;&#47;li&gt;<br />
+&lt;&#47;ul&gt;<br />
+&lt;&#47;li&gt;<br />
+&lt;&#47;ul&gt;<br />
+&lt;&#47;li&gt;
+<li>Type <strong>sqlite3 settings.db &lt;&#47;strong&gt;and hit enter&lt;&#47;li&gt;
+<li>Type (letter for letter) these lines, hitting enter after each one:&lt;&#47;li&gt;<br />
+&lt;&#47;ul&gt;
+<pre>INSERT INTO gservices (name, value) VALUES ('sms_outgoing_check_max_count', 999999999);<br />
+INSERT INTO secure (name, value) VALUES ('sms_outgoing_check_max_count', 999999999);<br />
+INSERT INTO gservices (name, value) VALUES ('sms_outgoing_check_interval_ms', 0);<br />
+INSERT INTO secure (name, value) VALUES ('sms_outgoing_check_interval_ms', 0);<br />
+.quit&lt;&#47;pre&gt;
+<ul>
+<li>If you are on Android 2.2 or newer, it is <strong><em>perfectly normal&lt;&#47;em&gt;&lt;&#47;strong&gt; to get "no such table" error messages when entering the gservices lines. Just ignore those. It will still work.&lt;&#47;li&gt;
+<li>You should be out of the sqlite editor, and back to your shell.&lt;&#47;li&gt;
+<li>Type <strong>adb push settings.db &#47;data&#47;local&#47;&lt;&#47;strong&gt; and hit enter&lt;&#47;li&gt;
+<li>Now, go back into <strong>adb shell&lt;&#47;strong&gt; (just type adb shell and hit enter)&lt;&#47;li&gt;
+<li>Verify that you have a<em><strong> #&lt;&#47;strong&gt;&lt;&#47;em&gt; in your shell(not a $), which means that you have root access.&lt;&#47;li&gt;
+<li>If you do not have a # in your shell, try typing <strong>su&lt;&#47;strong&gt;...&lt;&#47;li&gt;
+<li>Type <strong>cd &#47;data&#47;local&lt;&#47;strong&gt; to get to the directory where we just stored the modified settings database&lt;&#47;li&gt;
+<li>type <strong>ls &lt;&#47;strong&gt;to list the files in the directory, and verify that <strong><em>settings.db&lt;&#47;em&gt;&lt;&#47;strong&gt; is in the list of files&lt;&#47;li&gt;
+<li>Now, letter for letter, type <span id=":kq"><strong>cat settings.db &gt; &#47;data&#47;data&#47;com.android.providers.settings&#47;databases&#47;settings.db&lt;&#47;strong&gt; and hit enter&lt;&#47;span&gt;&lt;&#47;li&gt;
+<li><span id=":kq">Nothing should appear on the screen. This is perfectly fine.&lt;&#47;span&gt;&lt;&#47;li&gt;
+<li><span id=":kq">Now, let's verify that the file was written properly before rebooting the phone...&lt;&#47;span&gt;&lt;&#47;li&gt;
+<li><span id=":kq">Type &lt;&#47;span&gt;<strong><span id=":fm">cmp -l &#47;data&#47;local&#47;settings.db &#47;data&#47;data&#47;com.android.providers.settings&#47;databases&#47;settings.db&lt;&#47;span&gt;&lt;&#47;strong&gt;&lt;&#47;li&gt;
+<li><span id=":fm">Nothing should come up from that either. If something does, the database was <strong>not &lt;&#47;strong&gt;copied properly. Go back to the last <strong>cat &lt;&#47;strong&gt;command step. Otherwise, your database has been modified successfully. Congratulations!<br />
+&lt;&#47;span&gt;&lt;&#47;li&gt;
+<li><span id=":fm">Now, exit the shell again, by typing <strong>exit&lt;&#47;strong&gt; and hitting enter until you are no longer in adb shell, just like last time.<br />
+&lt;&#47;span&gt;&lt;&#47;li&gt;
+<li>The settings file should be updated on your device. This will not be applied until you reboot your device.&lt;&#47;li&gt;
+<li>To reboot your phone, type <strong>adb reboot &lt;&#47;strong&gt;and hit enter.&lt;&#47;li&gt;<br />
+&lt;&#47;ul&gt;<br />
+<del>I haven't tried that method, since automatic removal works perfectly on  my <a class="zem_slink" title="Samsung i9000 Galaxy S" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Samsung_i9000_Galaxy_S">Samsung Epic 4G&lt;&#47;a&gt; running Android 2.1, but let me know if that works  for you by leaving a comment on this post, or by sending me an email&lt;&#47;del&gt;. This method has been updated, and it works <em>perfectly&lt;&#47;em&gt; on my Samsung Epic 4G running a leaked ROM of Android 2.2.
+<p><strong>UPDATE: &lt;&#47;strong&gt;I recently found out that WordPress changes certain characters slightly, which causes the <a class="zem_slink" title="SQLite" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;SQLite">SQLite&lt;&#47;a&gt; commands above to not work properly. The SQLite commands are now in <strong>
+<pre> &lt;&#47;strong&gt;tags to prevent this from happening. This may be the reason that manual removal failed before for some users. Also, rather than pushing the file directly to the settings database, the guide is updated to push it to <strong>&#47;data&#47;local&#47;&lt;&#47;strong&gt; and overwrite it as root using <strong>cat&lt;&#47;strong&gt;.
+<p><strong>UPDATE 2 (10&#47;21&#47;2010):&lt;&#47;strong&gt; I successfully got this working on someone's phone, and they no longer have a sending limit (verified)! Special thanks to Jacob Miller for helping me out and for his patience while we tried commands on his Droid (Original), until we eventually got it working! :) This guide has been updated to reflect the changes in the process that were necessary in order to get it to work.
+<p><strong>UPDATE 3 (11&#47;12&#47;2010):&lt;&#47;strong&gt; On my Epic 4G running the leaked Android 2.2 Froyo ROM, I was unable to pull the settings.db file directly. I updated the instructions to include a workaround that worked for me.
+<p><strong>NOTE: &lt;&#47;strong&gt;I have tested this method on the Android 2.2 emulator three different times, and it worked each one. I want to automate the process on actual, rooted devices, but at the moment, it only works on 2.1 unfortunately.
+<div id="_mcePaste" class="mcePaste" style="position:absolute;left:-10000px;top:544px;width:1px;height:1px;overflow:hidden;"><strong>adb push settings.db &#47;data&#47;data&#47;com.android.providers.settings&#47;databases&#47;settings.db&lt;&#47;strong&gt;&lt;&#47;div&gt;
+</strong></div></strong></p></strong></p></strong></p></strong></strong></pre></strong></a></strong></p></em></a></del></strong></li></li></strong></span></li></strong></strong></span></li></span></strong></span></li></span></li></span></li></strong></span></li></em></strong></strong></li></strong></li></strong></li></strong></em></li></strong></li></strong></li></li></em></strong></li></ul></pre></li></strong></li></strong></li></strong></li></strong></li></strong></strong></li></strong></li></ul></li></ul></strong></li></strong></li></strong></strong></strong></strong></li></strong></li></strong></li></a></li></strong></li></li></li></a></li></ul></a></a></p>
+
+
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <g:plusone></g:plusone>
+
+</div>
+
+
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>06 Jul 2014</span> <span class="seperator">~</span> <a href="/2014/07/06/my-domain-is-now-registered-with-iwantmyname/">My Domain is Now Registered With iWantMyName</a></li>
+    
+      <li><span>04 Jul 2014</span> <span class="seperator">~</span> <a href="/2014/07/04/goodbye-dropbox-hello-owncloud/">Goodbye Dropbox, Hello OwnCloud.</a></li>
+    
+      <li><span>27 Jun 2014</span> <span class="seperator">~</span> <a href="/2014/06/27/speed-up-your-site-with-instant-click/">Speed Up Your Site With Instant Click</a></li>
+    
+  </ul>
+</div>
+
+
+
+
+<div class="comments">
+	<h3>Comments</h3>
+	<noscript>Please enable JavaScript to view the comments</noscript>
+	<div id="disqus_thread"></div>
+</div>
+
+		<div class="footer">
+			<div class="contact">
+				<p>
+					Dylan Taylor<br/>
+					Software Engineer<br/>
+				</p>
+			</div>
+			<div class="contact">
+				<p>
+					<a href="http://dylanmtaylor.com/">dylanmtaylor.com</a><br/>
+					<a href="http://github.com/dylanmtaylor/">github.com/dylanmtaylor</a><br />
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+<html>
