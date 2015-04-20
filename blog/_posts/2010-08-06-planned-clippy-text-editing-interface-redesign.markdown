@@ -10,8 +10,6 @@ author:
   url: ''
 author_login: dylanmtaylor
 author_email: dylan.m.taylor92@gmail.com
-wordpress_id: 257
-wordpress_url: http://www.dylanmtaylor.com/?p=257
 date: '2010-08-06 18:31:31 +0000'
 date_gmt: '2010-08-06 18:31:31 +0000'
 ---
