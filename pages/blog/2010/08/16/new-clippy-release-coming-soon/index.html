@@ -14,9 +14,7 @@
 			try {
 				navigate(page);
 			} catch(err)  {
-				$.get(page, function (data) {
-					   window.location.replace(data);
-			       });
+				window.location.replace(page);		
 			}
 		}
 	</script>
