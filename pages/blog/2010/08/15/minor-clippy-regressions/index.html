@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-gb">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>Minor Clippy&Acirc;&nbsp;Regressions</title>
+	<title>Minor ClippyÂ Regressions</title>
 	<meta name="author" content="Dylan Taylor" /><!-- Thanks to Roger Chapman for the layout -->
 	<link rel="stylesheet" href="/pages/blog/css/syntax.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="/pages/blog/css/screen.css" type="text/css" media="all" />
@@ -24,16 +24,15 @@
 		<div class="title"><h2><a href="#" onclick='go("/pages/blog");'>Dylan Taylor's Personal Blog</a></h2></div>
 		<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
 		<div id="post">
-	<h1>Minor Clippy&Acirc;&nbsp;Regressions</h1>
+	<h1>Minor ClippyÂ Regressions</h1>
 	<p class="meta">15 Aug 2010</p>
-	<p>I'm currently postponing the release of Clippy due to several small, but significant regressions that I am experiencing. I want to ensure that those of you who have downloaded and used a previous version of Clippy, such as the current version in the market feel comfortable using the new version that I am about to release. Because of some significant changes in the way I have Clippy written, such as using of <a class="zem_slink" title="XML" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;XML">XML&lt;&#47;a&gt;-based menu resources instead of generating the menus using <a class="zem_slink" title="Source code" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Source_code">source code&lt;&#47;a&gt; when the application runs, I have run into several problems that I am looking into. Rest assured, I will be releasing a new version of Clippy soon. However, at the moment, there are several regressions such as this one:
+	<p>I'm currently postponing the release of Clippy due to several small, but significant regressions that I am experiencing. I want to ensure that those of you who have downloaded and used a previous version of Clippy, such as the current version in the market feel comfortable using the new version that I am about to release. Because of some significant changes in the way I have Clippy written, such as using of <a class="zem_slink" title="XML" rel="wikipedia" href="http://en.wikipedia.org/wiki/XML">XML</a>-based menu resources instead of generating the menus using <a class="zem_slink" title="Source code" rel="wikipedia" href="http://en.wikipedia.org/wiki/Source_code">source code</a> when the application runs, I have run into several problems that I am looking into. Rest assured, I will be releasing a new version of Clippy soon. However, at the moment, there are several regressions such as this one:</p>
 <ul>
-<li>When there is no text in the text editor, the "Save", "Edit", and "Clear" buttons are no longer disabled. This worked perfectly while I was using menus generated using code, as I could set whether or not the menu items are enabled, however, when I switched to XML-based menus, attempting to set any attributes of the menu items results in the entire application crashing with a NullPointerException.&lt;&#47;li&gt;<br />
-&lt;&#47;ul&gt;<br />
-Once I get most of the regressions fixed, I will release an update of the code on the market.
-<p><strong>UPDATE:&lt;&#47;strong&gt; I figured out how to set whether or not the MenuItems were enabled or not. Instead of using the findViewByID() method, I had to use menu.findItem().
-<p><strong>UPDATE 2:&lt;&#47;strong&gt; Email sending now works properly, and I added a send button to the <a class="zem_slink" title="Context menu" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Context_menu">context menu&lt;&#47;a&gt; of the "Current" tab.
-</a></strong></p></strong></p></li></ul></a></a></p>
+<li>When there is no text in the text editor, the "Save", "Edit", and "Clear" buttons are no longer disabled. This worked perfectly while I was using menus generated using code, as I could set whether or not the menu items are enabled, however, when I switched to XML-based menus, attempting to set any attributes of the menu items results in the entire application crashing with a NullPointerException.</li>
+</ul>
+<p>Once I get most of the regressions fixed, I will release an update of the code on the market.</p>
+<p><strong>UPDATE:</strong> I figured out how to set whether or not the MenuItems were enabled or not. Instead of using the findViewByID() method, I had to use menu.findItem().</p>
+<p><strong>UPDATE 2:</strong> Email sending now works properly, and I added a send button to the <a class="zem_slink" title="Context menu" rel="wikipedia" href="http://en.wikipedia.org/wiki/Context_menu">context menu</a> of the "Current" tab.</p>
 
 
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>

@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: Clippy "Package file was not signed correctly" fix
+title: Clippy &quot;Package file was not signed correctly&quot; fix
 author:
   display_name: Dylan Taylor
   login: aliendude5300

@@ -15,4 +15,4 @@ wordpress_url: http://www.dylanmtaylor.com/?p=287
 date: '2010-08-15 01:23:09 +0000'
 date_gmt: '2010-08-15 01:23:09 +0000'
 ---
-<p>I'm currently working on making it possible to have the Clippy service start as soon as your device turns on in order to automatically monitor the <a class="zem_slink" title="Clipboard (software)" rel="wikipedia" href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Clipboard_%28software%29">clipboard<&#47;a>. This feature will be completely optional, and this feature will not be enabled by default.</p>
+<p>I'm currently working on making it possible to have the Clippy service start as soon as your device turns on in order to automatically monitor the <a class="zem_slink" title="Clipboard (software)" rel="wikipedia" href="http://en.wikipedia.org/wiki/Clipboard_%28software%29">clipboard</a>. This feature will be completely optional, and this feature will not be enabled by default.</p>
