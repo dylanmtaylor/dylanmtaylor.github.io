@@ -7,8 +7,6 @@ author:
   display_name: Dylan Taylor
   login: dylanmtaylor
   email: dylan.m.taylor92@gmail.com
-author_login: dylanmtaylor
-author_email: dylan.m.taylor92@gmail.com
 date: '2012-01-15 20:47:46 +0000'
 date_gmt: '2012-01-15 20:47:46 +0000'
 ---
