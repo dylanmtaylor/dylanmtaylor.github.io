@@ -15,7 +15,7 @@
 				navigate(page);
 			} catch(err)  {
 				$.get(page, function (data) {
-					   document.innerHTML = data;
+					   window.location.replace(data);
 			       });
 			}
 		}
