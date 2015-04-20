@@ -11,7 +11,7 @@ author:
 author_login: dylanmtaylor
 author_email: dylan.m.taylor92@gmail.com
 wordpress_id: 1008
-wordpress_url: http://dylanmtaylor.com/?p=1008
+wordpress_url: http://www.dylanmtaylor.comhttp://dylanmtaylor.com/?p=1008
 date: '2011-01-03 04:26:22 +0000'
 date_gmt: '2011-01-03 04:26:22 +0000'
 ---
@@ -34,6 +34,6 @@ The Android Market Team</p></blockquote>
 <span style="color: #888888;"><br />
 --<br />
 Dylan Taylor<br />
-<a href="http://www.dylanmtaylor.com/" target="_blank">http://www.dylanmtaylor.com/</a></span></p></blockquote>
+<a href="/" target="_blank">/</a></span></p></blockquote>
 <p><span style="color: #888888;"><span style="color: #000000;">Unfortunately at this point, it doesn't look like I will be able to get my Android market developer account back, and this is really frustrating and depressing. I truly would like to continue to develop and support my applications for Android, but it does not look like Google will allow me the privilege of doing so, so I shall begin to look into alternative means of distribution. This is a truly disappointing and sorrowful moment for me. :-(</span></span></p>
 <div class="zemanta-pixie" style="margin-top: 10px; height: 15px;"><img class="zemanta-pixie-img" style="border: medium none; float: right;" src="/images/blog/2011/06/pixy9.gif" alt="" /></div>

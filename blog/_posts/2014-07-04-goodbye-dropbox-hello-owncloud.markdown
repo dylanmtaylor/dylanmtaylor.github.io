@@ -11,7 +11,7 @@ author:
 author_login: dylanmtaylor
 author_email: dylan.m.taylor92@gmail.com
 wordpress_id: 1142
-wordpress_url: http://dylanmtaylor.com/?p=1142
+wordpress_url: http://www.dylanmtaylor.comhttp://dylanmtaylor.com/?p=1142
 date: '2014-07-04 05:18:09 +0000'
 date_gmt: '2014-07-04 05:18:09 +0000'
 ---
