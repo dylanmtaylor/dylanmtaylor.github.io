@@ -5,10 +5,10 @@ published: true
 title: I've Been Completely BANNED From the Android Market
 author:
   display_name: Dylan Taylor
-  login: aliendude5300
+  login: dylanmtaylor
   email: dylan.m.taylor92@gmail.com
   url: ''
-author_login: aliendude5300
+author_login: dylanmtaylor
 author_email: dylan.m.taylor92@gmail.com
 wordpress_id: 1008
 wordpress_url: http://dylanmtaylor.com/?p=1008

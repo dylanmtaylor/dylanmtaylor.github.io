@@ -5,10 +5,10 @@ published: true
 title: Introducing EliteBomb Lite (for Legacy 1.6 Devices)
 author:
   display_name: Dylan Taylor
-  login: aliendude5300
+  login: dylanmtaylor
   email: dylan.m.taylor92@gmail.com
   url: ''
-author_login: aliendude5300
+author_login: dylanmtaylor
 author_email: dylan.m.taylor92@gmail.com
 wordpress_id: 962
 wordpress_url: http://dylanmtaylor.com/?p=962

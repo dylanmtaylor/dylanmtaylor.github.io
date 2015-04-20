@@ -5,10 +5,10 @@ published: true
 title: Introducing EliteBomb SMS Text Bomber
 author:
   display_name: Dylan Taylor
-  login: aliendude5300
+  login: dylanmtaylor
   email: dylan.m.taylor92@gmail.com
   url: ''
-author_login: aliendude5300
+author_login: dylanmtaylor
 author_email: dylan.m.taylor92@gmail.com
 wordpress_id: 613
 wordpress_url: http://www.dylanmtaylor.com/?p=613

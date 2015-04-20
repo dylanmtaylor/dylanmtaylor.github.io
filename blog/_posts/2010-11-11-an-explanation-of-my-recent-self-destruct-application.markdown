@@ -5,10 +5,10 @@ published: true
 title: An Explanation of My Recent &quot;Self Destruct&quot; Application
 author:
   display_name: Dylan Taylor
-  login: aliendude5300
+  login: dylanmtaylor
   email: dylan.m.taylor92@gmail.com
   url: ''
-author_login: aliendude5300
+author_login: dylanmtaylor
 author_email: dylan.m.taylor92@gmail.com
 wordpress_id: 791
 wordpress_url: http://www.dylanmtaylor.com/?p=791
