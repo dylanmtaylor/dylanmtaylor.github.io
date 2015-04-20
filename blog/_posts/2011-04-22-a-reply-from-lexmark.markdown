@@ -53,7 +53,7 @@ date_gmt: '2011-04-22 07:20:19 +0000'
 <div>
 <div id=":10k">
 <div id=":10j">Dear Dylan,&nbsp;</p>
-<p>Here is your Service Request #Â 1-5145156021</p>
+<p>Here is your Service Request # 1-5145156021</p>
 <p>We recently received your feedback.</p>
 <p>Thank you for sharing this information. We really appreciate your time and effort in bringing this one to us. I will definitely forward this one to our software engineers so that we can make the necessary changes to our software. We really appreciate your feedback. It's through customers like you that we're able to make improvements in our current and future products.</p>
 <p>If you have any more questions or concerns, please contact me at your convenience and I will be happy to assist you. (If I am not available, another representative may reply to your request.)</p>

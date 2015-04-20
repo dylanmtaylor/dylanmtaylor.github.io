@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: Clippy Public Beta ComingÂ Soon
+title: Clippy Public Beta Coming Soon
 author:
   display_name: Dylan Taylor
   login: aliendude5300

@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: Clippy Public Beta isÂ Up!
+title: Clippy Public Beta is Up!
 author:
   display_name: Dylan Taylor
   login: aliendude5300

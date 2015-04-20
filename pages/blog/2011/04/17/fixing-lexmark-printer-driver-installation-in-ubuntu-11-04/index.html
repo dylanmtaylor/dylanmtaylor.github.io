@@ -34,7 +34,7 @@
 <p>It's worth noting that there are two hyphens before noexec and keep. Once you run that command, the files for the installer will be extracted to the tmp folder in the <a class="zem_slink" title="Working directory" rel="wikipedia" href="http://en.wikipedia.org/wiki/Working_directory">current working directory</a>. For now, just type <strong>cd tmp</strong> and press enter. Now, open up a text editor, such as gedit and navigate to the config folder in the tmp folder we just extracted. Open up the file "run.lua". The problem is that Lexmark misspelled ownership as ownhership, which broke the installer. Around line 1484, you will find a line that says</p>
 <blockquote><p>if tonumber(ownhership[1]) == 0 then</p></blockquote>
 <p>delete the errant h in the word ownership and save the file. Now, go back to your terminal and run <strong>sudo sh startupinstaller.sh</strong> in the tmp folder. The installer will work as expected now.</p>
-<p>Update: Special thanks toÂ Mathieu Triclot for your $5 donation! Glad I could help! :)</p>
+<p>Update: Special thanks to Mathieu Triclot for your $5 donation! Glad I could help! :)</p>
 <div class="zemanta-pixie" style="margin-top: 10px; height: 15px;"><img class="zemanta-pixie-img" style="border: none; float: right;" src="/images/blog/2011/06/pixy12.gif" alt="" /></div>
 
 

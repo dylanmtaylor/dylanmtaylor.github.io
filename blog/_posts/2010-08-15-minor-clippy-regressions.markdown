@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: Minor ClippyÂ Regressions
+title: Minor Clippy Regressions
 author:
   display_name: Dylan Taylor
   login: aliendude5300
