@@ -6,7 +6,7 @@ title: Clippy Public Beta Update 0.1.1 Released
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-08-04 23:19:44 +0000'
 date_gmt: '2010-08-04 23:19:44 +0000'
 ---

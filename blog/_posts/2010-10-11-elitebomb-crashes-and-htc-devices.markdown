@@ -6,7 +6,7 @@ title: EliteBomb Crashes and HTC Devices
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-10-11 19:16:54 +0000'
 date_gmt: '2010-10-11 19:16:54 +0000'
 ---

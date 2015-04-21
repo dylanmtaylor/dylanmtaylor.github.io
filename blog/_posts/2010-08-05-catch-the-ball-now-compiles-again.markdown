@@ -6,7 +6,7 @@ title: Catch The Ball Now Compiles Again!
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-08-05 00:05:54 +0000'
 date_gmt: '2010-08-05 00:05:54 +0000'
 ---

@@ -6,7 +6,7 @@ title: EliteBomb High Resolution Application Icon Done
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-17 22:43:07 +0000'
 date_gmt: '2010-11-17 22:43:07 +0000'
 ---

@@ -6,7 +6,7 @@ title: Help Fight Internet Censorship!
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-11-17 06:35:03 +0000'
 date_gmt: '2011-11-17 06:35:03 +0000'
 ---

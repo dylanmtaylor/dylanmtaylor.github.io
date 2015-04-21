@@ -6,7 +6,7 @@ title: Pssst... Planned Improvements for &quot;Find The Mouse&quot;
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-03 11:51:52 +0000'
 date_gmt: '2010-11-03 11:51:52 +0000'
 ---

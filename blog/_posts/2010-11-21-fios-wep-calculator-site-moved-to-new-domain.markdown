@@ -6,7 +6,7 @@ title: FiOS WEP Calculator Site Moved to New Domain
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-21 01:26:20 +0000'
 date_gmt: '2010-11-21 01:26:20 +0000'
 ---

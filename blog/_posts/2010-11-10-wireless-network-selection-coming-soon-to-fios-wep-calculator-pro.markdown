@@ -6,7 +6,7 @@ title: Network Selection Coming Soon to FiOS WEP Calculator PRO
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-10 21:36:37 +0000'
 date_gmt: '2010-11-10 21:36:37 +0000'
 ---

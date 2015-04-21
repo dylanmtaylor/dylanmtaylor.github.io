@@ -6,7 +6,7 @@ title: A Brief Update on the Status of Clippy
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-08-06 16:17:00 +0000'
 date_gmt: '2010-08-06 16:17:00 +0000'
 ---

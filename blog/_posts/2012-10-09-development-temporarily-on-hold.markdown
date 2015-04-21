@@ -6,7 +6,7 @@ title: Development Temporarily On Hold
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2012-10-09 03:25:17 +0000'
 date_gmt: '2012-10-09 03:25:17 +0000'
 ---

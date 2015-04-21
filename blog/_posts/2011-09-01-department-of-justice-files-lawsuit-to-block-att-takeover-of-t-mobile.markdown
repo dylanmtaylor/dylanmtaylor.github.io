@@ -6,7 +6,7 @@ title: Justice Department Files Lawsuit to Block Takeover of T-Mobile
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-09-01 21:01:37 +0000'
 date_gmt: '2011-09-01 21:01:37 +0000'
 ---

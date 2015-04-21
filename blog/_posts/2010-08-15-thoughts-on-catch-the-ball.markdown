@@ -6,7 +6,7 @@ title: Thoughts on Catch The Ball
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-08-15 19:52:07 +0000'
 date_gmt: '2010-08-15 19:52:07 +0000'
 ---

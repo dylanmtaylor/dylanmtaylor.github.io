@@ -6,7 +6,7 @@ title: Fixing Lexmark Printer Driver Installation in Ubuntu 11.04
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-04-17 18:20:55 +0000'
 date_gmt: '2011-04-17 18:20:55 +0000'
 ---

@@ -6,7 +6,7 @@ title: A List of Words Containing "Rent"
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-11-29 15:43:01 +0000'
 date_gmt: '2011-11-29 15:43:01 +0000'
 ---

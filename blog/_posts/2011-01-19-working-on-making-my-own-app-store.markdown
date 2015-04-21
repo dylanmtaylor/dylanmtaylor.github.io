@@ -6,7 +6,7 @@ title: Working on creating my own "App Store"
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-01-19 00:16:22 +0000'
 date_gmt: '2011-01-19 00:16:22 +0000'
 ---

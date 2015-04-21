@@ -6,7 +6,7 @@ title: EliteBomb Now Optimized for Rooted Devices
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-10-03 22:28:22 +0000'
 date_gmt: '2010-10-03 22:28:22 +0000'
 ---

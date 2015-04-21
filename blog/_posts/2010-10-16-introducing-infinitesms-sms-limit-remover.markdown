@@ -6,7 +6,7 @@ title: Introducing InfiniteSMS SMS Limit Remover
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-10-16 00:30:14 +0000'
 date_gmt: '2010-10-16 00:30:14 +0000'
 ---

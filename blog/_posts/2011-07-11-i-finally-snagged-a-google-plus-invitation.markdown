@@ -6,7 +6,7 @@ title: I Finally Snagged a Google Plus Invitation!
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-07-11 03:15:19 +0000'
 date_gmt: '2011-07-11 03:15:19 +0000'
 ---

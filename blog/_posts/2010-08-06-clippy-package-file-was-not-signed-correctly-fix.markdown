@@ -6,7 +6,7 @@ title: Clippy &quot;Package file was not signed correctly&quot; fix
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-08-06 17:03:56 +0000'
 date_gmt: '2010-08-06 17:03:56 +0000'
 ---

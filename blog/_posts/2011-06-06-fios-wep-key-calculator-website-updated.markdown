@@ -6,7 +6,7 @@ title: FiOS WEP Key Calculator Website Updated
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-06-06 19:37:40 +0000'
 date_gmt: '2011-06-06 19:37:40 +0000'
 ---

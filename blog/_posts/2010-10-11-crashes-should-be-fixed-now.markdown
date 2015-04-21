@@ -6,7 +6,7 @@ title: Crashes Should Be Fixed Now
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-10-11 20:57:43 +0000'
 date_gmt: '2010-10-11 20:57:43 +0000'
 ---

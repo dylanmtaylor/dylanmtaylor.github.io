@@ -6,7 +6,7 @@ title: New EliteBomb Plus Gingerbread Screenshots Added
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-12-14 01:13:39 +0000'
 date_gmt: '2010-12-14 01:13:39 +0000'
 ---

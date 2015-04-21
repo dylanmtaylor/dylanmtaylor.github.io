@@ -6,7 +6,7 @@ title: Automatic Limit Removal Still Broken On Certain Devices
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-02 19:04:39 +0000'
 date_gmt: '2010-11-02 19:04:39 +0000'
 ---

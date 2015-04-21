@@ -6,7 +6,7 @@ title: Linking Old Posts to the New Site
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-19 01:36:40 +0000'
 date_gmt: '2010-11-19 01:36:40 +0000'
 ---

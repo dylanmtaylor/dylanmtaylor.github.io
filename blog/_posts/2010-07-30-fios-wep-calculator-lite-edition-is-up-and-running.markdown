@@ -6,7 +6,7 @@ title: FiOS WEP Calculator Lite Edition is Up and Running!
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-07-30 03:58:51 +0000'
 date_gmt: '2010-07-30 03:58:51 +0000'
 ---

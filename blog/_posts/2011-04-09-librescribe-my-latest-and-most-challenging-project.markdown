@@ -6,7 +6,7 @@ title: LibreScribe, My Latest (and Most Challenging) Project
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-04-09 04:35:07 +0000'
 date_gmt: '2011-04-09 04:35:07 +0000'
 ---

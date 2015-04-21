@@ -6,7 +6,7 @@ title: Google Adds Mobile Editing to Docs on Android and iOS Devices
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-18 01:43:04 +0000'
 date_gmt: '2010-11-18 01:43:04 +0000'
 ---

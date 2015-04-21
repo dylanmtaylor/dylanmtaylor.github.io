@@ -6,7 +6,7 @@ title: Network Listing Coming Soon to FiOS WEP Calculator Lite
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-11 02:37:47 +0000'
 date_gmt: '2010-11-11 02:37:47 +0000'
 ---

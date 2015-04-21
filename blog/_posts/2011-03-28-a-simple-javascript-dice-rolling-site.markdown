@@ -6,7 +6,7 @@ title: A Simple JavaScript Dice Rolling Site
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-03-28 20:34:27 +0000'
 date_gmt: '2011-03-28 20:34:27 +0000'
 ---

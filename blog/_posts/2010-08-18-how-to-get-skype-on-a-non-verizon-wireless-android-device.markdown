@@ -6,7 +6,7 @@ title: How To Get Skype on a Non-Verizon Wireless Android Device
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-08-18 17:59:10 +0000'
 date_gmt: '2010-08-18 17:59:10 +0000'
 ---

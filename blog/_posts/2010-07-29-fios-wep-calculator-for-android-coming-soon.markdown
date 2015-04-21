@@ -6,7 +6,7 @@ title: FiOS WEP Calculator for Android Coming Soon!
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-07-29 21:02:33 +0000'
 date_gmt: '2010-07-29 21:02:33 +0000'
 ---

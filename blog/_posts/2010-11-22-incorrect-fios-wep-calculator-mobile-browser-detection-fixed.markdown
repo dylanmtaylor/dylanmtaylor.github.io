@@ -6,7 +6,7 @@ title: Incorrect FiOS WEP Calculator Mobile Browser Detection Fixed
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-22 23:44:02 +0000'
 date_gmt: '2010-11-22 23:44:02 +0000'
 ---

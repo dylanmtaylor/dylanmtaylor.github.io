@@ -6,7 +6,7 @@ title: Sorry For The Lack of Updates
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-11-01 00:01:14 +0000'
 date_gmt: '2011-11-01 00:01:14 +0000'
 ---

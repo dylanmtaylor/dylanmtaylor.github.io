@@ -6,7 +6,7 @@ title: EliteBomb Context Menu Added
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-10-12 00:46:06 +0000'
 date_gmt: '2010-10-12 00:46:06 +0000'
 ---

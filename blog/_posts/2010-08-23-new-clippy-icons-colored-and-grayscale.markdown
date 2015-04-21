@@ -6,7 +6,7 @@ title: New Clippy Icons (Colored and Grayscale!)
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-08-23 01:43:04 +0000'
 date_gmt: '2010-08-23 01:43:04 +0000'
 ---

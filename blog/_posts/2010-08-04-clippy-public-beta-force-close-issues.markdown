@@ -6,7 +6,7 @@ title: Clippy Public Beta Force Close Issues
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-08-04 22:54:38 +0000'
 date_gmt: '2010-08-04 22:54:38 +0000'
 ---
