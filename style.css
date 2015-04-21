@@ -121,6 +121,7 @@ h1 strong {
 .pagecontent {
 	position:absolute;
 	margin-left: 17vw;
+        background-color: #fff;
 	top: 6.45em;
 	width: 85vw;
         border-top: 3px solid #000;
