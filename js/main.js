@@ -1,3 +1,9 @@
+function prepare() {
+	//try to encourage the use of HTTPS by default
+	if (window.location.protocol != "https:") {
+    		window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+	}
+}
 function navigate(page) {
 	$.get(page, function(data) {
 		   document.getElementById("pagecontent").innerHTML = data;
