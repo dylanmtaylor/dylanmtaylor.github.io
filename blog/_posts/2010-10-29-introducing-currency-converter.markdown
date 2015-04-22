@@ -6,7 +6,7 @@ title: Introducing Currency Converter!
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-10-29 03:55:22 +0000'
 date_gmt: '2010-10-29 03:55:22 +0000'
 ---

@@ -6,7 +6,7 @@ title: My Opinions On the Leaked Epic 4G Froyo ROM
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-15 03:17:22 +0000'
 date_gmt: '2010-11-15 03:17:22 +0000'
 ---

@@ -6,7 +6,7 @@ title: New "ShareThis" Feature!
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-19 05:14:04 +0000'
 date_gmt: '2010-11-19 05:14:04 +0000'
 ---

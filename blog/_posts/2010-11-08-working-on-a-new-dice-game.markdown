@@ -6,7 +6,7 @@ title: Working on a New Simple Dice Game
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-08 23:29:15 +0000'
 date_gmt: '2010-11-08 23:29:15 +0000'
 ---

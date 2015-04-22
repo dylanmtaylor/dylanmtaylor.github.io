@@ -6,7 +6,7 @@ title: Introducing &quot;Find The Mouse&quot;, a Basic Open Source Android Game!
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-03 02:35:23 +0000'
 date_gmt: '2010-11-03 02:35:23 +0000'
 ---

@@ -6,7 +6,7 @@ title: How To Make a Beeping Timer Using Bash Script and Ubuntu Linux
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-06-20 22:39:49 +0000'
 date_gmt: '2011-06-20 22:39:49 +0000'
 ---

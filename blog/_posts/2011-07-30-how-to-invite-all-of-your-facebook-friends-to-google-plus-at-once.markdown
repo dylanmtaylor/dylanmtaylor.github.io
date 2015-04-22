@@ -6,7 +6,7 @@ title: 'How To: Invite ALL of Your Facebook Friends to Google Plus At Once'
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-07-30 00:30:48 +0000'
 date_gmt: '2011-07-30 00:30:48 +0000'
 ---

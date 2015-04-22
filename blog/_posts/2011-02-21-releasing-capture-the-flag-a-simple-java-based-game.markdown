@@ -6,7 +6,7 @@ title: Releasing "Capture The Flag", a simple Java-based game
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-02-21 03:56:03 +0000'
 date_gmt: '2011-02-21 03:56:03 +0000'
 ---

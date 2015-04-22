@@ -6,7 +6,7 @@ title: Introducing Clippy, a free clipboard manager for Android
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-08-01 22:19:11 +0000'
 date_gmt: '2010-08-01 22:19:11 +0000'
 ---

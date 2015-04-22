@@ -6,7 +6,7 @@ title: Android 2.3 (Gingerbread) Software Development Kit Released
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-12-07 04:23:57 +0000'
 date_gmt: '2010-12-07 04:23:57 +0000'
 ---

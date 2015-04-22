@@ -6,7 +6,7 @@ title: How to fix com.android.providers.media crash on a rooted Android device
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2012-01-15 20:47:46 +0000'
 date_gmt: '2012-01-15 20:47:46 +0000'
 ---

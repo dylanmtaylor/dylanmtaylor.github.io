@@ -6,7 +6,7 @@ title: My Domain is Now Registered With iWantMyName
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2014-07-06 05:06:31 +0000'
 date_gmt: '2014-07-06 05:06:31 +0000'
 ---

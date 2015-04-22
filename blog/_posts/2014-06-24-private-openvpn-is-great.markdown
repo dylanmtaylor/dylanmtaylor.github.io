@@ -6,7 +6,7 @@ title: Private OpenVPN is Great!
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2014-06-24 02:25:00 +0000'
 date_gmt: '2014-06-24 02:25:00 +0000'
 ---

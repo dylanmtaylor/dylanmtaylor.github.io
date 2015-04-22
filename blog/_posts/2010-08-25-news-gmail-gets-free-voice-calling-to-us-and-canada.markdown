@@ -6,7 +6,7 @@ title: 'Great News: Gmail Gets Free Voice Calling to US and Canada'
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-08-25 22:48:17 +0000'
 date_gmt: '2010-08-25 22:48:17 +0000'
 ---

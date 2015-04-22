@@ -6,7 +6,7 @@ title: Introducing &quot;Simple Dice&quot;
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-09 00:15:51 +0000'
 date_gmt: '2010-11-09 00:15:51 +0000'
 ---

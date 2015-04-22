@@ -6,7 +6,7 @@ title: Just Installed Leaked Epic 4G Froyo ROM
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-12 09:15:21 +0000'
 date_gmt: '2010-11-12 09:15:21 +0000'
 ---

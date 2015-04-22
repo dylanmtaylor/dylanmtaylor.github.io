@@ -6,7 +6,7 @@ title: New FiOS WEP Calculator Advertisement
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-12-12 20:43:04 +0000'
 date_gmt: '2010-12-12 20:43:04 +0000'
 ---

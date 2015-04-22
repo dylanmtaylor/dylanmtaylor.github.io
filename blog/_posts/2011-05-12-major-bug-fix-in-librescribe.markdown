@@ -6,7 +6,7 @@ title: Major Bug Fix in LibreScribe
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-05-12 21:34:59 +0000'
 date_gmt: '2011-05-12 21:34:59 +0000'
 ---

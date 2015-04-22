@@ -6,7 +6,7 @@ title: Finally, a New Version of Skype for Linux!
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-04-08 00:35:03 +0000'
 date_gmt: '2011-04-08 00:35:03 +0000'
 ---

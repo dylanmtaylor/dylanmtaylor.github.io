@@ -6,7 +6,7 @@ title: New Clippy Release Coming Soon
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-08-16 22:29:02 +0000'
 date_gmt: '2010-08-16 22:29:02 +0000'
 ---

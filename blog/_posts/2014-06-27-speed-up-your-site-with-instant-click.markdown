@@ -6,7 +6,7 @@ title: Speed Up Your Site With Instant Click
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2014-06-27 01:00:34 +0000'
 date_gmt: '2014-06-27 01:00:34 +0000'
 ---

@@ -6,7 +6,7 @@ title: Just Signed Up for Groupon, Checking it Out
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-12-01 03:15:28 +0000'
 date_gmt: '2010-12-01 03:15:28 +0000'
 ---

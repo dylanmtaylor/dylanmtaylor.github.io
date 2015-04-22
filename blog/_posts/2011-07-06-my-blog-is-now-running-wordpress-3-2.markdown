@@ -6,7 +6,7 @@ title: My Blog Is Now Running WordPress 3.2
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-07-06 11:52:55 +0000'
 date_gmt: '2011-07-06 11:52:55 +0000'
 ---

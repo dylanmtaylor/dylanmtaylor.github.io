@@ -6,7 +6,7 @@ title: Significant LibreScribe Progress Made
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-09-02 22:12:10 +0000'
 date_gmt: '2011-09-02 22:12:10 +0000'
 ---

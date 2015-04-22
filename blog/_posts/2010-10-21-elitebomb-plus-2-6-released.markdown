@@ -6,7 +6,7 @@ title: EliteBomb Plus 2.6 Released
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-10-21 20:16:27 +0000'
 date_gmt: '2010-10-21 20:16:27 +0000'
 ---

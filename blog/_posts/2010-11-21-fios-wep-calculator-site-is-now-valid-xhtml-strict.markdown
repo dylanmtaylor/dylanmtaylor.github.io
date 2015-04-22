@@ -6,7 +6,7 @@ title: FiOS WEP Calculator Site is Now Valid XHTML Strict!
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-21 06:04:55 +0000'
 date_gmt: '2010-11-21 06:04:55 +0000'
 ---

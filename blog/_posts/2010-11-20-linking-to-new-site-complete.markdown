@@ -6,7 +6,7 @@ title: Linking to New Site Complete
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-20 23:52:11 +0000'
 date_gmt: '2010-11-20 23:52:11 +0000'
 ---

@@ -6,7 +6,7 @@ title: Successful Android 2.2 SMS Limit Removal!
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-10-21 23:50:09 +0000'
 date_gmt: '2010-10-21 23:50:09 +0000'
 ---

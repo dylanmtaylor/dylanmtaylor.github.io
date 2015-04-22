@@ -6,7 +6,7 @@ title: I've Been Completely BANNED From the Android Market
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2011-01-03 04:26:22 +0000'
 date_gmt: '2011-01-03 04:26:22 +0000'
 ---

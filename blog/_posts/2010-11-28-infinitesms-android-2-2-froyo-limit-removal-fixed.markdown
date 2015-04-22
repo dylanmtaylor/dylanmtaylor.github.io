@@ -6,7 +6,7 @@ title: InfiniteSMS Android 2.2 (Froyo) SMS Limit Removal Fixed
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-11-28 02:51:12 +0000'
 date_gmt: '2010-11-28 02:51:12 +0000'
 ---

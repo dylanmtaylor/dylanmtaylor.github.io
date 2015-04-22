@@ -6,7 +6,7 @@ title: Clippy Now Has Its Own Page on My Blog!
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-08-23 05:34:36 +0000'
 date_gmt: '2010-08-23 05:34:36 +0000'
 ---

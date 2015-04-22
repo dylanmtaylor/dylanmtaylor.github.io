@@ -6,7 +6,7 @@ title: FiOS WEP Calculator PRO is Back for Only $0.99!
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
-  email: dylan.m.taylor92@gmail.com
+  email: dylan@dylanmtaylor.com
 date: '2010-08-02 06:29:41 +0000'
 date_gmt: '2010-08-02 06:29:41 +0000'
 ---
