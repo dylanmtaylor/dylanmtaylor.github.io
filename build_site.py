@@ -11,7 +11,7 @@ for page, title in zip(pages,titles):
 	for line in head:
 		f.write('\t' + line)
 	f.write("</head>\n")
-	f.write("<body onload='prepare();'>\n")
+	f.write("<body>\n")
 	with open('interface/header.html','r') as i:    header = i.read()
 	f.write("\t<div class=\"header\">\n\t\t" + header + "\t</div>\n")
 	with open('interface/navigation.html','r') as i:    navigation = i.readlines()
