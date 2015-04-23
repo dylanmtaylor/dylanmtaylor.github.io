@@ -1,0 +1,761 @@
+#!/usr/bin/env bash
+
+VERSION="1.7"
+AUTHY_URL="https://api.authy.com"
+APP_ROOT=`dirname $0`
+CONFIG_FILE="$APP_ROOT/authy-ssh.conf"
+UPSTREAM_URL="https://raw.githubusercontent.com/authy/authy-ssh/master/authy-ssh"
+READ_TIMEOUT=60
+MIN_API_KEY_SIZE=12
+
+OK=0
+FAIL=1
+SEQ="seq"
+
+export TERM="xterm-256color"
+NORMAL=$(tput sgr0)
+GREEN=$(tput setaf 2; tput bold)
+YELLOW=$(tput setaf 3)
+RED=$(tput setaf 1)
+
+
+function red() {
+    echo -e "$RED$*$NORMAL"
+}
+
+function green() {
+    echo -e "$GREEN$*$NORMAL"
+}
+
+function yellow() {
+    echo -e "$YELLOW$*$NORMAL"
+}
+
+function debug() {
+    if [[ $DEBUG_AUTHY ]]
+    then
+        echo ">>> $*"
+    fi
+}
+
+function check_dependencies() {
+  if ! type "seq" > /dev/null 2>&1;
+  then
+    if ! type "jot" > /dev/null 2>&1;
+    then
+      red "You need installed on your system either 'seq' or 'jot' command"
+      exit $FAIL
+    else
+      SEQ="jot"
+    fi
+  fi
+}
+
+function escape_input() {
+  sed "s/[;\`\"\$\' ]//g" <<<$*
+}
+
+function escape_number() {
+  sed 's/[^0-9]*//g' <<< $*
+}
+
+function os_version() {
+  echo `uname -srm`
+}
+
+function read_input() {
+  read -t "$READ_TIMEOUT" input
+  echo "$(escape_input $input)"
+}
+
+function read_number() {
+  read -t "$READ_TIMEOUT" number
+  echo "$(escape_number $number)"
+}
+
+function require_root() {
+    debug "Checking if user is root"
+    find_sshd_config
+    if [[ ! -w $SSHD_CONFIG ]]
+    then
+      red "root permissions are required to run this command. try again using sudo"
+      exit $FAIL
+    fi
+}
+
+function require_curl() {
+    which curl 2>&1 > /dev/null
+    if [ $? -eq 0 ]
+    then
+      return $OK
+    fi
+
+    # if `which` is not installed this check is ran
+    curl --help 2>&1 > /dev/null
+
+    return $FAIL
+}
+
+function user_agent() {
+  os="$(os_version)"
+  echo "User-Agent: AuthySSH/${VERSION} (${os})"
+}
+
+function find_sshd_config() {
+    debug "Trying to find sshd_config file"
+    if [[ -f /etc/sshd_config ]]
+    then
+        SSHD_CONFIG="/etc/sshd_config"
+    elif [[ -f /etc/ssh/sshd_config ]]
+    then
+        SSHD_CONFIG="/etc/ssh/sshd_config"
+    else
+        red "Cannot find sshd_config in your server. Authy SSH will be enabled when you add the ForceCommand to it"
+    fi
+}
+
+function add_force_command() {
+    debug "Trying to add force command to $SSHD_CONFIG"
+    find_sshd_config
+    authy_ssh_command="$1"
+
+    if [[ -w $SSHD_CONFIG ]]
+    then
+      yellow "Adding 'ForceCommand ${authy_ssh_command} login' to ${SSHD_CONFIG}"
+      uninstall_authy "quiet" # remove previous installations
+
+      echo "ForceCommand ${authy_ssh_command} login" >> ${SSHD_CONFIG}
+      echo ""
+      red "    MAKE SURE YOU DO NOT MOVE/REMOVE ${authy_ssh_command} BEFORE UNINSTALLING AUTHY SSH"
+      sleep 5
+    fi
+}
+
+function install_authy() {
+    source="$1"
+    dest="$2/authy-ssh"
+    if [[ ! $2 ]]
+    then
+      dest="/usr/local/bin/authy-ssh" # defaults to /usr/local/bin
+    fi
+    config_file="${dest}.conf"
+
+    #
+    # Ensure our target directory is present
+    #
+    set -e
+    mkdir -p `dirname "${dest}"`
+    set +e
+
+    if [[ ! -r `dirname "${dest}"` ]]
+    then
+      red "${dest} is not writable. Try again using sudo"
+      return $FAIL
+    fi
+
+    yellow "Copying ${source} to ${dest}..."
+    cp "${source}" "${dest}"
+
+    yellow "Setting up permissions..."
+    chmod 755 $dest
+
+    if [[ ! -f ${config_file} ]]
+    then
+      echo -n "Enter the Authy API key: "
+      read  authy_api_key
+
+      if [ ${#authy_api_key} -lt ${MIN_API_KEY_SIZE} ]
+      then
+        red "you have entered a wrong API key"
+        return $FAIL
+      fi
+
+      echo "Default action when api.authy.com cannot be contacted: "
+      echo ""
+      echo "  1. Disable two factor authentication until api.authy.com is back"
+      echo "  2. Don't allow logins until api.authy.com is back"
+      echo ""
+      echo -n "type 1 or 2 to select the option: "
+      read default_verify_action
+
+      case $default_verify_action in
+        1)
+          default_verify_action="disable"
+          ;;
+        2)
+          default_verify_action="enforce"
+          ;;
+        *)
+          red "you have entered an invalid option"
+          return $FAIL
+          ;;
+      esac
+
+      yellow "Generating initial config on ${config_file}..."
+      echo "banner=Good job! You've securely logged in with Authy." > "${config_file}"
+      echo "api_key=${authy_api_key}" >> "${config_file}"
+      echo "default_verify_action=${default_verify_action}" >> "${config_file}"
+    else
+      red "A config file was found on ${config_file}. Edit it manually if you want to change the API key"
+    fi
+    chmod 644 ${config_file}
+
+    add_force_command "${dest}"
+
+    echo ""
+    echo "To enable two-factor authentication on your account type the following command: "
+    echo ""
+
+    if [[ $SUDO_USER ]]
+    then
+      green "   sudo ${dest} enable $SUDO_USER <your-email> <your-numeric-country-code> <your-cellphone>"
+      green "   Example: sudo $0 enable $SUDO_USER myuser@example.com 1 401-390-9987"
+    else
+      green "   sudo ${dest} enable $USER <your-email> <your-numeric-country-code> <your-cellphone>"
+      green "   Example: sudo $0 enable $USER myuser@example.com 1 401-390-9987"
+    fi
+    echo ""
+    echo "To enable two-factor authentication on user account type: "
+    echo ""
+    green "   sudo ${dest} enable <local-username> <user-email> <user-cellphone-country-code> <user-cellphone>"
+    echo ""
+    echo "To uninstall Authy SSH type:"
+    echo ""
+    green "   sudo ${dest} uninstall"
+    echo ""
+    yellow "      Restart the SSH server to apply changes"
+    echo ""
+}
+
+function uninstall_authy() {
+    find_sshd_config
+
+    if [[ $1 != "quiet" ]]
+    then
+      yellow "Uninstalling Authy SSH from $SSHD_CONFIG..."
+    fi
+
+    if [[ -w $SSHD_CONFIG ]]
+    then
+        sed -ie '/^ForceCommand.*authy-ssh.*/d' $SSHD_CONFIG
+    fi
+
+    if [[ $1 != "quiet" ]]
+    then
+        green "Authy SSH was uninstalled."
+        yellow "Now restart the ssh server to apply changes and then remove ${APP_ROOT}/authy-ssh and $CONFIG_FILE"
+    fi
+}
+
+function check_config_file() {
+    debug "Checking config file at $CONFIG_FILE"
+    dir=`dirname ${CONFIG_FILE}`
+    if [[ ! -r $dir ]]
+    then
+        red "ERROR: ${dir} cannot be written by $USER"
+        return $FAIL
+    fi
+
+    if [[ ! -f $CONFIG_FILE ]]
+    then
+        red "Authy ssh has not been configured" # FIXME: add more info
+        return $FAIL
+    fi
+
+    if [[ $1 == "writable" && ! -w $CONFIG_FILE ]]
+    then
+        red "$CONFIG_FILE is not writable. Please try again using sudo"
+        exit $FAIL
+    fi
+
+    chmod 644 "$CONFIG_FILE" 2>/dev/null
+    return $OK
+}
+
+# Checks if the API KEY is valid. This function receives one argument which can be:
+#   - run: runs a shell even if the test fails.
+#   - anything else: exits the command
+function check_api_key() {
+    debug "Checking api key"
+    if [ ${#AUTHY_API_KEY} -lt ${MIN_API_KEY_SIZE} ]
+    then
+        red "Cannot find a valid api key"
+        run_shell
+    fi
+
+    return $OK
+}
+
+# Usage: $(read_config banner)
+function read_config() {
+    key="$1"
+
+    if [[ -f $CONFIG_FILE ]]
+    then
+        KEYFOUND=$FAIL
+        while IFS='=' read -r ckey value
+        do
+            if [[ $ckey == $key ]]
+            then
+                echo $value # don't stop the loop so we can read repeated keys
+                KEYFOUND=$OK
+            fi
+        done < $CONFIG_FILE
+        return $KEYFOUND
+    fi
+
+    red "ERROR: $config_file couldn't be found"
+    return $FAIL
+}
+
+function protect_user() {
+    local_user="$(escape_input "$1")"
+    if [[ $local_user == "" ]]
+    then
+      local_user="$USER"
+    fi
+
+    eval home_path="~$local_user"
+    auth_keys="${home_path}/.ssh/authorized_keys"
+    debug "Protecting user: $local_user with auth keys: $auth_keys"
+
+    if [[ ! -w $home_path ]]
+    then
+      red "You don't have access to $auth_keys. Please try again as root."
+      exit $FAIL
+    fi
+
+    echo -n "Enter your public ssh key: "
+    read ssh_key
+
+    grep "$ssh_key" "$auth_keys" 2>&1 >/dev/null
+    grep_exit_code=$?
+    if [[ $grep_exit_code -eq 0 ]]
+    then
+      yellow "The ssh key is already present in $auth_keys. Please remove it and try again."
+      exit $FAIL
+    fi
+
+    register_user_on_authy "$local_user"
+    if [[ $? -ne 0 || ! $authy_user_id ]]
+    then
+      exit $FAIL
+    fi
+
+    echo "command=\"$COMMAND login $authy_user_id\" $ssh_key" >> "${auth_keys}"
+    if [[ $(whoami) == "root" ]]
+    then
+      chown "$local_user" "$auth_keys"
+    fi
+    green "The user is now protected with authy"
+}
+
+# usage: register_user "local_user" "<email>" "<country-code>" "<cellphone>"
+function register_user() {
+  register_user_on_authy $*
+
+  if [[ $? -ne 0 ]]
+  then
+      exit $FAIL
+  fi
+
+  if [[ $authy_user_id ]]
+  then
+      echo "user=$local_user:$authy_user_id" >> $CONFIG_FILE
+      green "User was registered"
+  else
+      red "Cannot register user: $response"
+  fi
+
+}
+
+function register_user_on_authy() {
+    local_user="$(escape_input $1)"
+    email="$(escape_input $2)"
+    country_code="$(escape_number $3)"
+    cellphone="$(escape_number $4)"
+
+    if [[ $local_user == "" ]]
+    then
+      echo -n "Username: "
+      local_user="$(read_input)"
+    fi
+
+    if [[ $country_code == "" ]]
+    then
+      echo -n "Your country code: "
+      country_code="$(read_number)"
+    fi
+
+    if [[ $cellphone == "" ]]
+    then
+      echo -n "Your cellphone: "
+      cellphone="$(read_number)"
+    fi
+
+    if [[ $email == "" ]]
+    then
+      echo -n "Your email: "
+      email="$(read_input)"
+    fi
+
+    echo -e "
+
+    Username:\t${local_user}
+    Cellphone:\t(+${country_code}) ${cellphone}
+    Email:\t${email}
+
+"
+    echo -n "Do you want to enable this user? (y/n) "
+    read should_continue
+    if [[ "$should_continue" != y* ]]
+    then
+      return $FAIL
+    fi
+
+    url="$AUTHY_URL/protected/json/users/new?api_key=${AUTHY_API_KEY}"
+
+    response=`id "${local_user}" 2>/dev/null`
+    if [[ $? -ne 0 ]]
+    then
+        red "$local_user was not found in your system"
+        return $FAIL
+    fi
+
+    useragent="$(user_agent)"
+    response=`curl --connect-timeout 10 "${url}" -A "${useragent}" -d user[email]="${email}" -d user[country_code]="${country_code}" -d user[cellphone]="${cellphone}" -s 2>/dev/null`
+    ok=true
+
+    debug "[register-user] url: $url | response: $response | curl exit stats: $?"
+
+    if [[ $response == *cellphone* ]]
+    then
+        yellow "Cellphone is invalid"
+        ok=false
+    fi
+
+    if [[ $response == *email* ]]
+    then
+        yellow "Email is invalid"
+        ok=false
+    fi
+
+    if [[ $ok == false ]]
+    then
+        return $FAIL
+    fi
+
+    if [[ $response == *user*id* ]]
+    then
+      authy_user_id=`echo $response | grep -o '[0-9]\{1,\}'` # match the authy id
+      return $OK
+    elif [[ $response == "invalid key" ]]
+    then
+        yellow "The api_key value in $CONFIG_FILE is not valid"
+    else
+        red "Unknown response: $response"
+    fi
+
+    return $FAIL
+}
+
+function run_shell() {
+    if [[ "$SSH_ORIGINAL_COMMAND" != "" ]] # when user runs: ssh server <command>
+    then
+        debug "running command: $SSH_ORIGINAL_COMMAND"
+        exec /bin/bash -c "${SSH_ORIGINAL_COMMAND}"
+    elif [ $SHELL ] # when user runs: ssh server
+    then
+        debug "running shell: $SHELL"
+        exec -l $SHELL
+    fi
+
+    exit $?
+}
+
+function find_authy_id() {
+    for user in `read_config user`
+    do
+        IFS=":"; declare -a authy_user=($user)
+        if [[ ${authy_user[0]} == $USER ]]
+        then
+            echo $(escape_number ${authy_user[1]})
+            return $OK
+        fi
+    done
+
+    return $FAIL
+}
+
+# login <test|login> "token" "authy-id"
+function login() {
+    mode="$(escape_input $1)"
+    authy_token="$(escape_number $2)"
+    authy_id="$(escape_number $3)"
+
+    if [[ $authy_id == "" ]]
+    then
+      authy_id="$(find_authy_id)"
+    fi
+
+    debug "Logging $authy_id with $authy_token in $mode mode."
+
+    if [[ $authy_token == "" ]]
+    then
+      red "You have to enter only digits."
+      return $FAIL
+    fi
+
+    size=${#authy_token} 
+    if [[ $size -lt 6 || $size -gt 10 ]]
+    then
+      red "You have to enter a valid token."
+      return $FAIL
+    fi
+
+    useragent="$(user_agent)"
+    url="$AUTHY_URL/protected/json/verify/${authy_token}/${authy_id}?api_key=${AUTHY_API_KEY}&force=true"
+
+    response=`curl --connect-timeout 30 -sL -w "|%{http_code}" -A "${useragent}" "${url}"`
+    curl_exit_code=$?
+    IFS='|' response_body=($response) # convert to array
+
+    debug "[verify-token] url: $url | response: $response | curl exit status: $curl_exit_code"
+
+    if [ $curl_exit_code -ne 0 ] # something went wrong when running the command, let it pass
+    then
+        red "Error running curl"
+    fi
+
+    default_verify_action="$(read_config default_verify_action)"
+    if [[ $default_verify_action == "disable" ]]
+    then
+        debug "Checking if authy service is up."
+        check_response=`curl --connect-timeout 10 -s "${AUTHY_URL}" -A "${useragent}" -o /dev/null`
+        check_exit_code=$?
+
+        if [[ $check_exit_code == 7 || $check_exit_code == 28 ]]
+        then
+            red "Letting user pass through. api.authy.com could not be reached."
+            run_shell
+        fi
+    fi
+
+    if [[ "${response_body[1]}" == "200" ]] && [[ "${response_body[0]}" == *\"token\":\"is*valid\"* ]]
+    then
+        debug "Two-factor token was accepted."
+        if [[ ! $AUTHY_TOKEN ]]
+        then
+            banner_text=$(read_config banner)
+            if [[ $? == $OK ]];
+            then
+                green $banner_text
+            fi
+        fi
+
+        if [[ $mode != "test" ]]
+        then
+            run_shell
+        else
+            debug "Test was successful"
+            exit $OK
+        fi
+    else
+        red "Invalid token. try again"
+    fi
+
+    return $FAIL # fail by default
+}
+
+function request_sms() {
+    authy_id="$(escape_number $1)"
+    url="$AUTHY_URL/protected/json/sms/${authy_id}?api_key=${AUTHY_API_KEY}&force=true"
+
+    useragent="$(user_agent)"
+    response=`curl --connect-timeout 10 -A "${useragent}" "${url}" 2>/dev/null`
+    debug "[request sms] url: $url | response: $response | curl exit stats: $?"
+
+    if [[ $response == *success*sent* ]]
+    then
+        green "SMS message was sent"
+    elif [[ $response == *not*enabled* ]]
+    then
+        yellow "SMS is not enabled on Sandbox accounts. You need to upgrade to a Starter account at least."
+    else
+        red "Message couldn't be sent: $response"
+    fi
+}
+
+# if this methods returns $OK the user is logged in.
+function ask_token_and_log_user_in() {
+    mode="$(escape_input $1)"
+    authy_id="$(escape_number $2)"
+
+    if [[ $authy_id == "" ]]
+    then
+      authy_id="$(find_authy_id)"
+    fi
+
+    if [[ $authy_id == "" && $mode == "test" ]] #user is not using authy, let it go
+    then
+      red "Cannot find authy id for $USER in $CONFIG_FILE"
+      red "You have to enable it using 'authy-ssh enable'"
+      exit $FAIL
+    fi
+
+    if [[ $authy_id == "" ]]
+    then
+      debug "User is not protected with authy."
+      run_shell
+    fi
+
+    times=3
+    if [[ $AUTHY_TOKEN ]] # env var
+    then
+      times=1
+    fi
+
+    for i in `$SEQ 1 $times`
+    do
+        authy_token="$(escape_number $AUTHY_TOKEN)"
+        if [[ ! $AUTHY_TOKEN ]]
+        then
+          echo -n "Authy Token (type 'sms' to request a SMS token): "
+          authy_token="$(read_input)"
+        fi
+
+        if [ $? -ne 0 ]
+        then
+            debug "Timeout on Authy Token read."
+            exit $?
+        fi
+
+        case $authy_token in
+            sms) request_sms "${authy_id}" ;;
+            *)
+              authy_token="$(escape_number $authy_token)"
+              login "${mode}" "${authy_token}" "${authy_id}"
+              ;;
+        esac
+    done
+
+    return $FAIL
+}
+
+function update_authy() {
+  temp_file="$(mktemp -t tmpXXXXXXXXX)"
+  curl "${UPSTREAM_URL}" -o "$temp_file"
+  chmod 755 "$temp_file"
+
+  echo -n "Do you want to overwrite ${COMMAND} (y/n)? "
+  read opt
+  if [[ "$opt" == "y" ]]
+  then
+    mv "${temp_file}" "${COMMAND}"
+    green "Now type authy-ssh test to verify everything is working."
+  else
+    rm "${temp_file}"
+    yellow "Authy SSH was not updated."
+  fi
+}
+
+require_curl
+
+# get the absolute path to the command
+cd `dirname $0`
+COMMAND="$PWD/`basename $0`"
+cd - >/dev/null
+
+case $1 in
+    install)
+        check_dependencies
+        install_authy "$0" "$2"
+        ;;
+    update)
+        check_dependencies
+        require_root
+        update_authy
+        ;;
+    uninstall)
+        require_root
+        uninstall_authy
+        ;;
+    test|check)
+        check_config_file
+        check_dependencies
+        AUTHY_API_KEY="$(read_config api_key)"
+        check_api_key || exit
+        ask_token_and_log_user_in "test"
+        ;;
+    enable|register)
+        check_dependencies
+        require_root
+        check_config_file "writable"
+        AUTHY_API_KEY="$(read_config api_key)"
+        check_api_key
+        register_user "$2" "$3" "$4" "$5"
+        ;;
+    login)
+        check_config_file
+        check_dependencies
+        AUTHY_API_KEY="$(read_config api_key)"
+        check_api_key
+        ask_token_and_log_user_in "login" "$2"
+        ;;
+    protect)
+        check_config_file
+        check_dependencies
+        AUTHY_API_KEY="$(read_config api_key)"
+        protect_user "$2"
+        ;;
+    version)
+        echo "Authy SSH v${VERSION}"
+        exit 0
+        ;;
+    *)
+        cat <<__EOF__
+Usage: authy-ssh <command> <arguments>
+
+VERSION $VERSION
+
+Available commands:
+
+    install
+        installs Authy SSH in the given directory. This command needs sudo if the directory is not writable.
+
+        sudo $0 install /usr/local/bin
+
+    update
+        updates Authy SSH using the main authy-ssh script:
+
+        ${UPSTREAM_URL}
+
+    uninstall
+        uninstalls Authy SSH from sshd_config
+
+        sudo $0 uninstall
+
+    test
+        tests if the Authy SSH is working correctly
+
+    enable
+        receives a list of arguments needed to register a user. usage:
+
+        sudo $0 enable [local-user] [email] [numeric country code] [cellphone]
+
+        Example: sudo $0 enable myuser myuser@example.com 1 401-390-9987
+
+    protect
+        installs authy-ssh for the given user
+
+        $0 protect [user]
+
+    login
+        ask a token to the user if it is already registered.
+
+    version
+        prints the Authy SSH version
+
+__EOF__
+        ;;
+esac
