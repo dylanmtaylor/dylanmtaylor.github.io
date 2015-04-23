@@ -6,7 +6,7 @@ for page, title in zip(pages,titles):
 	f = open(path, 'w')
 	print "Building " + page + " (title: \"" + title + "\") ..."
 	f.write("<!DOCTYPE HTML>\n<head>\n")
-	f.write("\t<title>Dylan M. Taylor's Personal Homepage - " + title + "</title>\n")
+	f.write("\t<title>Dylan Taylor's Personal Homepage - " + title + "</title>\n")
 	with open('interface/head.html','r') as i:    head = i.readlines()
 	for line in head:
 		f.write('\t' + line)
