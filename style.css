@@ -119,6 +119,10 @@ h1 strong {
 	color: #56757D;
 	font: 13.34px helvetica, arial, clean, sans-serif;
 }
+.footer > a {
+	color: #56757D;
+	text-decoration: none;
+}
 .pagecontent {
 	position:absolute;
 	margin-left: 17vw;
