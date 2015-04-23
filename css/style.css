@@ -10,9 +10,17 @@ a.svg:after {
   bottom: 0;
   left:0;
 }
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	margin-top: 1em;
+}
+h1 {
+	font-size: 110%;
+	margin-bottom: 1em;
+}
 body {
-        background-color: #fff;
-        color: #000;
+	background-color: white;
+	olor: #000;
         font-size: 0.9em;
         font-family: sans-serif,helvetica;
         margin: 0;
@@ -94,7 +102,7 @@ h2 {
 }
 p {
         text-align: left;
-        margin: 0;
+	margin: 1em 0;
         padding: 0.4em 1em 0.3em;
         padding-left: 1.8em;
         color: #000000;
@@ -130,3 +138,142 @@ h1 strong {
 	top: 6.45em;
 	width: 85vw;
 }
+
+table {
+	font-size: inherit;
+	font: 100%;
+}
+
+blockquote {
+	margin-left:1em;
+}
+
+::selection {
+    color: white;
+    background-color: #369;
+}
+
+/* Blog Styles */
+
+
+/*****************************************************************************/
+/*
+/* Site
+/*
+/*****************************************************************************/
+
+.site {
+	font-size: 110%;
+	text-align: justify;
+	width: 728px;
+	margin: 3em auto 2em auto;
+	line-height: 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6, .comments {
+	text-align: left;
+}
+
+.title {
+	color: #369;
+	font-weight: bold;
+	margin-bottom: 2em;
+}
+
+.site .title a {
+	color: #369;
+	text-decoration: none;
+}
+
+.site .title a:hover {
+	color: black;
+}
+
+.site .meta {
+	color: #aaa;
+}
+
+.site .blogfooter {
+	font-size: 80%;
+	color: #666;
+	border-top: 4px solid #eee;
+	margin-top: 2em;
+	overflow: hidden;
+}
+
+.site .blogfooter .contact {
+	float: left;
+	margin-right: 3em;
+}
+
+.site .blogfooter .contact a,
+.site .blogfooter .rss a {
+	color: #8085C1;
+}
+
+.site .blogfooter .rss {
+	margin-top: 1.1em;
+	margin-right: 0em;
+	float: right;
+}
+
+/*****************************************************************************/
+/*
+/* Posts
+/*
+/*****************************************************************************/
+
+#post {
+
+}
+
+  /* standard */
+
+#post pre {
+	border: 1px solid #ddd;
+	background-color: #eef;
+	padding: 0 .4em;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap !important;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+}
+
+#post ul,
+#post ol {
+	margin-left: 1.35em;
+}
+
+#post code {
+	border: 1px solid #ddd;
+	background-color: #eef;
+	font-size: 85%;
+	padding: 0 .2em;
+}
+
+#post pre code {
+	border: none;
+}
+
+  /* terminal */
+
+#post pre.terminal {
+	border: 1px solid black;
+	background-color: #333;
+	color: white;
+}
+
+#post pre.terminal code {
+	background-color: #333;
+}
+
+#related {
+	margin-top: 2em;
+}
+
+#related h2 {
+	margin-bottom: 1em;
+}
+
