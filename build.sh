@@ -1,8 +1,8 @@
 #!/bin/bash
 #First build the static content for the website
 python build_site.py
-#Copy home to index.html
-#cp pages/full/home/index.html index.html
+#For some reason jekyll does not allow symlinks. To get around this we simply copy files
+cp interface/* blog/_includes/
 #Finally, build the blog
 cd blog/
 jekyll build
