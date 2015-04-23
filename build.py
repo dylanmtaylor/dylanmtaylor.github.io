@@ -1,6 +1,6 @@
 #!/usr/bin/python
-pages = ['home','contact', 'contact/thanks'];
-titles = ['Home','Contact Me', 'Thanks for the Message'];
+pages = ['home','contact', 'contact/thanks', 'donate','portfolio', 'resume'];
+titles = ['Home','Contact Me', 'Thanks for the Message', 'Donation Page','Portfolio', 'R&eacute;sum&eacute;'];
 for page, title in zip(pages,titles):
 	print "Building " + page + "..."
 	print "<!DOCTYPE HTML>\n<head>"
