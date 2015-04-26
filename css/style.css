@@ -18,15 +18,17 @@ a.logo:after {
     top: -2px;
     left: 72px;
     width: 100%;
+    white-space:nowrap
 }
 #btm_heading {
     font-family: sans-serif;
     font-size: 24px;
     color: #b87e32;
-    position: relative;
-    left: 20px;
-    top: -5px;
+    position: absolute;
+    left: 87px;
+    top: 38px;
     width: 100%;
+    white-space:nowrap
 }
 .logo {
     text-decoration: none;
