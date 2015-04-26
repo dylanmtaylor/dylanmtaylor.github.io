@@ -1,8 +1,8 @@
-a.svg {
+a.logo {
   position: relative;
   display: inline-block; 
 }
-a.svg:after {
+a.logo:after {
   content: ""; 
   position: absolute;
   top: 0;
@@ -27,7 +27,7 @@ a.svg:after {
     left: 20px;
     top: -5px;
 }
-.svg {
+.logo {
     text-decoration: none;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -132,7 +132,7 @@ p {
 h1 strong {
         font-weight: bold;
 }
-.svg > object > img {
+.logo > object > img {
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
