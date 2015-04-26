@@ -26,6 +26,7 @@ a.logo:after {
     position: relative;
     left: 20px;
     top: -5px;
+    width: 100%;
 }
 .logo {
     text-decoration: none;
