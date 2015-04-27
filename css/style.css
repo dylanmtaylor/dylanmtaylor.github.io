@@ -50,7 +50,6 @@ body {
         margin: 0;
         padding: 0;
 	overflow-x: hidden;
-
 }
 /*.header {
 	position:fixed;
@@ -166,6 +165,7 @@ h1 strong {
 	margin-left: 365px;
 	margin-right: 30px;
 	padding-left: 0vw;
+	line-height: 1.5em;
 	top: 3vh;
 }
 blockquote {
@@ -179,8 +179,7 @@ blockquote {
 	font-size: 110%;
 	text-align: justify;
 	width: 728px;
-	margin: 3em auto 2em auto;
-	line-height: 1.5em;
+	/*margin: 3em auto 2em auto;*/
 }
 .comments {
 	text-align: left;
