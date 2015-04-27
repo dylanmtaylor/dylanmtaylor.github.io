@@ -92,7 +92,7 @@ body {
 	font-size: 1.1em;
 }
 .left > ul {
-	list-style-type: none; margin-left:0; padding-left: 3.1vw;
+	list-style-type: none; margin-left:0; padding-left: 3em;
 	margin-top: 4vh;
 }
 .left > ul > li {
