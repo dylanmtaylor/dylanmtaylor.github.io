@@ -75,7 +75,7 @@ body {
 	float: left; 
 	width: 325px;
 	height: 100vh;
-	position:fixed;
+	position:absolute;
 	top: 0px;
 	left:0px;
 	display: block;
