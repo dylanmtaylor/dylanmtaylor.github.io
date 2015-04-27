@@ -80,22 +80,23 @@ body {
 	left:0px;
 	display: block;
 	text-align:left;
-	padding-top: 3vh;
-	padding-left: 1vw;
+	padding-top: 20px;
+	padding-left: 10px;
 	background-color: #34444F;
         border-right: 3px solid #000;
 	color: #00C9FF;
 	z-index: 100;
 }
 .left > strong {
-	font-size: 1.1em;
+	font-size: 1.4em;
+	margin-left: .8em;
 }
 .left > ul {
 	list-style-type: none; margin-left:0; padding-left: 3em;
-	margin-top: 4vh;
+	margin-top: 1.75em;
 }
 .left > ul > li {
-	 margin-top: 1.5vh;
+	 margin-top: .7em;
 }
 
 .navlink {
@@ -164,9 +165,9 @@ h1 strong {
 	position:absolute;
 	margin-left: 365px;
 	margin-right: 30px;
-	padding-left: 0vw;
+	padding-left: 0;
 	line-height: 1.5em;
-	top: 3vh;
+	top: 20px;
 }
 blockquote {
 	margin-left:1em;
