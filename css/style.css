@@ -52,14 +52,13 @@ body {
 	overflow-x: hidden;
 
 }
-.header {
+/*.header {
 	position:fixed;
 	top:0;
 	left:0;
         text-align: left;
         vertical-align: text-top;
         margin: 0;
-        /*margin-bottom: 1em;*/
         padding: 18px 0em 3px;
         padding-left: 12px;
         background-color: #34444F;
@@ -69,18 +68,21 @@ body {
         font-size: 2.5em;
 	width: 100%;
 	z-index: 50;
+}*/
+.logo_header {
+	margin-bottom: 25px;
 }
 .left {
 	float: left; 
-	width: 15vw;
+	width: 24vw;
 	height: 100vh;
 	position:fixed;
-	top: 95px;
-	left:0;
+	top: 0px;
+	left:0px;
 	display: block;
 	text-align:left;
 	padding-top: 3vh;
-	padding-left: 2vw;
+	padding-left: 1vw;
 	background-color: #34444F;
         border-right: 3px solid #000;
 	color: #00C9FF;
@@ -90,7 +92,11 @@ body {
 	font-size: 1.1em;
 }
 .left > ul {
-	list-style-type: none; margin-left:0; padding-left: 1.25vw;
+	list-style-type: none; margin-left:0; padding-left: 3.1vw;
+	margin-top: 4vh;
+}
+.left > ul > li {
+	 margin-top: 1.5vh;
 }
 
 .navlink {
@@ -100,7 +106,7 @@ body {
 	text-decoration:none;
 	text-transform:uppercase;
 	display: block;
-	width: 12vw;
+	width: 240px;
 	padding-top: .5em;
 	padding-bottom: .5em;
 	margin-top: .5em;
@@ -148,7 +154,8 @@ h1 strong {
 }
 .footer {
 	color: #56757D;
-	font: 13.34px helvetica, arial, clean, sans-serif;
+	font: 16px helvetica, arial, clean, sans-serif;
+	margin-left: 3.4em;
 }
 .footer > a {
 	color: #56757D;
@@ -156,10 +163,10 @@ h1 strong {
 }
 .pagecontent {
 	position:absolute;
-	margin-left: 16vw;
-	padding-left: 2vw;
-	top: 100px;
-	width: 80vw;
+	margin-left: 26vw;
+	padding-left: 0vw;
+	top: 5vh;
+	width: 75vw;
 }
 blockquote {
 	margin-left:1em;
