@@ -74,7 +74,7 @@ body {
 }
 .left {
 	float: left; 
-	width: 24vw;
+	width: 325px;
 	height: 100vh;
 	position:fixed;
 	top: 0px;
@@ -124,7 +124,7 @@ h2 {
         text-align: left;
         margin: 0;
         padding: 0.6em 2em 0.6em;
-        padding-left: 1em;
+        padding-left: 0em;
         color: #000000;
         font-weight: normal;
         font-size: 1.5em;
@@ -133,7 +133,7 @@ p {
         text-align: left;
 	margin: 1em 0;
         padding: 0.4em 1em 0.3em;
-        padding-left: 1.8em;
+        padding-left: 0em;
         color: #000000;
         font-weight: normal;
         font-size: 1.2em;
@@ -163,10 +163,10 @@ h1 strong {
 }
 .pagecontent {
 	position:absolute;
-	margin-left: 26vw;
+	margin-left: 365px;
+	margin-right: 30px;
 	padding-left: 0vw;
-	top: 5vh;
-	width: 75vw;
+	top: 3vh;
 }
 blockquote {
 	margin-left:1em;
