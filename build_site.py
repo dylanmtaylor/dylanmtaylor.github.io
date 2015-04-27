@@ -1,6 +1,6 @@
 #!/usr/bin/python
-pages = ['home','contact', 'contact/thanks', 'donate','portfolio', 'resume'];
-titles = ['Home','Contact Me', 'Thanks for the Message', 'Donation Page','Portfolio', 'R&eacute;sum&eacute;'];
+pages = ['home','about-me','contact', 'contact/thanks', 'donate','portfolio', 'resume'];
+titles = ['Home','About Me','Contact Me', 'Thanks for the Message', 'Donation Page','Portfolio', 'R&eacute;sum&eacute;'];
 for page, title in zip(pages,titles):
 	path = "./pages/full/"+page+"/index.html"
 	f = open(path, 'w')
