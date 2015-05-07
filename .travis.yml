@@ -20,7 +20,7 @@ sudo: false
 install:
   - gem install jekyll
 
-script: build.sh
+script: ./build.sh
 
 notifications:
   email:
