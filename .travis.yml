@@ -37,6 +37,5 @@ addons:
     packages:
     - build-essential
     - git
-    - gems
     - ruby
     - ruby-dev
