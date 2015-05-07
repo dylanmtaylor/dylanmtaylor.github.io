@@ -7,4 +7,7 @@ cp interface/* blog/_includes/
 cd blog/
 jekyll build
 #Now clear memcache
-echo 'flush_all' | nc localhost 11211
+if [ -e "/bin/nc" ]
+then
+    echo 'flush_all' | nc localhost 11211
+fi
