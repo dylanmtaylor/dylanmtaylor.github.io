@@ -25,8 +25,8 @@ script: jekyll build
 after_script:
 - git config --global user.name "$GIT_NAME"
 - git config --global user.email "$GIT_EMAIL"
-- export REPO=$(git config remote.origin.url)
-- export REPO_NAME=$(basename $REPO)
+- export REPO="https://github.com/dylanmtaylor/dylanmtaylor.github.io.git"
+- export REPO_NAME="dylanmtaylor.github.io"
 - export TARGET_DIR=$(mktemp -d /tmp/$REPO_NAME.XXXX)
 - export REV=$(git rev-parse HEAD)
 - git clone --branch master ${REPO} ${TARGET_DIR}
