@@ -20,7 +20,12 @@ sudo: false
 install:
   - gem install jekyll
 
-script: ./build.sh
+before_script:
+  - python build_site.py
+  - cp interface/* blog/_includes/
+  - cd ./blog/
+
+script: jekyll build
 
 notifications:
   email:
