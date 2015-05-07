@@ -75,10 +75,9 @@ body {
 	float: left; 
 	width: 325px;
 	height: 100vh;
-	position:absolute;
+	position:fixed;
 	top: 0px;
 	left:0px;
-	display: block;
 	text-align:left;
 	padding-top: 20px;
 	padding-left: 10px;
