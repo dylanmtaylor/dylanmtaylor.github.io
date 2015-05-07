@@ -43,7 +43,7 @@ after_script:
 - export TARGET_DIR=$(mktemp -d /tmp/$REPO_NAME.XXXX)
 - export REV=$(git rev-parse HEAD)
 - git clone --branch master ${REPO} ${TARGET_DIR}
-- rsync -rt --del --exclude=".git" /home/travis/build/dylanmtaylor/dylanmtaylor.github.io/ $TARGET_DIR
+- rsync -rvt --del --exclude=".git" /home/travis/build/dylanmtaylor/dylanmtaylor.github.io/ $TARGET_DIR
 - cd $TARGET_DIR
 - git add -A .
 - git commit -m "Built from commit $REV"
