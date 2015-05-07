@@ -30,7 +30,6 @@ after_script:
 - export TARGET_DIR=$(mktemp -d /tmp/$REPO_NAME.XXXX)
 - export REV=$(git rev-parse HEAD)
 - git clone --branch master ${REPO} ${TARGET_DIR}
-- rsync -rt --delete --exclude=".git" --exclude=".nojekyll" --exclude=".travis.yml" $SOURCE_DIR/ $TARGET_DIR/
 - cd $TARGET_DIR
 - git add -A .
 - git commit --allow-empty -m "Built from commit $REV"
