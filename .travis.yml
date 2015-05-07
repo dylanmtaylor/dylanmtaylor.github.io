@@ -1,37 +1,31 @@
 git:
   depth: 10
-
+branches:
+  only:
+  - master
 language: ruby
 rvm:
 - 2.1
-
 env:
   global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
-
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  - secure: UIR2trsZJjY0efODAgrxrXi3jdmMJOy6ohKiRSM3x8b4XhlkWgquQoVhVZ9lbBz5lM+EHUY72XQwzD6aP8DGE+60J3zseHeG0pLz0brM83cAxT4BLLrr20vY6XWKf+WgvEDxT9SFEM+zDg0zxmXvyyvk/enoYxRiXOj1L7Xmy69lSjunfjqoB6CB4h1VyE5QmLcRx4aJI2NQ+JOtNqs/tdS89MsVJfNK2Roy5FLrTG5CfsLSF1Y8j36UO2/9nMDyJeUnE7ZAu2gxWoFFRiwdpJLP13zcMmRLAWyA2Q3abIa8GdhjXLjwQmNkxLXI6ZXh/NDpM8eQa08/iICAG9nsh5bcd6RpPWlXvSIXQF9OsDXRqquxC9G49d1ZgzM72kDekDizOGqpHuA5lpg7WmnAO2vo+roit1zx6a8dnXtmSxQHQynx2lYgk6q7jc+I28Fp36AmZoxOWO5QoJVw/DDkgQXJk+raqKoegdQViJYtHXkCVB4LvjV63zwioZdQkla/h2G3ue0+/E9TBr4c0whaw7Gd1P3YKJzox2zSNo70+NZ1agIQ9/qDok+8+eNUmPDp4h0UXuW8JDwW1NwJIxJ2ZSgGtGQls+ElGbIetJ8nijO84JARSwLgTW+ELxIZMOkBdS2t+jJDnyxYEn+GQrmobm3m/jN2nHuRmz0xCVGM3BE=
   matrix:
-    - NODE_VERSION=0.12
-
+  - NODE_VERSION=0.12
 os:
-  - linux
-
+- linux
 sudo: false
-
 install:
-  - gem install jekyll
-
+- gem install jekyll
 before_script:
-  - python build_site.py
-  - cp -v interface/* blog/_includes/
-  - cd ./blog/
-
+- python build_site.py
+- cp -v interface/* blog/_includes/
+- cd ./blog/
 script: jekyll build
-
 notifications:
   email:
     on_success: never
     on_failure: change
-
 addons:
   apt:
     packages:
