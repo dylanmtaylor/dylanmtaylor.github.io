@@ -34,7 +34,7 @@ after_script:
 - git clone --branch master ${REPO} ${TARGET_DIR}
 - cd $TARGET_DIR
 - git add -A .
-- git commit --allow-empty -m "Built from commit $REV"
+- git commit -m "Built from commit $REV"
 - git push origin master
 notifications:
   email:
