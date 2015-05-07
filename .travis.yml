@@ -22,7 +22,7 @@ install:
 
 before_script:
   - python build_site.py
-  - cp interface/* blog/_includes/
+  - cp -v interface/* blog/_includes/
   - cd ./blog/
 
 script: jekyll build
