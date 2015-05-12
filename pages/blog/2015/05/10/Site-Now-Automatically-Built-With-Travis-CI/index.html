@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <head>
-	<title>Dylan Taylor's Personal Blog - My Blog Is Now Running WordPress 3.2</title>
+	<title>Dylan Taylor's Personal Blog - Site Now Automatically Built With Travis CI</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/css/style.css"  type="text/css" media="all" />
 	<link rel="stylesheet" href="/css/syntax.css" type="text/css" media="all" />
@@ -55,13 +55,13 @@
 			<div class="title"><h2><a href="/pages/blog");'>Dylan Taylor's Personal Blog</a></h2></div>
 			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
 			<div id="post">
-	<h1>My Blog Is Now Running WordPress 3.2</h1>
-	<p class="meta">06 Jul 2011</p>
-	<div class="zemanta-img" style="margin: 1em; display: block;">
-<p>[caption id="" align="alignright" width="300" caption="Image via Wikipedia"]<a href="http://commons.wikipedia.org/wiki/File:Wordpress-logo.png"><img title="WordPress Logo" src="/images/blog/2011/07/300px-Wordpress-logo2.png" alt="WordPress Logo" width="300" height="68" /></a>[/caption]</p>
-</div>
-<p>Yesterday I upgraded my blog to the new major revision of the <a class="zem_slink" title="WordPress" href="http://wordpress.org" rel="homepage">WordPress</a> blogging platform, version 3.2, as soon as it was publicly released. In only a day, the new version was downloaded over 330,000 times. The new version of WordPress is supposedly<a href="http://wpcandy.com/presents/everything-we-know-about-wordpress-3-2"> much lighter and faster</a> than the previous iteration, as a lot of bloat has been removed and a lot of the code was optimized to be more efficient. The new version features a new admin panel and an HTML5 compatible default theme. Overall, I am pleased with the new version of WordPress, and I'm looking forward to even more positive changes to the platform in the future.</p>
-<div class="zemanta-pixie" style="margin-top: 10px; height: 15px;"><img class="zemanta-pixie-img" style="border: none; float: right;" src="http://img.zemanta.com/pixy.gif?x-id=78f1e399-61c0-4926-9cfb-5a9090646457" alt="" /></div>
+	<h1>Site Now Automatically Built With Travis CI</h1>
+	<p class="meta">10 May 2015</p>
+	<p><img src="/images/blog/2015/05/TravisCI-Full-Color.png" alt="Travis CI" title="Travis CI" /> In order to simplify the publication of content and have this site automatically build whenever I publish a change to Git, I have set up a script and integrated my GitHub repository with <a href="https://travis-ci.org">Travis CI</a>. By doing so, I can simply focus on the content, and using the scripts that I wrote, the site will build and publish itself. Because I have a cron job setup on the dylanmtaylor.com domain, every change I push to Git is automatically pulled and deployed almost instantaneously, so that my content is up to date.</p>
+
+<p>The setup for this is actually pretty simple, although it took me a few tries to figure it out – first and foremost, there is now no longer a build.sh in the repository’s main directory. This file was previously used to manually build and copy the files for Jekyll as well as clear memcached’s cache when I rebuilt the site so that nginx would always be serving the latest content. The lines that were in that file were manually copied to a .travis.yml file which will build the site automatically and push the changes to GitHub as me, with a “built from [commit]” line as the commit message. Before building the site, the script downloads and installs the ruby development libraries into the Travis build environment and installs jekyll using Ruby gems.</p>
+
+<p>Once the build environment is setup properly, the script will build all the non-blog static content by running my build-site.py, which is custom Python code and then run commands very similar to the build.sh script which I was manually running previously. Then, using a secure string, Travis will use a GitHub token associated with my account and push the built content to GitHub. This is then pulled automatically onto dylanmtaylor.com using the aforementioned cron job.</p>
 
 
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
@@ -75,13 +75,13 @@
   <h2>Related Posts</h2>
   <ul class="posts">
     
-      <li><span>10 May 2015</span> <span class="seperator">~</span> <a href="/pages/blog/2015/05/10/Site-Now-Automatically-Built-With-Travis-CI/");'>Site Now Automatically Built With Travis CI</a></li>
-    
       <li><span>20 Apr 2015</span> <span class="seperator">~</span> <a href="/pages/blog/2015/04/20/Blog-Migrated-from-Wordpress-to-Jekyll/");'>Site Migrated from Wordpress to Custom Code and Jekyll</a></li>
     
       <li><span>06 Jul 2014</span> <span class="seperator">~</span> <a href="/pages/blog/2014/07/06/my-domain-is-now-registered-with-iwantmyname/");'>My Domain is Now Registered With iWantMyName</a></li>
     
       <li><span>04 Jul 2014</span> <span class="seperator">~</span> <a href="/pages/blog/2014/07/04/goodbye-dropbox-hello-owncloud/");'>Goodbye Dropbox, Hello OwnCloud.</a></li>
+    
+      <li><span>27 Jun 2014</span> <span class="seperator">~</span> <a href="/pages/blog/2014/06/27/speed-up-your-site-with-instant-click/");'>Speed Up Your Site With Instant Click</a></li>
     
   </ul>
 </div>
@@ -94,8 +94,8 @@
 </div>
 <script type="text/javascript">
     var disqus_shortname = 'dylanmtaylor'; 
-    var disqus_identifier = '/2011/07/06/my-blog-is-now-running-wordpress-3-2';
-    var disqus_url = 'http://dylanmtaylor.com/2011/07/06/my-blog-is-now-running-wordpress-3-2/';
+    var disqus_identifier = '/2015/05/10/Site-Now-Automatically-Built-With-Travis-CI';
+    var disqus_url = 'http://dylanmtaylor.com/2015/05/10/Site-Now-Automatically-Built-With-Travis-CI/';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
