@@ -1,9 +1,9 @@
 a.logo {
   position: relative;
-  display: inline-block; 
+  display: inline-block;
 }
 a.logo:after {
-  content: ""; 
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -72,7 +72,7 @@ body {
 	margin-bottom: 25px;
 }
 .left {
-	float: left; 
+	float: left;
 	width: 325px;
 	height: 100vh;
 	position:fixed;
@@ -81,9 +81,9 @@ body {
 	text-align:left;
 	padding-top: 20px;
 	padding-left: 10px;
-	background-color: #34444F;
+	background-color: #2d2d2d;
         border-right: 3px solid #000;
-	color: #00C9FF;
+	color: #C3BEA8;
 	z-index: 100;
 }
 .left > strong {
@@ -99,8 +99,8 @@ body {
 }
 
 .navlink {
-	color:#00C9FF;
-	background-color:#315B66;
+	color:#C3BEA8;
+	background-color:#444b50;
 	text-align:center;
 	text-decoration:none;
 	text-transform:uppercase;
@@ -113,11 +113,11 @@ body {
         vertical-align: middle;
 }
 .navlink:hover {
-	background-color:#0B5B70;
-	color:#00C9FF;
+	background-color:#4E4C09;
+	color:#CCCC5A;
 }
 .navlink:visited {
-	color:#00C9FF;
+	color:#C3BEA8;
 }
 h2 {
         text-align: left;
@@ -152,12 +152,12 @@ h1 strong {
     vertical-align: middle;
 }
 .footer {
-	color: #56757D;
+	color: #6C6864;
 	font: 16px helvetica, arial, clean, sans-serif;
 	margin-left: 3.4em;
 }
 .footer > a {
-	color: #56757D;
+	color: #6C6864;
 	text-decoration: none;
 }
 .pagecontent {
@@ -274,5 +274,3 @@ ul.posts span {
 ul.posts a {
 	text-align: left;
 }
-
-
