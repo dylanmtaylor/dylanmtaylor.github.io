@@ -23,7 +23,7 @@ a.logo:after {
 #btm_heading {
     font-family: sans-serif;
     font-size: 24px;
-    color: #b87e32;
+    color: #B95D17;
     position: absolute;
     left: 87px;
     top: 38px;
@@ -113,7 +113,7 @@ body {
         vertical-align: middle;
 }
 .navlink:hover {
-	background-color:#4E4C09;
+	background-color:#57482A;
 	color:#CCCC5A;
 }
 .navlink:visited {
