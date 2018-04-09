@@ -13,7 +13,7 @@ rvm:
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-  - secure: UIR2trsZJjY0efODAgrxrXi3jdmMJOy6ohKiRSM3x8b4XhlkWgquQoVhVZ9lbBz5lM+EHUY72XQwzD6aP8DGE+60J3zseHeG0pLz0brM83cAxT4BLLrr20vY6XWKf+WgvEDxT9SFEM+zDg0zxmXvyyvk/enoYxRiXOj1L7Xmy69lSjunfjqoB6CB4h1VyE5QmLcRx4aJI2NQ+JOtNqs/tdS89MsVJfNK2Roy5FLrTG5CfsLSF1Y8j36UO2/9nMDyJeUnE7ZAu2gxWoFFRiwdpJLP13zcMmRLAWyA2Q3abIa8GdhjXLjwQmNkxLXI6ZXh/NDpM8eQa08/iICAG9nsh5bcd6RpPWlXvSIXQF9OsDXRqquxC9G49d1ZgzM72kDekDizOGqpHuA5lpg7WmnAO2vo+roit1zx6a8dnXtmSxQHQynx2lYgk6q7jc+I28Fp36AmZoxOWO5QoJVw/DDkgQXJk+raqKoegdQViJYtHXkCVB4LvjV63zwioZdQkla/h2G3ue0+/E9TBr4c0whaw7Gd1P3YKJzox2zSNo70+NZ1agIQ9/qDok+8+eNUmPDp4h0UXuW8JDwW1NwJIxJ2ZSgGtGQls+ElGbIetJ8nijO84JARSwLgTW+ELxIZMOkBdS2t+jJDnyxYEn+GQrmobm3m/jN2nHuRmz0xCVGM3BE=
+  - secure: "IRsUK9FwoLyg09pQdwAXPqN8DFdMCiV7abZKCIyye445braGDX2m4679w0bMtto281ic4534S5yOvpNXBR4b/1muhjj1v+1U27VHH33XEufChgZGEB1PCXszYfLzW5UQww32gb4hXmorOV6VaxZrOS20d9BSM7iXyEA2XtUy49UWQaiEEDBy5wjRQNXot+saumV7velHYWldIYPwlybRLkXC6Gmpwzxi4SgxHlJU3Snz4/92yCgmMRh01/7AIcq9OX9W6dMT2vVdIUynvG4u7WevkMoF7RE36vwQ4tjeQSPBzy1rB23bEHAH2/X3j1XdCT4oEa898C5WKceIf+tcrOz1V3Ta/ROX/8txbHUUS16QpmR9DNwSQoZmaYLGRNUAEgH8jZh0UU9bFRNc+6esZRrpJIstlJbpOIMLZeehWFt5C08lvFFBjdjee2DRVOZ1mGFwD5hEwbqD3utX38DyJbzZ5PTGS04yoGTMySW7Qmw554SprrbNOs9/mkRJeitckn6iwl8AaFNKMJpdelTmFBkCuYWrFOWoJ7Rs0j/rdXsFQo8MdH6oGQ86f92YHi2yLVYgOuthkL58zhZOVdYpPJda7tvYpb+R9bp6Vmh/Ahvl7A4QfAJUYVEAezt3iUdTJu1c+fgf6QKVSA4k6F0+phHzQV+NtE+m3wVgwNb8xVA=
   matrix:
   - NODE_VERSION=0.12
 
@@ -38,7 +38,7 @@ after_script:
 - echo $GIT_EMAIL
 - git config --global user.name "$GIT_NAME"
 - git config --global user.email "$GIT_EMAIL"
-- export REPO="https://"$GH_TOKEN"@github.com/dylanmtaylor/dylanmtaylor.github.io.git"
+- export REPO="https://"$GITHUB_TOKEN"@github.com/dylanmtaylor/dylanmtaylor.github.io.git"
 - export REPO_NAME="dylanmtaylor.github.io"
 - export TARGET_DIR=$(mktemp -d /tmp/$REPO_NAME.XXXX)
 - export REV=$(git rev-parse HEAD)
