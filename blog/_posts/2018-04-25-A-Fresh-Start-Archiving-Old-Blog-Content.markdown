@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A Fresh Start
+title: A Fresh Start - Archiving Old Blog Content
 status: publish
 published: true
 author:
