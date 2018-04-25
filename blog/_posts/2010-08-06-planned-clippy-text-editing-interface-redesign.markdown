@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Planned Clippy Text Editing Interface Redesign
 author:
   display_name: Dylan Taylor

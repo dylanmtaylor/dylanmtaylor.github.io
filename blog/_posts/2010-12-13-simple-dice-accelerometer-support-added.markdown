@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Simple Dice Accelerometer Support Added
 author:
   display_name: Dylan Taylor

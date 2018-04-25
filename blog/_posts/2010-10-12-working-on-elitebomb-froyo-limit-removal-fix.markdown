@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Working on EliteBomb Froyo Limit Removal Fix
 author:
   display_name: Dylan Taylor

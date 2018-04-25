@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Upgraded Hosting to Virtual Private Server
 author:
   display_name: Dylan Taylor

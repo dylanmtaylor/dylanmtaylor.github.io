@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: EliteBomb Crashes and HTC Devices
 author:
   display_name: Dylan Taylor

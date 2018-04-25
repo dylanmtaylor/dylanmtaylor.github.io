@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: How to fix com.android.providers.media crash on a rooted Android device
 author:
   display_name: Dylan Taylor

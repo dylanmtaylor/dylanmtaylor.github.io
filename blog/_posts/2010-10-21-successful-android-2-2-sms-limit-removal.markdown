@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Successful Android 2.2 SMS Limit Removal!
 author:
   display_name: Dylan Taylor

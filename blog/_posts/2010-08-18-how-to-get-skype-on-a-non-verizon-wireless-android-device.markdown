@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: How To Get Skype on a Non-Verizon Wireless Android Device
 author:
   display_name: Dylan Taylor

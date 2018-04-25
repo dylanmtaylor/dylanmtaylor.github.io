@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Network Selection Coming Soon to FiOS WEP Calculator PRO
 author:
   display_name: Dylan Taylor

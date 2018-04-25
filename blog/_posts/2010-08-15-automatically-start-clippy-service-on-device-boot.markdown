@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Automatically Start Clippy Service on Device Boot
 author:
   display_name: Dylan Taylor

@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Wild Pockets Goes Open Source
 author:
   display_name: Dylan Taylor

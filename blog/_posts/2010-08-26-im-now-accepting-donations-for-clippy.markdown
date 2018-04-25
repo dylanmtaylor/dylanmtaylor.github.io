@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: I'm Now Accepting Donations For Clippy
 author:
   display_name: Dylan Taylor

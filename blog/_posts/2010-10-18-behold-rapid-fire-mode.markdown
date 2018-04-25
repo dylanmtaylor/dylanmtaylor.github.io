@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Behold, Rapid Fire Mode!
 author:
   display_name: Dylan Taylor

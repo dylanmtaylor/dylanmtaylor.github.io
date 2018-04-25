@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Google Adds Mobile Editing to Docs on Android and iOS Devices
 author:
   display_name: Dylan Taylor

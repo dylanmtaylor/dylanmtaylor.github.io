@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Introducing EliteBomb SMS Text Bomber
 author:
   display_name: Dylan Taylor

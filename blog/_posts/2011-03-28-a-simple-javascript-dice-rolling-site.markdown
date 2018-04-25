@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: A Simple JavaScript Dice Rolling Site
 author:
   display_name: Dylan Taylor

@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: FiOS WEP Calculator Lite Edition is Up and Running!
 author:
   display_name: Dylan Taylor

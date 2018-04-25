@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Clippy Now Has Its Own Page on My Blog!
 author:
   display_name: Dylan Taylor

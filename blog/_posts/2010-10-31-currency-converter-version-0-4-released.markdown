@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Currency Converter Version 0.4 Released
 author:
   display_name: Dylan Taylor

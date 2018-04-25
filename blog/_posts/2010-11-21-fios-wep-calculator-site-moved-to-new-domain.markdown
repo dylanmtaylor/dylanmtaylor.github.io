@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: FiOS WEP Calculator Site Moved to New Domain
 author:
   display_name: Dylan Taylor

@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Releasing "Capture The Flag", a simple Java-based game
 author:
   display_name: Dylan Taylor

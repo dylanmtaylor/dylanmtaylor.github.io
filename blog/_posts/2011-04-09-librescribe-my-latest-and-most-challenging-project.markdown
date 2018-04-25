@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: LibreScribe, My Latest (and Most Challenging) Project
 author:
   display_name: Dylan Taylor

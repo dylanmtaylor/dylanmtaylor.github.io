@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Huge Clippy Redesign in Progress
 author:
   display_name: Dylan Taylor

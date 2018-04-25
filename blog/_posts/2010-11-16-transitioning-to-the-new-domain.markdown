@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Transitioning to the New Domain
 author:
   display_name: Dylan Taylor

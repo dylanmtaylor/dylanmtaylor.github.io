@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Incorrect FiOS WEP Calculator Mobile Browser Detection Fixed
 author:
   display_name: Dylan Taylor

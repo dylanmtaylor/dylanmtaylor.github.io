@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: My Blog Is Now Running WordPress 3.2
 author:
   display_name: Dylan Taylor

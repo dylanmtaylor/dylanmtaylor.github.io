@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: New EliteGuard AdMob Advertisement
 author:
   display_name: Dylan Taylor

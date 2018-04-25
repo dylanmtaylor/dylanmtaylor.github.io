@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: EliteGuard Plus SMS Protection Now On The Market
 author:
   display_name: Dylan Taylor

@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Significant LibreScribe Progress Made
 author:
   display_name: Dylan Taylor

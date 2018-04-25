@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: My Domain is Now Registered With iWantMyName
 author:
   display_name: Dylan Taylor

@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Sorry For The Lack of Updates
 author:
   display_name: Dylan Taylor

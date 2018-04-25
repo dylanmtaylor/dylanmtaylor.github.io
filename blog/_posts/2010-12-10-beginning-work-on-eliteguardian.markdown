@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Beginning Work On EliteGuard
 author:
   display_name: Dylan Taylor

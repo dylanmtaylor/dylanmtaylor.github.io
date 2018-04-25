@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Introducing EliteBomb Lite (for Legacy 1.6 Devices)
 author:
   display_name: Dylan Taylor

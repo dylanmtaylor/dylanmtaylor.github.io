@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Minor Clippy Regressions
 author:
   display_name: Dylan Taylor

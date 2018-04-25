@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Introducing Clippy, a free clipboard manager for Android
 author:
   display_name: Dylan Taylor

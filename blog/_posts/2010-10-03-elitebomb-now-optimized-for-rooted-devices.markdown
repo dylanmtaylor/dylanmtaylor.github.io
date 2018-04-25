@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: EliteBomb Now Optimized for Rooted Devices
 author:
   display_name: Dylan Taylor

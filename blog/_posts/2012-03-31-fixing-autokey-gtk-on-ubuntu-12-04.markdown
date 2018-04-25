@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Fixing Autokey (GTK) on Ubuntu 12.04
 author:
   display_name: Dylan Taylor

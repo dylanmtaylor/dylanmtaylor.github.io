@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Finally, a New Version of Skype for Linux!
 author:
   display_name: Dylan Taylor

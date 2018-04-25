@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Introducing &quot;Simple Dice&quot;
 author:
   display_name: Dylan Taylor

@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Justice Department Files Lawsuit to Block Takeover of T-Mobile
 author:
   display_name: Dylan Taylor

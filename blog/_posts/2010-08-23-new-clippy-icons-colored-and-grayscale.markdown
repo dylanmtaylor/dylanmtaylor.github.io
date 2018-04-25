@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: New Clippy Icons (Colored and Grayscale!)
 author:
   display_name: Dylan Taylor

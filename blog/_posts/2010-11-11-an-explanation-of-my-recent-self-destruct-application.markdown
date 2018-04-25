@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: An Explanation of My Recent &quot;Self Destruct&quot; Application
 author:
   display_name: Dylan Taylor

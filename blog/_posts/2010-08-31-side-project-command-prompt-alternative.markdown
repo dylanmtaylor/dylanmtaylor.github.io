@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: 'Side Project: Command Prompt Alternative'
 author:
   display_name: Dylan Taylor

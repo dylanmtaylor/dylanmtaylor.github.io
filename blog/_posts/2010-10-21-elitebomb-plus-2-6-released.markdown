@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: EliteBomb Plus 2.6 Released
 author:
   display_name: Dylan Taylor

@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: true
+published: false
 title: Clippy Public Beta 0.1.5 Released
 author:
   display_name: Dylan Taylor
