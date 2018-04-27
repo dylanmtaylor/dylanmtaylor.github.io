@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<head>
+	<title>Dylan Taylor's Personal Blog - I've Moved Hosts Again, This Time with NVMe Storage</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="/css/style.css"  type="text/css" media="all" />
+	<link rel="stylesheet" href="/css/syntax.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/css/tablet.css" type="text/css" media="screen and (min-width:651px) and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px)" />
+	<link rel="stylesheet" href="/css/mobile.css" type="text/css" media="handheld, screen and (max-width: 650px), screen and (max-device-width: 480px)" />
+	<link rel="icon" href="/images/favicon.png">
+	<meta name="author" content="Dylan Taylor" />
+	<!--<script src="https://code.jquery.com/jquery-2.1.3.min.js" data-cfasync='true'></script>
+	<script src="/js/main.js"></script>-->
+</head>
+<body>
+	<div class="left">
+		<div class="logo_header">
+    <a href="/" target="_top" class="logo">
+        <img src="/images/circle.png" width="65px" height="65px">
+        <span id="top_heading">Dylan Taylor&#39;s</span>
+        <span id="btm_heading">Personal Website</span>
+    </a>
+</div>
+<strong>Site Navigation:</strong><br>
+<ul>
+    <li>
+        <a class="navlink" href="/pages/full/home/">Home</a>
+    </li>
+    <li>
+        <a class="navlink" href="/pages/full/about-me/">About Me</a>
+    </li>
+    <li>
+        <a class="navlink" href="/pages/blog/">Blog</a>
+    </li>
+    <li>
+        <a class="navlink" href="https://spamty.eu/mail/v4/802/7cO74MlBWX0e800928/">Contact Me</a>
+    </li>
+    <li>
+        <a class="navlink" href="/pages/full/donate/">Donate</a>
+    </li>
+    <li>
+        <a class="navlink" href="https://github.com/dylanmtaylor">GitHub Page</a>
+    </li>
+    <li>
+        <a class="navlink" href="https://www.linkedin.com/in/dylanmtaylor">LinkedIn Profile</a>
+    </li>
+    <!--<li>
+        <a class="navlink" href="/pages/portfolio/">Portfolio</a>
+    </li>-->
+    <li>
+        <a class="navlink" href="/files/dylan-resume.pdf">R&eacute;sum&eacute;</a>
+    </li>
+</ul><br>
+<em class="footer"><a href="https://github.com/dylanmtaylor/dylanmtaylor.github.io">This site is 100% open source</a><br /><br /><center /><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/images/by-sa.svg" /></a></center></em>
+
+	</div>
+	<div class="pagecontent" id="pagecontent">
+		<div class="site">
+			<div class="title"><h2><a href="/pages/blog");'>My Personal Blog</a></h2></div>
+			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
+			<div id="post">
+	<h1>I've Moved Hosts Again, This Time with NVMe Storage</h1>
+	<p class="meta">27 Apr 2018</p>
+	<p>For the past two years, this site has been hosted with <a href="https://joesdatacenter.com/">Joe’s Datacenter</a> on a rather overkill dedicated machine with some seriously beefy specs (dual Xeon L5420 CPUs, 8GB RAM, 20TB of bandwidth on a 1Gbit dedicated port, 500GB HDD). The service was around $20/month as I got it with a promotional code, and I had this site and about 3 or 4 other virtual machines running on the box that I’ve been using to test various things out, as well as <a href="http://folding.stanford.edu/">Folding@home</a> It was fun to play with, but it was getting rather expensive for something I’m doing as a hobby. Regrettably, it was time to move on to something more reasonable. I also decided that if I wanted virtual machines for short term use, I’d use the around $150 in credit I still have left with <a href="https://www.vultr.com/?ref=6805270">Vultr</a> to test things out rather than spinning up new ones on a bare-metal server. The SSD performance of Vultr on the cheapest of plans outperformed my server by quite a bit, and since they bill hourly, it’s a win-win.</p>
+
+<p>However, I wasn’t 100% sure that I wanted to move my site back to Vultr. I decided to look into my options, and compare the value per cost. Enter <a href="https://lowendbox.com/">Low End Box</a>, one of the best places to find really, really good deals on hosting. I’m not sponsored by them at all - they’re seriously that good. Need a simple machine for a proxy server? Through Low End Box, I’ve discovered that it is actually possible to pay $1 per month (not paid in advance) for a server through a provider called <a href="https://billing.virmach.com/aff.php?aff=4261">VirMach</a>. Yes, that’s an affiliate link, but I’m not sure I’ll actually use the credit if I do get any. So, why do I have an account in the first place? Well, I decided to try it out. I am willing to lose $1 after all. Believe it or not, my $1 got me a working “Micro+”” CentOS 6 server that I used for a month, with 10GB of disk space and 192GB of RAM. I used it for a bit to run an OpenVPN tunnel, and learned how quickly you can hit a 250GB bandwidth cap. That said, the service worked very reliably for me, and it was enlightening to see just how low cost you can get a VM.</p>
+
+<p>While VirMach was cool, I wasn’t sold. I don’t like OpenVZ virtual machines since they are much more limited than KVM, and have to share the host kernel, and I experienced some issues with the VirMach client portal being offline in the short time I had service with them which isn’t exactly reassuring. I began my search again, this time looking for KVM hosts, and in the process, I decided I wanted my server to run on high-end NVMe storage. NVMe is one of the highest performance storage device interfaces available, far exceeding the performance of SATA SSDs. It’s also far more expensive per GB. Eventually, I found the provider I was looking for: <a href="https://hosthatch.com/a?id=985">HostHatch</a>. They are a much smaller company, with only 7 years experience hosting servers, but I decided to take a chance, and ordered an NVMe server with 2GB of RAM and 1 TB bandwidth. I was able to use a promotion offered through LowEndBox, so I got the 2GB server for the price of the 1GB server not currently listed on their homepage with the only major difference being less dedicated CPU, and 10GB of disk space instead of 20GB. The price was $30/year. That’s right, for what I was paying for less than 2 months of service with Joe’s Datacenter, I was now getting a whole year of service. Granted, I was getting a whole lot less resources, but it is enough to meet my needs for now.</p>
+
+<p>So far, I have not had any issues with the service, and I would highly recommend it. It’s not as well known as AWS, DigitalOcean, Vultr, or RamNode, but the value is certainly there. Speaking of value, did I mention that this server has an NVMe drive? It may not sound like that big of a deal, but when installing packages, or doing system upgrades or reinstalling, it is lightning-fast. There are only a few things I wish that they would change, and I’ve made several suggestions to them via feedback tickets. I’ve decided to keep the service, and have prepaid the server for 5 years (I was paying more than that per year before), in the hopes that the hosting company does not go out of business. Best of luck, HostHatch!</p>
+
+
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <g:plusone></g:plusone>
+
+</div>
+
+
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>25 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/25/a-fresh-start-archiving-old-blog-content/");'>A Fresh Start - Archiving Old Blog Content</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="comments">
+	<h3>Comments</h3>
+	<noscript>Please enable JavaScript to view the comments</noscript>
+	<div id="disqus_thread"></div>
+</div>
+<script type="text/javascript">
+    var disqus_shortname = 'dylanmtaylor'; 
+    var disqus_identifier = '/2018/04/27/ive-moved-hosting-providers-again';
+    var disqus_url = 'http://dylanmtaylor.com/2018/04/27/ive-moved-hosting-providers-again/';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+			<div class="blogfooter">
+				<div class="contact">
+					<p>
+						Dylan Taylor<br/>
+						Software Engineer<br/>
+					</p>
+				</div>
+				<div class="contact">
+					<p>
+						<a href="https://dylanmtaylor.com/">dylanmtaylor.com</a><br/>
+						<a href="https://github.com/dylanmtaylor/">github.com/dylanmtaylor</a><br />
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/instantclick/3.0.1/instantclick.min.js" data-no-instant></script>
+	<script data-no-instant>InstantClick.init();</script>
+</body>
+<html>
