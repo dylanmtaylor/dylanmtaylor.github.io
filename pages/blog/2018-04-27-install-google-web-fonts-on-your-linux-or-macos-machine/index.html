@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<head>
+	<title>Dylan Taylor's Personal Blog - Install Google Web Fonts on your Linux or macOS Machine</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="/css/style.css"  type="text/css" media="all" />
+	<link rel="stylesheet" href="/css/syntax.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/css/tablet.css" type="text/css" media="screen and (min-width:651px) and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px)" />
+	<link rel="stylesheet" href="/css/mobile.css" type="text/css" media="handheld, screen and (max-width: 650px), screen and (max-device-width: 480px)" />
+	<link rel="icon" href="/images/favicon.png">
+	<meta name="author" content="Dylan Taylor" />
+</head>
+<body>
+	<div class="left">
+		<div class="logo_header">
+    <a href="/" target="_top" class="logo">
+        <img src="/images/circle.png" width="65px" height="65px" class="profile_pic">
+        <span id="top_heading">Dylan Taylor&#39;s</span>
+        <span id="btm_heading">Personal Website</span>
+    </a>
+</div>
+<strong>Site Navigation:</strong><br>
+<ul>
+    <li>
+        <a class="navlink" href="/pages/full/home/">Home</a>
+    </li>
+    <li>
+        <a class="navlink" href="/pages/full/about-me/">About Me</a>
+    </li>
+    <li>
+        <a class="navlink" href="/pages/blog/">Blog</a>
+    </li>
+    <li>
+        <a class="navlink" href="https://spamty.eu/mail/v4/802/7cO74MlBWX0e800928/">Contact Me</a>
+    </li>
+    <li>
+        <a class="navlink" href="/pages/full/donate/">Donate</a>
+    </li>
+    <li>
+        <a class="navlink" href="https://github.com/dylanmtaylor">GitHub Page</a>
+    </li>
+    <li>
+        <a class="navlink" href="https://www.linkedin.com/in/dylanmtaylor">LinkedIn Profile</a>
+    </li>
+    <li>
+        <a class="navlink" href="/files/dylan-resume.pdf">R&eacute;sum&eacute;</a>
+    </li>
+</ul><br>
+<em class="footer">
+  <a href="https://github.com/dylanmtaylor/dylanmtaylor.github.io">This site is 100% open source</a>
+  <br /><br />
+  <center>
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img width="120px" height="42px" alt="Creative Commons License" style="border-width:0" src="/images/by-sa.svg" /></a>
+    <br /><br />
+    <a href="https://travis-ci.org/dylanmtaylor/dylanmtaylor.github.io"><img src="https://travis-ci.org/dylanmtaylor/dylanmtaylor.github.io.svg?branch=master" width="90px" height="20px" class="build_status"></a>
+  </center>
+</em>
+
+	</div>
+	<div class="pagecontent" id="pagecontent">
+		<div class="site">
+			<div class="title"><h2><a href="/pages/blog");'>My Personal Blog</a></h2></div>
+			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
+			<div id="post">
+	<h1>Install Google Web Fonts on your Linux or macOS Machine</h1>
+	<p class="meta">27 Apr 2018</p>
+	<p>Google provides a very nice collection of fonts called <a href="https://fonts.google.com/">Google Fonts</a>, with <a href="https://github.com/google/fonts">a repository on GitHub</a>. While looking for fonts to use for personal document creation, I stumbled upon a project called <a href="https://github.com/qrpike/Web-Font-Load">Web-Font-Load by Quinton Pike</a>. I decided to test it out, and it easily installed the collection on my machine. I noticed though that the project had several install/uninstall files that were platform specific. I ended up rewriting the installation script to be common to multiple Linux distributions as well as macOS and committing the changes via <a href="https://github.com/qrpike/Web-Font-Load/pull/22">a pull request to the upstream repository</a>. After the changes that I made, it is now possible to simply run a single command, regardless of your platform, and the fonts will be installed:</p>
+
+<p><code>curl https://raw.githubusercontent.com/qrpike/Web-Font-Load/master/install.sh | bash</code></p>
+
+<p>This is a very nice collection of over 1500 quality fonts from Google and other contributors, and there are many different styles. It includes fonts you’ll see in things like Google Docs. After running the script, you may need to reboot your system for the fonts to be picked up.</p>
+
+
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <g:plusone></g:plusone>
+
+</div>
+
+
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+  </ul>
+</div>
+
+
+<div class="comments">
+	<h3>Comments</h3>
+	<noscript>Please enable JavaScript to view the comments</noscript>
+	<div id="disqus_thread"></div>
+</div>
+<script type="text/javascript">
+    var disqus_shortname = 'dylanmtaylor'; 
+    var disqus_identifier = '';
+    var disqus_url = 'http://dylanmtaylor.com/2018-04-27-install-google-web-fonts-on-your-linux-or-macos-machine/';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+			<div class="blogfooter">
+				<div class="contact">
+					<p>
+						Dylan Taylor<br/>
+						Software Engineer<br/>
+					</p>
+				</div>
+				<div class="contact">
+					<p>
+						<a href="https://dylanmtaylor.com/">dylanmtaylor.com</a><br/>
+						<a href="https://github.com/dylanmtaylor/">github.com/dylanmtaylor</a><br />
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/instantclick/3.0.1/instantclick.min.js" data-no-instant></script>
+	<script data-no-instant>InstantClick.init();</script>
+</body>
+<html>
