@@ -13,7 +13,7 @@ a.logo:after {
 #top_heading {
     font-family: sans-serif;
     font-size: 34px;
-    color: #ff9600;
+    color: #cb913f;
     position: absolute;
     top: -2px;
     left: 72px;
@@ -23,7 +23,7 @@ a.logo:after {
 #btm_heading {
     font-family: sans-serif;
     font-size: 24px;
-    color: #B95D17;
+    color: #99633c;
     position: absolute;
     left: 87px;
     top: 38px;
@@ -32,6 +32,12 @@ a.logo:after {
 }
 .logo {
     text-decoration: none;
+}
+.profile_pic {
+  filter: grayscale(0.25); /* desaturate profile_pic a little bit */
+}
+.build_status {
+  filter: grayscale(0.35); /* desaturate the build status */
 }
 h1, h2, h3, h4, h5, h6 {
 	font-size: 100%;
