@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <head>
-	<title>Dylan Taylor's Personal Blog - How to install the Mainline Kernel on Enterprise Linux 7 the Easy Way</title>
+	<title>Dylan Taylor's Personal Blog - Rapidly Setting Up My Linux Desktop Using a Makefile</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/css/style.css"  type="text/css" media="all" />
 	<link rel="stylesheet" href="/css/syntax.css" type="text/css" media="all" />
@@ -61,19 +61,17 @@
 			<div class="title"><h2><a href="/pages/blog");'>My Personal Blog</a></h2></div>
 			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
 			<div id="post">
-	<h1>How to install the Mainline Kernel on Enterprise Linux 7 the Easy Way</h1>
+	<h1>Rapidly Setting Up My Linux Desktop Using a Makefile</h1>
 	<p class="meta">27 Apr 2018</p>
-	<p>Red Hat Enterprise Linux and CentOS, which is based off of RHEL source code are known for their stability. They are supported for a very long time (10+ years), and other than backporting security fixes, very little actually changes in each point release. For various reasons, you may want to install a newer kernel than the one built by Red Hat. This could be due to better driver support, performance increases, etc. <a href="https://elrepo.org/tiki/tiki-index.php">ELRepo</a> is a project that provides hardware-related packages and newer kernels that are compatible with enterprise Linux distributions. As part of building out my site and running enterprise Linux distributions on my own hardware, I install their kernel-ml package. Unfortunately, on a headless system this is a little bit painful, since GRUB likes to default to the version that was previously booted, so even after a reboot you won’t see the new kernel applied. I also wanted to perform this operation in a “one line” automated fashion via Ansible, and needed to keep it simple for the sake of making it easy to do.</p>
+	<p>I’ll admit it, I’m obsessed with being an early adopter of technology and I switch between Linux distributions frequently. Before Ubuntu 18.04 came out (it was just released on April 26th), I decided to test it out around the end of March, just a month before it’s official release date. There’s just one issue with that: it wasn’t the final version. Breakage can often happen when testing out a pre-release Linux distibution. For instance, a simply <code>sudo apt update; sudo apt full-upgrade</code> can cripple a system with a bad package, resulting in a reinstall. I stumbled upon a <a href="https://gist.github.com/h4cc/c54d3944cb555f32ffdf25a5fa1f2602#file-makefile">Makefile by Julius Beckmann</a> that can be run on a new Ubuntu system and immediately saw the benefit of such an approach. I can reinstall as many times as I like, and so long as I set up the commands correctly, I can have a system configured exactly how I like it within an hour. I can even run a specific make target on its own in order to install a certain set of programs or updates without rerunning the whole script. I decided to fork it, creating <a href="https://github.com/dylanmtaylor/dylan-ubuntu-makefile">my own Ubuntu Makefile repository</a>, adding many packages, and removing things I do not need.</p>
 
-<p>I found a Markdown file with steps to automatically apply the mainline kernel update from <a href="https://github.com/pgporada">Phil Porada</a>, and decided that it would be sufficiently nicer to have it in <a href="https://github.com/dylanmtaylor/enterprise-linux-7-mainline-kernel-installer">a repository</a> so that you can run it as a shell script. If you’re interested in using this (or any script for that matter) I suggest you review the source code before doing so. Never pipe anything to bash without reading the code to make sure it’s safe. That said, the process is very easy. Simply run:</p>
+<p>I approached this as a development project at first, running Ubuntu 18.04 daily images in <a href="https://www.virtualbox.org/">VirtualBox</a>. VirtualBox is free and it has a very nice feature called snapshots. I would take a snapshot of a running virtual machine, test out the project, check the final state, and revert to the snapshot before it was applied, so that I could make corrections. After a few days of testing, I was ready to install this on real hardware. I backed up my desktop’s home directory, and installed the 18.04 daily build. As I add packages or software to my system, I make changes to the Makefile if I want that software to be reinstalled when I rebuild my system. Now, I don’t have to worry about wiping and reloading, and it is a huge timesaver. It also allows me to keep the software between my laptop and my desktop relatively in-sync since I can recreate the steps taken perfectly. Now, when I have to reinstall for whatever reason, the only data I have to worry about backing up is the <code>/home/</code> directory.</p>
 
-<p><code>curl https://raw.githubusercontent.com/dylanmtaylor/enterprise-linux-7-mainline-kernel-installer/master/mainline-kernel.sh | sudo bash</code></p>
+<p>To take this one step further, as I love to test out newer versions than provided in the Ubuntu repositories, I am actually using Flatpak, Snap, PPAs, and some Git repositories to provide software. I’m actually removing the versions of things like LibreOffice and installing the flatpak version instead. As such, I need to check for Flatpak and snap platform updates in order to fully update my machine. Inspired by the <code>zypper dup</code> command on OpenSUSE, I created an alias called <code>dup</code>, which can easily update everything, including Flatpaks and snaps:</p>
 
-<p>and then reboot the server. Once back into the system, I advise you to remove the original kernel packages with this command:</p>
+<p><code>alias dup="sudo apt clean all; sudo apt update; sudo apt -y full-upgrade; sudo flatpak update; sudo snap refresh; sudo apt autoremove"</code></p>
 
-<p><code>sudo yum remove kernel kernel-debug-devel</code></p>
-
-<p>This will ensure that the kernel-ml package is the only package in the GRUB menu entries and that it is the one used as default when a new version comes out and the update is applied.</p>
+<p>I’ve created <a href="https://gist.github.com/dylanmtaylor/e4176e339e0e1f4c07e5b807cfa9ed9d">a gist of the common aliases that I use</a>. I then added this alias to my <code>~/.bashrc file</code> By simply typing <code>dup</code> into a terminal, I can now get a fully updated system with many bleeding edge packages.</p>
 
 
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
@@ -87,11 +85,11 @@
   <h2>Related Posts</h2>
   <ul class="posts">
     
-      <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/rapidly-setting-up-my-linux-desktop-using-a-makefile/");'>Rapidly Setting Up My Linux Desktop Using a Makefile</a></li>
-    
       <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/using-cockpit-to-administer-linux-servers-in-the-browser/");'>Using Cockpit to Administer Linux Servers in the Browser</a></li>
     
       <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/install-google-web-fonts-on-your-linux-or-macos-machine/");'>Install Google Web Fonts on your Linux or macOS Machine</a></li>
+    
+      <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/how-to-install-the-mainline-linux-kernel-on-rhelcentos-from-elrepo-the-easy-way/");'>How to install the Mainline Kernel on Enterprise Linux 7 the Easy Way</a></li>
     
       <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/creating-disposable-openvpn-servers-using-the-vultr-cloud-api/");'>Creating Disposable OpenVPN Servers Using the Vultr Cloud API</a></li>
     
@@ -106,8 +104,8 @@
 </div>
 <script type="text/javascript">
     var disqus_shortname = 'dylanmtaylor'; 
-    var disqus_identifier = '/2018/04/27/how-to-install-the-mainline-linux-kernel-on-rhelcentos-from-elrepo-the-easy-way';
-    var disqus_url = 'http://dylanmtaylor.com/2018/04/27/how-to-install-the-mainline-linux-kernel-on-rhelcentos-from-elrepo-the-easy-way/';
+    var disqus_identifier = '/2018/04/27/rapidly-setting-up-my-linux-desktop-using-a-makefile';
+    var disqus_url = 'http://dylanmtaylor.com/2018/04/27/rapidly-setting-up-my-linux-desktop-using-a-makefile/';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
