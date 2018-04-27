@@ -2,7 +2,7 @@
 layout: post
 title: Site Now Automatically Built With Travis CI
 status: publish
-published: false
+published: true
 author:
   display_name: Dylan Taylor
   login: dylanmtaylor
