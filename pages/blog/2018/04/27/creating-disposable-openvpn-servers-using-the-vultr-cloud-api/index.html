@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<head>
+	<title>Dylan Taylor's Personal Blog - Creating Disposable OpenVPN Servers Using the Vultr Cloud API</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="/css/style.css"  type="text/css" media="all" />
+	<link rel="stylesheet" href="/css/syntax.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/css/tablet.css" type="text/css" media="screen and (min-width:651px) and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px)" />
+	<link rel="stylesheet" href="/css/mobile.css" type="text/css" media="handheld, screen and (max-width: 650px), screen and (max-device-width: 480px)" />
+	<link rel="icon" href="/images/favicon.png">
+	<meta name="author" content="Dylan Taylor" />
+</head>
+<body>
+	<div class="left">
+		<div class="logo_header">
+    <a href="/" target="_top" class="logo">
+        <img src="/images/circle.png" width="65px" height="65px" class="profile_pic">
+        <span id="top_heading">Dylan Taylor&#39;s</span>
+        <span id="btm_heading">Personal Website</span>
+    </a>
+</div>
+<strong>Site Navigation:</strong><br>
+<ul>
+    <li>
+        <a class="navlink" href="/pages/full/home/">Home</a>
+    </li>
+    <li>
+        <a class="navlink" href="/pages/full/about-me/">About Me</a>
+    </li>
+    <li>
+        <a class="navlink" href="/pages/blog/">Blog</a>
+    </li>
+    <li>
+        <a class="navlink" href="https://spamty.eu/mail/v4/802/7cO74MlBWX0e800928/">Contact Me</a>
+    </li>
+    <li>
+        <a class="navlink" href="/pages/full/donate/">Donate</a>
+    </li>
+    <li>
+        <a class="navlink" href="https://github.com/dylanmtaylor">GitHub Page</a>
+    </li>
+    <li>
+        <a class="navlink" href="https://www.linkedin.com/in/dylanmtaylor">LinkedIn Profile</a>
+    </li>
+    <li>
+        <a class="navlink" href="/files/dylan-resume.pdf">R&eacute;sum&eacute;</a>
+    </li>
+</ul><br>
+<em class="footer">
+  <a href="https://github.com/dylanmtaylor/dylanmtaylor.github.io">This site is 100% open source</a>
+  <br /><br />
+  <center>
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img width="120px" height="42px" alt="Creative Commons License" style="border-width:0" src="/images/by-sa.svg" /></a>
+    <br /><br />
+    <a href="https://travis-ci.org/dylanmtaylor/dylanmtaylor.github.io"><img src="https://travis-ci.org/dylanmtaylor/dylanmtaylor.github.io.svg?branch=master" width="90px" height="20px" class="build_status"></a>
+  </center>
+</em>
+
+	</div>
+	<div class="pagecontent" id="pagecontent">
+		<div class="site">
+			<div class="title"><h2><a href="/pages/blog");'>My Personal Blog</a></h2></div>
+			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
+			<div id="post">
+	<h1>Creating Disposable OpenVPN Servers Using the Vultr Cloud API</h1>
+	<p class="meta">27 Apr 2018</p>
+	<p>For a while now, I’ve used <a href="https://github.com/Nyr/openvpn-install">Nyr’s openvpn-install script</a> to set up OpenVPN servers for my personal use. It’s quite a handy script, and as it proclaims on the GitHub page, it’ll let you setup an OpenVPN server in around a minute with no expertise required. This, combined with some ultra-cheap VPS servers, perhaps from <a href="https://billing.virmach.com/aff.php?aff=4261">VirMach</a> can get you a decently good performance VPN with a single IP address for about a dollar a month. The are a few issues with this approach are that you are limited to one IP address, which allows providers to easily identify you if you use the service for long enough (VirMach actually charges more than the monthly cost of their cheapest offering to change the IP address - it’s easier to cancel), the bandwidth is very limited for heavy usage, and you’re paying for service even when it’s not needed. The last point may not sound like a big deal, but from a pure cost perspective, it’s cheaper to pay hourly only when you need it.</p>
+
+<p>As I still have a considerable amount of credit with <a href="https://www.vultr.com/?ref=6805270">Vultr</a>, I decided it would be an interesting project to create a solution that utilizes their cloud APIs to automatically create an OpenVPN server. Now, anyone familiar with Vultr might notice that they have an application template for OpenVPN, which when you order a server gives you an admin username and password on a pre-configured OpenVPN web interface. The issue with this is that you can easily spend 30 minutes to an hour setting up your server this way. It’s not ideal for something you use for a few hours on a coffee shop wireless connection and then destroy. My solution requires absolutely no configuration, at all, and is set up in under 6 minutes, on average, including fully patching the new virtual machine and configuring it to use <a href="https://1.1.1.1/">Cloudflare’s privacy-oriented 1.1.1.1 DNS service</a>.</p>
+
+<p>Because reinventing the wheel isn’t particularly useful, rather than reimplementing the API calls myself, I levereged <a href="https://github.com/JamesClonk/vultr">James Clonk’s Vultr CLI and API client library</a>, which is written in <a href="https://golang.org/">Go</a>. The CLI functionality is heavily used to make API calls into the Vultr cloud. I took the contents of Nyr’s script, and began editing it. I made multiple changes. First, it is now 100% non-interactive. The reason this is so important is that when you run a startup script via an API or cloud-init or any other system, it’s immediately executed in a non-interactive terminal on the server upon creation. There are multiple tweaks I’ve made, such as disabling yum’s fastest mirror check, which takes precious seconds to complete - I want this to be as fast as possible after all. It also generates a random root password and uses the startup script to set this. This makes the root password for the server different from the one that Vultr generates in the portal for security reasons. This password is later used to pull the ovpn certificate file off of the server.</p>
+
+<p>The <a href="https://github.com/dylanmtaylor/instant-vultr-vpn-server">repository for the tool</a>° actually contains a fully configured and compatible Go installation local to the project. This reduces the requirement on the users to configure anything, and it prevents the script from adding packages or cluttering their system. It’s very self-contained. In order to use it, all you need to do is checkout the repository, export your Vultr API key from the user portal to a variable via <code>export VULTR_API_KEY=[YOUR_API_KEY_HERE]</code> and run the <code>run.sh</code> script. In seconds, a startup script will be generated adn added to your account with a datestamp in the name, and a CentOS 7 server will be ordered using it. The server costs only   $0.007/hr, so 10 hours of usage is only 7 cents of Vultr credit. If you’re not using the VPN 24/7, this is far more practical than a cheap $1 server. Another advantage is that you can cancel the server at any time and rather than paying the full $5/month, you’re paying a prorated amount. When your server is cancelled, the 1TB of alloted bandwidth is reset. The bandwidth limit is associated with the subscription. In other words, you can cancel a server when you’re low on bandwidth and within minutes, for no additional cost, have another one with a fresh limit. Once the server is done booting up and running the startup script, a file called <code>openvpn_cert.ovpn</code> will be created in /root on the server. The tool automatically connects to the server after a set interval of time and copies this certificate to the working directory on your computer. You can then use the certificate file to connect to your new server as you would with any other OpenVPN connection. Happy tunneling!</p>
+
+
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <g:plusone></g:plusone>
+
+</div>
+
+
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/ive-learned-my-lesson-and-am-using-latex-now/");'>I've Learned My Lesson and I'm Using LaTeX Now</a></li>
+    
+      <li><span>26 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/26/ive-moved-hosting-providers-again/");'>Moving Hosts Again, This Time with NVMe Storage</a></li>
+    
+      <li><span>25 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/25/a-fresh-start-archiving-old-blog-content/");'>A Fresh Start - Archiving Some Old Blog Content</a></li>
+    
+      <li><span>10 May 2015</span> <span class="seperator">~</span> <a href="/pages/blog/2015/05/10/site-now-automatically-built-with-travis-ci/");'>Automatically Building My Website With Travis CI</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="comments">
+	<h3>Comments</h3>
+	<noscript>Please enable JavaScript to view the comments</noscript>
+	<div id="disqus_thread"></div>
+</div>
+<script type="text/javascript">
+    var disqus_shortname = 'dylanmtaylor'; 
+    var disqus_identifier = '/2018/04/27/creating-disposable-openvpn-servers-using-the-vultr-cloud-api';
+    var disqus_url = 'http://dylanmtaylor.com/2018/04/27/creating-disposable-openvpn-servers-using-the-vultr-cloud-api/';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+			<div class="blogfooter">
+				<div class="contact">
+					<p>
+						Dylan Taylor<br/>
+						Software Engineer<br/>
+					</p>
+				</div>
+				<div class="contact">
+					<p>
+						<a href="https://dylanmtaylor.com/">dylanmtaylor.com</a><br/>
+						<a href="https://github.com/dylanmtaylor/">github.com/dylanmtaylor</a><br />
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/instantclick/3.0.1/instantclick.min.js" data-no-instant></script>
+	<script data-no-instant>InstantClick.init();</script>
+</body>
+<html>
