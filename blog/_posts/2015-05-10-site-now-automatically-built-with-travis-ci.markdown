@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Site Now Automatically Built With Travis CI
+title: Automatically Building My Website With Travis CI
 status: publish
 published: true
 author:
