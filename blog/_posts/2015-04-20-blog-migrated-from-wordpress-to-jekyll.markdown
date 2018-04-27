@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Site Migrated from Wordpress to Custom Code and Jekyll
+title: Migrating from Wordpress to Custom Code and Jekyll
 status: publish
 published: true
 author:
