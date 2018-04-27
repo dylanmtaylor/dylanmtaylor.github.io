@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <head>
-	<title>Dylan Taylor's Personal Blog - How to install the Mainline Kernel on Enterprise Linux 7 the Easy Way</title>
+	<title>Dylan Taylor's Personal Blog - Install Google Web Fonts on your Linux or macOS Machine</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/css/style.css"  type="text/css" media="all" />
 	<link rel="stylesheet" href="/css/syntax.css" type="text/css" media="all" />
@@ -61,19 +61,13 @@
 			<div class="title"><h2><a href="/pages/blog");'>My Personal Blog</a></h2></div>
 			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
 			<div id="post">
-	<h1>How to install the Mainline Kernel on Enterprise Linux 7 the Easy Way</h1>
+	<h1>Install Google Web Fonts on your Linux or macOS Machine</h1>
 	<p class="meta">27 Apr 2018</p>
-	<p>Red Hat Enterprise Linux and CentOS, which is based off of RHEL source code are known for their stability. They are supported for a very long time (10+ years), and other than backporting security fixes, very little actually changes in each point release. For various reasons, you may want to install a newer kernel than the one built by Red Hat. This could be due to better driver support, performance increases, etc. <a href="https://elrepo.org/tiki/tiki-index.php">ELRepo</a> is a project that provides hardware-related packages and newer kernels that are compatible with enterprise Linux distributions. As part of building out my site and running enterprise Linux distributions on my own hardware, I install their kernel-ml package. Unfortunately, on a headless system this is a little bit painful, since GRUB likes to default to the version that was previously booted, so even after a reboot you won’t see the new kernel applied. I also wanted to perform this operation in a “one line” automated fashion via Ansible, and needed to keep it simple for the sake of making it easy to do.</p>
+	<p>Google provides a very nice collection of fonts called <a href="https://fonts.google.com/">Google Fonts</a>, with <a href="https://github.com/google/fonts">a repository on GitHub</a>. While looking for fonts to use for personal document creation, I stumbled upon a project called <a href="https://github.com/qrpike/Web-Font-Load">Web-Font-Load by Quinton Pike</a>. I decided to test it out, and it easily installed the collection on my machine. I noticed though that the project had several install/uninstall files that were platform specific. I ended up rewriting the installation script to be common to multiple Linux distributions as well as macOS and committing the changes via <a href="https://github.com/qrpike/Web-Font-Load/pull/22">a pull request to the upstream repository</a>. After the changes that I made, it is now possible to simply run a single command, regardless of your platform, and the fonts will be installed:</p>
 
-<p>I found a Markdown file with steps to automatically apply the mainline kernel update from <a href="https://github.com/pgporada">Phil Porada</a>, and decided that it would be sufficiently nicer to have it in <a href="https://github.com/dylanmtaylor/enterprise-linux-7-mainline-kernel-installer">a repository</a> so that you can run it as a shell script. If you’re interested in using this (or any script for that matter) I suggest you review the source code before doing so. Never pipe anything to bash without reading the code to make sure it’s safe. That said, the process is very easy. Simply run:</p>
+<p><code>curl https://raw.githubusercontent.com/qrpike/Web-Font-Load/master/install.sh | bash</code></p>
 
-<p><code>curl https://raw.githubusercontent.com/dylanmtaylor/enterprise-linux-7-mainline-kernel-installer/master/mainline-kernel.sh | sudo bash</code></p>
-
-<p>and then reboot the server. Once back into the system, I advise you to remove the original kernel packages with this command:</p>
-
-<p><code>sudo yum remove kernel kernel-debug-devel</code></p>
-
-<p>This will ensure that the kernel-ml package is the only package in the GRUB menu entries and that it is the one used as default when a new version comes out and the update is applied.</p>
+<p>This is a very nice collection of over 1500 quality fonts from Google and other contributors, and there are many different styles. It includes fonts you’ll see in things like Google Docs. After running the script, you may need to reboot your system for the fonts to be picked up.</p>
 
 
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
@@ -87,6 +81,14 @@
   <h2>Related Posts</h2>
   <ul class="posts">
     
+      <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/using-cockpit-to-administer-linux-servers-in-the-browser/");'>Using Cockpit to Administer Linux Servers in the Browser</a></li>
+    
+      <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/how-to-install-the-mainline-linux-kernel-on-rhelcentos-from-elrepo-the-easy-way/");'>How to install the Mainline Kernel on Enterprise Linux 7 the Easy Way</a></li>
+    
+      <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/creating-disposable-openvpn-servers-using-the-vultr-cloud-api/");'>Creating Disposable OpenVPN Servers Using the Vultr Cloud API</a></li>
+    
+      <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/ive-learned-my-lesson-and-am-using-latex-now/");'>I've Learned My Lesson and I'm Using LaTeX Now</a></li>
+    
   </ul>
 </div>
 
@@ -98,8 +100,8 @@
 </div>
 <script type="text/javascript">
     var disqus_shortname = 'dylanmtaylor'; 
-    var disqus_identifier = '';
-    var disqus_url = 'http://dylanmtaylor.com/2018-04-27-how-to-install-the-mainline-linux-kernel-on-rhelcentos-from-elrepo-the-easy-way/';
+    var disqus_identifier = '/2018/04/27/install-google-web-fonts-on-your-linux-or-macos-machine';
+    var disqus_url = 'http://dylanmtaylor.com/2018/04/27/install-google-web-fonts-on-your-linux-or-macos-machine/';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';

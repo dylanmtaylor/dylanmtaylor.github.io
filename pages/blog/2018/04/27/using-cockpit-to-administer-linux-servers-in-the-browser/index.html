@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <head>
-	<title>Dylan Taylor's Personal Blog - Automatically Building My Website With Travis CI</title>
+	<title>Dylan Taylor's Personal Blog - Using Cockpit to Administer Linux Servers in the Browser</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/css/style.css"  type="text/css" media="all" />
 	<link rel="stylesheet" href="/css/syntax.css" type="text/css" media="all" />
@@ -61,13 +61,23 @@
 			<div class="title"><h2><a href="/pages/blog");'>My Personal Blog</a></h2></div>
 			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
 			<div id="post">
-	<h1>Automatically Building My Website With Travis CI</h1>
-	<p class="meta">10 May 2015</p>
-	<p><img src="/images/blog/2015/05/TravisCI-Full-Color.png" alt="Travis CI" title="Travis CI" /> In order to simplify the publication of content and have this site automatically build whenever I publish a change to Git, I have set up a script and integrated my GitHub repository with <a href="https://travis-ci.org">Travis CI</a>. By doing so, I can simply focus on the content, and using the scripts that I wrote, the site will build and publish itself. Because I have a cron job setup on the dylanmtaylor.com domain, every change I push to Git is automatically pulled and deployed almost instantaneously, so that my content is up to date.</p>
+	<h1>Using Cockpit to Administer Linux Servers in the Browser</h1>
+	<p class="meta">27 Apr 2018</p>
+	<p>It’s often really nice to be able to log into a web interface and check the status of your server and run a few terminal commands. Previously for this, I was using the <a href="http://ajenti.org/">Ajenti Server Admin Panel</a>, but I recently discovered a new solution that I like better because of its simplicity and sponsorship by Red Hat. That solution is the <a href="http://cockpit-project.org/">Cockpit project</a>. As described on the official website, “Cockpit is a server manager that makes it easy to administer your GNU/Linux servers via a web browser.” I decided to give it a try. Since my server is running CentOS 7, this was very easy to get up and running, and it is actually included by default in the CentOS repositories as the <code>cockpit</code> package. This is a great addition to tools like <code>glances</code> and <code>htop</code>, and makes checking on the server a breeze.</p>
 
-<p>The setup for this is actually pretty simple, although it took me a few tries to figure it out – first and foremost, there is now no longer a build.sh in the repository’s main directory. This file was previously used to manually build and copy the files for Jekyll as well as clear memcached’s cache when I rebuilt the site so that nginx would always be serving the latest content. The lines that were in that file were manually copied to a .travis.yml file which will build the site automatically and push the changes to GitHub as me, with a “built from [commit]” line as the commit message. Before building the site, the script downloads and installs the ruby development libraries into the Travis build environment and installs jekyll using Ruby gems.</p>
+<p>Installing the base package, enabling it, and setting the firewall rules as described on the official website gets you a functional web UI, with things like the ability to login to a terminal session without using SSH, but it’s a bit limited in the default installation. I quickly discovered that cockpit is extendable by modules, and added some additional packages to get more functionality, including:</p>
 
-<p>Once the build environment is setup properly, the script will build all the non-blog static content by running my build-site.py, which is custom Python code and then run commands very similar to the build.sh script which I was manually running previously. Then, using a secure string, Travis will use a GitHub token associated with my account and push the built content to GitHub. This is then pulled automatically onto dylanmtaylor.com using the aforementioned cron job.</p>
+<ul>
+  <li>cockpit-storaged</li>
+  <li>cockpit-networkmanager</li>
+  <li>cockpit-packagekit</li>
+  <li>cockpit-selinux</li>
+  <li>cockpit-pcp</li>
+  <li>cockpit-sosreport</li>
+  <li>cockpit-docker</li>
+</ul>
+
+<p>Once all these packages are installed, I was really satisfied with the end result, so I added this to the Ansible script for the site. Now every time I reinstall, I get cockpit without having to do any additional work. The interface allows me to check things like CPU, RAM, network, and disk utilization, at a glance, and with a single click, I can spawn a terminal interface within the cockpit dashboard. It’s also fantastic for managing <a href="https://www.docker.com/">Docker containers</a>. If you’re an administrator and want a neat way to control your servers, I’d recommend checking it out.</p>
 
 
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
@@ -81,13 +91,13 @@
   <h2>Related Posts</h2>
   <ul class="posts">
     
-      <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/using-cockpit-to-administer-linux-servers-in-the-browser/");'>Using Cockpit to Administer Linux Servers in the Browser</a></li>
-    
       <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/install-google-web-fonts-on-your-linux-or-macos-machine/");'>Install Google Web Fonts on your Linux or macOS Machine</a></li>
     
       <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/how-to-install-the-mainline-linux-kernel-on-rhelcentos-from-elrepo-the-easy-way/");'>How to install the Mainline Kernel on Enterprise Linux 7 the Easy Way</a></li>
     
       <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/creating-disposable-openvpn-servers-using-the-vultr-cloud-api/");'>Creating Disposable OpenVPN Servers Using the Vultr Cloud API</a></li>
+    
+      <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/ive-learned-my-lesson-and-am-using-latex-now/");'>I've Learned My Lesson and I'm Using LaTeX Now</a></li>
     
   </ul>
 </div>
@@ -100,8 +110,8 @@
 </div>
 <script type="text/javascript">
     var disqus_shortname = 'dylanmtaylor'; 
-    var disqus_identifier = '/2015/05/10/site-now-automatically-built-with-travis-ci';
-    var disqus_url = 'http://dylanmtaylor.com/2015/05/10/site-now-automatically-built-with-travis-ci/';
+    var disqus_identifier = '/2018/04/27/using-cockpit-to-administer-linux-servers-in-the-browser';
+    var disqus_url = 'http://dylanmtaylor.com/2018/04/27/using-cockpit-to-administer-linux-servers-in-the-browser/';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
