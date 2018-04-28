@@ -19,4 +19,4 @@ To take this one step further, as I love to test out newer versions than provide
 
 `alias dup="sudo apt clean all; sudo apt update; sudo apt -y full-upgrade; sudo flatpak update; sudo snap refresh; sudo apt autoremove"`
 
-I've created [a gist of the common aliases that I use](https://gist.github.com/dylanmtaylor/e4176e339e0e1f4c07e5b807cfa9ed9d). I then added this alias to my `~/.bashrc file` By simply typing `dup` into a terminal, I can now get a fully updated system with many bleeding edge packages.
+I've created [a gist of the common aliases that I use](https://gist.github.com/dylanmtaylor/e4176e339e0e1f4c07e5b807cfa9ed9d). I then added this alias to my `~/.bash_aliases file` By simply typing `dup` into a terminal, I can now get a fully updated system with many bleeding edge packages.
