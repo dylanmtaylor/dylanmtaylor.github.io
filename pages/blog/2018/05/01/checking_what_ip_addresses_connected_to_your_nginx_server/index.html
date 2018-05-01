@@ -62,7 +62,7 @@
 			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
 			<div id="post">
 	<h1>Checking What IP Addresses Connected to Your Nginx Server</h1>
-	<p class="meta">30 Apr 2018</p>
+	<p class="meta">01 May 2018</p>
 	<p>My server is behind a <a href="https://www.cloudflare.com">CloudFlare</a> caching proxy, so it usually doesn’t get hit with requests directly, but I was noticing thousands of unique IP addresses looking for files such as <code>/xampp/phpmyadmin/index.php</code> and <code>/db/index.php</code>. These are probably hackers using automated vulnerability scanners against anything that has an open HTTP connection on the internet. I got curious where these requests were coming from, so I decided to dig through the logs.</p>
 
 <p>The first thing I did was connect to my server using the hostname I have in my <code>/etc/hosts</code> file for convenience through the GNOME file browser. I entered <code>sftp://root@dylanmtaylor/var/log/nginx</code> as the connection string. I then copied all the access log files to my local machine into a temporary NGINX folder.</p>
@@ -120,8 +120,8 @@ In order to combine the log files into one for easy parsing, we can use <code>ca
 </div>
 <script type="text/javascript">
     var disqus_shortname = 'dylanmtaylor'; 
-    var disqus_identifier = '/2018/04/30/checking_what_ip_addresses_connected_to_your_nginx_server';
-    var disqus_url = 'http://dylanmtaylor.com/2018/04/30/checking_what_ip_addresses_connected_to_your_nginx_server/';
+    var disqus_identifier = '/2018/05/01/checking_what_ip_addresses_connected_to_your_nginx_server';
+    var disqus_url = 'http://dylanmtaylor.com/2018/05/01/checking_what_ip_addresses_connected_to_your_nginx_server/';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
