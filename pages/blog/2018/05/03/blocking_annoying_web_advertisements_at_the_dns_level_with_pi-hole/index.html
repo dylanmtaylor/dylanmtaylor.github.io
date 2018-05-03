@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <head>
-	<title>Dylan Taylor's Personal Blog - Migrating from Wordpress to Custom Code and Jekyll</title>
+	<title>Dylan Taylor's Personal Blog - Blocking Annoying Web Advertisements at the DNS Level with Pi-Hole</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/css/style.css"  type="text/css" media="all" />
 	<link rel="stylesheet" href="/css/syntax.css" type="text/css" media="all" />
@@ -61,9 +61,17 @@
 			<div class="title"><h2><a href="/pages/blog");'>My Personal Blog</a></h2></div>
 			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
 			<div id="post">
-	<h1>Migrating from Wordpress to Custom Code and Jekyll</h1>
-	<p class="meta">20 Apr 2015</p>
-	<p><a href="http://jekyllrb.com/"><img src="/images/blog/2015/04/jekyll.png" alt="Jekyll" width="250px" height="115px" /></a>If you haven’t noticed, I recently recreated everything you see on this website from scratch. I decided to make my own layout and serve static content using LEMP rather than simply relying on the WordPress CMS in order to generate content. This make more sense from a coding perspective, as it gives me much more control over the content on my website. In addition, I made the decision to open source everything on this entire site,  <a href="https://github.com/dylanmtaylor/dylanmtaylor.github.io">publishing it all to GitHub</a> for anyone who wants to study, use, or comment on the site. In addition to this system being more secure as I am no longer concerned with WordPress vulnerabilities, it’s <em>much</em> faster. This is because the server is no longer rendering anything using PHP, but rather serving code that was pre-generated using the <em>jekyll build</em> command in my blog directory and then pushed into the repository. I’m also taking advantage of Instant Click for prefetching still, which makes pages load almost as soon as the link is clicked on. It took me a while to migrate all of the old content that was on my WordPress blog, but very little if any actual content was lost, and I manually copied in all of the old images. The new design should be much more pleasant to use, and I plan on adding many more features over time, such as possible mobile device support. Stay tuned for more updates!</p>
+	<h1>Blocking Annoying Web Advertisements at the DNS Level with Pi-Hole</h1>
+	<p class="meta">03 May 2018</p>
+	<p>If you’re like myself and many other users on the internet, you probably hate advertisements. Not only are they annoying with automatically playing videos, covering up web content and being a vector for malware transmission from unscrupulous advertisement platform, but they can drain your battern on your phone and eat up your bandwidth if you are on a fixed data plan.</p>
+
+<p>There are many reasons to hate advertisements but fortunately users are fighting back. One way is through browser extensions. I personally use a free and open source one called <a href="https://github.com/gorhill/uBlock">uBlock Origin</a> on all of my devices. It is independently operated, lightweight and does not support the acceptable ads program, unlike Adblok Plus, which is partially funded by advertisers paying to get unblocked. See the conflict of interest here?</p>
+
+<p>While these extensions are fantastic, they’re only a start. Unfortunately, at least in mobile applications like the one from <a href="https://www.wunderground.com/">Weather Underground</a>, which is quite a good app by the way, there is no way to block advertisements without paying a fee to the developer. The mobile version of Chrome also does not support extensions. I’ve lot count of the number of times I’ve seen fake “Your Android has been infected” pages that make noises and vibrate the phone. It’s obnoxious. Until this isn’t the case anymore, browsing the mobile web without an adblocker is a chore.</p>
+
+<p>So, how can we block ads across all the devices in the network, including phones without installing special software on anything? Simple: by running our own DNS server. DNS, short for Domain Name System, is a technology that handles domain lookups. When you type dylanmtaylor.com into your browser, your browser doesn’t know where to go to make a connection from the name. It contacts a DNS server to translate the humanly readable domain name into an IP address, which your browser then uses to make the connection. If we intentionally override this using our own DNS server, we can point adomain to something else, like the DNS server itself or 127.0.0.1. By doing this, the domain is effectively blocked.</p>
+
+<p>This is the core concept behind <a href="https://pi-hole.net/">Pi-Hole</a>. With nothing more than a cheap <a href="https://www.raspberrypi.org/">Raspberry Pi</a> single board computer, you can run your own DNS server. The setup is simple and described on the <a href="https://pi-hole.net/">Pi-Hole</a> website. Simply connect your Pi to the network, setup static IP address allocation for the Pi’s MAC address in your router’s admin interfeace, install the software (probably on top of <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian Lite</a>), and finally reconfigure the DNS server entries of your router to point to the local Pi-Hole server. By doing this, so long as you are connected to your wireless network, you will be exposed to significantly less advertisements unless you manually configure your devices to use an alternative DNS server such as 1.1.1.1 from CloudFlare. If you enjoy Pi-Hole, I’d like to suggest <a href="https://pi-hole.net/donate/">donating a few dollars to them</a>. The project is maintained entirely by volunteers and could use all the help they can get to fund the development.</p>
 
 
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
@@ -77,13 +85,13 @@
   <h2>Related Posts</h2>
   <ul class="posts">
     
-      <li><span>03 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/03/blocking_annoying_web_advertisements_at_the_dns_level_with_pi-hole/");'>Blocking Annoying Web Advertisements at the DNS Level with Pi-Hole</a></li>
-    
       <li><span>03 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/03/celebrate_world_password_day_with_a_password_manager/");'>Celebrate World Password Day with a Password Manager</a></li>
     
       <li><span>01 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/01/checking_what_ip_addresses_connected_to_your_nginx_server/");'>Checking What IP Addresses Connected to Your Nginx Server</a></li>
     
       <li><span>28 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/28/fixing_ssh_key_permissions/");'>Fixing SSH Key Permissions</a></li>
+    
+      <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/how-my-server-is-deployed-and-configured-using-ansible/");'>How My Server is Deployed and Configured Using Ansible</a></li>
     
   </ul>
 </div>
@@ -96,8 +104,8 @@
 </div>
 <script type="text/javascript">
     var disqus_shortname = 'dylanmtaylor'; 
-    var disqus_identifier = '/2015/04/20/blog-migrated-from-wordpress-to-jekyll';
-    var disqus_url = 'http://dylanmtaylor.com/2015/04/20/blog-migrated-from-wordpress-to-jekyll/';
+    var disqus_identifier = '/2018/05/03/blocking_annoying_web_advertisements_at_the_dns_level_with_pi-hole';
+    var disqus_url = 'http://dylanmtaylor.com/2018/05/03/blocking_annoying_web_advertisements_at_the_dns_level_with_pi-hole/';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
