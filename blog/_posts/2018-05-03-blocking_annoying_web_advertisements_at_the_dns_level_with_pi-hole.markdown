@@ -10,7 +10,7 @@ author:
 date: '2018-05-03T18:39:19-04:00'
 ---
 
-If you're like myself and many other users on the internet, you probably hate advertisements. Not only are they annoying with automatically playing videos, covering up web content and being a vector for malware transmission from unscrupulous advertisement platform, but they can drain your battern on your phone and eat up your bandwidth if you are on a fixed data plan.
+<a href="https://pi-hole.net/"><img src="/images/blog/2018/05/Vortex-R.png" alt="Pi-Hole" width="100px" height="100px" style="float:left"/></a> If you're like myself and many other users on the internet, you probably hate advertisements. Not only are they annoying with automatically playing videos, covering up web content and being a vector for malware transmission from unscrupulous advertisement platform, but they can drain your battern on your phone and eat up your bandwidth if you are on a fixed data plan.
 
 There are many reasons to hate advertisements but fortunately users are fighting back. One way is through browser extensions. I personally use a free and open source one called [uBlock Origin](https://github.com/gorhill/uBlock) on all of my devices. It is independently operated, lightweight and does not support the acceptable ads program, unlike Adblok Plus, which is partially funded by advertisers paying to get unblocked. See the conflict of interest here?
 
