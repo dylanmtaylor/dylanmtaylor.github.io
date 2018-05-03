@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <head>
-	<title>Dylan Taylor's Personal Blog - A Fresh Start - Archiving Some Old Blog Content</title>
+	<title>Dylan Taylor's Personal Blog - Celebrate World Password Day with a Password Manager</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/css/style.css"  type="text/css" media="all" />
 	<link rel="stylesheet" href="/css/syntax.css" type="text/css" media="all" />
@@ -65,9 +65,21 @@
 			<div class="title"><h2><a href="/pages/blog");'>My Personal Blog</a></h2></div>
 			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
 			<div id="post">
-	<h1>A Fresh Start - Archiving Some Old Blog Content</h1>
-	<p class="meta">25 Apr 2018</p>
-	<p>You might have noticed it’s a bit empty here.  I haven’t updated this blog in quite some time (years), and I felt like it’s time for some spring cleaning. I’m going to be writing new content here about both personal projects as well as technology that I am passionate about, and really wanted to give the site a more professional look and feel. Some of the posts that I wrote from when I was first experimenting and learning to code aren’t necessarily reflective of my current knowledge and abilities, so I’ve unpublished them. That said, due to the nature of this site, everything is open source and tracked in version control, including <a href="https://github.com/dylanmtaylor/dylanmtaylor-ansible">the Ansible playbook</a> I use to deploy the site on a new virtual private server. Because of that, all of the old content is still in <a href="https://github.com/dylanmtaylor/dylanmtaylor.github.io">the git repository for this website</a>.</p>
+	<h1>Celebrate World Password Day with a Password Manager</h1>
+	<p class="meta">03 May 2018</p>
+	<p>Did you know that May 3rd is <a href="https://www.passwordday.org/">World Password Day</a>? One of the things that I suggest to all my friends is that they have a different password for every single login. I personally do this with the help of a tool called a password manager. Password managers can generate a different password for everything you use and remember it for you. I will freely admit that I don’t know 99% of my passwords, and that is a good thing, since not only are they all rather long and complex (usually I will use the longest length the site allows up to 99 characters, with maximum complexity), but they are also all unique. This is important since if you use the same password for everything you are at risk - criminals are constantly breaking into password databases, and if they manager to get one of your passwords, they have them all.</p>
+
+<p>There are a number of really good password managers out there. I personally use one called <a href="https://www.lastpass.com/">LastPass</a>, and pay for the subscription. The service is worth it to me since I like to have my passwords synced across multiple devices, but you can also use it for free. Unfortunately, LastPass is not an open source tool, and you have to trust that they are protecting your data adequately.</p>
+
+<p>If you want a free and open source password manager, I can highly recommend <a href="https://www.keepassx.org/">KeePassX</a>. It has the added benefit of not having to worry about syncing your data to the cloud - you control your own password list entirely. A coworker of mine introduced me to this tool, and I have since tried it out. It works really well, and can even automatically type in passwords. The only downside is that you have to worry about syncing your data manually if you wish to do so, and you are responsible for keeping password backups. If you lose these, getting access to your accounts will be quite painful.</p>
+
+<p>In observance of world password day, I will be reviewing and changing my older passwords in LastPass, and I suggest that everyone else do the same. This improves your overall security, and removes access to your accounts in the case that someone has managed to get your old password.</p>
+
+<p>While I’m writing about security, it is worth mentioning that in many cases, having a password alone is not sufficient for proper online security. One thing that everyone should be taking advantage of, especially because of the ubiquity of smartphones is two-factor authentication, or 2FA. 2FA is the idea of providing two pieces of data to login to your account - one that is based on something you know, a password, and one that is based on something you have.</p>
+
+<p>With modern 2FA like <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&amp;hl=en_US">Google Authenticator</a>, a pre-shared secret key is used to mathematically generate a numerical token based on the current time. This token is only valid for 30 seconds or so. When you enroll your device, the token is only sent to the device once and cannot be retrieved afterwards, so it cannot be duplicated. Because of this, you need your phone or authenticator application, such as <a href="https://authy.com/">Authy</a> in order to get the token needed to log in. I use two-factor authentication on pretty much everything that supports it, and this provides me with an extra layer of security, as even if you can compromise the password, a malicious actor would need to have physical access to the device containing the token in order to login.</p>
+
+<p>Anyways, happy password day, and stay safe out there!</p>
 
 
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
@@ -81,13 +93,13 @@
   <h2>Related Posts</h2>
   <ul class="posts">
     
-      <li><span>03 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/03/celebrate_world_password_day_with_a_password_manager/");'>Celebrate World Password Day with a Password Manager</a></li>
-    
       <li><span>30 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/30/checking_what_ip_addresses_connected_to_your_nginx_server/");'>Checking What IP Addresses Connected to Your Nginx Server</a></li>
     
       <li><span>28 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/28/fixing_ssh_key_permissions/");'>Fixing SSH Key Permissions</a></li>
     
       <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/how-my-server-is-deployed-and-configured-using-ansible/");'>How My Server is Deployed and Configured Using Ansible</a></li>
+    
+      <li><span>27 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/27/rapidly-setting-up-my-linux-desktop-using-a-makefile/");'>Rapidly Setting Up My Linux Desktop Using a Makefile</a></li>
     
   </ul>
 </div>
@@ -100,8 +112,8 @@
 </div>
 <script type="text/javascript">
     var disqus_shortname = 'dylanmtaylor'; 
-    var disqus_identifier = '/2018/04/25/a-fresh-start-archiving-old-blog-content';
-    var disqus_url = 'http://dylanmtaylor.com/2018/04/25/a-fresh-start-archiving-old-blog-content/';
+    var disqus_identifier = '/2018/05/03/celebrate_world_password_day_with_a_password_manager';
+    var disqus_url = 'http://dylanmtaylor.com/2018/05/03/celebrate_world_password_day_with_a_password_manager/';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
