@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <head>
-	<title>Dylan Taylor's Personal Blog - Moving Hosts Again, This Time with NVMe Storage</title>
+	<title>Dylan Taylor's Personal Blog - Awesome New Share Bar Added to My Blog</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/css/normalize.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="/css/style.css"  type="text/css" media="all" />
@@ -64,57 +64,51 @@
 			<div class="title"><h2><a href="/pages/blog");'>My Personal Blog</a></h2></div>
 			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
 			<div id="post">
-	<h1>Moving Hosts Again, This Time with NVMe Storage</h1>
-	<p class="meta">26 Apr 2018</p>
-	<p>For the past two years, this site has been hosted with <a href="https://joesdatacenter.com/">Joe’s Datacenter</a> on a rather overkill dedicated machine with some seriously beefy specs (dual Xeon L5420 CPUs, 8GB RAM, 20TB of bandwidth on a 1Gbit dedicated port, 500GB HDD). The service was around $20/month as I got it with a promotional code, and I had this site and about 3 or 4 other virtual machines running on the box that I’ve been using to test various things out, as well as <a href="http://folding.stanford.edu/">Folding@home</a> It was fun to play with, but it was getting rather expensive for something I’m doing as a hobby. Regrettably, it was time to move on to something more reasonable. I also decided that if I wanted virtual machines for short term use, I’d use the around $150 in credit I still have left with <a href="https://www.vultr.com/?ref=6805270">Vultr</a> to test things out rather than spinning up new ones on a bare-metal server. The SSD performance of Vultr on the cheapest of plans outperformed my server by quite a bit, and since they bill hourly, it’s a win-win.</p>
-
-<p>However, I wasn’t 100% sure that I wanted to move my site back to Vultr. I decided to look into my options, and compare the value per cost. Enter <a href="https://lowendbox.com/">Low End Box</a>, one of the best places to find really, really good deals on hosting. I’m not sponsored by them at all - they’re seriously that good. Need a simple machine for a proxy server? Through Low End Box, I’ve discovered that it is actually possible to pay $1 per month (not paid in advance) for a server through a provider called <a href="https://billing.virmach.com/aff.php?aff=4261">VirMach</a>. Yes, that’s an affiliate link, but I’m not sure I’ll actually use the credit if I do get any. So, why do I have an account in the first place? Well, I decided to try it out. I am willing to lose $1 after all. Believe it or not, my $1 got me a working “Micro+”” CentOS 6 server that I used for a month, with 10GB of disk space and 192GB of RAM. I used it for a bit to run an OpenVPN tunnel, and learned how quickly you can hit a 250GB bandwidth cap. That said, the service worked very reliably for me, and it was enlightening to see just how low cost you can get a VM.</p>
-
-<p>While VirMach was cool, I wasn’t sold. I don’t like OpenVZ virtual machines since they are much more limited than KVM, and have to share the host kernel, and I experienced some issues with the VirMach client portal being offline in the short time I had service with them which isn’t exactly reassuring. I began my search again, this time looking for KVM hosts, and in the process, I decided I wanted my server to run on high-end NVMe storage. NVMe is one of the highest performance storage device interfaces available, far exceeding the performance of SATA SSDs. It’s also far more expensive per GB. Eventually, I found the provider I was looking for: <a href="https://hosthatch.com/a?id=985">HostHatch</a>. They are a much smaller company, with only 7 years experience hosting servers, but I decided to take a chance, and ordered an NVMe server with 2GB of RAM and 1 TB bandwidth. I was able to use a promotion offered through LowEndBox, so I got the 2GB server for the price of the 1GB server not currently listed on their homepage with the only major difference being less dedicated CPU, and 10GB of disk space instead of 20GB. The price was $30/year. That’s right, for what I was paying for less than 2 months of service with Joe’s Datacenter, I was now getting a whole year of service. Granted, I was getting a whole lot less resources, but it is enough to meet my needs for now.</p>
-
-<p>So far, I have not had any issues with the service, and I would highly recommend it. It’s not as well known as AWS, DigitalOcean, Vultr, or RamNode, but the value is certainly there. Speaking of value, did I mention that this server has an NVMe drive? It may not sound like that big of a deal, but when installing packages, or doing system upgrades or reinstalling, it is lightning-fast. There are only a few things I wish that they would change, and I’ve made several suggestions to them via feedback tickets. I’ve decided to keep the service, and have prepaid the server for 5 years (I was paying more than that per year before), in the hopes that the hosting company does not go out of business. Best of luck, HostHatch!</p>
+	<h1>Awesome New Share Bar Added to My Blog</h1>
+	<p class="meta">04 May 2018</p>
+	<p>For the longest time, I’ve had no social media sharing buttons on this site other than a <a href="https://plus.google.com/">Google Plus</a> button. I decided to remove the Disqus comments section from the site since nobody was using it anyways, and realized that I could take the opportunity to update the interface. I searched the web for <a href="https://jekyllrb.com/">Jekyll</a> social media share buttons and came across <a href="https://mycyberuniverse.com/web/social-media-share-bar-jekyll-blog-website.html">an amazing blog post explaining how to add them with some sample code</a>. After following the tutorial and modifying the HTML and CSS a little bit to better fit with how I want the buttons to be displayed, I am pleased to say that you can now click the share buttons to quickly post a link to any of my content on many different platforms and even email it. I’ve got support for Facebook, Twitter, Reddit, Google Plus, Tumblr and LinkedIn enabled. One feature of this solution that I really like is that the buttons have icons on them from the <a href="https://fontawesome.com/">Font Awesome</a> project. These are all vector social logos that should render quite nicely on any modern browser. Feel free to try it out below if you’d like. It will prompt you to edit the post before sharing it.</p>
 
 
 	<div id="share-bar">
 
     <div class="share-buttons">
-        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://dylanmtaylor.com/pages/blog/2018/04/26/ive-moved-hosting-providers-again/"
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://dylanmtaylor.com/pages/blog/2018/05/04/awesome_new_share_bar_added_to_my_blog/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" >
             <i class="fa fa-facebook-official share-button"> facebook</i>
         </a>
 
-        <a  href="https://twitter.com/intent/tweet?text=Moving Hosts Again, This Time with NVMe Storage&url=http://dylanmtaylor.com/pages/blog/2018/04/26/ive-moved-hosting-providers-again/"
+        <a  href="https://twitter.com/intent/tweet?text=Awesome New Share Bar Added to My Blog&url=http://dylanmtaylor.com/pages/blog/2018/05/04/awesome_new_share_bar_added_to_my_blog/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" >
             <i class="fa fa-twitter share-button"> twitter</i>
         </a>
 
-        <a  href="http://www.reddit.com/submit?url=http://dylanmtaylor.com/pages/blog/2018/04/26/ive-moved-hosting-providers-again/"
+        <a  href="http://www.reddit.com/submit?url=http://dylanmtaylor.com/pages/blog/2018/05/04/awesome_new_share_bar_added_to_my_blog/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Reddit" >
             <i class="fa fa-reddit-alien share-button"> reddit</i>
         </a>
 
-        <a  href="https://plus.google.com/share?url=http://dylanmtaylor.com/pages/blog/2018/04/26/ive-moved-hosting-providers-again/"
+        <a  href="https://plus.google.com/share?url=http://dylanmtaylor.com/pages/blog/2018/05/04/awesome_new_share_bar_added_to_my_blog/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Google+" >
             <i class="fa fa-google-plus share-button"> google</i>
         </a>
 
-        <a  href="http://www.tumblr.com/share/link?url=http://dylanmtaylor.com/pages/blog/2018/04/26/ive-moved-hosting-providers-again/"
+        <a  href="http://www.tumblr.com/share/link?url=http://dylanmtaylor.com/pages/blog/2018/05/04/awesome_new_share_bar_added_to_my_blog/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Tumblr" >
             <i class="fa fa-tumblr share-button"> tumblr</i>
         </a>
 
-        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://dylanmtaylor.com/pages/blog/2018/04/26/ive-moved-hosting-providers-again/&title=Moving Hosts Again, This Time with NVMe Storage&summary=&source="
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://dylanmtaylor.com/pages/blog/2018/05/04/awesome_new_share_bar_added_to_my_blog/&title=Awesome New Share Bar Added to My Blog&summary=&source="
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on LinkedIn" >
             <i class="fa fa-linkedin share-button"> linkedin</i>
         </a>
 
-        <a  href="mailto:?subject=Moving Hosts Again, This Time with NVMe Storage&amp;body=Check out this site http://dylanmtaylor.com/pages/blog/2018/04/26/ive-moved-hosting-providers-again/"
+        <a  href="mailto:?subject=Awesome New Share Bar Added to My Blog&amp;body=Check out this site http://dylanmtaylor.com/pages/blog/2018/05/04/awesome_new_share_bar_added_to_my_blog/"
             title="Share via Email" >
             <i class="fa fa-envelope share-button"> email</i>
         </a>
@@ -131,13 +125,13 @@
   <h2>Related Posts</h2>
   <ul class="posts">
     
-      <li><span>04 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/04/awesome_new_share_bar_added_to_my_blog/");'>Awesome New Share Bar Added to My Blog</a></li>
-    
       <li><span>03 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/03/blocking_annoying_web_advertisements_at_the_dns_level_with_pi-hole/");'>Blocking Annoying Web Advertisements at the DNS Level with Pi-Hole</a></li>
     
       <li><span>03 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/03/celebrate_world_password_day_with_a_password_manager/");'>Celebrate World Password Day with a Password Manager</a></li>
     
       <li><span>01 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/01/checking_what_ip_addresses_connected_to_your_nginx_server/");'>Checking What IP Addresses Connected to Your Nginx Server</a></li>
+    
+      <li><span>28 Apr 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/04/28/fixing_ssh_key_permissions/");'>Fixing SSH Key Permissions</a></li>
     
   </ul>
 </div>
