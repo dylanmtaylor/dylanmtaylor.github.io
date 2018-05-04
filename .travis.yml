@@ -25,7 +25,7 @@ os:
 sudo: false
 
 install:
-- gem install jekyll
+- gem install jekyll jekyll-feed liquid
 
 before_script:
 - python build_site.py
