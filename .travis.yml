@@ -1,10 +1,10 @@
 git:
   depth: 10
-  
+
 branches:
   only:
   - master
-  
+
 language: ruby
 
 rvm:
@@ -47,7 +47,7 @@ after_script:
 - git clone --branch master ${REPO} ${TARGET_DIR}
 - rsync -rvt --del --exclude=".git" /home/travis/build/dylanmtaylor/dylanmtaylor.github.io/ $TARGET_DIR
 - cd $TARGET_DIR
-- git add -A .
+- if [ "$(git status | grep 'modified:' | wc -l)" -gt "1" ]; then git add -A .; fi # Fix for feed updating forever bug
 - git commit -m "Built from commit $REV"
 - git push origin master
 
