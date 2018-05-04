@@ -25,7 +25,7 @@ os:
 sudo: false
 
 install:
-- gem install jekyll jekyll-feed jekyll-sass-converter liquid colorator kramdown mercenary rouge safe_yaml
+- gem install jekyll jekyll-feed jekyll-sass-converter liquid colorator kramdown mercenary rouge safe_yaml github-pages
 
 before_script:
 - python build_site.py
