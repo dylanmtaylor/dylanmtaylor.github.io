@@ -3,6 +3,11 @@
     font-size: 20px;
 }
 
+/* Remove underline from links */
+#share-bar a {
+    text-decoration: none;
+}
+
 /* Title */
 #share-bar h4 {
     margin-bottom: 10px;
