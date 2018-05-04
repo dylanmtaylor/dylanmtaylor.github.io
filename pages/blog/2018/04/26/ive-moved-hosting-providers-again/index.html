@@ -11,12 +11,6 @@
 	<link rel="icon" href="/images/favicon.png">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
 	<meta name="author" content="Dylan Taylor" />
-	<script type="text/javascript">
-		/* Try to make the blog viewing experience less awful on mobile. Users can use back buttons to get back to the site. */
-		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-			document.getElementsByTagName('body')[0].innerHTML = "<center>" + document.getElementById('pagecontent').innerHTML + "</center>";
-		}
-	</script>
 </head>
 <body>
 	<div class="left">
@@ -167,5 +161,11 @@
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/instantclick/3.0.1/instantclick.min.js" data-no-instant></script>
 	<script data-no-instant>InstantClick.init();</script>
+	<script type="text/javascript">
+		/* Try to make the blog viewing experience less awful on mobile. Users can use back buttons to get back to the site. */
+		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+			document.getElementsByTagName('body')[0].innerHTML = "<center>" + document.getElementById('pagecontent').innerHTML + "</center>";
+		}
+	</script>
 </body>
 <html>
