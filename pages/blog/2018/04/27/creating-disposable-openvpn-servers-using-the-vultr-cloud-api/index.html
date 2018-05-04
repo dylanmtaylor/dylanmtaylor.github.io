@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="/css/mobile.css" type="text/css" media="handheld, screen and (max-width: 650px), screen and (max-device-width: 480px)" />
 	<link rel="stylesheet" href="/css/share-bar.css" type="text/css" media="all" />
 	<link rel="icon" href="/images/favicon.png">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
 	<meta name="author" content="Dylan Taylor" />
 </head>
 <body>
@@ -74,8 +75,55 @@
 <p>The <a href="https://github.com/dylanmtaylor/instant-vultr-vpn-server">repository for the tool</a>° actually contains a fully configured and compatible Go installation local to the project. This reduces the requirement on the users to configure anything, and it prevents the script from adding packages or cluttering their system. It’s very self-contained. In order to use it, all you need to do is checkout the repository, export your Vultr API key from the user portal to a variable via <code>export VULTR_API_KEY=[YOUR_API_KEY_HERE]</code> and run the <code>run.sh</code> script. In seconds, a startup script will be generated adn added to your account with a datestamp in the name, and a CentOS 7 server will be ordered using it. The server costs only   $0.007/hr, so 10 hours of usage is only 7 cents of Vultr credit. If you’re not using the VPN 24/7, this is far more practical than a cheap $1 server. Another advantage is that you can cancel the server at any time and rather than paying the full $5/month, you’re paying a prorated amount. When your server is cancelled, the 1TB of alloted bandwidth is reset. The bandwidth limit is associated with the subscription. In other words, you can cancel a server when you’re low on bandwidth and within minutes, for no additional cost, have another one with a fresh limit. Once the server is done booting up and running the startup script, a file called <code>openvpn_cert.ovpn</code> will be created in /root on the server. The tool automatically connects to the server after a set interval of time and copies this certificate to the working directory on your computer. You can then use the certificate file to connect to your new server as you would with any other OpenVPN connection. Happy tunneling!</p>
 
 
-    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-    <g:plusone></g:plusone>
+	<div id="share-bar">
+
+    <h4>Share this:</h4>
+
+    <div class="share-buttons">
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://dylanmtaylor.com/pages/blog/2018/04/27/creating-disposable-openvpn-servers-using-the-vultr-cloud-api/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-official share-button"> facebook</i>
+        </a>
+
+        <a  href="https://twitter.com/intent/tweet?text=Creating Disposable OpenVPN Servers Using the Vultr Cloud API&url=http://dylanmtaylor.com/pages/blog/2018/04/27/creating-disposable-openvpn-servers-using-the-vultr-cloud-api/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter share-button"> twitter</i>
+        </a>
+
+        <a  href="http://www.reddit.com/submit?url=http://dylanmtaylor.com/pages/blog/2018/04/27/creating-disposable-openvpn-servers-using-the-vultr-cloud-api/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-alien share-button"> reddit</i>
+        </a>
+
+        <a  href="https://plus.google.com/share?url=http://dylanmtaylor.com/pages/blog/2018/04/27/creating-disposable-openvpn-servers-using-the-vultr-cloud-api/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus share-button"> google</i>
+        </a>
+
+        <a  href="http://www.tumblr.com/share/link?url=http://dylanmtaylor.com/pages/blog/2018/04/27/creating-disposable-openvpn-servers-using-the-vultr-cloud-api/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr share-button"> tumblr</i>
+        </a>
+
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://dylanmtaylor.com/pages/blog/2018/04/27/creating-disposable-openvpn-servers-using-the-vultr-cloud-api/&title=Creating Disposable OpenVPN Servers Using the Vultr Cloud API&summary=&source="
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin share-button"> linkedin</i>
+        </a>
+
+        <a  href="mailto:?subject=Creating Disposable OpenVPN Servers Using the Vultr Cloud API&amp;body=Check out this site http://dylanmtaylor.com/pages/blog/2018/04/27/creating-disposable-openvpn-servers-using-the-vultr-cloud-api/"
+            title="Share via Email" >
+            <i class="fa fa-envelope share-button"> email</i>
+        </a>
+    </div>
+
+</div>
+
 
 </div>
 

@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="/css/mobile.css" type="text/css" media="handheld, screen and (max-width: 650px), screen and (max-device-width: 480px)" />
 	<link rel="stylesheet" href="/css/share-bar.css" type="text/css" media="all" />
 	<link rel="icon" href="/images/favicon.png">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
 	<meta name="author" content="Dylan Taylor" />
 </head>
 <body>
@@ -68,8 +69,55 @@
 	<p><a href="http://jekyllrb.com/"><img src="/images/blog/2015/04/jekyll.png" alt="Jekyll" width="250px" height="115px" style="float:left" /></a>If you haven’t noticed, I recently recreated everything you see on this website from scratch. I decided to make my own layout and serve static content using LEMP rather than simply relying on the WordPress CMS in order to generate content. This make more sense from a coding perspective, as it gives me much more control over the content on my website. In addition, I made the decision to open source everything on this entire site,  <a href="https://github.com/dylanmtaylor/dylanmtaylor.github.io">publishing it all to GitHub</a> for anyone who wants to study, use, or comment on the site. In addition to this system being more secure as I am no longer concerned with WordPress vulnerabilities, it’s <em>much</em> faster. This is because the server is no longer rendering anything using PHP, but rather serving code that was pre-generated using the <em>jekyll build</em> command in my blog directory and then pushed into the repository. I’m also taking advantage of Instant Click for prefetching still, which makes pages load almost as soon as the link is clicked on. It took me a while to migrate all of the old content that was on my WordPress blog, but very little if any actual content was lost, and I manually copied in all of the old images. The new design should be much more pleasant to use, and I plan on adding many more features over time, such as possible mobile device support. Stay tuned for more updates!</p>
 
 
-    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-    <g:plusone></g:plusone>
+	<div id="share-bar">
+
+    <h4>Share this:</h4>
+
+    <div class="share-buttons">
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://dylanmtaylor.com/pages/blog/2015/04/20/blog-migrated-from-wordpress-to-jekyll/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-official share-button"> facebook</i>
+        </a>
+
+        <a  href="https://twitter.com/intent/tweet?text=Migrating from Wordpress to Custom Code and Jekyll&url=http://dylanmtaylor.com/pages/blog/2015/04/20/blog-migrated-from-wordpress-to-jekyll/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter share-button"> twitter</i>
+        </a>
+
+        <a  href="http://www.reddit.com/submit?url=http://dylanmtaylor.com/pages/blog/2015/04/20/blog-migrated-from-wordpress-to-jekyll/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-alien share-button"> reddit</i>
+        </a>
+
+        <a  href="https://plus.google.com/share?url=http://dylanmtaylor.com/pages/blog/2015/04/20/blog-migrated-from-wordpress-to-jekyll/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus share-button"> google</i>
+        </a>
+
+        <a  href="http://www.tumblr.com/share/link?url=http://dylanmtaylor.com/pages/blog/2015/04/20/blog-migrated-from-wordpress-to-jekyll/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr share-button"> tumblr</i>
+        </a>
+
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://dylanmtaylor.com/pages/blog/2015/04/20/blog-migrated-from-wordpress-to-jekyll/&title=Migrating from Wordpress to Custom Code and Jekyll&summary=&source="
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin share-button"> linkedin</i>
+        </a>
+
+        <a  href="mailto:?subject=Migrating from Wordpress to Custom Code and Jekyll&amp;body=Check out this site http://dylanmtaylor.com/pages/blog/2015/04/20/blog-migrated-from-wordpress-to-jekyll/"
+            title="Share via Email" >
+            <i class="fa fa-envelope share-button"> email</i>
+        </a>
+    </div>
+
+</div>
+
 
 </div>
 
