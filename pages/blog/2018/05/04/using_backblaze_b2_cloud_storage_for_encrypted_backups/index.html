@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <head>
-	<title>Dylan Taylor's Personal Blog - How to install the Mainline Kernel on Enterprise Linux 7 the Easy Way</title>
+	<title>Dylan Taylor's Personal Blog - Using BackBlaze B2 Cloud Storage for Encrypted Offsite Backups</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/css/normalize.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="/css/style.css"  type="text/css" media="all" />
@@ -64,61 +64,51 @@
 			<div class="title"><h2><a href="/pages/blog");'>My Personal Blog</a></h2></div>
 			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
 			<div id="post">
-	<h1>How to install the Mainline Kernel on Enterprise Linux 7 the Easy Way</h1>
-	<p class="meta">27 Apr 2018</p>
-	<p>Red Hat Enterprise Linux and CentOS, which is based off of RHEL source code are known for their stability. They are supported for a very long time (10+ years), and other than backporting security fixes, very little actually changes in each point release. For various reasons, you may want to install a newer kernel than the one built by Red Hat. This could be due to better driver support, performance increases, etc. <a href="https://elrepo.org/tiki/tiki-index.php">ELRepo</a> is a project that provides hardware-related packages and newer kernels that are compatible with enterprise Linux distributions. As part of building out my site and running enterprise Linux distributions on my own hardware, I install their kernel-ml package. Unfortunately, on a headless system this is a little bit painful, since GRUB likes to default to the version that was previously booted, so even after a reboot you won’t see the new kernel applied. I also wanted to perform this operation in a “one line” automated fashion via Ansible, and needed to keep it simple for the sake of making it easy to do.</p>
-
-<p>I found a Markdown file with steps to automatically apply the mainline kernel update from <a href="https://github.com/pgporada">Phil Porada</a>, and decided that it would be sufficiently nicer to have it in <a href="https://github.com/dylanmtaylor/enterprise-linux-7-mainline-kernel-installer">a repository</a> so that you can run it as a shell script. If you’re interested in using this (or any script for that matter) I suggest you review the source code before doing so. Never pipe anything to bash without reading the code to make sure it’s safe. That said, the process is very easy. Simply run:</p>
-
-<p><code>curl https://raw.githubusercontent.com/dylanmtaylor/enterprise-linux-7-mainline-kernel-installer/master/mainline-kernel.sh | sudo bash</code></p>
-
-<p>and then reboot the server. Once back into the system, I advise you to remove the original kernel packages with this command:</p>
-
-<p><code>sudo yum remove kernel kernel-debug-devel</code></p>
-
-<p>This will ensure that the kernel-ml package is the only package in the GRUB menu entries and that it is the one used as default when a new version comes out and the update is applied.</p>
+	<h1>Using BackBlaze B2 Cloud Storage for Encrypted Offsite Backups</h1>
+	<p class="meta">04 May 2018</p>
+	<p>As of right now, one of the cheapest offsite backup solutions by far is <a href="https://www.backblaze.com/b2/cloud-storage.html">BackBlaze B2</a>, with <a href="https://aws.amazon.com/s3/">Amazon S3</a> trailing behind. For a while now, I’ve been using this solution with a piece of software called <a href="https://restic.net/">restic</a> to store encrypted backups of some of my important documents offsite. By doing so, should my Western Digital 8TB external hard drive (which I currently use for all of my backups) fail, or get stolen (it’s strongly encrypted, so my data is safe), I have a solution to get the files I need the most back. While I store anything and everything on my external, I am limiting the files in the offsite backup to things that are important. It’s not economical to push things like your music/movie collection, Linux ISOs and virtual machine hard drive images to the BackBlaze cloud. Ubuntu’s repositories contain the restic binaries, but other distributions may require you to install a new repository or build from source. I could write up a guide on how to set this up, but <a href="https://fedoramagazine.org/">Fedora Magazine</a> wrote <a href="https://fedoramagazine.org/use-restic-encrypted-backups/">an excellent article on how to setup this exact solution</a>.  I’d be doing anyone reading this a disservice trying to write up an article that better explains the setup steps. If you’re not a huge fan of restic, <a href="http://duplicity.nongnu.org/">duplicity</a> also supports BackBlaze B2, and is fairly easy to setup from what I hear.</p>
 
 
 	<div id="share-bar">
 
     <div class="share-buttons">
-        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://dylanmtaylor.com/pages/blog/2018/04/27/how-to-install-the-mainline-linux-kernel-on-rhelcentos-from-elrepo-the-easy-way/"
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://dylanmtaylor.com/pages/blog/2018/05/04/using_backblaze_b2_cloud_storage_for_encrypted_backups/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" >
             <i class="fa fa-facebook-official share-button"> facebook</i>
         </a>
 
-        <a  href="https://twitter.com/intent/tweet?text=How to install the Mainline Kernel on Enterprise Linux 7 the Easy Way&url=http://dylanmtaylor.com/pages/blog/2018/04/27/how-to-install-the-mainline-linux-kernel-on-rhelcentos-from-elrepo-the-easy-way/"
+        <a  href="https://twitter.com/intent/tweet?text=Using BackBlaze B2 Cloud Storage for Encrypted Offsite Backups&url=http://dylanmtaylor.com/pages/blog/2018/05/04/using_backblaze_b2_cloud_storage_for_encrypted_backups/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" >
             <i class="fa fa-twitter share-button"> twitter</i>
         </a>
 
-        <a  href="http://www.reddit.com/submit?url=http://dylanmtaylor.com/pages/blog/2018/04/27/how-to-install-the-mainline-linux-kernel-on-rhelcentos-from-elrepo-the-easy-way/"
+        <a  href="http://www.reddit.com/submit?url=http://dylanmtaylor.com/pages/blog/2018/05/04/using_backblaze_b2_cloud_storage_for_encrypted_backups/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Reddit" >
             <i class="fa fa-reddit-alien share-button"> reddit</i>
         </a>
 
-        <a  href="https://plus.google.com/share?url=http://dylanmtaylor.com/pages/blog/2018/04/27/how-to-install-the-mainline-linux-kernel-on-rhelcentos-from-elrepo-the-easy-way/"
+        <a  href="https://plus.google.com/share?url=http://dylanmtaylor.com/pages/blog/2018/05/04/using_backblaze_b2_cloud_storage_for_encrypted_backups/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Google+" >
             <i class="fa fa-google-plus share-button"> google</i>
         </a>
 
-        <a  href="http://www.tumblr.com/share/link?url=http://dylanmtaylor.com/pages/blog/2018/04/27/how-to-install-the-mainline-linux-kernel-on-rhelcentos-from-elrepo-the-easy-way/"
+        <a  href="http://www.tumblr.com/share/link?url=http://dylanmtaylor.com/pages/blog/2018/05/04/using_backblaze_b2_cloud_storage_for_encrypted_backups/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Tumblr" >
             <i class="fa fa-tumblr share-button"> tumblr</i>
         </a>
 
-        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://dylanmtaylor.com/pages/blog/2018/04/27/how-to-install-the-mainline-linux-kernel-on-rhelcentos-from-elrepo-the-easy-way/&title=How to install the Mainline Kernel on Enterprise Linux 7 the Easy Way&summary=&source="
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://dylanmtaylor.com/pages/blog/2018/05/04/using_backblaze_b2_cloud_storage_for_encrypted_backups/&title=Using BackBlaze B2 Cloud Storage for Encrypted Offsite Backups&summary=&source="
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on LinkedIn" >
             <i class="fa fa-linkedin share-button"> linkedin</i>
         </a>
 
-        <a  href="mailto:?subject=How to install the Mainline Kernel on Enterprise Linux 7 the Easy Way&amp;body=Check out this blog post http://dylanmtaylor.com/pages/blog/2018/04/27/how-to-install-the-mainline-linux-kernel-on-rhelcentos-from-elrepo-the-easy-way/"
+        <a  href="mailto:?subject=Using BackBlaze B2 Cloud Storage for Encrypted Offsite Backups&amp;body=Check out this blog post http://dylanmtaylor.com/pages/blog/2018/05/04/using_backblaze_b2_cloud_storage_for_encrypted_backups/"
             title="Share via Email" >
             <i class="fa fa-envelope share-button"> email</i>
         </a>
@@ -135,13 +125,13 @@
   <h2>Related Posts</h2>
   <ul class="posts">
     
-      <li><span>04 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/04/using_backblaze_b2_cloud_storage_for_encrypted_backups/");'>Using BackBlaze B2 Cloud Storage for Encrypted Offsite Backups</a></li>
-    
       <li><span>04 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/04/awesome_new_share_bar_added_to_my_blog/");'>Awesome New Share Bar Added to My Blog</a></li>
     
       <li><span>03 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/03/blocking_annoying_web_advertisements_at_the_dns_level_with_pi-hole/");'>Blocking Annoying Web Advertisements at the DNS Level with Pi-Hole</a></li>
     
       <li><span>03 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/03/celebrate_world_password_day_with_a_password_manager/");'>Celebrate World Password Day with a Password Manager</a></li>
+    
+      <li><span>01 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/01/checking_what_ip_addresses_connected_to_your_nginx_server/");'>Checking What IP Addresses Connected to Your Nginx Server</a></li>
     
   </ul>
 </div>
