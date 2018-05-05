@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Playing with Kubernetes for the first time
+title: Playing with Kubernetes for the First Time
 status: publish
 published: true
 author:
