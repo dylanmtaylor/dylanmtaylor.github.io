@@ -1,0 +1,272 @@
+<!DOCTYPE HTML>
+<head>
+	<title>Dylan Taylor's Personal Blog - Playing with Kubernetes for the first time</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="/css/normalize.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/css/style.css"  type="text/css" media="all" />
+	<link rel="stylesheet" href="/css/syntax.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/css/tablet.css" type="text/css" media="screen and (min-width:651px) and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px)" />
+	<link rel="stylesheet" href="/css/mobile.css" type="text/css" media="handheld, screen and (max-width: 650px), screen and (max-device-width: 480px)" />
+	<link rel="stylesheet" href="/css/share-bar.css" type="text/css" media="all" />
+	<link rel="icon" href="/images/favicon.png">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+	<meta name="author" content="Dylan Taylor" />
+</head>
+<body>
+	<div class="left">
+		<div class="logo_header">
+    <a href="/" target="_top" class="logo">
+        <img src="/images/circle.png" width="65px" height="65px" class="profile_pic">
+        <span id="top_heading">Dylan Taylor&#39;s</span>
+        <span id="btm_heading">Personal Website</span>
+    </a>
+</div>
+<strong>Site Navigation:</strong><br>
+<ul>
+    <li>
+        <a class="navlink" href="/pages/full/home/"><i class="fas fa-home navicon"></i>Home</a>
+    </li>
+    <li>
+        <a class="navlink" href="/pages/full/about-me/"><i class="fas fa-user navicon"></i>About Me</a>
+    </li>
+    <li>
+        <a class="navlink" href="/pages/blog/"><i class="fas fa-rss navicon"></i>Blog</a>
+    </li>
+    <li>
+        <a class="navlink" href="https://spamty.eu/mail/v4/802/7cO74MlBWX0e800928/"><i class="fas fa-envelope navicon"></i>Contact Me</a>
+    </li>
+    <li>
+        <a class="navlink" href="/pages/full/donate/"><i class="fas fa-donate navicon"></i>Donate</a>
+    </li>
+    <li>
+        <a class="navlink" href="https://github.com/dylanmtaylor"><i class="fab fa-github navicon"></i>GitHub Page</a>
+    </li>
+    <li>
+        <a class="navlink" href="https://www.linkedin.com/in/dylanmtaylor"><i class="fab fa-linkedin-in navicon"></i>LinkedIn Profile</a>
+    </li>
+    <li>
+        <a class="navlink" href="/files/dylan-resume.pdf"><i class="fa fa-file-pdf navicon"></i>R&eacute;sum&eacute;</a>
+    </li>
+</ul><br>
+<em class="footer">
+  <a href="https://github.com/dylanmtaylor/dylanmtaylor.github.io">This site is 100% open source.</a>
+  <br /><br />
+  <center>
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img width="120px" height="42px" alt="Creative Commons License" style="border-width:0" src="/images/by-sa.svg" /></a>
+    <br /><br />
+    <a href="https://travis-ci.org/dylanmtaylor/dylanmtaylor.github.io"><img src="https://travis-ci.org/dylanmtaylor/dylanmtaylor.github.io.svg?branch=master" width="90px" height="20px" class="build_status"></a>
+  </center>
+</em>
+
+	</div>
+	<div class="pagecontent" id="pagecontent">
+		<div class="site">
+			<div class="title"><h2><a href="/pages/blog");'>My Personal Blog</a></h2></div>
+			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
+			<div id="post">
+	<h1>Playing with Kubernetes for the first time</h1>
+	<p class="meta">05 May 2018</p>
+	<p><a href="https://kubernetes.io/"><img src="/images/blog/2018/05/kubernetes.svg" width="150" height="150" style="float:left" /></a> For a while now, I’ve been interested in learning a container orchestration technology called <a href="https://kubernetes.io/">Kubernetes</a>, which was developed by Google and licensed under the Apache License 2.0. I’ve been working through the <a href="https://www.katacoda.com/courses/kubernetes">“Learn Kubernetes using Interactive Browser-Based Scenarios
+“</a> on Katacoda, which is a free online way to learn some new technology without a large personal investment. I wanted to play around without the constraints of a course, so I decided to spend a few dollars on bare-metal hosting resources on <a href="https://www.packet.net/">packet.net</a>. They gave me $25 worth of free introductory credit so I didn’t even pay anything for this exercise. Packet.net has an offering called <code>t1.small.x86</code> with 8GB RAM, 80GB disk (the one I ordered actually came with a 150GB Intel SSDSC2BB15), and an Intel Atom C2550 processor. I ordered one in <a href="http://www.parsippany.net/">Parsippany, NJ</a> as that was the closest location to me. Bandwidth is not limited, but it is billed at $0.05/GB outgoing, which wasn’t an issue. Honestly, the power of dedicated servers is quite remarkable. I previously hosted dylanmtaylor.com on a Joe’s Datacenter dual Xeon machine, and it had great performance. Compared to that, the HostHatch NVMe I have my site running on right now is quite underpowered. That said, the value is certainly there, and it’s been very reliable so far. Anyways, let’s start playing with Kubernetes.</p>
+
+<p><a href="https://coreos.com/">CoreOS</a> was a natural fit for this project. I’ve heard a lot about it, including when I attended the <a href="https://allthingsopen.org/">All Things Open</a> conference in Raleigh, NC and met with some of the people working on it. At work I’ve used <a href="https://www.docker.com/">Docker</a> with the <a href="https://docs.docker.com/ee/dtr/">Docker Trusted Registry</a> product quite a bit and realized the power it has to simplify deployments and server as a host for running continuous integration jobs, so I decided to dive right in and rather than installing <a href="https://www.centos.org/">CentOS</a> like I usually would and installing Docker on top of that, I’d just install CoreOS as a base operating system. I’m still not sure what “Container Linux” means, but it feels like a solid foundation for exploration. From what I’ve seen so far, it’s basically a stable Linux foundation that is “stripped down” compared to more general purpose distributions. It’s purpose built to use very few resources and just get out of the way. Fortunately with packet.net, I didn’t have to do any of the installation work myself, as they provided an OS template that is installed via iPXE on initial bootup.</p>
+
+<p><img src="/images/blog/2018/05/coreos_neofetch.png" alt="neofetch" /></p>
+
+<p>The first thing I did once the server was installed was SSH in and check the hardware out. I also took the opportunity to curl <code>neofetch</code> and run that to get a fancy screenshot for this blog post. I then started reading up on the <a href="https://kubernetes.io/docs/home/">documentation for Kubernetes</a> and the <a href="https://coreos.com/tectonic/docs/latest/tutorials/kubernetes/getting-started.html">CoreOS + Kubernetes docs</a>. For the time being, I decided against using Tectonic, as it looks like it is overkill for just testing out Kubernetes, and it looks like a paid product (although I was able to find source code for it). I checked the internet and found <a href="https://adminswerk.de/kubernetes-coreos-single-node/">a post  on Kubernetes and CoreOS on a single node</a> from someone else who went through the same exercise. They took a script <a href="https://victorpalau.net/2016/09/04/single-node-kubernetes-deployment/">originally by Victor Palau</a> and modified it to be more secure and less reliant on Microsoft Azure. After reviewing the <code>kubeform.sh</code> code from <a href="https://github.com/m3adow/k8single">the GitHub repository</a>, I decided to test it out on my server. As I was already connected via SSH, I simply had to execute the commands in the <code>README.md</code> file:</p>
+
+<pre><code>git clone https://github.com/m3adow/k8single/; 
+cd k8single
+./kubeform.sh [myip-address]
+</code></pre>
+
+<p>Unfortunately, I got an error stating <code>Failed to start etcd2.service: Unit etcd2.service not found</code>, so I had to install etcd and get that up and running. Or so I thought, until I discovered that <a href="https://github.com/coreos/coreos-cloudinit/blob/master/Documentation/cloud-config.md">these services were deprecated</a>. Fortunately, I managed to find a blog post <a href="https://coreos.com/blog/toward-etcd-v3-in-container-linux.html">explaining how to setup etcd v3</a> and I was able to start and enable <code>etcd-member.service</code>:</p>
+
+<pre><code>coreostesting core # systemctl enable /usr/lib/systemd/system/etcd-member.service
+Created symlink /etc/systemd/system/multi-user.target.wants/etcd-member.service → /usr/lib/systemd/system/etcd-member.service.
+coreostesting core # systemctl start etcd-member
+coreostesting core # rkt list
+UUID		APP	IMAGE NAME			STATE	CREATED		STARTED		NETWORKS
+3de95472	etcd	quay.io/coreos/etcd:v3.2.15	running	24 seconds ago	24 seconds ago
+</code></pre>
+
+<p>Clearly, <code>etcd-member</code> was the right service, and <code>etcd2</code> is deprecated and removed. Progress! As I learned all I know so far from Katacoda, I decided to try to setup the environment similar to what they had. In particular, I wanted to start by getting <code>kubectl</code> installed on my local system. I was able to track down <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">a tutorial on installing kubectl</a> and the instructions were straight-forward. As I am currently running Ubuntu, I used the snap package that was installed with a simple <code>sudo snap install kubectl --classic</code>.</p>
+
+<pre><code>dtaylor@Dylan-Precision-5510:~$ kubectl version
+Client Version: version.Info{Major:"1", Minor:"8", GitVersion:"v1.8.4", GitCommit:"9befc2b8928a9426501d3bf62f72849d5cbcd5a3", GitTreeState:"clean", BuildDate:"2017-11-20T05:28:34Z", GoVersion:"go1.8.3", Compiler:"gc", Platform:"linux/amd64"}
+The connection to the server localhost:8080 was refused - did you specify the right host or port?
+</code></pre>
+
+<p>Of course, it points to localhost by default. It looked rather tricky to make it use the CoreOS server, so I used the curl method to download it onto CoreOS directly. The filesystem was read-only so I kept it in the home directory. I really wanted to get the <a href="https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/">Kubernetes Web UI</a> up and running. Unfortunately, this didn’t yield any better results:</p>
+
+<pre><code>core@coreostesting ~ $ ./kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+W0505 01:03:08.989428    1517 factory_object_mapping.go:423] Failed to download OpenAPI (Get http://localhost:8080/swagger-2.0.0.pb-v1: dial tcp [::1]:8080: getsockopt: connection refused), falling back to swagger
+The connection to the server localhost:8080 was refused - did you specify the right host or port?
+</code></pre>
+
+<p>I searched for this error and was able to find <a href="https://github.com/kubernetes/kubernetes/issues/44665">a GitHub issues page</a> describing the error. It suggested I follow these steps:</p>
+
+<pre><code>sudo cp /etc/kubernetes/admin.conf $HOME/
+sudo chown $(id -u):$(id -g) $HOME/admin.conf
+export KUBECONFIG=$HOME/admin.conf
+</code></pre>
+
+<p>Sadly, the commands failed, with the source files not existing. After some searching, it seemed like I needed to get Kubelet working. Since the newer documentation relied on AWS heavily, I decided to try <a href="https://coreos.com/blog/introducing-the-kubelet-in-coreos.html">the older version</a>. This had some formatting issues so I tried the <a href="https://github.com/kubernetes/contrib/blob/master/init/systemd/kubelet.service">kublet.service from GitHub</a>. After pasting that in, I ran <code>sudo systemctl daemon-reload; sudo systemctl start kubelet</code>, which didn’t return any output but didn’t work either.</p>
+
+<p>I decided to scrap CoreOS for now after I managed to stumble upon <a href="https://blog.alexellis.io/kubernetes-in-10-minutes/">a blog post about setting up Kubernetes on Packet</a>, which I read and found particularly detailed and helpful. It also included <a href="https://pbs.twimg.com/media/DBzjTTKUIAA1OvE.jpg:large">a great image by Julia Evans showing how all the pieces fit together</a>. I initiated an OS reload action on the server and reprovisioned it with Ubuntu 16.04 LTS. Packet has a really nice feature called Out-of-Band console which you can use to watch a server get deployed in realtime. Once my server finished provisioning, I got to work. I won’t bore you with too many details, as Alex goes into great detail on his blog, but first, I SSH’d into the newly installed machine as root and turned off swap using <code>swapoff -a</code> and ran the <a href="https://gist.githubusercontent.com/alexellis/7315e75635623667c32199368aa11e95/raw/b025dfb91b43ea9309ce6ed67e24790ba65d7b67/kube.sh">all-in-one dependency installation script</a>.</p>
+
+<p>Once all the dependencies were installed, I ran <code>sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=[ip address] --kubernetes-version stable-1.10</code>, where <code>[ip address</code> is the <em>private</em> bond0 address on the physical machine. While not strictly necessary, I created a non-privileged dylan user as done in the tutorial, and copied the configuration.</p>
+
+<pre><code>sudo cp /etc/kubernetes/admin.conf $HOME/
+sudo chown $(id -u):$(id -g) $HOME/admin.conf
+export KUBECONFIG=$HOME/admin.conf
+
+echo "export KUBECONFIG=$HOME/admin.conf" | tee -a ~/.bashrc
+</code></pre>
+
+<p>Once that was done, I was able to configure networking using <code>kubectl</code>.</p>
+
+<pre><code>dylan@coreostesting:/root$ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+clusterrole.rbac.authorization.k8s.io "flannel" created
+clusterrolebinding.rbac.authorization.k8s.io "flannel" created
+serviceaccount "flannel" created
+configmap "kube-flannel-cfg" created
+daemonset.extensions "kube-flannel-ds" created
+dylan@coreostesting:/root$ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
+clusterrole.rbac.authorization.k8s.io "flannel" configured
+clusterrolebinding.rbac.authorization.k8s.io "flannel" configured
+</code></pre>
+
+<p>I then ran <code>kubectl taint nodes --all node-role.kubernetes.io/master-</code> so that I could run this all on a single machine (a real deployment would have many more). Amazingly, the output of <code>kubectl get all --namespace=kube-system</code> seemed to be working perfectly. Perhaps I’ll revisit CoreOS again, but this was going much smoother. I skipped over much of the rest of the tutorial and decided to try to get the Web UI working. I executed the following command:</p>
+
+<pre><code>kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+</code></pre>
+
+<p>Then I returned to the blog post and started up the <code>kubectl proxy</code> on the bare-metal machine and tunneled through the machine on my local host, this time usinig teh <em>public</em> IP address of the machine. The command looks like this:</p>
+
+<pre><code>ssh -L 8001:127.0.0.1:8001 -N root@[public ip]
+</code></pre>
+
+<p>Unfortunately when I loaded the URL for the localhost:8001 from the post <code>http://localhost:8001/ui/</code>, I got a wall of text:</p>
+
+<pre><code>{
+  "paths": [
+    "/apis",
+    "/apis/",
+    "/apis/apiextensions.k8s.io",
+    "/apis/apiextensions.k8s.io/v1beta1",
+    "/healthz",
+    "/healthz/etcd",
+    "/healthz/ping",
+    "/healthz/poststarthook/generic-apiserver-start-informers",
+    "/healthz/poststarthook/start-apiextensions-controllers",
+    "/healthz/poststarthook/start-apiextensions-informers",
+    "/metrics",
+    "/openapi/v2",
+    "/swagger-2.0.0.json",
+    "/swagger-2.0.0.pb-v1",
+    "/swagger-2.0.0.pb-v1.gz",
+    "/swagger.json",
+    "/swaggerapi",
+    "/version"
+  ]
+}
+</code></pre>
+
+<p>I tracked down <a href="https://github.com/kubernetes/dashboard">the GitHub repository for the dashboard</a>, and realized that the URL needed to be <code>http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/</code>. I finally had it mostly working. I was able to access the Web UI at least. I decided to tear down the server as it is quite pricey to keep online for more than several hours at a time. Next time I will explore setting up something without using cloud resources, and explore running a containerized workload on top of the Kubernetes software.</p>
+
+
+	<div id="share-bar">
+
+    <div class="share-buttons">
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://dylanmtaylor.com/pages/blog/2018/05/05/playing_with_kubernetes/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fab fa-facebook share-button"> Facebook</i>
+        </a>
+
+        <a  href="https://twitter.com/intent/tweet?text=Playing with Kubernetes for the first time&url=https://dylanmtaylor.com/pages/blog/2018/05/05/playing_with_kubernetes/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fab fa-twitter share-button"> Twitter</i>
+        </a>
+
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://dylanmtaylor.com/pages/blog/2018/05/05/playing_with_kubernetes/&title=Playing with Kubernetes for the first time&summary=&source="
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fab fa-linkedin share-button"> LinkedIn</i>
+        </a>
+
+        <a  href="http://www.reddit.com/submit?url=https://dylanmtaylor.com/pages/blog/2018/05/05/playing_with_kubernetes/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fab fa-reddit-alien share-button"> Reddit</i>
+        </a>
+
+        <a  href="https://plus.google.com/share?url=https://dylanmtaylor.com/pages/blog/2018/05/05/playing_with_kubernetes/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fab fa-google-plus share-button"> Google</i>
+        </a>
+
+        <a  href="http://www.tumblr.com/share/link?url=https://dylanmtaylor.com/pages/blog/2018/05/05/playing_with_kubernetes/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fab fa-tumblr share-button"> Tumblr</i>
+        </a>
+
+        <a  href="mailto:?subject=Playing with Kubernetes for the first time&amp;body=Check out this blog post https://dylanmtaylor.com/pages/blog/2018/05/05/playing_with_kubernetes/"
+            title="Share via Email" >
+            <i class="fa fa-envelope share-button"> Email</i>
+        </a>
+    </div>
+
+</div>
+
+
+</div>
+
+
+
+<div id="related">
+  <h2>Other Posts</h2>
+  <ul class="posts">
+    
+      <li><span>04 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/04/using_backblaze_b2_cloud_storage_for_encrypted_backups/");'>Using BackBlaze B2 Cloud Storage for Encrypted Offsite Backups</a></li>
+    
+      <li><span>04 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/04/awesome_new_share_bar_added_to_my_blog/");'>Awesome New Share Bar Added to My Blog</a></li>
+    
+      <li><span>03 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/03/blocking_annoying_web_advertisements_at_the_dns_level_with_pi-hole/");'>Blocking Annoying Web Advertisements at the DNS Level with Pi-Hole</a></li>
+    
+      <li><span>03 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/03/celebrate_world_password_day_with_a_password_manager/");'>Celebrate World Password Day with a Password Manager</a></li>
+    
+  </ul>
+</div>
+
+
+			<div class="blogfooter">
+				<div class="contact">
+					<p>
+						Dylan Taylor<br/>
+						Software Engineer<br/>
+					</p>
+				</div>
+				<div class="contact">
+					<p>
+						<a href="https://dylanmtaylor.com/">dylanmtaylor.com</a><br/>
+						<a href="https://github.com/dylanmtaylor/">github.com/dylanmtaylor</a><br />
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/instantclick/3.0.1/instantclick.min.js" data-no-instant></script>
+	<script data-no-instant>InstantClick.init();</script>
+	<script type="text/javascript">
+		/* Try to make the blog viewing experience less awful on mobile. Users can use back buttons to get back to the site. */
+		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+			document.getElementsByTagName('body')[0].innerHTML = "<center>" + document.getElementById('pagecontent').innerHTML + "</center>";
+		}
+	</script>
+</body>
+<html>
