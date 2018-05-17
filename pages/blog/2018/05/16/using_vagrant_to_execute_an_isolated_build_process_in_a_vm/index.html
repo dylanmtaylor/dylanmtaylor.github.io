@@ -82,7 +82,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # This section tells Vagrant where to find the virtual machine image, and what ports to forward
-  # The linux.vm.provision line tells the VM to execute the shell script found on the defined path
+  # The ubuntu.vm.provision line tells the VM to execute the shell script found on the defined path
   config.vm.define "ubuntu", primary: true do |ubuntu|
     ubuntu.vm.network :forwarded_port, guest: 80, host: 8080
     ubuntu.vm.box = "ubuntu/xenial64"
