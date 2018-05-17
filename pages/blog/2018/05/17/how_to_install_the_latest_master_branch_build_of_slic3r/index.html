@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <head>
-	<title>Dylan Taylor's Personal Blog - Blocking Annoying Web Advertisements at the DNS Level with Pi-Hole</title>
+	<title>Dylan Taylor's Personal Blog - How to Install the Latest Master Branch Build of Slic3r</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/css/normalize.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="/css/style.css"  type="text/css" media="all" />
@@ -64,59 +64,74 @@
 			<div class="title"><h2><a href="/pages/blog");'>My Personal Blog</a></h2></div>
 			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
 			<div id="post">
-	<h1>Blocking Annoying Web Advertisements at the DNS Level with Pi-Hole</h1>
-	<p class="meta">03 May 2018</p>
-	<p><a href="https://pi-hole.net/"><img src="/images/blog/2018/05/Vortex-R.png" alt="Pi-Hole" width="100px" height="100px" style="float:left" /></a> If you’re like myself and many other users on the internet, you probably hate advertisements. Not only are they annoying with automatically playing videos, covering up web content and being a vector for malware transmission from unscrupulous advertisement platform, but they can drain your battern on your phone and eat up your bandwidth if you are on a fixed data plan.</p>
+	<h1>How to Install the Latest Master Branch Build of Slic3r</h1>
+	<p class="meta">17 May 2018</p>
+	<p><a href="http://slic3r.org/">Slic3r</a> is a 3D printer slicing tool. It converts digital objects into instructions that are readable by a 3D printer called “gcode”. I use this program with my 3D printer, an Original Prusa i3 MK2s in order to position, rotate, and scale objects on the print bed and then select how I would like it to be printed. It’s an excellent tool for the most part, and it competes quite well with the proprietary tool <a href="https://www.simplify3d.com/">Simplify3D</a>. Improvements seem to be added quite frequently. However, I have noticed that for some reason, the <code>slic3r</code> package on Ubuntu 18.04 breaks when running it with the Nvidia proprietary graphics driver installed, but this does not affect the slic3r appimage package or upstream tarball releases. In order to solve this issue, you can easily get the files, extract them and create a menu entry using this method:</p>
 
-<p>There are many reasons to hate advertisements but fortunately users are fighting back. One way is through browser extensions. I personally use a free and open source one called <a href="https://github.com/gorhill/uBlock">uBlock Origin</a> on all of my devices. It is independently operated, lightweight and does not support the acceptable ads program, unlike Adblok Plus, which is partially funded by advertisers paying to get unblocked. See the conflict of interest here?</p>
+<pre><code>wget -N https://dl.slic3r.org/dev/linux/Slic3r-master-latest.tar.bz2
+sudo rm -rf /opt/Slic3r/
+sudo tar xvjf Slic3r-master-latest.tar.bz2 -C /opt/
+</code></pre>
 
-<p>While these extensions are fantastic, they’re only a start. Unfortunately, at least in mobile applications like the one from <a href="https://www.wunderground.com/">Weather Underground</a>, which is quite a good app by the way, there is no way to block advertisements without paying a fee to the developer. The mobile version of Chrome also does not support extensions. I’ve lot count of the number of times I’ve seen fake “Your Android has been infected” pages that make noises and vibrate the phone. It’s obnoxious. Until this isn’t the case anymore, browsing the mobile web without an adblocker is a chore.</p>
+<p>This puts a self-contained installation of the bleeding-edge version of Slic3r in the /opt directory. You can then put the following into <code>/usr/share/applications/slic3r_master.desktop</code> to add a desktop icon:</p>
 
-<p>So, how can we block ads across all the devices in the network, including phones without installing special software on anything? Simple: by running our own DNS server. DNS, short for Domain Name System, is a technology that handles domain lookups. When you type dylanmtaylor.com into your browser, your browser doesn’t know where to go to make a connection from the name. It contacts a DNS server to translate the humanly readable domain name into an IP address, which your browser then uses to make the connection. If we intentionally override this using our own DNS server, we can point adomain to something else, like the DNS server itself or 127.0.0.1. By doing this, the domain is effectively blocked.</p>
+<pre><code>[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Slic3r
+Icon=/opt/Slic3r/var/Slic3r.png
+Exec=bash -c 'cd /opt/Slic3r &amp;&amp; /opt/Slic3r/Slic3r --gui %F'
+Keywords=perl;slice;3D;printer;convert;gcode;stl;obj;amf;
+StartupNotify=false
+StartupWMClass=slic3r
+MimeType=application/sla;model/x-wavefront-obj;model/x-geomview-off;application/x-amf;
+Categories=Development;Engineering;
+</code></pre>
 
-<p>This is the core concept behind <a href="https://pi-hole.net/">Pi-Hole</a>. With nothing more than a cheap <a href="https://www.raspberrypi.org/">Raspberry Pi</a> single board computer, you can run your own DNS server. The setup is simple and described on the <a href="https://pi-hole.net/">Pi-Hole</a> website. Simply connect your Pi to the network, setup static IP address allocation for the Pi’s MAC address in your router’s admin interfeace, install the software (probably on top of <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian Lite</a>), and finally reconfigure the DNS server entries of your router to point to the local Pi-Hole server. By doing this, so long as you are connected to your wireless network, you will be exposed to significantly less advertisements unless you manually configure your devices to use an alternative DNS server such as 1.1.1.1 from CloudFlare. If you enjoy Pi-Hole, I’d like to suggest <a href="https://pi-hole.net/donate/">donating a few dollars to them</a>. The project is maintained entirely by volunteers and could use all the help they can get to fund the development.</p>
+<p>If you’re like me and you’re using the wonderful <a href="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme">Papirus icon theme</a> or another theme providing the icon, editing the “Icon” line to be just “Icon=slic3r” will give you a properly themed icon for Slic3r since the icon path is no longer hardcoded and your desktop environment will look for the icon under <code>/usr/share/icons/</code>. You should now be able to start slic3r without any issues, even with the driver installed. This is also great for testing out new unstable features and finding bugs, if you’re into that sort of thing.</p>
+
 
 
 	<div id="share-bar">
 
     <div class="share-buttons">
-        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://dylanmtaylor.com/pages/blog/2018/05/03/blocking_annoying_web_advertisements_at_the_dns_level_with_pi-hole/"
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://dylanmtaylor.com/pages/blog/2018/05/17/how_to_install_the_latest_master_branch_build_of_slic3r/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" >
             <i class="fab fa-facebook share-button"> Facebook</i>
         </a>
 
-        <a  href="https://twitter.com/intent/tweet?text=Blocking Annoying Web Advertisements at the DNS Level with Pi-Hole&url=https://dylanmtaylor.com/pages/blog/2018/05/03/blocking_annoying_web_advertisements_at_the_dns_level_with_pi-hole/"
+        <a  href="https://twitter.com/intent/tweet?text=How to Install the Latest Master Branch Build of Slic3r&url=https://dylanmtaylor.com/pages/blog/2018/05/17/how_to_install_the_latest_master_branch_build_of_slic3r/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" >
             <i class="fab fa-twitter share-button"> Twitter</i>
         </a>
 
-        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://dylanmtaylor.com/pages/blog/2018/05/03/blocking_annoying_web_advertisements_at_the_dns_level_with_pi-hole/&title=Blocking Annoying Web Advertisements at the DNS Level with Pi-Hole&summary=&source="
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://dylanmtaylor.com/pages/blog/2018/05/17/how_to_install_the_latest_master_branch_build_of_slic3r/&title=How to Install the Latest Master Branch Build of Slic3r&summary=&source="
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on LinkedIn" >
             <i class="fab fa-linkedin share-button"> LinkedIn</i>
         </a>
 
-        <a  href="http://www.reddit.com/submit?url=https://dylanmtaylor.com/pages/blog/2018/05/03/blocking_annoying_web_advertisements_at_the_dns_level_with_pi-hole/"
+        <a  href="http://www.reddit.com/submit?url=https://dylanmtaylor.com/pages/blog/2018/05/17/how_to_install_the_latest_master_branch_build_of_slic3r/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Reddit" >
             <i class="fab fa-reddit-alien share-button"> Reddit</i>
         </a>
 
-        <a  href="https://plus.google.com/share?url=https://dylanmtaylor.com/pages/blog/2018/05/03/blocking_annoying_web_advertisements_at_the_dns_level_with_pi-hole/"
+        <a  href="https://plus.google.com/share?url=https://dylanmtaylor.com/pages/blog/2018/05/17/how_to_install_the_latest_master_branch_build_of_slic3r/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Google+" >
             <i class="fab fa-google-plus share-button"> Google</i>
         </a>
 
-        <a  href="http://www.tumblr.com/share/link?url=https://dylanmtaylor.com/pages/blog/2018/05/03/blocking_annoying_web_advertisements_at_the_dns_level_with_pi-hole/"
+        <a  href="http://www.tumblr.com/share/link?url=https://dylanmtaylor.com/pages/blog/2018/05/17/how_to_install_the_latest_master_branch_build_of_slic3r/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Tumblr" >
             <i class="fab fa-tumblr share-button"> Tumblr</i>
         </a>
 
-        <a  href="mailto:?subject=Blocking Annoying Web Advertisements at the DNS Level with Pi-Hole&amp;body=Check out this blog post https://dylanmtaylor.com/pages/blog/2018/05/03/blocking_annoying_web_advertisements_at_the_dns_level_with_pi-hole/"
+        <a  href="mailto:?subject=How to Install the Latest Master Branch Build of Slic3r&amp;body=Check out this blog post https://dylanmtaylor.com/pages/blog/2018/05/17/how_to_install_the_latest_master_branch_build_of_slic3r/"
             title="Share via Email" >
             <i class="fa fa-envelope share-button"> Email</i>
         </a>
@@ -133,13 +148,13 @@
   <h2>Other Posts</h2>
   <ul class="posts">
     
-      <li><span>17 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/17/how_to_install_the_latest_master_branch_build_of_slic3r/");'>How to Install the Latest Master Branch Build of Slic3r</a></li>
-    
       <li><span>16 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/16/using_vagrant_to_execute_an_isolated_build_process_in_a_vm/");'>Using Vagrant Shell Provisioning to Execute an Isolated Build Process in a VM</a></li>
     
       <li><span>05 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/05/playing_with_kubernetes/");'>Playing with Kubernetes for the First Time</a></li>
     
       <li><span>04 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/04/using_backblaze_b2_cloud_storage_for_encrypted_backups/");'>Using BackBlaze B2 Cloud Storage for Encrypted Offsite Backups</a></li>
+    
+      <li><span>04 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/04/awesome_new_share_bar_added_to_my_blog/");'>Awesome New Share Bar Added to My Blog</a></li>
     
   </ul>
 </div>
