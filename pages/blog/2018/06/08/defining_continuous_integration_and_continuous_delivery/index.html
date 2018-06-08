@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <head>
-	<title>Dylan Taylor's Personal Blog - Rapidly Setting Up My Linux Desktop Using a Makefile</title>
+	<title>Dylan Taylor's Personal Blog - Defining Continuous Integration and Continuous Delivery</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/css/normalize.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="/css/style.css"  type="text/css" media="all" />
@@ -64,59 +64,55 @@
 			<div class="title"><h2><a href="/pages/blog");'>My Personal Blog</a></h2></div>
 			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
 			<div id="post">
-	<h1>Rapidly Setting Up My Linux Desktop Using a Makefile</h1>
-	<p class="meta">27 Apr 2018</p>
-	<p>I’ll admit it, I’m obsessed with being an early adopter of technology and I switch between Linux distributions frequently. Before Ubuntu 18.04 came out (it was just released on April 26th), I decided to test it out around the end of March, just a month before it’s official release date. There’s just one issue with that: it wasn’t the final version. Breakage can often happen when testing out a pre-release Linux distibution. For instance, a simply <code>sudo apt update; sudo apt full-upgrade</code> can cripple a system with a bad package, resulting in a reinstall. I stumbled upon a <a href="https://gist.github.com/h4cc/c54d3944cb555f32ffdf25a5fa1f2602#file-makefile">Makefile by Julius Beckmann</a> that can be run on a new Ubuntu system and immediately saw the benefit of such an approach. I can reinstall as many times as I like, and so long as I set up the commands correctly, I can have a system configured exactly how I like it within an hour. I can even run a specific make target on its own in order to install a certain set of programs or updates without rerunning the whole script. I decided to fork it, creating <a href="https://github.com/dylanmtaylor/dylan-ubuntu-makefile">my own Ubuntu Makefile repository</a>, adding many packages, and removing things I do not need.</p>
+	<h1>Defining Continuous Integration and Continuous Delivery</h1>
+	<p class="meta">08 Jun 2018</p>
+	<p>In the past, I’ve been asked what continuous integration and continuous delivery mean to me. Those not used to the DevOps Engineering methodology, which integrates traditional application development with infrastructure operations in order to expedite the production code delivery process and improve iteration time in an agile manner may not be familiar with these terms. Unlike the word agile, which is overused to the point where it has become little more than a marketing buzzword in some cases, CI/CD refer to concretely define processes. The implementation may vary, of course, for instance, a CI/CD workflow could take advantage of a hosted solution (software as a service) such as TravisCI, or IBM Bluemix DevOps Services (a product I’ve worked on), or it could run within one’s own infrastructure.</p>
 
-<p>I approached this as a development project at first, running Ubuntu 18.04 daily images in <a href="https://www.virtualbox.org/">VirtualBox</a>. VirtualBox is free and it has a very nice feature called snapshots. I would take a snapshot of a running virtual machine, test out the project, check the final state, and revert to the snapshot before it was applied, so that I could make corrections. After a few days of testing, I was ready to install this on real hardware. I backed up my desktop’s home directory, and installed the 18.04 daily build. As I add packages or software to my system, I make changes to the Makefile if I want that software to be reinstalled when I rebuild my system. Now, I don’t have to worry about wiping and reloading, and it is a huge timesaver. It also allows me to keep the software between my laptop and my desktop relatively in-sync since I can recreate the steps taken perfectly. Now, when I have to reinstall for whatever reason, the only data I have to worry about backing up is the <code>/home/</code> directory.</p>
+<p>Integration testing is defined as testing the software modules as a group, and tends to mean testing the product as a whole instead of specific functionality, unlike unit tests which can be at the function level. Continuous integration is a practice where integration testing is done frequently, perhaps multiple times in a single day. For instance, when members of the team developing the product commit their work to a repository, via a pull request (called a merge request in GitLab), an automated build process is initiated. It could instantiate a Docker container or Jenkins job in order to build the product with the revised source code, but the specific solution doesn’t matter in this case. Once the product is built, the test suite is run against it and feedback is provided via predefined channels in a way that errors can be quickly detected so that bugs are not introduced into the codebase.</p>
 
-<p>To take this one step further, as I love to test out newer versions than provided in the Ubuntu repositories, I am actually using Flatpak, Snap, PPAs, and some Git repositories to provide software. I’m actually removing the versions of things like LibreOffice and installing the flatpak version instead. As such, I need to check for Flatpak and snap platform updates in order to fully update my machine. Inspired by the <code>zypper dup</code> command on OpenSUSE, I created an alias called <code>dup</code>, which can easily update everything, including Flatpaks and snaps:</p>
-
-<p><code>alias dup="sudo apt clean all; sudo apt update; sudo apt -y full-upgrade; sudo flatpak update; sudo snap refresh; sudo apt autoremove"</code></p>
-
-<p>I’ve created <a href="https://gist.github.com/dylanmtaylor/e4176e339e0e1f4c07e5b807cfa9ed9d">a gist of the common aliases that I use</a>. I then added this alias to my <code>~/.bash_aliases file</code> By simply typing <code>dup</code> into a terminal, I can now get a fully updated system with many bleeding edge packages.</p>
+<p>Continuous delivery takes this one step further. Once continuous integration is in place, it’s just one of the pieces of a continuous delivery workflow. CD takes advantage of the constant testing of the product and allows the development changes to quickly get pushed from development to a test environment, and then to production. This typically involves what’s called a ‘delivery pipeline’, which is a service that orchestrates the promotion of code from one ‘stage’ to another. Each stage represents an element of the delivery process, such as building or deploying to an environment. Continuous delivery strongly relies on a good delivery pipeline. In a proper setup, new product features and bug fixes can be built and deployed from one stage to another rapidly without accepting a great deal of risk. However, it is of utmost importance that there are sufficient integration tests as well as good code coverage by unit tests in the product in order for this process to work effectively. By taking advantage of a CI/CD workflow, either using off the shelf tools or implementing a custom solution, it is possible to significantly speed up the code delivery process and reduce ceremony.</p>
 
 
 	<div id="share-bar">
 
     <div class="share-buttons">
-        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://dylanmtaylor.com/pages/blog/2018/04/27/rapidly-setting-up-my-linux-desktop-using-a-makefile/"
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://dylanmtaylor.com/pages/blog/2018/06/08/defining_continuous_integration_and_continuous_delivery/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" >
             <i class="fab fa-facebook share-button"> Facebook</i>
         </a>
 
-        <a  href="https://twitter.com/intent/tweet?text=Rapidly Setting Up My Linux Desktop Using a Makefile&url=https://dylanmtaylor.com/pages/blog/2018/04/27/rapidly-setting-up-my-linux-desktop-using-a-makefile/"
+        <a  href="https://twitter.com/intent/tweet?text=Defining Continuous Integration and Continuous Delivery&url=https://dylanmtaylor.com/pages/blog/2018/06/08/defining_continuous_integration_and_continuous_delivery/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" >
             <i class="fab fa-twitter share-button"> Twitter</i>
         </a>
 
-        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://dylanmtaylor.com/pages/blog/2018/04/27/rapidly-setting-up-my-linux-desktop-using-a-makefile/&title=Rapidly Setting Up My Linux Desktop Using a Makefile&summary=&source="
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://dylanmtaylor.com/pages/blog/2018/06/08/defining_continuous_integration_and_continuous_delivery/&title=Defining Continuous Integration and Continuous Delivery&summary=&source="
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on LinkedIn" >
             <i class="fab fa-linkedin share-button"> LinkedIn</i>
         </a>
 
-        <a  href="http://www.reddit.com/submit?url=https://dylanmtaylor.com/pages/blog/2018/04/27/rapidly-setting-up-my-linux-desktop-using-a-makefile/"
+        <a  href="http://www.reddit.com/submit?url=https://dylanmtaylor.com/pages/blog/2018/06/08/defining_continuous_integration_and_continuous_delivery/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Reddit" >
             <i class="fab fa-reddit-alien share-button"> Reddit</i>
         </a>
 
-        <a  href="https://plus.google.com/share?url=https://dylanmtaylor.com/pages/blog/2018/04/27/rapidly-setting-up-my-linux-desktop-using-a-makefile/"
+        <a  href="https://plus.google.com/share?url=https://dylanmtaylor.com/pages/blog/2018/06/08/defining_continuous_integration_and_continuous_delivery/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Google+" >
             <i class="fab fa-google-plus share-button"> Google</i>
         </a>
 
-        <a  href="http://www.tumblr.com/share/link?url=https://dylanmtaylor.com/pages/blog/2018/04/27/rapidly-setting-up-my-linux-desktop-using-a-makefile/"
+        <a  href="http://www.tumblr.com/share/link?url=https://dylanmtaylor.com/pages/blog/2018/06/08/defining_continuous_integration_and_continuous_delivery/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Tumblr" >
             <i class="fab fa-tumblr share-button"> Tumblr</i>
         </a>
 
-        <a  href="mailto:?subject=Rapidly Setting Up My Linux Desktop Using a Makefile&amp;body=Check out this blog post https://dylanmtaylor.com/pages/blog/2018/04/27/rapidly-setting-up-my-linux-desktop-using-a-makefile/"
+        <a  href="mailto:?subject=Defining Continuous Integration and Continuous Delivery&amp;body=Check out this blog post https://dylanmtaylor.com/pages/blog/2018/06/08/defining_continuous_integration_and_continuous_delivery/"
             title="Share via Email" >
             <i class="fa fa-envelope share-button"> Email</i>
         </a>
@@ -133,13 +129,13 @@
   <h2>Other Posts</h2>
   <ul class="posts">
     
-      <li><span>08 Jun 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/06/08/defining_continuous_integration_and_continuous_delivery/");'>Defining Continuous Integration and Continuous Delivery</a></li>
-    
       <li><span>17 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/17/how_to_install_the_latest_master_branch_build_of_slic3r/");'>How to Install the Latest Master Branch Build of Slic3r</a></li>
     
       <li><span>16 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/16/using_vagrant_to_execute_an_isolated_build_process_in_a_vm/");'>Using Vagrant Shell Provisioning to Execute an Isolated Build Process in a VM</a></li>
     
       <li><span>05 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/05/playing_with_kubernetes/");'>Playing with Kubernetes for the First Time</a></li>
+    
+      <li><span>04 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/04/using_backblaze_b2_cloud_storage_for_encrypted_backups/");'>Using BackBlaze B2 Cloud Storage for Encrypted Offsite Backups</a></li>
     
   </ul>
 </div>
