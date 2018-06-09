@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <head>
-	<title>Dylan Taylor's Personal Blog - How My Server is Deployed and Configured Using Ansible</title>
+	<title>Dylan Taylor's Personal Blog - Using Virtual Environments to Avoid Polluting System Python Libraries</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/css/normalize.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="/css/style.css"  type="text/css" media="all" />
@@ -64,54 +64,58 @@
 			<div class="title"><h2><a href="/pages/blog");'>My Personal Blog</a></h2></div>
 			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
 			<div id="post">
-	<h1>How My Server is Deployed and Configured Using Ansible</h1>
-	<p class="meta">27 Apr 2018</p>
-	<p><a href="https://www.ansible.com/"><img src="/images/blog/2018/04/ansible_logo_round.png" alt="Ansible" width="120px" height="120px" style="float:left; padding: 5px" /></a> Traditionally, deploying infrastructure was a very time and labor intensive process. Manually going in and configuring services, installing packages, applying system updates, copying over data, etc. could easily take an entire day or more of man hours. In order to solve this problem, several tools, such as <a href="https://www.ansible.com/">Ansible</a>, <a href="https://www.chef.io/chef/">Chef</a>, <a href="https://puppet.com/">Puppet</a>, and <a href="https://saltstack.com/">SaltStack</a> were created in order to make the lives of system administrators and infrastructure architects everywhere easier. I have adopted Ansible in order to configure my web server. Honestly, the way that my server is configured, there is nothing on it that I cannot afford to lose. With very little effort, I can re-run the Ansible “playbook”, and an identical serer will be created within a couple hours. This is a concept called immutable infrastructure. If there is something wrong with the server, it makes more sense to simply replace it rather than reconfigure or repair it.</p>
+	<h1>Using Virtual Environments to Avoid Polluting System Python Libraries</h1>
+	<p class="meta">08 Jun 2018</p>
+	<p>As a Python developer, it’s incredibly common to install a new library using the <code>pip</code> tool. However, if you are running Linux, one of the issues you can get with this is that you can overwrite system python libraries that are managed by a package manager such as <code>apt</code> or <code>yum</code>. In addition, if you have several Python projects on your system, each requiring a different version of a dependency, it’s possible that one might break the other. Enter <code>virtualenv</code>, a tool used to isolate python dependencies within a project (or just in any folder, really). virtualenv allows you to install Python packages in a standard manner using pip, but keeps them separate from the rest of the system.</p>
 
-<p>Think of an Ansible playbook as a “blueprint” for the server. It contains a bunch of rules that are used to validate the state of things, and take corrective action if a deviation is detected.  By default, this means that properly written Ansible playbooks are idempotent. For instance, I can write a rule that says a file contains a line, or a package is the latest version. If the criteria is already met, no action will be taken, but if not the correction will be made. Playbooks are broken down into <code>roles</code>. Roles are a set of tasks that Ansible evaluates. For instance, in order to configure sshd and firewalld, I am using a security role. For my webserver, I have an nginx role. These roles are called by the <code>playbook.yml</code> file against all the hosts in the defined group in the <code>hosts</code> file local to <a href="https://github.com/dylanmtaylor/dylanmtaylor-ansible">my Ansible playbook repository</a>. This playbook is made public in hopes that someone will find it useful, as well as for my own purposes. Every time I make a major change to my server, I update the playbook with more tasks to automate this change, so that I never need to do those tasks again. In order to deploy my server to a new host, I simply need to install CentOS 7 on the machine (usually via an ISO image so I can set up a 1GB swap partition), edit the hosts file on my local machine to point dylanmtaylor to the new IP address, copy my SSH public key to the server using <code>ssh-copy-id root@dylanmtaylor</code>, run <code>ansible-playbook playbook.yml</code> and wait. Then when that is done, I can login to the server via SSH or Cockpit and change the password for the users to be more secure. Once that is done, I have a new server that is fully configured and ready to serve my website.</p>
+<p>Assuming you have Python and <a href="https://pip.pypa.io/en/stable/installing/">pip</a> installed, you can install virtualenv by running this command as root:</p>
 
+<pre><code>pip install virtualenv
+</code></pre>
+
+<p>This will install the <code>virtualenv</code> command. Once you have this, you can create a virtual environment for your project. Running the command <code>virtualenv [destination folder]</code> in will create a folder in the current directory that contains a virtual environment with a complete copy of Python (so you can standardize on one version), as well as a copy of pip which can be used to install any additional packages desired. Advanced use includes having a different version of python included in the environment using the -p flag and the location of the python binary as an argument. Once you have your virtual environment created, you need to source the <code>bin/activate</code> file within the virtual environment’s folder. Then you can proceed to install whatever you want with <code>pip</code>. Finally, when you want to leave your virtual environment, you can simply run <code>deactivate</code>.</p>
 
 
 	<div id="share-bar">
 
     <div class="share-buttons">
-        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://dylanmtaylor.com/pages/blog/2018/04/27/how-my-server-is-deployed-and-configured-using-ansible/"
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://dylanmtaylor.com/pages/blog/2018/06/08/using_virtual_environments_to_avoid_polluting_system_python_libraries/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" >
             <i class="fab fa-facebook share-button"> Facebook</i>
         </a>
 
-        <a  href="https://twitter.com/intent/tweet?text=How My Server is Deployed and Configured Using Ansible&url=https://dylanmtaylor.com/pages/blog/2018/04/27/how-my-server-is-deployed-and-configured-using-ansible/"
+        <a  href="https://twitter.com/intent/tweet?text=Using Virtual Environments to Avoid Polluting System Python Libraries&url=https://dylanmtaylor.com/pages/blog/2018/06/08/using_virtual_environments_to_avoid_polluting_system_python_libraries/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" >
             <i class="fab fa-twitter share-button"> Twitter</i>
         </a>
 
-        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://dylanmtaylor.com/pages/blog/2018/04/27/how-my-server-is-deployed-and-configured-using-ansible/&title=How My Server is Deployed and Configured Using Ansible&summary=&source="
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://dylanmtaylor.com/pages/blog/2018/06/08/using_virtual_environments_to_avoid_polluting_system_python_libraries/&title=Using Virtual Environments to Avoid Polluting System Python Libraries&summary=&source="
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on LinkedIn" >
             <i class="fab fa-linkedin share-button"> LinkedIn</i>
         </a>
 
-        <a  href="http://www.reddit.com/submit?url=https://dylanmtaylor.com/pages/blog/2018/04/27/how-my-server-is-deployed-and-configured-using-ansible/"
+        <a  href="http://www.reddit.com/submit?url=https://dylanmtaylor.com/pages/blog/2018/06/08/using_virtual_environments_to_avoid_polluting_system_python_libraries/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Reddit" >
             <i class="fab fa-reddit-alien share-button"> Reddit</i>
         </a>
 
-        <a  href="https://plus.google.com/share?url=https://dylanmtaylor.com/pages/blog/2018/04/27/how-my-server-is-deployed-and-configured-using-ansible/"
+        <a  href="https://plus.google.com/share?url=https://dylanmtaylor.com/pages/blog/2018/06/08/using_virtual_environments_to_avoid_polluting_system_python_libraries/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Google+" >
             <i class="fab fa-google-plus share-button"> Google</i>
         </a>
 
-        <a  href="http://www.tumblr.com/share/link?url=https://dylanmtaylor.com/pages/blog/2018/04/27/how-my-server-is-deployed-and-configured-using-ansible/"
+        <a  href="http://www.tumblr.com/share/link?url=https://dylanmtaylor.com/pages/blog/2018/06/08/using_virtual_environments_to_avoid_polluting_system_python_libraries/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Tumblr" >
             <i class="fab fa-tumblr share-button"> Tumblr</i>
         </a>
 
-        <a  href="mailto:?subject=How My Server is Deployed and Configured Using Ansible&amp;body=Check out this blog post https://dylanmtaylor.com/pages/blog/2018/04/27/how-my-server-is-deployed-and-configured-using-ansible/"
+        <a  href="mailto:?subject=Using Virtual Environments to Avoid Polluting System Python Libraries&amp;body=Check out this blog post https://dylanmtaylor.com/pages/blog/2018/06/08/using_virtual_environments_to_avoid_polluting_system_python_libraries/"
             title="Share via Email" >
             <i class="fa fa-envelope share-button"> Email</i>
         </a>
@@ -128,13 +132,13 @@
   <h2>Other Posts</h2>
   <ul class="posts">
     
-      <li><span>08 Jun 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/06/08/using_virtual_environments_to_avoid_polluting_system_python_libraries/");'>Using Virtual Environments to Avoid Polluting System Python Libraries</a></li>
-    
       <li><span>08 Jun 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/06/08/defining_continuous_integration_and_continuous_delivery/");'>Defining Continuous Integration and Continuous Delivery</a></li>
     
       <li><span>17 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/17/how_to_install_the_latest_master_branch_build_of_slic3r/");'>How to Install the Latest Master Branch Build of Slic3r</a></li>
     
       <li><span>16 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/16/using_vagrant_to_execute_an_isolated_build_process_in_a_vm/");'>Using Vagrant Shell Provisioning to Execute an Isolated Build Process in a VM</a></li>
+    
+      <li><span>05 May 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/05/05/playing_with_kubernetes/");'>Playing with Kubernetes for the First Time</a></li>
     
   </ul>
 </div>
