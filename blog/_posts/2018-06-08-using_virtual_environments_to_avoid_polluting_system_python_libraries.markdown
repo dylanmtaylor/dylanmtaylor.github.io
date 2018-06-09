@@ -7,7 +7,7 @@ author:
   display_name: Dylan Taylor
   login: dylanmtaylor
   email: dylan@dylanmtaylor.com
-date: '2018-06-08T16:38:40-04:00'
+date: '2018-06-08T20:41:12-04:00'
 ---
 
 As a Python developer, it's incredibly common to install a new library using the `pip` tool. However, if you are running Linux, one of the issues you can get with this is that you can overwrite system python libraries that are managed by a package manager such as `apt` or `yum`. In addition, if you have several Python projects on your system, each requiring a different version of a dependency, it's possible that one might break the other. Enter `virtualenv`, a tool used to isolate python dependencies within a project (or just in any folder, really). virtualenv allows you to install Python packages in a standard manner using pip, but keeps them separate from the rest of the system.
