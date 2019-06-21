@@ -4,7 +4,7 @@ titles = ['Home','About Me','Contact Me', 'Thanks for the Message', 'Donation Pa
 for page, title in zip(pages,titles):
 	path = "./pages/full/"+page+"/index.html"
 	f = open(path, 'w')
-	print "Building " + page + " (title: \"" + title + "\") ..."
+	print("Building " + page + " (title: \"" + title + "\") ...")
 	f.write("<!DOCTYPE HTML>\n<head>\n")
 	f.write("\t<title>Dylan Taylor's Personal Homepage - " + title + "</title>\n")
 	with open('interface/head.html','r') as i:    head = i.readlines()
