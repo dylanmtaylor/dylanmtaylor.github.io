@@ -39,7 +39,7 @@ after_script:
 - echo $GIT_EMAIL
 - git config --global user.name "$GIT_NAME"
 - git config --global user.email "$GIT_EMAIL"
-- export REPO="https://"$GITHUB_TOKEN"@github.com/dylanmtaylor/dylanmtaylor.github.io.git"
+- export REPO="https://"$GIT_TOKEN"@github.com/dylanmtaylor/dylanmtaylor.github.io.git"
 - export REPO_NAME="dylanmtaylor.github.io"
 - export TARGET_DIR=$(mktemp -d /tmp/$REPO_NAME.XXXX)
 - export REV=$(git rev-parse HEAD)
