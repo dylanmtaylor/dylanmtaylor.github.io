@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <head>
-	<title>Dylan Taylor's Personal Blog - Switching to Docker containers on Ubuntu 18.04 LTS</title>
+	<title>Dylan Taylor's Personal Blog - Running the Ansible builds via GitLab CI/CD</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/css/normalize.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="/css/style.css"  type="text/css" media="all" />
@@ -64,51 +64,84 @@
 			<div class="title"><h2><a href="/pages/blog");'>My Personal Blog</a></h2></div>
 			<div class="subtitle">A technology blog with updates about my projects, <br/>as well as interesting tricks, tips, news, and tutorials.</div>
 			<div id="post">
-	<h1>Switching to Docker containers on Ubuntu 18.04 LTS</h1>
-	<p class="meta">20 Jun 2019</p>
-	<p>I haven’t posted in a while, but I plan on spending more time working on the site in the near future. I’ve been busy with work and life stuff, so I neglected this blog a bit. Recently though, I decided to revisit this site and try to modernize it a bit and take advantage of some of the DevOps skills I’ve learned professionally, namely via switching to Docker containers. Containers run the same no matter what OS they are on, and the versions can be pinned to avoid things breaking with system updates (rare, but it did happen when I was running on the OS directly). They also provide a better degree of security, passing in the contents of the website as a volume mount and using environment variables to provide configuration. Even if there was an Nginx or PHP vulnerability, it mitigates the risk to the host. I came across a wonderful Docker container by Ric Harvey, <a href="https://gitlab.com/ric_harvey/nginx-php-fpm/">nginx-php-fpm</a>, and I’ve got to say, it’s really nice. Since I track the contents of subdomains in git repositories, the ability to have Docker do a pull of the contents is amazing, and I can still use cronjobs to do updates by doing a git pull in the container itself. I just completed the first part of a nearly complete rewrite of the Ansible playbook that deploys the site, and wiped and reloaded the virtual machine hosting it. I’ve got to say, it’s proving to be a very good solution so far.</p>
+	<h1>Running the Ansible builds via GitLab CI/CD</h1>
+	<p class="meta">22 Jun 2019</p>
+	<p>I utilize GitLab’s CI/CD functionality professionally all of the time as well as Docker containers to provide pipeline functionality into our cloud environment. I decided to take some of the knowledge I learned and set up a personal GitLab account with a project to do the Ansible deployment of my website. Unfortunately, the hosting provider I’m currently using, HostHatch does not automatically provision an SSH key and has no support for provisioning APIs or custom cloud-init user data. It is very affordable (I’m on a promotional plan with 2GB of RAM and 10GB of NVMe disk for $30/year, so it’s a hard-sell to switch back to Vultr or maybe AWS or DigitalOcean). As there is no API, unfortunately I can’t have a fully automated deployment, but it’s very close. I’d love to leverage a provider for HashiCorp terraform and have it set up a server with my SSH public key already on it using cloud-init and then use the CloudFlare DNS provider features to update the DNS record sets automatically to point to the new server, but since I’m only dealing with one “environment” and one server for that matter, it’d be massively over-kill anyways, I’d just be doing it as a fun exercise. Anyways, with the known caveat in mind that after re-imaging the VPS with the Ubuntu 18.04 template I have to manually run <code>ssh-copy-id 'root@[server IP address]'</code> from my local machine with my SSH key, the process is fully automated.</p>
+
+<p>I started by making a new GitLab repository. GitLab’s shared runner service, as of the time of writing, gives you 2000 minutes a month of free builds. This is more than enough for my needs. In a GitLab project, you can create a file called <code>.gitlab-ci.yml</code> which lets you specify the jobs and stages in the pipeline as well as the base Docker image that your build will run in. In my case, I chose Ubuntu 18.04 as it matches what’s running the server itself right now (recently switched from CentOS 7). This is a private repository (unlike all the other ones I have), as even though GitLab protects secret variables, it’s not fool-proof, and I didn’t want to risk exposing my SSH private key.</p>
+
+<p>As I can’t leverage Terraform via a state file to track my resources, and use the outputs to discover the IP of the server after destroying and recreating it for a build, I need to hard-code the IP address into the variables as <code>$IP_ADDRESS</code>, which is passed into the build. I can’t rely on DNS as I may be deploying to a server that my DNS isn’t pointing to yet, so I write that value to /etc/hosts during the build. In addition, I have the SSH private key (which I need to use Ansible to connect to the VM) in the variables as well, stored as <code>$PRIVATE_KEY</code>. GitLab CI/CD variables can be set on the page <code>Settings &gt; CI/CD &gt; Variables</code>, and in my case, I have these marked as “Protected”.</p>
+
+<p>The code I’m using in the CI/CD file looks like this:</p>
+
+<pre><code> # This simple GitLab CI file checks out and deploys my Ansible playbook
+ image: ubuntu:18.04
+
+ before_script:
+   - apt-get update
+   - apt-get -y install software-properties-common
+   - apt-add-repository --yes --update ppa:ansible/ansible
+   - apt-get -y install ansible git rsync
+   - mkdir ~/.ssh
+   - echo "$PRIVATE_KEY" &gt; ~/.ssh/id_rsa
+   - chown -R $USER:$USER ~/.ssh
+   - chmod 0600 ~/.ssh/*
+   - chmod 0700 ~/.ssh/
+   - echo "$IP_ADDRESS dylanmtaylor" &gt;&gt; /etc/hosts
+
+ ansible_deploy:
+   stage: deploy
+   script:
+     - git clone https://github.com/dylanmtaylor/dylanmtaylor-ansible.git
+     - cd dylanmtaylor-ansible
+     - ansible-playbook playbook.yml
+</code></pre>
+
+<p>The <code>before_script</code> section sets up the container before each section is run. If I decide to add more steps, like a test section to make sure thing are up and running after the build, having the dependencies setup globally is a nice way to not have to repeat code. There is one stage here, called <code>deploy</code>, and it has a job, <code>ansible_deploy</code>. After the setup where I install the latest Ansible and other required packages, as well as setting up the hosts and the SSH key, I run the playbook in the deploy stage. This is actually using a separate repository so I can keep my Ansible playbook itself public, and it’s just a matter of changing the directory and running Ansible.</p>
+
+<p>This method works great, but I do sometimes hit an issue with unattended-upgrades running shortly after the system boots for the first time, which locks dpkg and prevents some of the installations from working, so every once in a while I have to hit retry. Because Ansible uses state to determine what actions to take, it’s idempotent, so retrying won’t break anything.</p>
 
 
 	<div id="share-bar">
 
     <div class="share-buttons">
-        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://dylanmtaylor.com/pages/blog/2019/06/20/switching_site_to_running_on_docker_containers_on_ubuntu_18.04_lts/"
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://dylanmtaylor.com/pages/blog/2019/06/22/running_the_ansible_builds_via_gitlab_cicd/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" >
             <i class="fab fa-facebook share-button"> Facebook</i>
         </a>
 
-        <a  href="https://twitter.com/intent/tweet?text=Switching to Docker containers on Ubuntu 18.04 LTS&url=https://dylanmtaylor.com/pages/blog/2019/06/20/switching_site_to_running_on_docker_containers_on_ubuntu_18.04_lts/"
+        <a  href="https://twitter.com/intent/tweet?text=Running the Ansible builds via GitLab CI/CD&url=https://dylanmtaylor.com/pages/blog/2019/06/22/running_the_ansible_builds_via_gitlab_cicd/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" >
             <i class="fab fa-twitter share-button"> Twitter</i>
         </a>
 
-        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://dylanmtaylor.com/pages/blog/2019/06/20/switching_site_to_running_on_docker_containers_on_ubuntu_18.04_lts/&title=Switching to Docker containers on Ubuntu 18.04 LTS&summary=&source="
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://dylanmtaylor.com/pages/blog/2019/06/22/running_the_ansible_builds_via_gitlab_cicd/&title=Running the Ansible builds via GitLab CI/CD&summary=&source="
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on LinkedIn" >
             <i class="fab fa-linkedin share-button"> LinkedIn</i>
         </a>
 
-        <a  href="http://www.reddit.com/submit?url=https://dylanmtaylor.com/pages/blog/2019/06/20/switching_site_to_running_on_docker_containers_on_ubuntu_18.04_lts/"
+        <a  href="http://www.reddit.com/submit?url=https://dylanmtaylor.com/pages/blog/2019/06/22/running_the_ansible_builds_via_gitlab_cicd/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Reddit" >
             <i class="fab fa-reddit-alien share-button"> Reddit</i>
         </a>
 
-        <a  href="https://plus.google.com/share?url=https://dylanmtaylor.com/pages/blog/2019/06/20/switching_site_to_running_on_docker_containers_on_ubuntu_18.04_lts/"
+        <a  href="https://plus.google.com/share?url=https://dylanmtaylor.com/pages/blog/2019/06/22/running_the_ansible_builds_via_gitlab_cicd/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Google+" >
             <i class="fab fa-google-plus share-button"> Google</i>
         </a>
 
-        <a  href="http://www.tumblr.com/share/link?url=https://dylanmtaylor.com/pages/blog/2019/06/20/switching_site_to_running_on_docker_containers_on_ubuntu_18.04_lts/"
+        <a  href="http://www.tumblr.com/share/link?url=https://dylanmtaylor.com/pages/blog/2019/06/22/running_the_ansible_builds_via_gitlab_cicd/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Tumblr" >
             <i class="fab fa-tumblr share-button"> Tumblr</i>
         </a>
 
-        <a  href="mailto:?subject=Switching to Docker containers on Ubuntu 18.04 LTS&amp;body=Check out this blog post https://dylanmtaylor.com/pages/blog/2019/06/20/switching_site_to_running_on_docker_containers_on_ubuntu_18.04_lts/"
+        <a  href="mailto:?subject=Running the Ansible builds via GitLab CI/CD&amp;body=Check out this blog post https://dylanmtaylor.com/pages/blog/2019/06/22/running_the_ansible_builds_via_gitlab_cicd/"
             title="Share via Email" >
             <i class="fa fa-envelope share-button"> Email</i>
         </a>
@@ -125,7 +158,7 @@
   <h2>Other Posts</h2>
   <ul class="posts">
     
-      <li><span>22 Jun 2019</span> <span class="seperator">~</span> <a href="/pages/blog/2019/06/22/running_the_ansible_builds_via_gitlab_cicd/");'>Running the Ansible builds via GitLab CI/CD</a></li>
+      <li><span>20 Jun 2019</span> <span class="seperator">~</span> <a href="/pages/blog/2019/06/20/switching_site_to_running_on_docker_containers_on_ubuntu_18.04_lts/");'>Switching to Docker containers on Ubuntu 18.04 LTS</a></li>
     
       <li><span>09 Jun 2018</span> <span class="seperator">~</span> <a href="/pages/blog/2018/06/09/using_virtual_environments_to_avoid_polluting_system_python_libraries/");'>Using Virtual Environments to Avoid Polluting System Python Libraries</a></li>
     
