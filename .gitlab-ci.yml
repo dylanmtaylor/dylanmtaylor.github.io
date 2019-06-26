@@ -36,11 +36,11 @@ pages:
     - build_blog
   script:
     - temp=$(mktemp -d)
-    - mv * $temp/
-    - mkdir public
-    - mv $temp/* public
+    #- mv * $temp/
+    #- mkdir public
+    #- mv $temp/* public
   artifacts:
     paths:
-    - public
+    - .
   only:
   - master
