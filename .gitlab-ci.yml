@@ -21,7 +21,7 @@ build_blog:
   image: ruby:2.4
   stage: build_blog
   script:
-    - bundle install
+    - gem install jekyll jekyll-feed jekyll-sass-converter liquid colorator kramdown mercenary rouge safe_yaml
     - cd ./blog/
     - bundle exec jekyll build
   dependencies:
