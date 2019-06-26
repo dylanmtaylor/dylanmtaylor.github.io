@@ -1,6 +1,6 @@
 # Dylan M. Taylor's Personal Homepage
 
-Current build status: [![Build Status](https://travis-ci.org/dylanmtaylor/dylanmtaylor.github.io.svg?branch=master)](https://travis-ci.org/dylanmtaylor/dylanmtaylor.github.io)
+Current build status: [![pipeline status](https://gitlab.com/dylanmtaylor/dylanmtaylor.gitlab.io/badges/master/pipeline.svg)](https://gitlab.com/dylanmtaylor/dylanmtaylor.gitlab.io/commits/master)
 
 ## About this repository
 
