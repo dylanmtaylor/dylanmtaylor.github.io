@@ -35,7 +35,7 @@ pages:
   dependencies:
     - build_blog
   script:
-    - temp=$(mktemp.d)
+    - temp=$(mktemp -d)
     - mv * $temp/
     - mkdir public
     - mv $temp/* public
