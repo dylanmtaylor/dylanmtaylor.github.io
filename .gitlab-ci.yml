@@ -2,9 +2,14 @@ variables:
   JEKYLL_ENV: production
   LC_ALL: C.UTF-8
 
+stages:
+  - build_website
+  - build_blog
+  - deploy
+
 build_website:
   image: python:3
-  stage: build
+  stage: build_website
   script:
     - python build_site.py
     - cp -v interface/* blog/_includes/
@@ -14,7 +19,7 @@ build_website:
 
 build_blog:
   image: ruby:2.4
-  stage: build
+  stage: build_blog
   script:
     - bundle install
     - cd ./blog/
