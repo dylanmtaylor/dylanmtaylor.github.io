@@ -33,6 +33,6 @@ pages:
     - build_blog
   artifacts:
     paths:
-    - *
+    - .
   only:
   - master
