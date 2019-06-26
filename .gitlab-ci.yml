@@ -29,8 +29,6 @@ build_blog:
   artifacts:
     paths:
     - public
-  except:
-  - master
 
 pages:
   stage: deploy
