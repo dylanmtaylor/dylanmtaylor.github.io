@@ -10,7 +10,7 @@ build_website:
     - cp -v interface/* blog/_includes/
   artifacts:
     paths:
-    - *
+    - .
 
 build_blog:
   image: ruby:2.4
