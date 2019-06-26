@@ -28,7 +28,7 @@ build_blog:
     - build_website
   artifacts:
     paths:
-    - public
+    - .
 
 pages:
   stage: deploy
