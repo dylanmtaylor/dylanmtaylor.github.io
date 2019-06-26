@@ -1,0 +1,39 @@
+
+variables:
+  JEKYLL_ENV: production
+  LC_ALL: C.UTF-8
+
+build_website:
+  image: python:3
+  stage: build
+  script:
+    - python build_site.py
+    - cp -v interface/* blog/_includes/
+  artifacts:
+    paths:
+    - *.*
+
+build_blog:
+  image: ruby:2.4
+  stage: build
+  script:
+    - bundle install
+    - cd ./blog/
+    - bundle exec jekyll build
+  dependencies:
+    - build_website
+  artifacts:
+    paths:
+    - public
+  except:
+  - master
+
+pages:
+  stage: deploy
+  dependencies:
+    - build_blog
+  artifacts:
+    paths:
+    - *.*
+  only:
+  - master
