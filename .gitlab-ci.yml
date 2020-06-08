@@ -1,9 +1,24 @@
 stages:
+  - build_blog
   - deploy
+
+build_blog:
+  image: ruby:2.4
+  stage: build_blog
+  script:
+
+    - gem install jekyll jekyll-feed jekyll-sass-converter liquid colorator kramdown mercenary rouge safe_yaml
+    - cd ./blog/
+    - bundle exec jekyll build
+  artifacts:
+    paths:
+    - .
 
 pages:
   image: node:latest
   stage: deploy
+  dependencies:
+    - build_blog
   script:
     - npm install -g vuepress
     - vuepress build
