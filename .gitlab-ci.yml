@@ -11,8 +11,8 @@ build_blog:
     - bundle exec jekyll build
     - cd ../blog/
     - find . -name "*.html" -exec sh -c 'cat "$1" > "${1%.html}.md"' _ {} \;
-    - sed -i -e 's/^[ \t]*//' blog/index.md
-    - sed -i 's/<h1>Blog Posts<\/h1>/# Blog Posts/g' blog/index.md
+    - sed -i -e 's/^[ \t]*//' index.md
+    - sed -i 's/<h1>Blog Posts<\/h1>/# Blog Posts/g' index.md
   artifacts:
     paths:
     - blog
