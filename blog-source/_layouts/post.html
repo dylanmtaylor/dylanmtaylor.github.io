@@ -1,23 +1,17 @@
 ---
 layout: default
 ---
-<div id="post">
-<h1>{{ page.title }}</h1>
-<p class="meta">{{ page.date | date_to_string }}</p>
+# {{ page.title }}
+{{ page.date | date_to_string }}
+
 {{ content }}
 
-{% include share-bar.html %}
-
-</div>
-
-
 {% if site.related_posts != empty %}
-<div id="related">
-<h2>Other Posts</h2>
-<ul class="posts">
+
+## Other Posts
+
 {% for post in site.related_posts limit:4 %}
-<li><span>{{ post.date | date_to_string }}</span> <span class="seperator">~</span> <a href="{{ site.baseurl }}{{ post.url }}");'>{{ post.title }}</a></li>
+* {{ post.date | date_to_string }} ~ <a href="{{ site.baseurl }}{{ post.url }}");'>{{ post.title }}</a>
 {% endfor %}
-</ul>
-</div>
+
 {% endif %}
