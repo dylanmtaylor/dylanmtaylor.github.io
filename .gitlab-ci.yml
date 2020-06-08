@@ -11,6 +11,8 @@ build_blog:
     - bundle exec jekyll build
     - cd ../blog/
     - find . -name "*.html" -exec sh -c 'cat "$1" > "${1%.html}.md"' _ {} \;
+    - sed -i -e 's/^[ \t]*//' blog/index.md
+    - sed -i 's/<h1>Blog Posts<\/h1>/# Blog Posts/g' blog/index.md
   artifacts:
     paths:
     - blog
@@ -21,8 +23,6 @@ pages:
   dependencies:
     - build_blog
   script:
-    - sed -i -e 's/^[ \t]*//' blog/index.md
-    - sed -i -e 's/<h1>Blog Posts</h1>/# Blog Posts/g' blog/index.md
     - npm install -g vuepress
     - vuepress build
     - mkdir public
