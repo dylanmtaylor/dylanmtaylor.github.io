@@ -3,7 +3,7 @@ stages:
   - deploy
 
 build_blog:
-  image: ruby:2.4
+  image: jekyll:latest
   stage: build_blog
   script:
     - gem install jekyll jekyll-feed jekyll-sass-converter liquid colorator kramdown mercenary rouge safe_yaml
