@@ -9,6 +9,7 @@ build_blog:
     - gem install jekyll jekyll-feed jekyll-sass-converter liquid colorator kramdown mercenary rouge safe_yaml
     - cd ./blog/
     - bundle exec jekyll build
+    - find . -name "*.html" -exec sh -c 'cat "$1" > "${1%.html}.md"' _ {} \;
   artifacts:
     paths:
     - blog
