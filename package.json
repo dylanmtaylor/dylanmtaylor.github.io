@@ -1,0 +1,30 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Personal Website of Dylan Taylor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vuepress dev blog",
+    "build": "vuepress build blog"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/dylanmtaylor/dylanmtaylor.gitlab.io"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "Dylan Taylor",
+  "license": "MIT",
+  "devDependencies": {
+    "@vuepress/plugin-blog": "^1.9.2",
+    "@vuepress/theme-blog": "^2.2.0",
+    "vuepress": "^1.5.0"
+  },
+  "dependencies": {
+    "@limdongjin/vuepress-plugin-simple-seo": "^1.0.4-alpha.5",
+    "@vuepress/plugin-google-analytics": "^1.0.3",
+    "vuepress-plugin-reading-time": "^0.1.1"
+  }
+}

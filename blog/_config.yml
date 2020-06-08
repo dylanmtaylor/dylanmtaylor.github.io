@@ -1,9 +1,0 @@
-url: https://dylanmtaylor.com
-baseurl: "/pages/blog" # the subpath of your site, e.g. /blog/
-#markdown: rdiscount
-permalink: pretty
-highlighter: true
-exclude: ['Rakefile.rb', 'CNAME', 'README.markdown']
-destination: ../pages/blog/
-plugins:
-  - jekyll-feed
