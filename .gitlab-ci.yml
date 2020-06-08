@@ -22,9 +22,9 @@ pages:
   script:
     - npm install -g vuepress
     - vuepress build
-    - find .
     - mkdir public
     - mv .vuepress/dist/* public
+    - find .
   artifacts:
     paths:
     - public
