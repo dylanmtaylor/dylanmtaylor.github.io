@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Using Vagrant Shell Provisioning to Execute an Isolated Build Process in a VM
+title: Executing a Build Process in a VM Using Vagrant Shell Provisioning 
 status: publish
 published: true
 author:
