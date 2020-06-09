@@ -1,4 +1,6 @@
-<h2>I now accept secure donations through PayPal</h2>
+## Donate
+
+### I now accept secure donations through PayPal.
 
 If you find any of my work to be useful and would like to say thanks, or if you want to help pay for web hosting costs (keeping my site online currently costs around $5/month), then you can do so securely through PayPal.
 
