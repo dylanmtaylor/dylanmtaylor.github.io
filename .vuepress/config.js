@@ -17,12 +17,12 @@ module.exports = {
 		    ],
 		  ],
 	    title: 'Dylan M. Taylor',
-	    description: 'My personal website and blog',
+	    description: 'My Personal Website and Blog',
 	    themeConfig: {
 		            logo: '/images/circle.png',
 		            nav: [
 				                { text: 'Home', link: '/' },
-												{ text: 'About Me', link: '/about-me/'},
+												{ text: 'About', link: '/about-me/'},
 				                { text: 'Blog', link: '/blog/'},
 												{ text: 'Donate', link: '/donate/'},
 												{ text: 'Repositories', link: 'https://git.dylanmtaylor.com/'},
