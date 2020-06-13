@@ -33,7 +33,7 @@ pages:
     paths:
     - public
 
-ansible_deploy:
+.ansible_deploy:
   stage: ansible
   trigger:
     project: dylanmtaylor/dylanmtaylor-ansible
