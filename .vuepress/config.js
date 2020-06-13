@@ -34,6 +34,11 @@ module.exports = {
         extendsNetworks
       },
     ],
+    [
+      'sitemap', {
+        hostname: 'https://dylanmtaylor.com'
+      },
+    ],
   ],
   title: 'Dylan M. Taylor',
   description: 'My Personal Website and Blog',

@@ -27,6 +27,7 @@ pages:
   script:
     - npm install -g vuepress
     - npm install -g vuepress-plugin-social-share
+    - npm install -g vuepress-plugin-sitemap
     - vuepress build
     - mkdir public
     - mv .vuepress/dist/* public
