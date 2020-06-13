@@ -1,6 +1,7 @@
 stages:
   - build_blog
   - deploy
+  - ansible
 
 build_blog:
   image: jekyll/jekyll:latest
@@ -31,3 +32,9 @@ pages:
   artifacts:
     paths:
     - public
+
+ansible_deploy:
+  stage: ansible
+  trigger:
+    project: dylanmtaylor/dylanmtaylor-ansible
+    branch: master
