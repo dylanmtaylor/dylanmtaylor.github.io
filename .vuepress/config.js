@@ -15,8 +15,17 @@ module.exports = {
 		        ],
 		      },
 		    ],
-			['social-share'],
-		  ],
+            [
+              'social-share',
+              {
+                networks: ['facebook', 'twitter', 'reddit', 'telegram', 'email'],
+                fallbackImage: '/social-share.png',
+                autoQuote: true,
+                isPlain: false,
+                extendsNetworks,
+              },
+            ],
+        ],
 	    title: 'Dylan M. Taylor',
 	    description: 'My Personal Website and Blog',
 	    themeConfig: {
