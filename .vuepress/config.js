@@ -15,6 +15,7 @@ module.exports = {
 		        ],
 		      },
 		    ],
+			['social-share'],
 		  ],
 	    title: 'Dylan M. Taylor',
 	    description: 'My Personal Website and Blog',
