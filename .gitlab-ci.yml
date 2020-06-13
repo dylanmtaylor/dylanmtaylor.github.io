@@ -12,8 +12,9 @@ build_blog:
     - bundle exec jekyll build
     - cd ../blog/
     - find . -name "*.html" -exec sh -c 'cat "$1" > "${1%.html}.md"' _ {} \;
-    - sed -i 's/<h1>Blog Posts<\/h1>/\n## Blog Posts/g' index.md
-    - sed -i -e 's/^[ \t]*//' index.md
+    - sed -i 's/<h1>Blog Posts<\/h1>/\n## Blog Posts/g' index.md # Make it more Markdown friendly
+    - sed -i -e 's/^[ \t]*//' index.md # Strip leading whitespace
+    - sed -i 's/<div class="home">//g' index.md # This prevents the blog from being half-way down the page
   artifacts:
     paths:
     - blog
