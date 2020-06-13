@@ -19,10 +19,8 @@ module.exports = {
               'social-share',
               {
                 networks: ['facebook', 'twitter', 'reddit', 'telegram', 'email'],
-                fallbackImage: '/social-share.png',
                 autoQuote: true,
-                isPlain: false,
-                extendsNetworks,
+                isPlain: false
               },
             ],
         ],
