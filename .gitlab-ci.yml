@@ -25,6 +25,7 @@ pages:
     - build_blog
   script:
     - npm install -g vuepress
+    - npm install -g vuepress-plugin-social-share
     - vuepress build
     - mkdir public
     - mv .vuepress/dist/* public
