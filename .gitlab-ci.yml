@@ -28,6 +28,7 @@ pages:
     - npm install -g vuepress
     - npm install -g vuepress-plugin-social-share
     - npm install -g vuepress-plugin-sitemap
+    - npm install -g vuepress-plugin-code-copy
     - vuepress build
     - mkdir public
     - mv .vuepress/dist/* public

@@ -39,6 +39,16 @@ module.exports = {
         hostname: 'https://dylanmtaylor.com'
       },
     ],
+    [
+      'vuepress-plugin-code-copy',
+      {
+        align: 'bottom',
+        color: '#fca326',
+        backgroundTransition: true,
+        backgroundColor: '#b57300',
+        successText: 'Copied!'
+      }
+    ]
   ],
   title: 'Dylan M. Taylor',
   description: 'My Personal Website and Blog',
