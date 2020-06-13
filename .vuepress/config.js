@@ -27,7 +27,7 @@ module.exports = {
     [
       'social-share',
       {
-        networks: ['facebook', 'twitter', 'reddit', 'telegram', 'email', 'skype', 'whatsapp', 'linkedin'],
+        networks: ['facebook', 'twitter', 'linkedin', 'reddit', 'telegram', 'email', 'skype', 'whatsapp'],
         email: 'dylan@dylanmtaylor.com',
         autoQuote: true,
         isPlain: false,
