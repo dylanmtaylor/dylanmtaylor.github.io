@@ -39,7 +39,7 @@ Anyways, not using this now aside, it's still fun to play with, and since Vultr 
 
     - name: Add newly provisioned server to hosts group
       add_host:
-        name: "{{ dylan_server.vultr_server.v4_main_ip }}"
+        name: "{ { dylan_server.vultr_server.v4_main_ip } }"
         groups: "servers"
 
 - hosts: servers
@@ -60,6 +60,8 @@ Anyways, not using this now aside, it's still fun to play with, and since Vultr 
     - gui
     - cleanup
 ```
+
+Note that the braces should not have a space between them in the actual file; this is to fix a rendering issue on my blog.
 
 This can be run using `ansible-playbook playbook.yml` as usual. The interesting bit here is the the `servers` host group actually needs to start out empty. In my current deployment method, I start out with the servers like populated with the IP address of the server I have sitting out there ready for provisioning. Then the roles are executed against the server in the host group. 
 
