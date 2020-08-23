@@ -1,0 +1,19 @@
+---
+layout: post
+title: Ventoy, the Best Way to Create a Bootable Flash Drive From ISOs
+status: publish
+published: true
+author:
+  display_name: Dylan Taylor
+  login: dylanmtaylor
+  email: dylan@dylanmtaylor.com
+date: '2020-08-23T15:37:19-04:00'
+---
+
+I've been a Linux user for a very long time, since I was a teenager more than a decade ago. Invariably, using Linux requires creating boot media. At first, I was burning multiple CD-Rs with distributions like Slackware and Fedora, which turned into burning DVDs once distributions began shipping single, larger ISO files, and now, almost all distibutions expect you to write a flash drive. I've tried just about every method of doing this - dd on the terminal as root, unetbootin, DriveDroid from a rooted Android phone to fake having a flash drive attached, Etcher, Rufus, Win32 Disk Imager, you name it. These all basically do the same thing - byte-by-byte copy of the data onto the drive, and are not particularly interesting. There have been ways to do multiple distibutions on a single medium for a while, but they've been fairly tedious to create, you need to reimage the drive and edit menu files by hand, etc. 
+
+Recently I discovered a new project called [Ventoy](https://github.com/ventoy/Ventoy). I would describe it as the next-generation of bootable USB media creation. Instead of writing over the whole drive every time and losing the ability to store files on the drive, it eliminates the formatting and burning process entirely after the drive is initally prepared. The process writes a bootloader which is capable of detecting ISO files that are simply copied onto the drive's exFAT filesystem, which means you can have dozens of bootable ISO files on the same media, and choose which distribution you want to boot off the drive. After trying it out, by just dragging Arch, Manjaro, Ubuntu, Windows 10 2004, etc. onto a drive, I was able to boot all the ISOs I tried except for the Ultimate Boot CD on my UEFI-based Dell Precision 5540. 
+
+I tried building the project from source from their GitHub page, and it's very easy to do with docker-compose. Simply cloning the project and running `docker-compose up` will initialize a CentOS 7 container with the ventoy source as a volume and output the distributable files in the `INSTALL` directory. I noticed they didn't have a continuous integration system of any kind, and since it was hosted on GitHub, I figured I'd fork the project and play around with GitHub actions. It's actually very similar in how it works to GitLab CI/CD, which I use professionally almost every single day. With just around a dozen lines of YAML, I was able to add CI functionality to their project that builds the whole project for Linux and Windows and uploads the artifacts to GitHub for download on every single commit. I'm actually pleased with how easy setting up GitHub Actions is. There is a learning curve for some of the syntax, but I had it working very quickly, and they [accepted my commit into their master branch](https://github.com/ventoy/Ventoy/commit/1bf3e73373ccf4d515e4b554b5d8e233aaf1e6f3). I hope that having all commits to master and pull requests built automatically will provide support to their development activities, making it easier to test without building locally, and detecting bad commits that break the build before they are merged. 
+
+Anyways, if you're a distro-hopper like me, I suggest checking Ventoy out. It's fantastic to be able to keep multiple ISO files on a USB drive and being able to update it with a simple copy/paste action from nearly any operating system (especially since exFAT is a native Linux filesystem as of kernel 5.7). In my opinion, it is the best tool for creating a bootable USB drive, and it is very easy to use. 
