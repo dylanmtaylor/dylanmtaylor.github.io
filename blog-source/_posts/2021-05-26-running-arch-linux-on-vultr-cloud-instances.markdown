@@ -1,0 +1,17 @@
+---
+layout: post
+title: Running Arch Linux on Vultr Cloud Instances
+status: publish
+published: true
+author:
+  display_name: Dylan Taylor
+  login: dylanmtaylor
+  email: dylan@dylanmtaylor.com
+date: '2021-05-26T11:37:19-04:00'
+---
+
+Recently, I've been spending my free time contributing to the Arch Linux project's official installer, [https://github.com/archlinux/archinstall](archinstall). As of the time of writing this post, I'm up to [just over 300 commits to the master branch](https://github.com/archlinux/archinstall/commits?author=dylanmtaylor), and I've introduced several major features and structural changes to the project. 
+
+Anyways, being a lover of cloud environments and having a couple hundred dollars of [Vultr](https://www.vultr.com/?ref=8667281-6G) (link is a referral link; not sponsored, I just like the service) credit left, I decided to try out installing Arch Linux on it. One of the great features they have is the ability to upload a custom ISO, so I figured what better way to try out the new GRUB/MBR support we added, and see how it worked in a cloud environment than to test it out personally. I chose the 2.2.0RC1 ISO (the 2.2.0 final should be in the official Arch Linux ISO), and I uploaded this to Vultr. After booting it, I noticed the whole environment appeared to be out of space. This was being caused by cloud-init running several actions since it realized it's in a cloud environment, and unfortunately this was breaking installation. After adding `cloud-init=disabled` to the kernel parameters, it worked great though. To do this, open the KVM console, hit `[tab]` and add this option, then boot the system normally. Once inside, just run `archinstall`.
+
+The 'encryption password' option should be skipped entirely as it causes problems in a cloud environment - you need to enter it on the KVM console every time you reboot, which is not ideal, but all the other options worked fine, and I was even able to install and boot lxqt without any issues. The downloads were VERY fast, so I ran a few speed tests, and I got speeds over 5 gigabit (exceptionally good). No complaints whatsoever. So, if you want to try it out for yourself, I suggest using the "High Frequency Compute" instance for $6/month, billed hourly, and giving it a go. It's a great way to experiment with Arch Linux and its various desktop environments, and it's rather affordable for what you get. You could host a website using it with ease. Also, if you use my [referral link](https://www.vultr.com/?ref=8667281-6G), and stick with it, I get some free cloud credit to play around with, and you should get trial credit as well. 
