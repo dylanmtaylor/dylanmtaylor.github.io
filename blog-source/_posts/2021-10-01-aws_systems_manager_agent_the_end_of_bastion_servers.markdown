@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AWS Systems Manager Agent: The End of Bastion Servers?
+title: AWS Systems Manager Agent - The End of Bastion Servers?
 status: publish
 published: true
 author:
