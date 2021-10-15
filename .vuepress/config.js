@@ -67,10 +67,6 @@ module.exports = {
         link: '/blog/'
       },
       {
-        text: 'Donate',
-        link: '/donate/'
-      },
-      {
         text: 'Repositories',
         link: 'https://git.dylanmtaylor.com/'
       },
