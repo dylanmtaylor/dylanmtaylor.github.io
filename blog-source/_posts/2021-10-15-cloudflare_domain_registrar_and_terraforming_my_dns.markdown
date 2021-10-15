@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Transferring My Domain From Namecheap to CloudFlare and Terraforming My DNS
+title: CloudFlare Domain Registrar and Terraforming My DNS
 status: publish
 published: true
 author:
