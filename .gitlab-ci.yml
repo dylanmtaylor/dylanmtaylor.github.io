@@ -1,29 +1,9 @@
 stages:
-  # - build_blog
   - deploy
-  # - ansible
-
-# build_blog:
-#   image: jekyll/jekyll:latest
-#   stage: build_blog
-#   script:
-#     - gem install jekyll jekyll-feed jekyll-sass-converter liquid colorator kramdown mercenary rouge safe_yaml
-#     - cd ./blog-source/
-#     - bundle exec jekyll build
-#     - cd ../blog/
-#     - find . -name "*.html" -exec sh -c 'cat "$1" > "${1%.html}.md"' _ {} \;
-#     - sed -i 's/<h1>Blog Posts<\/h1>/\n## Blog Posts/g' index.md # Make it more Markdown friendly
-#     - sed -i -e 's/^[ \t]*//' index.md # Strip leading whitespace
-#     - sed -i 's/<div class="home">//g' index.md # This prevents the blog from being half-way down the page
-#   artifacts:
-#     paths:
-#     - blog
 
 pages:
   image: node:latest
   stage: deploy
-  # dependencies:
-  #   - build_blog
   script:
     - npm install
     - npm run build
@@ -33,9 +13,3 @@ pages:
   artifacts:
     paths:
     - public
-
-# .ansible_deploy:
-#   stage: ansible
-#   trigger:
-#     project: dylanmtaylor/dylanmtaylor-ansible
-#     branch: master
