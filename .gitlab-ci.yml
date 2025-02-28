@@ -25,7 +25,7 @@ pages:
   # dependencies:
   #   - build_blog
   script:
-    - npm run docs:build
+    - npm run blog:build
     - mkdir -p public
     - cp -r .vitepress/dist/* public/
     - find public -type f
