@@ -1,9 +1,36 @@
 ---
-home: true
+layout: home
+name: "Dylan M. Taylor"
+text: "My Personal Website and Blog"
 heroText: null
 tagline: null
 footer: Developed by Dylan Taylor • This site is 100% open source. • CC BY-SA 4.0 License
 ---
+
+<!-- ---
+# https://vitepress.dev/reference/default-theme-home-page
+layout: home
+
+hero:
+  tagline: My great project tagline
+  actions:
+    - theme: brand
+      text: Markdown Examples
+      link: /markdown-examples
+    - theme: alt
+      text: API Examples
+      link: /api-examples
+
+features:
+  - title: Feature A
+    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Feature B
+    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Feature C
+    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+---
+ -->
+
 
 ### Welcome, please feel free to have a look around.
 

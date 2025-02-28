@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vuepress dev blog",
-    "build": "vuepress build blog"
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
   },
   "repository": {
     "type": "git",
@@ -18,13 +22,10 @@
   "author": "Dylan Taylor",
   "license": "MIT",
   "devDependencies": {
-    "@vuepress/plugin-blog": "^1.9.2",
-    "@vuepress/theme-blog": "^2.2.0",
-    "vuepress": "^1.5.0"
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.13"
   },
   "dependencies": {
-    "@limdongjin/vuepress-plugin-simple-seo": "^1.0.4-alpha.5",
-    "@vuepress/plugin-google-analytics": "^1.0.3",
-    "vuepress-plugin-reading-time": "^0.1.1"
+    "markdown-it-shiki": "^0.9.0"
   }
 }
