@@ -33,6 +33,8 @@
     "yarn": "^1.22.22"
   },
   "dependencies": {
-    "markdown-it-shiki": "^0.9.0"
+    "markdown-it-shiki": "^0.9.0",
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.13"
   }
 }
