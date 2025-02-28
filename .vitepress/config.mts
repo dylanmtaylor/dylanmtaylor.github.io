@@ -15,10 +15,10 @@ export default defineConfig({
         text: 'About',
         link: '/about-me/'
       },
-      {
-        text: 'Blog',
-        link: '/blog/'
-      },
+      // {
+      //   text: 'Blog',
+      //   link: '/blog/'
+      // },
       {
         text: 'Résumé',
         link: 'https://files.dylanmtaylor.com/dylan-resume.pdf'
