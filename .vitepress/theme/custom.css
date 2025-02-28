@@ -31,7 +31,7 @@
 }
 
 :root {
-
+    --vp-nav-bg-color: #2d2d2d;
     --vp-c-brand-light: var(--vp-c-brand);
     --vp-c-brand-lighter: var(--vp-c-brand);
     --vp-c-brand-dark: var(--vp-c-brand);
@@ -74,7 +74,7 @@
 .content a[rel~='noreferrer']:link, a[rel~='noreferrer']:visited {
     color: var(--vp-c-brand);
     font-weight: 500 !important;
-    border-bottom: 1px solid var(--vp-c-brand);
+    /* border-bottom: 1px solid var(--vp-c-brand); */
 }
 .content a[rel~='noreferrer']:hover {
     color: #888;
@@ -220,3 +220,25 @@ h3 {
     color: var(--vp-c-text-1);
 }
 
+
+.DocSearch {
+    width: 150%;
+}
+
+.VPNav {
+    background-color: #2d2d2d !important;
+    border-bottom: solid #99633c 2px !important;
+}
+
+.VPNav a {
+    color: #C3BEA8 !important;
+}
+
+.VPNavBarMenu a:hover {
+    color: #ddd !important;
+    text-decoration-color: #da8541 !important;
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+}
+  
