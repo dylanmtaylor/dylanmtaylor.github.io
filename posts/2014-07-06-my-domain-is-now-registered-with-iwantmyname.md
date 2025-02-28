@@ -3,6 +3,7 @@ date: 2014-07-06
 title: My Domain is Now Registered With iWantMyName
 description: My experience switching domain registrars to iWantMyName, which offers a simple interface and ethical business practices compared to competitors.
 ---
+## My Domain is Now Registered With iWantMyName
 
 [![iwantmyname-medium](/images/blog/2014/07/iwantmyname-medium.png)]
 

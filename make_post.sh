@@ -7,6 +7,7 @@ date: '$YMD'
 title: $TITLE
 description: 
 ---
+## $TITLE
 
 EOF
 echo $FILE

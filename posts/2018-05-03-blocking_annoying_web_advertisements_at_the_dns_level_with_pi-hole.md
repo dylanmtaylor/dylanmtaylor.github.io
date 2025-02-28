@@ -3,6 +3,7 @@ date: 2018-05-03
 title: Blocking Annoying Web Advertisements at the DNS Level with Pi-Hole
 description: If you're like myself and many other users on the internet, you probably hate advertisements. Not only are they annoying but they can drain your battery and eat up your bandwidth.
 ---
+## Blocking Annoying Web Advertisements at the DNS Level with Pi-Hole
 
 ![Pi-Hole](/images/blog/2018/05/Vortex-R.png)
 

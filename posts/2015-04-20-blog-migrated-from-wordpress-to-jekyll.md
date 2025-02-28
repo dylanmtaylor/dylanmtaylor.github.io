@@ -3,6 +3,7 @@ date: 2015-04-20
 title: Migrating from Wordpress to Custom Code and Jekyll
 description: How I recreated my website from scratch, moving away from WordPress to static content generation with Jekyll for better control and performance.
 ---
+## Migrating from Wordpress to Custom Code and Jekyll
 
 [![Jekyll](/images/blog/2015/04/jekyll.png)](http://jekyllrb.com/)
 

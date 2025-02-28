@@ -3,6 +3,7 @@ date: 2012-03-31
 title: Fixing Autokey (GTK) on Ubuntu 12.04
 description: A solution for getting Autokey working on Ubuntu 12.04 by adding it to Unity's system tray whitelist.
 ---
+## Fixing Autokey (GTK) on Ubuntu 12.04
 
 Autokey is a wonderful scripting tool for [Linux](http://en.wikipedia.org/wiki/Linux). Unfortunately, it doesn't work out of the box in [Ubuntu 12.04](http://www.ubuntu.com/). The reason why is because Autokey isn't on the Unity panel's system tray whitelist. I submitted [a bug report on Launchpad](https://bugs.launchpad.net/ubuntu/+source/autokey/+bug/970581), but for now, if you want to get Autokey working without breaking the Unity panel for any other applications, it's as simple as running the following command in the terminal:
 

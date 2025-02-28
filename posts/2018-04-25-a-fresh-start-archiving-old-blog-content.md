@@ -3,5 +3,6 @@ date: 2018-04-25
 title: A Fresh Start - Archiving Some Old Blog Content
 description: Refreshing the blog by unpublishing outdated content while keeping it accessible through version control.
 ---
+## A Fresh Start - Archiving Some Old Blog Content
 
 You might have noticed it's a bit empty here.  I haven't updated this blog in quite some time (years), and I felt like it's time for some spring cleaning. I'm going to be writing new content here about both personal projects as well as technology that I am passionate about, and really wanted to give the site a more professional look and feel. Some of the posts that I wrote from when I was first experimenting and learning to code aren't necessarily reflective of my current knowledge and abilities, so I've unpublished them. That said, due to the nature of this site, everything is open source and tracked in version control, including [the Ansible playbook](https://gitlab.com/dylanmtaylor/dylanmtaylor-ansible) I use to deploy the site on a new virtual private server. Because of that, all of the old content is still in [the git repository for this website](https://gitlab.com/dylanmtaylor/dylanmtaylor.gitlab.io).

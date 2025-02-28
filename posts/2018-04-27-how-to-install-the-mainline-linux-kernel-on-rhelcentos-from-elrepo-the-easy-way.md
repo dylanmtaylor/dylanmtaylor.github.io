@@ -3,6 +3,7 @@ date: 2018-04-27
 title: How to install the Mainline Kernel on Enterprise Linux 7 the Easy Way
 description: Installing a newer kernel on RHEL/CentOS systems using ELRepo to get better driver support and performance.
 ---
+## How to install the Mainline Kernel on Enterprise Linux 7 the Easy Way
 
 Red Hat Enterprise Linux and CentOS, which is based off of RHEL source code are known for their stability. They are supported for a very long time (10+ years), and other than backporting security fixes, very little actually changes in each point release. For various reasons, you may want to install a newer kernel than the one built by Red Hat. This could be due to better driver support, performance increases, etc. [ELRepo](https://elrepo.org/tiki/tiki-index.php) is a project that provides hardware-related packages and newer kernels that are compatible with enterprise Linux distributions. As part of building out my site and running enterprise Linux distributions on my own hardware, I install their kernel-ml package. Unfortunately, on a headless system this is a little bit painful, since GRUB likes to default to the version that was previously booted, so even after a reboot you won't see the new kernel applied. I also wanted to perform this operation in a "one line" automated fashion via Ansible, and needed to keep it simple for the sake of making it easy to do.
 

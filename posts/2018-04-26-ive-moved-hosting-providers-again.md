@@ -3,6 +3,7 @@ date: 2018-04-26
 title: Moving Hosts Again, This Time with NVMe Storage
 description: Transitioning to a more cost-effective hosting solution with high-performance NVMe storage.
 ---
+## Moving Hosts Again, This Time with NVMe Storage
 
 For the past two years, this site has been hosted with [Joe's Datacenter](https://joesdatacenter.com/) on a rather overkill dedicated machine with some seriously beefy specs (dual Xeon L5420 CPUs, 8GB RAM, 20TB of bandwidth on a 1Gbit dedicated port, 500GB HDD). The service was around $20/month as I got it with a promotional code, and I had this site and about 3 or 4 other virtual machines running on the box that I've been using to test various things out, as well as [Folding@home](http://folding.stanford.edu/). It was fun to play with, but it was getting rather expensive for something I'm doing as a hobby. Regrettably, it was time to move on to something more reasonable. I also decided that if I wanted virtual machines for short term use, I'd use the around $150 in credit I still have left with [Vultr](https://www.vultr.com/?ref=6805270) to test things out rather than spinning up new ones on a bare-metal server. The SSD performance of Vultr on the cheapest of plans outperformed my server by quite a bit, and since they bill hourly, it's a win-win.
 

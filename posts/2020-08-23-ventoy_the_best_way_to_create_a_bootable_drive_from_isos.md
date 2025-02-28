@@ -3,6 +3,7 @@ date: 2020-08-23
 title: Ventoy, the Best Way to Create a Bootable Flash Drive From ISOs
 description: Introduces Ventoy as a tool for creating bootable USB drives with multiple ISO files, highlighting its ease of use and advantages over traditional methods. Also discusses contributing to the Ventoy project by adding GitHub Actions for continuous integration.
 ---
+## Ventoy, the Best Way to Create a Bootable Flash Drive From ISOs
 
 I've been a Linux user for a very long time, since I was a teenager more than a decade ago. Invariably, using Linux requires creating boot media. At first, I was burning multiple CD-Rs with distributions like Slackware and Fedora, which turned into burning DVDs once distributions began shipping single, larger ISO files, and now, almost all distibutions expect you to write a flash drive. I've tried just about every method of doing this - [dd](https://man7.org/linux/man-pages/man1/dd.1.html) on the terminal as root, [unetbootin](https://unetbootin.github.io/), [DriveDroid](https://www.drivedroid.io/) from a rooted Android phone to fake having a flash drive attached, [Etcher](https://etcher.io/), [Rufus](https://rufus.ie/), [Win32 Disk Imager](https://wiki.ubuntu.com/Win32DiskImager), you name it. These all basically do the same thing - byte-by-byte copy of the data onto the drive, and are not particularly interesting. There have been ways to do multiple distibutions on a single medium for a while, but they've been fairly tedious to create, you need to reimage the drive and edit menu files by hand, etc. 
 

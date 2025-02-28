@@ -3,6 +3,7 @@ date: 2018-04-27
 title: Creating Disposable OpenVPN Servers Using the Vultr Cloud API
 description: Building temporary OpenVPN servers on demand using Vultr's cloud API for cost-effective privacy when needed.
 ---
+## Creating Disposable OpenVPN Servers Using the Vultr Cloud API
 
 For a while now, I've used [Nyr's openvpn-install script](https://github.com/Nyr/openvpn-install) to set up OpenVPN servers for my personal use. It's quite a handy script, and as it proclaims on the GitHub page, it'll let you setup an OpenVPN server in around a minute with no expertise required. This, combined with some ultra-cheap VPS servers, perhaps from [VirMach](https://billing.virmach.com/aff.php?aff=4261) can get you a decently good performance VPN with a single IP address for about a dollar a month. The are a few issues with this approach are that you are limited to one IP address, which allows providers to easily identify you if you use the service for long enough (VirMach actually charges more than the monthly cost of their cheapest offering to change the IP address - it's easier to cancel), the bandwidth is very limited for heavy usage, and you're paying for service even when it's not needed. The last point may not sound like a big deal, but from a pure cost perspective, it's cheaper to pay hourly only when you need it.
 

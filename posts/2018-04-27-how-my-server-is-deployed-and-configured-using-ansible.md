@@ -3,6 +3,7 @@ date: 2018-04-27
 title: How My Server is Deployed and Configured Using Ansible
 description: Using Ansible playbooks to automate server deployment and configuration for immutable infrastructure.
 ---
+## How My Server is Deployed and Configured Using Ansible
 
 [![Ansible](/images/blog/2018/04/ansible_logo_round.png)](https://www.ansible.com/) Traditionally, deploying infrastructure was a very time and labor intensive process. Manually going in and configuring services, installing packages, applying system updates, copying over data, etc. could easily take an entire day or more of man hours. In order to solve this problem, several tools, such as [Ansible](https://www.ansible.com/), [Chef](https://www.chef.io/chef/), [Puppet](https://puppet.com/), and [SaltStack](https://saltstack.com/) were created in order to make the lives of system administrators and infrastructure architects everywhere easier. I have adopted Ansible in order to configure my web server. Honestly, the way that my server is configured, there is nothing on it that I cannot afford to lose. With very little effort, I can re-run the Ansible "playbook", and an identical serer will be created within a couple hours. This is a concept called immutable infrastructure. If there is something wrong with the server, it makes more sense to simply replace it rather than reconfigure or repair it.
 

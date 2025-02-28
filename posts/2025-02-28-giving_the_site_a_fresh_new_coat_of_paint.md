@@ -3,6 +3,7 @@ date: '2025-02-28'
 title: Giving the Site a Fresh New Coat of Paint
 description: Rebuilding my website from the ground up with VitePress and a custom theme.
 ---
+## Giving the Site a Fresh New Coat of Paint
 
 I'm excited to announce that I've recently completed a significant overhaul of this website! What you're seeing now is the result of a complete rewrite, built from the ground up using VitePress. Previously, this site was using VuePress, and instead of a proper blog plugin, I had a shimmed together solution where I generated the old content with Jekyll and then pushed the result into the built files from VuePress. This was an ugly hack. Now, all of the content is built with a single command, using a proper system, and everything is better because of it.
 

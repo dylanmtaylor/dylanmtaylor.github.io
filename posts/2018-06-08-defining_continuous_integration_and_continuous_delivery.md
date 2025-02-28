@@ -3,6 +3,7 @@ date: '2018-06-08T15:23:06-04:00'
 title: Defining Continuous Integration and Continuous Delivery
 description: In the past, I've been asked what continuous integration and continuous delivery mean to me. Those not used to the DevOps Engineering methodology may not be familiar with these terms.
 ---
+## Defining Continuous Integration and Continuous Delivery
 
 In the past, I've been asked what continuous integration and continuous delivery mean to me. Those not used to the DevOps Engineering methodology, which integrates traditional application development with infrastructure operations in order to expedite the production code delivery process and improve iteration time in an agile manner may not be familiar with these terms. Unlike the word agile, which is overused to the point where it has become little more than a marketing buzzword in some cases, CI/CD refer to concretely define processes. The implementation may vary, of course, for instance, a CI/CD workflow could take advantage of a hosted solution (software as a service) such as TravisCI, or IBM Bluemix DevOps Services (a product I've worked on), or it could run within one's own infrastructure.
 

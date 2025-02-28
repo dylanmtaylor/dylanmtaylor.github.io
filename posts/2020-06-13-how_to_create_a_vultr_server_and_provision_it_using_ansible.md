@@ -12,6 +12,7 @@ Anyways, not using this now aside, it's still fun to play with, and since Vultr 
 
 ```
 ---
+## How to Create a Vultr Server and Provision it Using Ansible
 - hosts: localhost
   connection: local
   gather_facts: false

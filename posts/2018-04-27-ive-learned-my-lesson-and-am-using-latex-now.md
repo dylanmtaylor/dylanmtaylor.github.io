@@ -3,6 +3,7 @@ date: 2018-04-27
 title: I've Learned My Lesson and I'm Using LaTeX Now
 description: Transitioning from Google Docs to LaTeX for creating professional résumés with better formatting and version control.
 ---
+## I've Learned My Lesson and I'm Using LaTeX Now
 
 For _years_, I've been using a simple [Google Docs](https://www.google.com/docs/about/) document for my résumé. This has proven to be adequate to land me my current position at IBM, but it comes with some obvious drawbacks. For starters, Google Docs is not the most open format, and while you can certainly export to multiple document formats, it's far from ideal. It lacks lots of customization options. Complex formatting, like having plenty of fonts, consistent styles, spacing, and margins is also tricky, having to use the mouse to drag and drop everything to format the document to your liking.
 

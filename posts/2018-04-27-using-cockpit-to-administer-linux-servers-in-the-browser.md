@@ -3,6 +3,7 @@ date: 2018-04-27
 title: Using Cockpit to Administer Linux Servers in the Browser
 description: A web-based server management interface sponsored by Red Hat that makes it easy to administer Linux servers via a browser.
 ---
+## Using Cockpit to Administer Linux Servers in the Browser
 
 It's often really nice to be able to log into a web interface and check the status of your server and run a few terminal commands. Previously for this, I was using the [Ajenti Server Admin Panel](http://ajenti.org/), but I recently discovered a new solution that I like better because of its simplicity and sponsorship by Red Hat. That solution is the [Cockpit project](http://cockpit-project.org/). As described on the official website, "Cockpit is a server manager that makes it easy to administer your GNU/Linux servers via a web browser." I decided to give it a try. Since my server is running CentOS 7, this was very easy to get up and running, and it is actually included by default in the CentOS repositories as the `cockpit` package. This is a great addition to tools like `glances` and `htop`, and makes checking on the server a breeze.
 

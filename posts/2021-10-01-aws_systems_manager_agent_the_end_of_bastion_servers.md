@@ -3,6 +3,7 @@ date: 2021-10-01
 title: AWS Systems Manager Agent - The End of Bastion Servers?
 description: Learn how AWS Systems Manager Agent eliminates the need for bastion servers by providing secure access to EC2 instances without exposing SSH or RDP ports.
 ---
+## AWS Systems Manager Agent - The End of Bastion Servers?
 
 In almost every role I've ever worked, in some fashion or another, there was always a server you needed to access that didn't have SSH or RDP directly exposed to the internet. Typically, this worked by having a small, lightweight "bastion" or "jump box" instance deployed that you'd connect to directly, and then from there you'd be able to connect to the instance. With AWS though, this is completely unnecessary now. Not only is the bastion server not a requirement, but the security group for the instance doesn't need to allow ingress to the SSH or RDP ports at all, as long as the SSM agent is installed. This is default on Amazon Linux 2 images and recent Ubuntu server images. 
 

@@ -3,6 +3,7 @@ date: 2018-04-27
 title: Rapidly Setting Up My Linux Desktop Using a Makefile
 description: Using a Makefile to automate system setup and configuration when switching between Linux distributions.
 ---
+## Rapidly Setting Up My Linux Desktop Using a Makefile
 
 I'll admit it, I'm obsessed with being an early adopter of technology and I switch between Linux distributions frequently. Before Ubuntu 18.04 came out (it was just released on April 26th), I decided to test it out around the end of March, just a month before it's official release date. There's just one issue with that: it wasn't the final version. Breakage can often happen when testing out a pre-release Linux distibution. For instance, a simply `sudo apt update; sudo apt full-upgrade` can cripple a system with a bad package, resulting in a reinstall. I stumbled upon a [Makefile by Julius Beckmann](https://gist.github.com/h4cc/c54d3944cb555f32ffdf25a5fa1f2602#file-makefile) that can be run on a new Ubuntu system and immediately saw the benefit of such an approach. I can reinstall as many times as I like, and so long as I set up the commands correctly, I can have a system configured exactly how I like it within an hour. I can even run a specific make target on its own in order to install a certain set of programs or updates without rerunning the whole script. I decided to fork it, creating [my own Ubuntu Makefile repository](https://github.com/dylanmtaylor/dylan-ubuntu-makefile), adding many packages, and removing things I do not need.
 

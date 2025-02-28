@@ -3,6 +3,7 @@ date: '2018-05-16T21:22:15-04:00'
 title: How to Install the Latest Master Branch Build of Slic3r
 description: Slic3r is a 3D printer slicing tool. It converts digital objects into instructions that are readable by a 3D printer called "gcode".
 ---
+## How to Install the Latest Master Branch Build of Slic3r
 
 [Slic3r](http://slic3r.org/) is a 3D printer slicing tool. It converts digital objects into instructions that are readable by a 3D printer called "gcode". I use this program with my 3D printer, an Original Prusa i3 MK2s in order to position, rotate, and scale objects on the print bed and then select how I would like it to be printed. It's an excellent tool for the most part, and it competes quite well with the proprietary tool [Simplify3D](https://www.simplify3d.com/). Improvements seem to be added quite frequently. However, I have noticed that for some reason, the `slic3r` package on Ubuntu 18.04 breaks when running it with the Nvidia proprietary graphics driver installed, but this does not affect the slic3r appimage package or upstream tarball releases. In order to solve this issue, you can easily get the files, extract them and create a menu entry using this method:
 

@@ -3,6 +3,7 @@ date: 2020-06-09
 title: Giving My Site a Makeover with VuePress
 description: Migration of my website from a custom HTML/CSS design to VuePress, including the benefits of using a modern framework and the process of integrating existing blog content from Jekyll.
 ---
+## Giving My Site a Makeover with VuePress
 
 [![VuePress](/images/blog/2020/06/vuepress.png){width=30% style="float:left"}](https://vuepress.vuejs.org/)For years, since this site was created, I've been using [a design that I created myself](/images/blog/2020/06/old-website-design.png) using basic HTML and CSS, with a bunch of custom python to put the pieces of the site together and render static HTML pages. And that actually worked really well for a long time. I had tons of flexibility and honestly, the end-result was pretty decent. Unfortunately though, it meant that all of the work of, for instance, making sure that mobile device browsing was a good experience fell on my hands. This meant, for instance that the navigation bar I made for my website had to be dynamically removed when viewing my blog on mobile so that the content was actually readable, using JavaScript based on device type detection. Maintaining this sort of logic in my code-base was a lot of effort, and the result produced wasn't as good as using a community supported framework.
 

@@ -3,6 +3,7 @@ date: 2014-07-04
 title: Goodbye Dropbox, Hello OwnCloud
 description: How I set up my own private cloud storage solution using OwnCloud on a VPS, saving money and gaining more control compared to Dropbox.
 ---
+## Goodbye Dropbox, Hello OwnCloud
 
 ![owncloud23](/images/blog/2014/07/owncloud23.png)
 

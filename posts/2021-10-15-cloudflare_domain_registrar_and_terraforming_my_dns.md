@@ -3,6 +3,7 @@ date: 2021-10-15
 title: CloudFlare Domain Registrar and Terraforming My DNS
 description: My experience transferring domains to CloudFlare's registrar service and managing DNS with Terraform.
 ---
+## CloudFlare Domain Registrar and Terraforming My DNS
 
 For several years now, I've been using Namecheap as a domain registrar. They've done a good job, and I haven't had any issues with them, but recently I discovered that [CloudFlare started offering domain name registration](https://blog.cloudflare.com/cloudflare-registrar/), and since I have been using them as my DNS provider and as a free CDN for around 10 years now, I decided that it made the most sense to transer in the domain. This also has the added benefit of saving me a little bit of money, as CloudFlare doesn't charge any more than the actual price that it pays, so instead of being something like $12/year, it's closer to $8.50. It also includes WHOIS protection out of the box, and since my DNS and nameservers were already on CloudFlare, that was configured automatically. The porting process was quick and easy, and I'm pretty happy with the switch.
 
