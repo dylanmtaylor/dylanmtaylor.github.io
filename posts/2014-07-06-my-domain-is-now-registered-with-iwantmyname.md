@@ -11,7 +11,7 @@ date: '2014-07-06 05:06:31 +0000'
 date_gmt: '2014-07-06 05:06:31 +0000'
 ---
 
-[![iwantmyname-medium](/images/blog/2014/07/iwantmyname-medium.png){: .alignleft width="205" height="30"}]
+[![iwantmyname-medium](/images/blog/2014/07/iwantmyname-medium.png)]
 
 If you (very) recently did a WHOIS search on the domain records for this site, you'd notice that it's now registered with iWantMyName. Except you wouldn't, because nobody does that. But that's the point of this post - domain registration should be dirt simple, and your registrar should just get out of the way and allow you to register domains, manage DNS, and nothing else. That's why I chose iWantMyName (yes, the 'i' is lower-case, I know). Despite no longer being a DreamHost customer, this domain was still registered with New Dream Networks, LLC. I decided that I don't want to deal with their bulky control panel anymore with tons of features that were nice when I had hosting with them but are utterly useless otherwise.
 
