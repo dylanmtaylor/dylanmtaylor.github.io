@@ -45,7 +45,7 @@
 
 @tailwindcss base;
 @tailwindcss components;
-@tailwindcss utilities;
+@tailwindcss utilities; 
 
 :root {
   --vp-c-default-1: var(--vp-c-gray-1);
@@ -53,9 +53,9 @@
   --vp-c-default-3: var(--vp-c-gray-3);
   --vp-c-default-soft: var(--vp-c-gray-soft);
 
-  --vp-c-brand-1: var(--vp-c-indigo-1);
-  --vp-c-brand-2: var(--vp-c-indigo-2);
-  --vp-c-brand-3: var(--vp-c-indigo-3);
+  --vp-c-brand-1: var(--vp-c-yellow-1);
+  --vp-c-brand-2: var(--vp-c-yellow-2);
+  --vp-c-brand-3: var(--vp-c-yellow-3);
   --vp-c-brand-soft: var(--vp-c-indigo-soft);
 
   --vp-c-tip-1: var(--vp-c-brand-1);
@@ -79,7 +79,7 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-button-brand-border: transparent;
+  --vp-button-brand-border: var(--vp-c-yellow-1);
   --vp-button-brand-text: var(--vp-c-white);
   --vp-button-brand-bg: var(--vp-c-brand-3);
   --vp-button-brand-hover-border: transparent;
@@ -95,6 +95,7 @@
  * -------------------------------------------------------------------------- */
 
 :root {
+  --vp-nav-bg-color: #2d2d2d;
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(
     120deg,
@@ -138,6 +139,21 @@
  * -------------------------------------------------------------------------- */
 
 .DocSearch {
-  --docsearch-primary-color: var(--vp-c-brand-1) !important;
+  --docsearch-primary-color: var(--vp-c-brand-3) !important;
+}
+.VPNav {
+  background-color: #2d2d2d !important;
+  border-bottom: solid #99633c 2px !important;
 }
 
+.VPNav a {
+  color: #C3BEA8 !important;
+}
+
+.VPNavBarMenu a:hover {
+  color: #ddd !important;
+  text-decoration-color: #da8541 !important;
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+}

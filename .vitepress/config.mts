@@ -25,7 +25,6 @@ export default defineConfig({
       },
 
     ],
-
     logo: '/images/circle.png',
 
     search: {
@@ -33,21 +32,11 @@ export default defineConfig({
     },
 
     outline: false,
-    sidebar: false,
-    serviceWorker: true,
 
     footer: {
       message: 'This site is 100% open source. • CC BY-SA 4.0 License',
       copyright: 'Developed by Dylan Taylor'
     },
-
-
-    // sidebar: [
-    //   {
-    //     text: 'Examples',
-    //     items: []
-    //   }
-    // ],
 
     socialLinks: [
       { icon: 'linkedin', link: 'https://www.linkedin.com/in/dylanmtaylor' },
