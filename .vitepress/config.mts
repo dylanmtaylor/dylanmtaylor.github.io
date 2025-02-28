@@ -37,7 +37,8 @@ export default defineConfig({
 
     outline: false,
     sidebar: false,
-
+    serviceWorker: true,
+    
     // sidebar: [
     //   {
     //     text: 'Examples',
