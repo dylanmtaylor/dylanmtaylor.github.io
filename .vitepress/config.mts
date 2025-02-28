@@ -23,10 +23,7 @@ export default defineConfig({
         text: 'Résumé',
         link: 'https://files.dylanmtaylor.com/dylan-resume.pdf'
       },
-      {
-        text: 'Contact',
-        link: 'mailto:dylan@dylanmtaylor.com'
-      }
+
     ],
 
     logo: '/images/circle.png',
@@ -38,7 +35,12 @@ export default defineConfig({
     outline: false,
     sidebar: false,
     serviceWorker: true,
-    
+
+    footer: {
+      message: 'Developed by Dylan Taylor • This site is 100% open source. • CC BY-SA 4.0 License'
+    },
+
+
     // sidebar: [
     //   {
     //     text: 'Examples',
@@ -48,7 +50,11 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'linkedin', link: 'https://www.linkedin.com/in/dylanmtaylor' },
-      { icon: 'git', link: 'https://git.dylanmtaylor.com/' }
+      { icon: 'git', link: 'https://git.dylanmtaylor.com/' },
+      {
+        icon: 'maildotru',
+        link: 'mailto:dylan@dylanmtaylor.com'
+      }
     ]
   }
 })
