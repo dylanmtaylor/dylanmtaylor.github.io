@@ -37,7 +37,8 @@ export default defineConfig({
     serviceWorker: true,
 
     footer: {
-      message: 'Developed by Dylan Taylor • This site is 100% open source. • CC BY-SA 4.0 License'
+      message: 'This site is 100% open source. • CC BY-SA 4.0 License',
+      copyright: 'Developed by Dylan Taylor'
     },
 
 

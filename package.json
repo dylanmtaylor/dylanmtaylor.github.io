@@ -25,16 +25,16 @@
     "@tailwindcss/typography": "^0.5.14",
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^20.11.27",
+    "autoprefixer": "^10.4.20",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
-    "tailwindcss": "^3.4.10",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
     "vitepress": "^1.6.3",
     "vue": "^3.5.13",
     "yarn": "^1.22.22"
   },
   "dependencies": {
-    "markdown-it-shiki": "^0.9.0",
-    "vitepress": "^1.6.3",
-    "vue": "^3.5.13"
+    "markdown-it-shiki": "^0.9.0"
   }
 }
