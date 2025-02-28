@@ -1,4 +1,43 @@
-files/*
-node_modules
-.vitepress/dist
-.vitepress/cache
+# Node.js
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# VitePress
+.vitepress/dist/
+.vitepress/cache/
+dist/
+
+# System
+.DS_Store
+.AppleDouble
+._*
+Thumbs.db
+ehthumbs.db
+
+# Logs and temp files
+*.log
+*.swp
+*.swo
+*.bak
+.temp/
+tmp/
+
+# Editor/IDE
+.vscode/
+*.code-workspace
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+
+# Environment variables
+.env
+.env.*
+*.pem
+
+# Optional
+public/
+coverage/
+__pycache__/
