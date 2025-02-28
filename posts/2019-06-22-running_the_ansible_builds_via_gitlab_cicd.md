@@ -1,13 +1,7 @@
 ---
-layout: post
+date: 2019-06-22
 title: Running the Ansible builds via GitLab CI/CD
-status: publish
-published: true
-author:
-  display_name: Dylan Taylor
-  login: dylanmtaylor
-  email: dylan@dylanmtaylor.com
-date: '2019-06-22T12:10:32-04:00'
+description: Describes the setup of a GitLab CI/CD pipeline to automate Ansible deployments for a website, including configuration details and handling of hosting provider limitations.
 ---
 
 I utilize GitLab's CI/CD functionality professionally all of the time as well as Docker containers to provide pipeline functionality into our cloud environment. I decided to take some of the knowledge I learned and set up a personal GitLab account with a project to do the Ansible deployment of my website. Unfortunately, the hosting provider I'm currently using, HostHatch does not automatically provision an SSH key and has no support for provisioning APIs or custom cloud-init user data. It is very affordable (I'm on a promotional plan with 2GB of RAM and 10GB of NVMe disk for $30/year, so it's a hard-sell to switch back to Vultr or maybe AWS or DigitalOcean). As there is no API, unfortunately I can't have a fully automated deployment, but it's very close. I'd love to leverage a provider for HashiCorp terraform and have it set up a server with my SSH public key already on it using cloud-init and then use the CloudFlare DNS provider features to update the DNS record sets automatically to point to the new server, but since I'm only dealing with one "environment" and one server for that matter, it'd be massively over-kill anyways, I'd just be doing it as a fun exercise. Anyways, with the known caveat in mind that after re-imaging the VPS with the Ubuntu 18.04 template I have to manually run `ssh-copy-id 'root@[server IP address]'` from my local machine with my SSH key, the process is fully automated.

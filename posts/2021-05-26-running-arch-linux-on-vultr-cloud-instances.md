@@ -1,13 +1,7 @@
 ---
-layout: post
+date: 2021-05-26
 title: Running Arch Linux on Vultr Cloud Instances
-status: publish
-published: true
-author:
-  display_name: Dylan Taylor
-  login: dylanmtaylor
-  email: dylan@dylanmtaylor.com
-date: '2021-05-26T11:37:19-04:00'
+description: My experience installing and running Arch Linux on Vultr cloud instances using the archinstall tool.
 ---
 
 Recently, I've been spending my free time contributing to the Arch Linux project's official installer, [archinstall](https://github.com/archlinux/archinstall). As of the time of writing this post, I'm up to [just over 300 commits to the master branch](https://github.com/archlinux/archinstall/commits?author=dylanmtaylor), and I've introduced several major features and structural changes to the project. 

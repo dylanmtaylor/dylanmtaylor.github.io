@@ -1,14 +1,7 @@
 ---
-layout: post
-status: publish
-published: true
+date: 2014-07-06
 title: My Domain is Now Registered With iWantMyName
-author:
-  display_name: Dylan Taylor
-  login: dylanmtaylor
-  email: dylan@dylanmtaylor.com
-date: '2014-07-06 05:06:31 +0000'
-date_gmt: '2014-07-06 05:06:31 +0000'
+description: My experience switching domain registrars to iWantMyName, which offers a simple interface and ethical business practices compared to competitors.
 ---
 
 [![iwantmyname-medium](/images/blog/2014/07/iwantmyname-medium.png)]

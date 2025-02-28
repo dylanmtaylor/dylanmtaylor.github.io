@@ -1,13 +1,7 @@
 ---
-layout: post
+date: 2018-04-30
 title: Checking What IP Addresses Connected to Your Nginx Server
-status: publish
-published: true
-author:
-  display_name: Dylan Taylor
-  login: dylanmtaylor
-  email: dylan@dylanmtaylor.com
-date: '2018-04-30T23:12:25-04:00'
+description: Learn how to analyze Nginx access logs to identify IP addresses connecting to your server using command-line tools like awk, sort, and uniq.
 ---
 
 My server is behind a [CloudFlare](https://www.cloudflare.com) caching proxy, so it usually doesn't get hit with requests directly, but I was noticing thousands of unique IP addresses looking for files such as `/xampp/phpmyadmin/index.php` and `/db/index.php`. These are probably hackers using automated vulnerability scanners against anything that has an open HTTP connection on the internet. I got curious where these requests were coming from, so I decided to dig through the logs.

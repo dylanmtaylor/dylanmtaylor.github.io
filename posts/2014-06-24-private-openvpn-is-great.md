@@ -1,14 +1,7 @@
 ---
-layout: post
-status: publish
-published: true
+date: 2014-06-24
 title: Private OpenVPN is Great!
-author:
-  display_name: Dylan Taylor
-  login: dylanmtaylor
-  email: dylan@dylanmtaylor.com
-date: '2014-06-24 02:25:00 +0000'
-date_gmt: '2014-06-24 02:25:00 +0000'
+description: Setting up a private VPN server on an Ubuntu VPS for better security and privacy at an affordable cost.
 ---
 
 I finally got around to setting up a private VPN server, hosted in San Diego. It's hosted on an Ubuntu 14.04 VPS, with almost nothing else running on it except OpenVPN, and I'm pretty impressed with the results. Much cheaper than paying some company to set this up for you, and well worth the privacy. Only downside is the bandwidth cap of 250GB/month (or around a few cents per GB overage), but really, I'm mostly going to only use this on public wireless networks and on my phone to prevent eavesdropping, so it should suffice.

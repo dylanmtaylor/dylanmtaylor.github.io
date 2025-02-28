@@ -1,14 +1,7 @@
 ---
-layout: post
-status: publish
-published: true
-title: Goodbye Dropbox, Hello OwnCloud.
-author:
-  display_name: Dylan Taylor
-  login: dylanmtaylor
-  email: dylan@dylanmtaylor.com
-date: '2014-07-04 05:18:09 +0000'
-date_gmt: '2014-07-04 05:18:09 +0000'
+date: 2014-07-04
+title: Goodbye Dropbox, Hello OwnCloud
+description: How I set up my own private cloud storage solution using OwnCloud on a VPS, saving money and gaining more control compared to Dropbox.
 ---
 
 ![owncloud23](/images/blog/2014/07/owncloud23.png)

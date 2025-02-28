@@ -1,13 +1,7 @@
 ---
-layout: post
+date: 2021-10-01
 title: AWS Systems Manager Agent - The End of Bastion Servers?
-status: publish
-published: true
-author:
-  display_name: Dylan Taylor
-  login: dylanmtaylor
-  email: dylan@dylanmtaylor.com
-date: '2021-10-01T11:39:47-04:00'
+description: Learn how AWS Systems Manager Agent eliminates the need for bastion servers by providing secure access to EC2 instances without exposing SSH or RDP ports.
 ---
 
 In almost every role I've ever worked, in some fashion or another, there was always a server you needed to access that didn't have SSH or RDP directly exposed to the internet. Typically, this worked by having a small, lightweight "bastion" or "jump box" instance deployed that you'd connect to directly, and then from there you'd be able to connect to the instance. With AWS though, this is completely unnecessary now. Not only is the bastion server not a requirement, but the security group for the instance doesn't need to allow ingress to the SSH or RDP ports at all, as long as the SSM agent is installed. This is default on Amazon Linux 2 images and recent Ubuntu server images. 
@@ -20,7 +14,7 @@ There is a nice SSH configuration that you can use to be able to connect to the 
 
 ```
 host i-* mi-*
-    ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
+  ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
 ```
 
 With this, you can simply type `ssh i-[instance id]`, and you will be connected. You don't need the configuration though, as you can just run:

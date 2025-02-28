@@ -1,13 +1,7 @@
 ---
-layout: post
-title: Executing a Build Process in a VM Using Vagrant Shell Provisioning 
-status: publish
-published: true
-author:
-  display_name: Dylan Taylor
-  login: dylanmtaylor
-  email: dylan@dylanmtaylor.com
-date: '2018-05-16T18:23:38-04:00'
+date: 2018-05-16
+title: Executing a Build Process in a VM Using Vagrant Shell Provisioning
+description: Demonstrates how to use Vagrant shell provisioning to run arbitrary code within a virtual machine, including a practical example of deploying WordPress on Ubuntu.
 ---
 
 [Vagrant Shell provisioning](https://www.vagrantup.com/docs/provisioning/shell.html) is an incredibly useful tool that can be utilized to run any arbitraty code within a virtual machine. It's one of the fundamental ways of using Vagrant, and is by far one of the simplest. [Vagrant boxes](https://app.vagrantup.com/boxes/search) are preconfigured virtual machine images, usually either a bare operating system or with some sort of software installed, for instance a LAMP stack. You can do anything you can do on a regular virtual machine with a Vagrant installed one, and Vagrant also allows you to do arbitrary port forwarding from the virtual machine to the host. This is incredibly useful in the case of wanting to deploy software to a virtual machine without having to configure it, and is great for development and testing. Another use that I learned of is using Vagrant to run a build process on a version of an operating system different than the host OS on your development workstation, and then pulling the built files off of the VM via SSH. This could be useful for a packaging scenario. Since a single Vagrantfile can contain multiple VMs, you can use this to target, for example a few Linux distributions (e.g. Ubuntu, RHEL, SLES) and Windwows all in a single action. This could speed up the testing process, as each virtual machine would automatically be able to deploy and run your code and you can run integration tests against them concurrently, perhaps by forwarding each VM to a different network port, in order to do software quality assurance.

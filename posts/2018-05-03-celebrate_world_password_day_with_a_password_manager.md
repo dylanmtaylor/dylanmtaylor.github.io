@@ -1,13 +1,7 @@
 ---
-layout: post
+date: 2018-05-03
 title: Celebrate World Password Day with a Password Manager
-status: publish
-published: true
-author:
-  display_name: Dylan Taylor
-  login: dylanmtaylor
-  email: dylan@dylanmtaylor.com
-date: '2018-05-03T18:08:11-04:00'
+description: An overview of why password managers are essential for online security, recommendations for different options like LastPass and KeePassX, and the importance of two-factor authentication.
 ---
 
 Did you know that May 3rd is [World Password Day](https://www.passwordday.org/)? One of the things that I suggest to all my friends is that they have a different password for every single login. I personally do this with the help of a tool called a password manager. Password managers can generate a different password for everything you use and remember it for you. I will freely admit that I don't know 99% of my passwords, and that is a good thing, since not only are they all rather long and complex (usually I will use the longest length the site allows up to 99 characters, with maximum complexity), but they are also all unique. This is important since if you use the same password for everything you are at risk - criminals are constantly breaking into password databases, and if they manager to get one of your passwords, they have them all.

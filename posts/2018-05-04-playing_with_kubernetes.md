@@ -1,13 +1,7 @@
 ---
-layout: post
+date: 2018-05-04
 title: Playing with Kubernetes for the First Time
-status: publish
-published: true
-author:
-  display_name: Dylan Taylor
-  login: dylanmtaylor
-  email: dylan@dylanmtaylor.com
-date: '2018-05-04T22:18:37-04:00'
+description: A detailed account of setting up and experimenting with Kubernetes on both CoreOS and Ubuntu, including challenges faced and solutions found.
 ---
 
 [![Kubernetes](/images/blog/2018/05/kubernetes.svg){width=150 height=150 style="float:left"}](https://kubernetes.io/) For a while now, I've been interested in learning a container orchestration technology called [Kubernetes](https://kubernetes.io/), which was developed by Google and licensed under the Apache License 2.0. I've been working through the ["Learn Kubernetes using Interactive Browser-Based Scenarios

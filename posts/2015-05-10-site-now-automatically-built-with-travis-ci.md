@@ -1,13 +1,7 @@
 ---
-layout: post
+date: 2021-06-30
 title: Automatically Building My Website With Travis CI
-status: publish
-published: true
-author:
-  display_name: Dylan Taylor
-  login: dylanmtaylor
-  email: dylan@dylanmtaylor.com
-date: '2015-05-10'
+description: Using Travis CI to automatically build and deploy website changes whenever content is published to Git.
 ---
 
 [![TravisCI](/images/blog/2015/05/TravisCI-Full-Color.png)](https://travis-ci.org) In order to simplify the publication of content and have this site automatically build whenever I publish a change to Git, I have set up a script and integrated my GitHub repository with [Travis CI](https://travis-ci.org). By doing so, I can simply focus on the content, and using the scripts that I wrote, the site will build and publish itself. Because I have a cron job setup on the dylanmtaylor.com domain, every change I push to Git is automatically pulled and deployed almost instantaneously, so that my content is up to date. 

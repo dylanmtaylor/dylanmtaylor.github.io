@@ -27,10 +27,10 @@ export default defineConfig({
                 text: 'About',
                 link: '/about-me/'
             },
-            // {
-            //     text: 'Blog',
-            //     link: '/blog/archives'
-            // },
+            {
+                text: 'Blog',
+                link: '/blog/archives'
+            },
             // {
             //     text: 'Category',
             //     link: '/blog/category'

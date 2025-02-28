@@ -1,14 +1,9 @@
 ---
-layout: post
+date: 2020-06-13
 title: How to Create a Vultr Server and Provision it Using Ansible
-status: publish
-published: true
-author:
-  display_name: Dylan Taylor
-  login: dylanmtaylor
-  email: dylan@dylanmtaylor.com
-date: '2020-06-13T21:05:54-04:00'
+description: A guide on how to use Ansible to provision a Vultr server, including setting up the server, adding it to an Ansible inventory, and running an Ansible playbook for configuration.
 ---
+
 One of the aspects of infrastructure provisioning I haven't blogged about much is the actual server deployment. Professionally I have used a couple of tools for this, namely UrbanCode Deploy and Terraform, but Ansible is actually quite capable in its own regard. It allows you to provision servers on various different cloud platforms and then use the add_host task to add it to a server group and then continue on with the VM configuration steps. Because I've got a really good deal with HostHatch, I've been using them as my hosting provider for dylanmtaylor.com, but in the past, my site has been hosted on Vultr. Because Vultr is a much larger and more well-known hosting provider, similar to Digital Ocean, API integrations for Ansible and Terraform exist. 
 
 At first, I was going to use Terraform to mess around with Vultr APIs (which would have been pretty straight-forward for me as I use Terraform with OpenStack extensively at work), but I decided that since I already had my whole site written as an Ansible playbook, I'd like to see how it works using just Ansible. Note that you need to enable the Vultr API and set the `VULTR_API_KEY` environment variable before being able to use this functionality. In the future, if I do even switch back to Vultr from HostHatch, I'll experiment with using Ansible to [configure CloudFlare DNS records for me](https://docs.ansible.com/ansible/latest/modules/cloudflare_dns_module.html) so that I don't have to manage that when I do a redeployment. The module for that actually looks very good, and it'd just be a matter of setting 5 or 6 A records.

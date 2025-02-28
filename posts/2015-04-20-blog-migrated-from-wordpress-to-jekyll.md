@@ -1,13 +1,7 @@
 ---
-layout: post
+date: 2015-04-20
 title: Migrating from Wordpress to Custom Code and Jekyll
-status: publish
-published: true
-author:
-  display_name: Dylan Taylor
-  login: dylanmtaylor
-  email: dylan@dylanmtaylor.com
-date: '2015-04-20'
+description: How I recreated my website from scratch, moving away from WordPress to static content generation with Jekyll for better control and performance.
 ---
 
 [![Jekyll](/images/blog/2015/04/jekyll.png)](http://jekyllrb.com/)
