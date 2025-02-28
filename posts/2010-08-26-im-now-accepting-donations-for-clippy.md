@@ -1,0 +1,14 @@
+---
+layout: post
+status: publish
+published: false
+title: I'm Now Accepting Donations For Clippy
+author:
+  display_name: Dylan Taylor
+  login: dylanmtaylor
+  email: dylan@dylanmtaylor.com
+date: '2010-08-26 07:55:54 +0000'
+date_gmt: '2010-08-26 07:55:54 +0000'
+---
+
+I just finished setting up a [Pledgie](http://pledgie.com/) campaign in order to raise money to support the development of Clippy, my [clipboard manager](http://en.wikipedia.org/wiki/Clipboard_manager) for [Android](http://code.google.com/android/). If you use Clippy, and find useful, please consider making a small donation. Clippy is currently a 100% free application, no strings attached, and in order to keep it that way, I need a way to make a little bit of money. Clippy is currently a one-man project, and I do all the work I do on it during my spare time. I have invested many hours into developing Clippy, and I'm hoping that some of that work will start to pay off soon.  The more money that is donated to the Clippy project, the more time I'm able to invest in developing and supporting Clippy. Also, as an added incentive to encourage donations, if I receive over ~~$20,000~~ **$1,000** in donations, I will release the entire [source code](http://en.wikipedia.org/wiki/Source_code) for Clippy under version 3 of the [GNU](http://en.wikipedia.org/wiki/GNU_General_Public_License) General Public License, and all of the resources, including the original [vector graphic](http://en.wikipedia.org/wiki/Vector_graphics) files, under the [Creative Commons Attribution 3.0 Unported](http://www.creativecommons.org/) License.  In addition to that, I'll set up a repository on [github](https://github.com/) to encourage [open development](http://en.wikipedia.org/wiki/Open_source), and allow others to contribute code. I got the inspiration for this idea from an independent gaming package called the "[Humble Indie Bundle](http://www.wolfire.com/humble)", where you could pay what you want for a package of 5 games. Basically, they offered to make their games [open source](http://en.wikipedia.org/wiki/Open_source) if they could raise **$1 Million**. Needless to say, they succeeded. So, in the spirit of the Humble Indie Bundle, I'm offering to make my application open source if I can raise **$1,000**, which is practically pocket change compared to the goal they set, yet still a very substantial amount to me. If you don't feel like signing up for Pledgie, you can [make a donation using traditional PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8UWQHV6TZNPQ8), but I'd have to manually enter your donation into Pledgie for it to count towards the **$1,000** goal.

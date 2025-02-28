@@ -1,17 +1,24 @@
-// https://vitepress.dev/guide/custom-theme
-import { h } from 'vue'
-import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import './style.css'
+import type { Theme } from 'vitepress'
+import NewLayout from './components/NewLayout.vue'
+import Archives from './components/Archives.vue'
+import Category from './components/Category.vue'
+import Tags from './components/Tags.vue'
+import Page from './components/Page.vue'
+import Comment from './components/Comment.vue'
+
+import './custom.css'
+// import './style.css'
 
 export default {
-  extends: DefaultTheme,
-  Layout: () => {
-    return h(DefaultTheme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
-    })
-  },
-  enhanceApp({ app, router, siteData }) {
-    // ...
-  }
+    ...DefaultTheme,
+    Layout: NewLayout,
+    enhanceApp({ app }) {
+        // register global compoment
+        app.component('Tags', Tags)
+        app.component('Category', Category)
+        app.component('Archives', Archives)
+        app.component('Page', Page)
+        app.component('Comment', Comment)
+    }
 } satisfies Theme
