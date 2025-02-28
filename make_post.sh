@@ -1,18 +1,12 @@
-DATE=$(date --iso-8601=seconds)
 TITLE="$1"
 YMD=$(date +"%Y-%m-%d") 
-FILE=$(echo $YMD-$TITLE.markdown | sed -e 's/ /_/g' | tr -cd '[[:alnum:]]._-' | tr '[:upper:]' '[:lower:]')
-cat <<EOF > _posts/$FILE
+FILE=$(echo $YMD-$TITLE.md | sed -e 's/ /_/g' | tr -cd '[[:alnum:]]._-' | tr '[:upper:]' '[:lower:]')
+cat <<EOF > posts/$FILE
 ---
-layout: post
+date: '$YMD'
 title: $TITLE
-status: publish
-published: true
-author:
-  display_name: Dylan Taylor
-  login: dylanmtaylor
-  email: dylan@dylanmtaylor.com
-date: '$DATE'
+description: 
 ---
+
 EOF
 echo $FILE
