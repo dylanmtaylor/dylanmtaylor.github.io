@@ -157,3 +157,17 @@
   text-decoration-thickness: 2px;
   text-underline-offset: 8px;
 }
+
+.DocSearch {
+  width: 200%;
+}
+
+/* 
+.DocSearch {
+  background-color: #635f62 !important;
+  color: #f0f000 !important;
+  border-radius: 0px !important;
+  border: 1px solid #da8541 !important;
+  width: 200%;
+  position: relative;
+} */
