@@ -22,8 +22,15 @@
   "author": "Dylan Taylor",
   "license": "MIT",
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.14",
+    "@types/markdown-it": "^12.2.3",
+    "@types/node": "^20.11.27",
+    "feed": "^4.2.2",
+    "gray-matter": "^4.0.3",
+    "tailwindcss": "^3.4.10",
     "vitepress": "^1.6.3",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "yarn": "^1.22.22"
   },
   "dependencies": {
     "markdown-it-shiki": "^0.9.0"
