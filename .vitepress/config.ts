@@ -29,7 +29,7 @@ export default defineConfig({
             },
             {
                 text: 'Blog',
-                link: '/blog/archives'
+                link: '/blog/'
             },
             // {
             //     text: 'Category',

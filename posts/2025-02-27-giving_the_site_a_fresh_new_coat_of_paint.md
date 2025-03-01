@@ -1,5 +1,5 @@
 ---
-date: '2025-02-28'
+date: '2025-02-27'
 title: Giving the Site a Fresh New Coat of Paint
 description: Rebuilding my website from the ground up with VitePress and a custom theme.
 ---
