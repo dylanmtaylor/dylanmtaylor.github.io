@@ -1,6 +1,6 @@
 ---
 page: true
-title: page_4
+title: Page 4
 aside: false
 ---
 <script setup>
