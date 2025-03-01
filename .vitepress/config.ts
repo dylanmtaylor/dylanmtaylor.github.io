@@ -63,8 +63,12 @@ export default defineConfig({
   
         socialLinks: [
             { 
-                icon: 'git', 
-                link: 'https://git.dylanmtaylor.com/' 
+                icon: 'github', 
+                link: 'https://github.com/dylanmtaylor/' 
+            },
+            { 
+                icon: 'gitlab', 
+                link: 'https://gitlab.com/dylanmtaylor/' 
             },
             { 
                 icon: 'linkedin', 
