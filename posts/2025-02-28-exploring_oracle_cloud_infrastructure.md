@@ -37,4 +37,4 @@ So, if I'm so experienced with AWS, why would I build my own site on Oracle Clou
 
 Honestly, this is exteremely close to production-ready architecture with logging, monitoring, alerting, redundancy, etc. and they offer that for free. It was fun to wire all of this up and try out these services, and I learned a ton about Oracle Cloud while doing so. While it's not as supported or documented, I was shocked at what I could build without paying anything at all, and it's more than most small businesses use. If you're looking for a place to host a small project, I'd give Oracle Cloud a shot. You might be surprised at how good it is. I certainly was.
 
-[![Screenshot of Oracle Linux 9 ARM instance's neofecth output in OCI](/images/blog/2025/02/oci_instance_neofetch.png)]
+![Screenshot of Oracle Linux 9 ARM instance's neofecth output in OCI](/images/blog/2025/02/oci_instance_neofetch.png)

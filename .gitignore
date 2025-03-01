@@ -38,6 +38,5 @@ tmp/
 *.pem
 
 # Optional
-public/
 coverage/
 __pycache__/
