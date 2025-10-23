@@ -31,6 +31,7 @@
 
 :root {
     --vp-nav-bg-color: #2d2d2d;
+    --vp-nav-logo-height: 48px;
     --vp-c-brand-light: var(--vp-c-brand);
     --vp-c-brand-lighter: var(--vp-c-brand);
     --vp-c-brand-dark: var(--vp-c-brand);
