@@ -76,7 +76,7 @@ spec:
 
 Combined with the minimal attack surface of the distroless images, this makes for a much more secure cluster.
 
-### The tl;dr
+### tl;dr
 
 If you're running containers in production (or even just for personal projects), there's really no reason not to use Docker Hardened Images now that they're free. The migration effort is minimal, and you get significantly improved security out of the box. The images are smaller, have fewer vulnerabilities, and follow security best practices by default.
 
