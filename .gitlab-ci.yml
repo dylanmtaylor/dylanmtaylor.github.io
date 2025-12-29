@@ -2,14 +2,16 @@ stages:
   - deploy
 
 pages:
-  image: node:latest
+  image: node:22-alpine
   stage: deploy
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
   script:
     - npm install
     - npm run build
-    - mkdir -p public
-    - cp -r .vitepress/dist/* public/
-    - find public -type f
+    - mv .vitepress/dist public
   artifacts:
     paths:
-    - public
+      - public
