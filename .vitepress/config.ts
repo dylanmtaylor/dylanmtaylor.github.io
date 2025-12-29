@@ -1,9 +1,10 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 import { getPosts } from './theme/serverUtils'
 
 const pageSize = 10
 
-export default defineConfig({
+export default withMermaid(defineConfig({
     title: "Dylan M. Taylor",
     description: "My Personal Website and Blog",
 
@@ -93,4 +94,4 @@ export default defineConfig({
                 keepNames: true
         }
         */
-})
+}))
