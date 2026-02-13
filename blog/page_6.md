@@ -1,6 +1,6 @@
 ---
 page: true
-title: page_6
+title: Page 6
 aside: false
 ---
 <script setup>
@@ -9,4 +9,4 @@ import { useData } from "vitepress";
 const { theme } = useData();
 const posts = theme.value.posts.slice(50,60)
 </script>
-<Page :posts="posts" :pageCurrent="6" :pagesNum="17" />
+<Page :posts="posts" :pageCurrent="6" :pagesNum="6" />
