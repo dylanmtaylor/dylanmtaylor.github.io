@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vitepress dev --host 0.0.0.0",
+    "serve": "vitepress dev --host 0.0.0.0",
     "build": "vitepress build",
     "preview": "vitepress preview"
   },
