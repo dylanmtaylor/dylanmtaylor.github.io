@@ -1,5 +1,5 @@
 ---
-date: '2026-02-18'
+date: '2026-02-19'
 title: Building a Complete Bejeweled Clone with AI in 90 Minutes
 description: How I used Claude Opus 4.6 via Kiro CLI to build GemMatch, a fully-featured match-3 puzzle game in Godot 4.x, with zero lines of hand-written code.
 ---
@@ -13,13 +13,13 @@ Turns out, yes. I built [GemMatch](https://github.com/dylanmtaylor/gemmatch), a 
 
 ### Why Godot?
 
-I went with Godot 4.x and GDScript for this experiment. Godot's `_draw()` API makes it trivial to render shapes procedurally, and GDScript is simple enough that the AI can generate correct code without fighting a complex type system or engine architecture. This turned out to be a good call -- the entire game is about 950 lines of GDScript across four scripts, and it worked on the first or second try for most features.
+I went with Godot 4.x and GDScript for this experiment. Godot's `_draw()` API makes it trivial to render shapes procedurally, and GDScript is simple enough that the AI can generate correct code without fighting a complex type system or engine architecture. This turned out to be a good call -- the entire game is about 1,480 lines of GDScript across six scripts, and it worked on the first or second try for most features.
 
 ### The Process
 
 I started by asking Claude to create structured specs before writing any code. This is something I've found works really well with AI coding -- if you let it plan first, the implementation goes much smoother. Claude generated three documents in `.kiro/specs/`: requirements (user stories with acceptance criteria), an architecture design, and an implementation task list.
 
-From there, the build happened in four iterations:
+From there, the build happened in five iterations:
 
 **V1 -- Basic game.** A minimal working match-3 with click input, match detection, gravity, and scoring. Functional on the first run after fixing a couple of type inference errors.
 
@@ -28,6 +28,10 @@ From there, the build happened in four iterations:
 **V3 -- Full feature set.** Special gems (Flame, Star, Hypercube), drag-to-swap, a hint system, level progression, combo text, particle effects, and unique gem shapes.
 
 **V4 -- Polish.** Animated logo, procedural chiptune background music, and a title screen with floating gem shapes.
+
+**V5 -- Title screen and menus.** A proper title screen with a 5-item menu (New Game, How to Play, High Scores, Demo Mode, Quit), full keyboard navigation throughout menus and gameplay, persistent high scores saved to disk, a How to Play showcase screen showing all gem shapes and special types, an optimal demo AI that plays as an attract screen, animated level backgrounds with 5 geometric patterns that cycle each level, and a selection ring that follows the gem during swap animations.
+
+<video src="/images/gemmatch-howtoplay.webm" autoplay loop muted playsinline></video>
 
 <video src="/images/gemmatch-gameplay.webm" autoplay loop muted playsinline></video>
 
@@ -49,19 +53,17 @@ The procedural audio generation was particularly impressive. I just asked for "s
 
 The special gem system also worked correctly on the first implementation, which I honestly didn't expect. The logic for detecting match patterns (is this a match-4? match-5? L-shape? T-shape?), creating the appropriate special gem, and then triggering special gem effects when they're subsequently matched -- that's genuinely complex game logic, and it was right the first time.
 
+The demo mode AI was another highlight. Claude built a scoring heuristic that evaluates every possible swap on the board and picks the optimal move -- prioritizing special gem creation (5-in-a-row for Star Gems, L/T shapes for Hypercubes, 4-in-a-row for Flame Gems) and triggering existing specials. It plays impressively well and makes for a great attract screen.
+
 ### The Numbers
 
-- **Total time:** ~90 minutes, single session
-- **Lines of code:** ~950 lines of GDScript across 4 scripts
+- **Total time:** ~2 hours across two sessions (Feb 18-19)
+- **Lines of code:** ~1,480 lines of GDScript across 6 scripts
 - **External assets:** 0 (everything is procedural)
-- **Token usage:** ~80,000 input tokens, ~30,000 output tokens, ~110,000 total
 - **Hand-written code:** 0 lines
 
 For a 90-minute session, I'm pretty impressed with the result. A fully playable, polished game with special gems, animations, sound, music, and level progression. Choosing a simpler engine and taking a spec-first approach made a big difference.
 
-### What Could Be Better
-
-It's not perfect. The game doesn't have a pause menu. There's no high score persistence. The "no moves" detection just offers a restart rather than shuffling the board. The procedural music, while pleasant, is a single looping track. These are all things that could be added in another session, but for 90 minutes of work, I'm pretty happy with where it landed.
 
 ### Try It Yourself
 
