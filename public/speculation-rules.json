@@ -1,4 +1,4 @@
 {
-  "prefetch": [{ "where": { "href_matches": "/*" }, "eagerness": "immediate" }],
-  "prerender": [{ "where": { "href_matches": "/*" }, "eagerness": "eager" }]
+  "prefetch": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }],
+  "prerender": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }]
 }

@@ -40,7 +40,7 @@ export default defineConfig({
         ['meta', { name: 'view-transition', content: 'same-origin' }],
         ['meta', { property: 'og:site_name', content: 'Dylan M. Taylor' }],
         ['meta', { property: 'og:image', content: 'https://dylanmtaylor.com/images/avatar.png' }],
-        ['script', { type: 'speculationrules' }, JSON.stringify({ prefetch: [{ where: { href_matches: '/*' }, eagerness: 'immediate' }], prerender: [{ where: { href_matches: '/*' }, eagerness: 'eager' }] })],
+        ['script', { type: 'speculationrules' }, JSON.stringify({ prefetch: [{ where: { href_matches: '/*' }, eagerness: 'moderate' }], prerender: [{ where: { href_matches: '/*' }, eagerness: 'moderate' }] })],
     ],
 
     transformPageData(pageData) {
