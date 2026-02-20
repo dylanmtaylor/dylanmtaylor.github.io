@@ -7,8 +7,8 @@ import type MarkdownIt from 'markdown-it'
 import type { Plugin } from 'vite'
 
 const formatOptions = {
-    avif: { quality: 90, effort: 4, chromaSubsampling: '4:4:4' },
-    webp: { quality: 95, nearLossless: true, smartSubsample: true }
+    avif: { quality: 50, effort: 4, chromaSubsampling: '4:4:4' },
+    webp: { quality: 80 }
 } as const
 const formats = Object.keys(formatOptions) as (keyof typeof formatOptions)[]
 const cacheDir = resolve('.cache/optimized-images')
@@ -32,6 +32,13 @@ export function imageOptimizationPlugin(): Plugin {
     return {
         name: 'image-optimization',
         enforce: 'post',
+        // Prevent Rollup/SSR from resolving generated avif/webp paths
+        resolveId(id) {
+            if (/\/images\/.+\.(avif|webp)$/.test(id)) return `\0external:${id}`
+        },
+        load(id) {
+            if (id.startsWith('\0external:')) return `export default "${id.slice('\0external:'.length)}"`
+        },
         async closeBundle() {
             const distDir = resolve('.vitepress/dist')
             const images = await globby([`${distDir}/images/**/*.{png,jpg,jpeg}`])
