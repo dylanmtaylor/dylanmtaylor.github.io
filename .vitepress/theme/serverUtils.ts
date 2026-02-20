@@ -19,7 +19,7 @@ async function getPosts(pageSize: number) {
             }
         })
     )
-    posts.sort(_compareDate as any)
+    posts.sort((a, b) => a.frontMatter.date < b.frontMatter.date ? 1 : -1)
     return posts
 }
 
@@ -58,10 +58,6 @@ const posts = theme.value.posts.slice(${pageSize * (i - 1)},${pageSize * i})
 function _convertDate(date = new Date().toString()) {
     const json_date = new Date(date).toJSON()
     return json_date.split('T')[0]
-}
-
-function _compareDate(obj1: { frontMatter: { date: number } }, obj2: { frontMatter: { date: number } }) {
-    return obj1.frontMatter.date < obj2.frontMatter.date ? 1 : -1
 }
 
 export { getPosts }

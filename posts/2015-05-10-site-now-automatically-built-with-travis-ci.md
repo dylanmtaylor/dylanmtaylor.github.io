@@ -1,5 +1,5 @@
 ---
-date: 2021-06-30
+date: 2015-05-10
 title: Automatically Building My Website With Travis CI
 description: Using Travis CI to automatically build and deploy website changes whenever content is published to Git.
 ---

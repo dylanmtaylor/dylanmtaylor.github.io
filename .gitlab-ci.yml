@@ -10,7 +10,7 @@ pages:
       - node_modules/
       - .cache/
   script:
-    - npm install
+    - npm ci
     - npm run build
     - mv .vitepress/dist public
   artifacts:

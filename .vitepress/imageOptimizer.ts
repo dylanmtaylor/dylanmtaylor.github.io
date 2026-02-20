@@ -139,14 +139,13 @@ export function picturePlugin(md: MarkdownIt) {
         if (!match) return defaultRender(tokens, idx, options, env, self)
 
         const [, base, ext] = match
-        const key = `images${base.slice('/images'.length)}.${ext}`
+        const escapedAlt = md.utils.escapeHtml(alt)
+        const escapedSrc = md.utils.escapeHtml(src)
 
-        // always include both sources — browser will fall back to img if file is missing
-        // but at build time, only files smaller than the original are kept in dist
         return `<picture>` +
             `<source srcset="${base}.avif" type="image/avif">` +
             `<source srcset="${base}.webp" type="image/webp">` +
-            `<img src="${src}" alt="${alt}" loading="lazy" decoding="async">` +
+            `<img src="${escapedSrc}" alt="${escapedAlt}" loading="lazy" decoding="async">` +
             `</picture>`
     }
 }

@@ -1,21 +1,28 @@
 import { defineConfig } from 'vitepress'
-import { withMermaid } from 'vitepress-plugin-mermaid'
 import { getPosts } from './theme/serverUtils'
 import { imageOptimizationPlugin, picturePlugin } from './imageOptimizer'
 
 const pageSize = 10
 
-export default withMermaid(defineConfig({
+export default defineConfig({
     title: "Dylan M. Taylor",
     description: "My Personal Website and Blog",
 
     appearance: 'force-dark',
-    cacheDir: './node_modules/vitepress_cache',
+    cacheDir: './.vitepress/cache',
     lastUpdated: false,
 
     markdown: {
         config: (md) => {
             md.use(picturePlugin)
+            const defaultFence = md.renderer.rules.fence!.bind(md.renderer.rules)
+            md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+                const token = tokens[idx]
+                if (token.info.trim() === 'mermaid') {
+                    return `<Suspense><template #default><Mermaid id="mermaid-${idx}" graph="${encodeURIComponent(token.content)}"></Mermaid></template><template #fallback>Loading...</template></Suspense>`
+                }
+                return defaultFence(tokens, idx, options, env, self)
+            }
         }
     },
 
@@ -94,4 +101,4 @@ export default withMermaid(defineConfig({
             port: 5000
         }
     }
-}))
+})

@@ -9,56 +9,44 @@ type Post = {
     regularPath: string
 }
 
-export function initTags(post: Post[]) {
-    const data: any = {}
-    for (let index = 0; index < post.length; index++) {
-        const element = post[index]
+export function initTags(post: Post[]): Record<string, Post[]> {
+    const data: Record<string, Post[]> = {}
+    for (const element of post) {
         const tags = element.frontMatter.tags
         if (tags) {
             tags.forEach((item) => {
-                if (data[item]) {
-                    data[item].push(element)
-                } else {
-                    data[item] = []
-                    data[item].push(element)
-                }
+                if (!data[item]) data[item] = []
+                data[item].push(element)
             })
         }
     }
     return data
 }
 
-export function initCategory(post: Post[]) {
-    const data: any = {}
-    for (let index = 0; index < post.length; index++) {
-        const element = post[index]
+export function initCategory(post: Post[]): Record<string, Post[]> {
+    const data: Record<string, Post[]> = {}
+    for (const element of post) {
         const category = element.frontMatter.category
         if (category) {
-            if (data[category]) {
-                data[category].push(element)
-            } else {
-                data[category] = []
-                data[category].push(element)
-            }
+            if (!data[category]) data[category] = []
+            data[category].push(element)
         }
     }
     return data
 }
 
 export function useYearSort(post: Post[]) {
-    const data = []
+    const data: Post[][] = []
     let year = '0'
     let num = -1
-    for (let index = 0; index < post.length; index++) {
-        const element = post[index]
+    for (const element of post) {
         if (element.frontMatter.date) {
             const y = element.frontMatter.date.split('-')[0]
             if (y === year) {
                 data[num].push(element)
             } else {
                 num++
-                data[num] = [] as any
-                data[num].push(element)
+                data[num] = [element]
                 year = y
             }
         }
