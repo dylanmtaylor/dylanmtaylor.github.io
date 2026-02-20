@@ -137,6 +137,10 @@ a.header-anchor {
     text-underline-offset: 8px;
 }
 
+.VPSocialLinks a:hover {
+    color: #ddd !important;
+}
+
 /* Posts list */
 
 .posts {
