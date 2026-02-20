@@ -60,7 +60,7 @@ Rather than writing repetitive HTML for every form field, I built a set of Nunju
 
 For example, adding a text input is as simple as:
 
-```nunjucks
+```jinja
 {{ textInput("email", "What is your email address?",
     type="email", required=true,
     validationMsg="Please enter a valid email address.") }}
@@ -83,7 +83,7 @@ Each toggle also manages the `required` attribute on its child fields, so the br
 
 Since this is a public-facing form, I needed some protection against spam submissions. I used [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/), which I've used professionally as well. The form starts hidden, and only appears after Turnstile's invisible challenge completes:
 
-```nunjucks
+```jinja
 {% if env.turnstileSiteKey %}
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <div class="cf-turnstile"

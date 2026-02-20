@@ -10,15 +10,24 @@ export default withMermaid(defineConfig({
 
     appearance: 'force-dark',
     cacheDir: './node_modules/vitepress_cache',
+    lastUpdated: true,
+
+    sitemap: {
+        hostname: 'https://dylanmtaylor.com'
+    },
+
+    head: [
+        ['meta', { property: 'og:title', content: 'Dylan M. Taylor' }],
+        ['meta', { property: 'og:description', content: 'My Personal Website and Blog' }],
+        ['meta', { property: 'og:type', content: 'website' }],
+        ['meta', { property: 'og:url', content: 'https://dylanmtaylor.com' }],
+        ['meta', { property: 'og:image', content: 'https://dylanmtaylor.com/images/circle.png' }],
+        ['meta', { name: 'twitter:card', content: 'summary' }],
+    ],
 
     themeConfig: {
         logo: '/images/circle.png',
         posts: await getPosts(pageSize),
-        comment: {
-            repo: 'airene/vitepress-blog-pure',
-            themes: 'github-light',
-            issueTerm: 'pathname'
-        },
         nav: [
             {
                 text: 'Home',
@@ -32,18 +41,14 @@ export default withMermaid(defineConfig({
                 text: 'Blog',
                 link: '/blog/'
             },
-            // {
-            //     text: 'Category',
-            //     link: '/blog/category'
-            // },
-            // {
-            //     text: 'Archives',
-            //     link: '/blog/archives'
-            // },
-            // {
-            //     text: 'Tags',
-            //     link: '/blog/tags'
-            // },
+            {
+                text: 'Archives',
+                link: '/blog/archives'
+            },
+            {
+                text: 'Tags',
+                link: '/blog/tags'
+            },
             {
                 text: 'Résumé',
                 link: 'https://files.dylanmtaylor.com/dylan-resume.pdf'
@@ -89,9 +94,4 @@ export default withMermaid(defineConfig({
             port: 5000
         }
     }
-    /*
-        optimizeDeps: {
-                keepNames: true
-        }
-        */
 }))

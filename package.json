@@ -1,8 +1,7 @@
 {
-  "name": "ti.bi",
+  "name": "dylanmtaylor.gitlab.io",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Dylan M. Taylor's Personal Website and Blog",
   "scripts": {
     "dev": "vitepress dev --host 0.0.0.0",
     "serve": "vitepress dev --host 0.0.0.0",
@@ -10,24 +9,16 @@
     "preview": "vitepress preview"
   },
   "keywords": [],
-  "author": "",
+  "author": "Dylan M. Taylor",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
     "@types/node": "^25.2.3",
-    "@typescript-eslint/eslint-plugin": "^8.55.0",
-    "@typescript-eslint/parser": "^8.55.0",
-    "@typescript-eslint/types": "^8.55.0",
     "@vue/compiler-sfc": "^3.5.28",
-    "eslint": "^9.39.2",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.5",
-    "eslint-plugin-vue": "^9.33.0",
     "fs-extra": "^11.3.3",
     "globby": "^16.1.0",
     "gray-matter": "^4.0.3",
     "mermaid": "^11.12.2",
-    "prettier": "^3.8.1",
     "typescript": "^5.9.3",
     "vitepress": "^1.6.4",
     "vitepress-plugin-mermaid": "^2.0.17"
