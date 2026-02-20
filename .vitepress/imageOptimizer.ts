@@ -44,6 +44,26 @@ export function imageOptimizationPlugin(): Plugin {
     return {
         name: 'image-optimization',
         enforce: 'post',
+        // Serve AVIF/WebP on-demand during dev
+        configureServer(server) {
+            server.middlewares.use(async (req, res, next) => {
+                const match = req.url?.match(/^(\/images\/.+)\.(avif|webp)$/)
+                if (!match) return next()
+                const [, base, fmt] = match
+                const exts = ['png', 'jpg', 'jpeg']
+                let srcPath: string | undefined
+                for (const ext of exts) {
+                    const p = resolve('public', `${base.slice(1)}.${ext}`)
+                    if (await fs.pathExists(p)) { srcPath = p; break }
+                }
+                if (!srcPath) return next()
+                try {
+                    const buf = await sharp(srcPath)[fmt as 'avif' | 'webp'](formatOptions[fmt as keyof typeof formatOptions]).toBuffer()
+                    res.setHeader('Content-Type', fmt === 'avif' ? 'image/avif' : 'image/webp')
+                    res.end(buf)
+                } catch { next() }
+            })
+        },
         // Prevent Rollup/SSR from resolving generated avif/webp paths
         resolveId(id) {
             if (/\/images\/.+\.(avif|webp)$/.test(id)) return `\0external:${id}`

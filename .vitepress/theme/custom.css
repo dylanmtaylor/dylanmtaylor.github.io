@@ -265,3 +265,15 @@ h3 {
     text-decoration-thickness: 2px;
     text-underline-offset: 8px;
 }
+
+a.header-anchor {
+    display: none;
+}
+
+.VPNavBarTitle .title span {
+    color: #FFFFFF !important;
+}
+
+.VPFooter .message {
+    color: #666666;
+}

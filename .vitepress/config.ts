@@ -49,14 +49,6 @@ export default withMermaid(defineConfig({
                 link: '/blog/'
             },
             {
-                text: 'Archives',
-                link: '/blog/archives'
-            },
-            {
-                text: 'Tags',
-                link: '/blog/tags'
-            },
-            {
                 text: 'Résumé',
                 link: 'https://files.dylanmtaylor.com/dylan-resume.pdf'
             },
