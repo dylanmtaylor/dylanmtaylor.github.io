@@ -28,7 +28,7 @@ export default withMermaid(defineConfig({
         ['meta', { property: 'og:description', content: 'My Personal Website and Blog' }],
         ['meta', { property: 'og:type', content: 'website' }],
         ['meta', { property: 'og:url', content: 'https://dylanmtaylor.com' }],
-        ['meta', { property: 'og:image', content: 'https://dylanmtaylor.com/images/circle.png' }],
+        ['meta', { property: 'og:image', content: 'https://dylanmtaylor.com/images/avatar.png' }],
         ['meta', { name: 'twitter:card', content: 'summary' }],
     ],
 
