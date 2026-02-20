@@ -7,7 +7,7 @@
         </div>
         <p class="describe">{{ article.frontMatter.description }}</p>
         <div class='post-info'>
-            {{ article.frontMatter.date }} <span v-for="item in article.frontMatter.tags"><a :href="withBase(`/blog/tags.html?tag=${item}`)"> {{ item }}</a></span>
+            {{ article.frontMatter.date }}
         </div>
     </div>
 
@@ -32,7 +32,6 @@ interface Article {
         title: string
         description: string
         date: string
-        tags: string[]
     }
 }
 defineProps({
@@ -102,16 +101,7 @@ defineProps({
 }
 
 @media screen and (max-width: 768px) {
-    .post-list {
-        padding: 14px 0 14px 0;
-    }
-    .post-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
     .post-title {
-        font-size: 1.0625rem;
         font-weight: 400;
         display: -webkit-box;
         -webkit-box-orient: vertical;
@@ -120,11 +110,6 @@ defineProps({
         width: 17rem;
     }
     .describe {
-        font-size: 0.9375rem;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
-        overflow: hidden;
         margin: 0.5rem 0 1rem;
     }
 }
