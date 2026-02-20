@@ -3,6 +3,7 @@ import { globby } from 'globby'
 import { resolve, parse, relative } from 'path'
 import { createHash } from 'crypto'
 import fs from 'fs-extra'
+import os from 'os'
 import type MarkdownIt from 'markdown-it'
 import type { Plugin } from 'vite'
 
@@ -14,8 +15,6 @@ const formats = Object.keys(formatOptions) as (keyof typeof formatOptions)[]
 const cacheDir = resolve('.cache/optimized-images')
 const cacheManifest = resolve(cacheDir, 'manifest.json')
 
-// tracks which optimized formats are smaller than the original
-// so the picture plugin can skip larger variants
 let validFormats: Record<string, Set<string>> = {}
 
 async function loadManifest(): Promise<Record<string, string>> {
@@ -26,6 +25,19 @@ async function loadManifest(): Promise<Record<string, string>> {
 async function fileHash(path: string): Promise<string> {
     const buf = await fs.readFile(path)
     return createHash('md5').update(buf).digest('hex')
+}
+
+async function pMap<T, R>(items: T[], fn: (item: T) => Promise<R>, concurrency: number): Promise<R[]> {
+    const results: R[] = []
+    let i = 0
+    async function next(): Promise<void> {
+        const idx = i++
+        if (idx >= items.length) return
+        results[idx] = await fn(items[idx])
+        return next()
+    }
+    await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, () => next()))
+    return results
 }
 
 export function imageOptimizationPlugin(): Plugin {
@@ -46,15 +58,15 @@ export function imageOptimizationPlugin(): Plugin {
             const newManifest: Record<string, string> = {}
             await fs.ensureDir(cacheDir)
 
-            const origSizes: Record<string, number> = {}
+            const concurrency = Math.max(os.cpus().length, 4)
+            console.log(`Optimizing ${images.length} images with concurrency ${concurrency}...`)
 
-            for (const img of images) {
+            await pMap(images, async (img) => {
                 const key = relative(distDir, img)
                 const hash = await fileHash(img)
                 newManifest[key] = hash
                 const { dir, name } = parse(img)
                 const origSize = (await fs.stat(img)).size
-                origSizes[key] = origSize
                 if (!validFormats[key]) validFormats[key] = new Set()
 
                 for (const fmt of formats) {
@@ -88,7 +100,7 @@ export function imageOptimizationPlugin(): Plugin {
                         break
                     }
                 }
-            }
+            }, concurrency)
 
             await fs.writeJson(cacheManifest, newManifest)
         }
