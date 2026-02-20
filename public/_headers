@@ -1,0 +1,18 @@
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(self), gyroscope=(self)
+  Speculation-Rules: "/speculation-rules.json"
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'
+
+/speculation-rules.json
+  Content-Type: application/speculationrules+json
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=86400
+
+/images/*
+  Cache-Control: public, max-age=2592000
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

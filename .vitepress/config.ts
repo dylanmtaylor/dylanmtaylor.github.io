@@ -42,6 +42,7 @@ export default defineConfig({
         ['meta', { property: 'og:url', content: 'https://dylanmtaylor.com' }],
         ['meta', { property: 'og:image', content: 'https://dylanmtaylor.com/images/avatar.png' }],
         ['meta', { name: 'twitter:card', content: 'summary' }],
+        ['script', { type: 'speculationrules' }, JSON.stringify({ prefetch: [{ where: { href_matches: '/*' }, eagerness: 'immediate' }], prerender: [{ where: { href_matches: '/*' }, eagerness: 'eager' }] })],
     ],
 
     themeConfig: {
