@@ -8,6 +8,7 @@ pages:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
       - node_modules/
+      - .cache/
   script:
     - npm install
     - npm run build

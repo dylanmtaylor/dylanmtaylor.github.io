@@ -19,6 +19,7 @@
     "globby": "^16.1.0",
     "gray-matter": "^4.0.3",
     "mermaid": "^11.12.2",
+    "sharp": "^0.34.5",
     "typescript": "^5.9.3",
     "vitepress": "^1.6.4",
     "vitepress-plugin-mermaid": "^2.0.17"

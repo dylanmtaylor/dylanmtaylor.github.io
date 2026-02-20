@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { withMermaid } from 'vitepress-plugin-mermaid'
 import { getPosts } from './theme/serverUtils'
+import { imageOptimizationPlugin, picturePlugin } from './imageOptimizer'
 
 const pageSize = 10
 
@@ -11,6 +12,12 @@ export default withMermaid(defineConfig({
     appearance: 'force-dark',
     cacheDir: './node_modules/vitepress_cache',
     lastUpdated: true,
+
+    markdown: {
+        config: (md) => {
+            md.use(picturePlugin)
+        }
+    },
 
     sitemap: {
         hostname: 'https://dylanmtaylor.com'
@@ -90,6 +97,7 @@ export default withMermaid(defineConfig({
     ],
 
     vite: {
+        plugins: [imageOptimizationPlugin()],
         server: {
             port: 5000
         }
