@@ -1,5 +1,5 @@
 ---
-date: '2026-02-19'
+date: '2026-02-18'
 title: Building a Complete Bejeweled Clone with AI in 90 Minutes
 description: How I used Claude Opus 4.6 via Kiro CLI to build GemMatch, a fully-featured match-3 puzzle game in Godot 4.x, with zero lines of hand-written code.
 ---
