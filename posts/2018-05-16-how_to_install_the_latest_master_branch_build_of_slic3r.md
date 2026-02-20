@@ -1,5 +1,5 @@
 ---
-date: '2018-05-16T21:22:15-04:00'
+date: 2018-05-16
 title: How to Install the Latest Master Branch Build of Slic3r
 description: Slic3r is a 3D printer slicing tool. It converts digital objects into instructions that are readable by a 3D printer called "gcode".
 ---

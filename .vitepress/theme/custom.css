@@ -49,7 +49,6 @@
 
 .Layout {
     min-height: calc(100vh - 78px) !important;
-    /* reduce copyright */
 }
 
 .vp-doc a {
@@ -129,17 +128,7 @@ h3 {
 }
 
 
-@media (min-width: 768px) {
-    .VPDoc {
-        padding-top: 10px !important;
-    }
-}
-
 @media (min-width: 960px) {
-    .VPDoc {
-        padding-top: 10px !important;
-    }
-
     .VPDoc:not(.has-sidebar) .content {
         max-width: inherit !important;
     }
@@ -153,7 +142,7 @@ h3 {
     }
 }
 
-/* when witdh less 1440 hide the aside 小于1440就到下一挡*/
+/* when width less than 1440 hide the aside */
 @media (min-width: 1280px) {
     .VPDoc .aside {
         display: none !important;

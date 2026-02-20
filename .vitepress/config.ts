@@ -1,6 +1,7 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig, DefaultTheme } from 'vitepress'
 import { getPosts } from './theme/serverUtils'
 import { imageOptimizationPlugin, picturePlugin } from './imageOptimizer'
+import attrs from 'markdown-it-attrs'
 
 const pageSize = 10
 
@@ -15,6 +16,7 @@ export default defineConfig({
     markdown: {
         config: (md) => {
             md.use(picturePlugin)
+            md.use(attrs)
             const defaultFence = md.renderer.rules.fence!.bind(md.renderer.rules)
             md.renderer.rules.fence = (tokens, idx, options, env, self) => {
                 const token = tokens[idx]
@@ -31,6 +33,9 @@ export default defineConfig({
     },
 
     head: [
+        ['link', { rel: 'icon', href: '/favicon.ico', sizes: 'any' }],
+        ['link', { rel: 'icon', href: '/images/favicon.svg', type: 'image/svg+xml' }],
+        ['link', { rel: 'icon', href: '/images/favicon.png', type: 'image/png' }],
         ['meta', { property: 'og:title', content: 'Dylan M. Taylor' }],
         ['meta', { property: 'og:description', content: 'My Personal Website and Blog' }],
         ['meta', { property: 'og:type', content: 'website' }],
@@ -90,7 +95,7 @@ export default defineConfig({
                 link: 'mailto:dylan@dylanmtaylor.com'
             }
         ]
-    } as any,
+    } satisfies DefaultTheme.Config & { posts: Awaited<ReturnType<typeof getPosts>> },
     srcExclude: [
         'README.md'
     ],

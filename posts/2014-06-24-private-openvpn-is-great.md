@@ -9,7 +9,7 @@ I finally got around to setting up a private VPN server, hosted in San Diego. It
 
 Not too bad for the price I'm paying:
 
-![](http://www.speedtest.net/result/3582109394.png)
+![Speed test result](http://www.speedtest.net/result/3582109394.png)
 
 For anyone interested on how to set this up, it's not too difficult assuming you can get a bare-minimum spec OpenVZ VPN with TUN/TAP support. To begin, you're going to want to head over to a [VPS provider, such as ChicagoVPS](https://billing.chicagovps.net/aff.php?aff=1128) and sign up for a bare minimum SSD Linux plan. The 256MB plan is perfect, and is still cheaper than public VPN services. You want to provision your server with Ubuntu 14.04 and log into it using SSH. I'm using the "ubuntu-14.04-x86_64" image on a 256MB SSD VPS. Once in your SSH console, download OpenVPN AS:
 

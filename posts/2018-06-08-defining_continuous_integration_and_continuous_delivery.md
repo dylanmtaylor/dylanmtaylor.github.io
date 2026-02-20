@@ -1,5 +1,5 @@
 ---
-date: '2018-06-08T15:23:06-04:00'
+date: 2018-06-08
 title: Defining Continuous Integration and Continuous Delivery
 description: In the past, I've been asked what continuous integration and continuous delivery mean to me. Those not used to the DevOps Engineering methodology may not be familiar with these terms.
 ---

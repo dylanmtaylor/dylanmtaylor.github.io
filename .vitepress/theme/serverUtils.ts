@@ -24,7 +24,6 @@ async function getPosts(pageSize: number) {
 }
 
 async function generatePaginationPages(total: number, pageSize: number) {
-    //  pagesNum
     let pagesNum = total % pageSize === 0 ? total / pageSize : Math.floor(total / pageSize) + 1
     const paths = resolve('./')
     if (total > 0) {
@@ -55,9 +54,13 @@ const posts = theme.value.posts.slice(${pageSize * (i - 1)},${pageSize * i})
     await fs.move(paths + '/blog/page_1.md', paths + '/blog/index.md', { overwrite: true })
 }
 
-function _convertDate(date = new Date().toString()) {
-    const json_date = new Date(date).toJSON()
-    return json_date.split('T')[0]
+function _convertDate(date = new Date().toString()): string {
+    const str = String(date)
+    const match = str.match(/(\d{4})-(\d{2})-(\d{2})/)
+    if (match) return match[0]
+    const d = new Date(str)
+    if (isNaN(d.getTime())) return '1970-01-01'
+    return d.toISOString().slice(0, 10)
 }
 
 export { getPosts }

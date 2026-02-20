@@ -5,7 +5,7 @@
                 <a :href="withBase(article.regularPath)"> {{ article.frontMatter.title }}</a>
             </div>
         </div>
-        <p class="describe" v-html="article.frontMatter.description"></p>
+        <p class="describe">{{ article.frontMatter.description }}</p>
         <div class='post-info'>
             {{ article.frontMatter.date }} <span v-for="item in article.frontMatter.tags"><a :href="withBase(`/blog/tags.html?tag=${item}`)"> {{ item }}</a></span>
         </div>

@@ -15,8 +15,9 @@ const svg = ref(null);
 let mut = null;
 
 onMounted(async () => {
+  mermaid.initialize({ startOnLoad: false });
   mut = new MutationObserver(() => renderChart());
-  mut.observe(document.documentElement, { attributes: true });
+  mut.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
   await renderChart();
 });
 
@@ -25,7 +26,6 @@ onUnmounted(() => mut?.disconnect());
 const renderChart = async () => {
   const hasDark = document.documentElement.classList.contains("dark");
   mermaid.initialize({
-    securityLevel: "loose",
     startOnLoad: false,
     theme: hasDark ? "dark" : "default",
   });
