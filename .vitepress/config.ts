@@ -11,7 +11,7 @@ export default withMermaid(defineConfig({
 
     appearance: 'force-dark',
     cacheDir: './node_modules/vitepress_cache',
-    lastUpdated: true,
+    lastUpdated: false,
 
     markdown: {
         config: (md) => {
