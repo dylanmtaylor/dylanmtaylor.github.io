@@ -36,14 +36,46 @@ export default defineConfig({
         ['link', { rel: 'icon', href: '/favicon.ico', sizes: 'any' }],
         ['link', { rel: 'icon', href: '/images/favicon.svg', type: 'image/svg+xml' }],
         ['link', { rel: 'icon', href: '/images/favicon.png', type: 'image/png' }],
-        ['meta', { property: 'og:title', content: 'Dylan M. Taylor' }],
-        ['meta', { property: 'og:description', content: 'My Personal Website and Blog' }],
-        ['meta', { property: 'og:type', content: 'website' }],
-        ['meta', { property: 'og:url', content: 'https://dylanmtaylor.com' }],
+        ['meta', { name: 'theme-color', content: '#1b1b1f' }],
+        ['meta', { name: 'view-transition', content: 'same-origin' }],
+        ['meta', { property: 'og:site_name', content: 'Dylan M. Taylor' }],
         ['meta', { property: 'og:image', content: 'https://dylanmtaylor.com/images/avatar.png' }],
-        ['meta', { name: 'twitter:card', content: 'summary' }],
         ['script', { type: 'speculationrules' }, JSON.stringify({ prefetch: [{ where: { href_matches: '/*' }, eagerness: 'immediate' }], prerender: [{ where: { href_matches: '/*' }, eagerness: 'eager' }] })],
     ],
+
+    transformPageData(pageData) {
+        const title = pageData.frontmatter.title || pageData.title || 'Dylan M. Taylor'
+        const description = pageData.frontmatter.description || pageData.description || 'My Personal Website and Blog'
+        const isPost = pageData.relativePath.startsWith('posts/')
+        const url = `https://dylanmtaylor.com/${pageData.relativePath.replace(/\.md$/, '.html')}`
+
+        pageData.frontmatter.head ??= []
+        pageData.frontmatter.head.push(
+            ['meta', { property: 'og:title', content: title }],
+            ['meta', { property: 'og:description', content: description }],
+            ['meta', { property: 'og:type', content: isPost ? 'article' : 'website' }],
+            ['meta', { property: 'og:url', content: url }],
+            ['meta', { name: 'twitter:card', content: 'summary' }],
+            ['meta', { name: 'twitter:title', content: title }],
+            ['meta', { name: 'twitter:description', content: description }],
+        )
+
+        if (isPost && pageData.frontmatter.date) {
+            const ld = {
+                '@context': 'https://schema.org',
+                '@type': 'BlogPosting',
+                headline: title,
+                description,
+                datePublished: pageData.frontmatter.date,
+                url,
+                author: { '@type': 'Person', name: 'Dylan M. Taylor', url: 'https://dylanmtaylor.com' },
+                publisher: { '@type': 'Person', name: 'Dylan M. Taylor' }
+            }
+            pageData.frontmatter.head.push(
+                ['script', { type: 'application/ld+json' }, JSON.stringify(ld)]
+            )
+        }
+    },
 
     themeConfig: {
         logo: '/images/circle.png',
