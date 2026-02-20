@@ -1,24 +1,10 @@
 :root {
-    --vp-c-default-1: var(--vp-c-gray-1);
-    --vp-c-default-2: var(--vp-c-gray-2);
-    --vp-c-default-3: var(--vp-c-gray-3);
-    --vp-c-default-soft: var(--vp-c-gray-soft);
-
     --vp-c-brand-1: var(--vp-c-yellow-1);
     --vp-c-brand-2: var(--vp-c-yellow-2);
     --vp-c-brand-3: var(--vp-c-yellow-3);
     --vp-c-brand-soft: var(--vp-c-indigo-soft);
 
-    --vp-nav-bg-color: #2d2d2d;
     --vp-nav-logo-height: 48px;
-
-    --li-dot-color: var(--vp-c-brand);
-    --date-color: var(--vp-c-text-2);
-    --date-font-family: Georgia, sans-serif;
-    --bt-theme-title: #000;
-}
-
-.dark {
     --bt-theme-title: #fff;
 }
 
@@ -37,7 +23,6 @@
 }
 
 .VPContent .container {
-    max-width: 60rem !important;
     display: block !important;
     position: relative;
 }
@@ -54,7 +39,6 @@
 
 @media screen and (max-width: 768px) {
     .VPDoc {
-        padding-top: 10px !important;
         padding-bottom: 20px !important;
     }
 
@@ -100,6 +84,7 @@
 .VPNavBarTitle .title a {
     color: #D4CFC0 !important;
 }
+
 a[rel~='noreferrer']:visited {
     color: var(--vp-c-brand);
     font-weight: 500 !important;
@@ -167,7 +152,7 @@ a.header-anchor {
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background-color: var(--li-dot-color);
+    background-color: var(--vp-c-brand);
 }
 
 .post-container {
@@ -181,8 +166,8 @@ a.header-anchor {
 }
 
 .date {
-    color: var(--date-color);
-    font-family: var(--date-font-family);
+    color: var(--vp-c-text-2);
+    font-family: Georgia, sans-serif;
 }
 
 .post-info {
