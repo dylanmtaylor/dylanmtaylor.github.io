@@ -23,4 +23,6 @@ Outside of work, I enjoy applying the same technologies to personal projects. I'
 
 Over the years, I've picked up a few certifications along the way. While working at Truist, I earned MuleSoft's Certified Developer credential, as the role required proficiency in API development on their platform. When a later employer required me to get AWS certified, I passed the AWS Certified Cloud Practitioner exam without any studying. More recently, I took the Oracle Cloud Infrastructure Certified Architect Associate exam for fun during Oracle's Race to Certification 2025 event, having become familiar with OCI through hosting personal projects on their generous always free tier.
 
+I am also responsible for major backlash in projects like systemd and archlinux (https://github.com/archlinux/archinstall/pull/4290) for introducing age verification in open source software. My career will probably be stained forever for these actions but YOLO.
+
 I'm constantly learning new things, and look forward to the new opportunities that the future will bring.
