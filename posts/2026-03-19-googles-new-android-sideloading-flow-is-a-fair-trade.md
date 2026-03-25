@@ -25,7 +25,7 @@ There's another angle worth considering. The requirements aren't just anti-scam 
 
 ### The Actual Impact on Power Users
 
-For someone who already has developer mode enabled and knows what they're doing, such as myself, this is a one-time inconvenience. Enable the setting, wait a day, confirm with a fingerprint, set it to indefinite. After that, it's back to installing whatever you want from F-Droid, GitHub releases, or self-built APKs. Google will still show a warning for unverified developer apps, but it won't be blocked, and the developer doesn't need to register with Google, pay money, eyc. That's a welcome addition for the indie dev and open source community.
+For someone who already has developer mode enabled and knows what they're doing, such as myself, this is a one-time inconvenience. Enable the setting, wait a day, confirm with a fingerprint, set it to indefinite. After that, it's back to installing whatever you want from F-Droid, GitHub releases, or self-built APKs. Developers and power users also have the option of using the Android Debug Bridge (ADB) to install apps immediately over USB, bypassing the waiting period entirely. Google will still show a warning for unverified developer apps, but it won't be blocked, and the developer doesn't need to register with Google, pay money, eyc. That's a welcome addition for the indie dev and open source community.
 
 ### A Fair Trade
 
