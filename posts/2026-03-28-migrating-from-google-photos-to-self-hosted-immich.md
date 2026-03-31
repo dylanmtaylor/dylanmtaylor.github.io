@@ -23,9 +23,24 @@ I've actually been itching to make this switch for a while. Back in February, I 
 
 ### The Migration Process
 
-Getting my photos out of Google was straightforward thanks to [Google Takeout](https://takeout.google.com/). Takeout lets you export your data from any Google service, and Google Photos is one of the options. I do wish that there was a way to stream data out of Google rather than downloading many archives, but it is what it is. I like to have a recent copy of my data, so I've scheduled exports, but honestly it's a pain to download terrabytes of data every quarter just to have a local copy.
+Getting my photos out of Google was straightforward thanks to [Google Takeout](https://takeout.google.com/). Takeout lets you export your data from any Google service, and Google Photos is one of the options. I do wish that there was a way to stream data out of Google rather than downloading many archives, but it is what it is. I like to have a recent copy of my data, so I've scheduled exports, but honestly it's a pain to download terabytes of data every quarter just to have a local copy.
 
-Anyways, once I had the archives downloaded and extracted, I simply imported them into Immich.
+Once they were copied onto my NAS, I extracted them in place and removed each archive:
+
+```bash
+for f in takeout-*.tgz; do tar -xvzf "$f" && rm "$f"; done
+```
+
+That leaves the extracted `Takeout` directory behind and cleans up the compressed archives as it goes. After extraction, the next step I took was importing the Google Photos export into Immich with `immich-go`. Before running that, I created an API key from the Immich web UI under Account Settings, then API Keys. 
+
+This is the format of the command that actually worked for me:
+
+```bash
+./immich-go -s http://127.0.0.1:2283 -k YOUR_API_KEY upload from-google-photos "Takeout/Google Photos"
+```
+
+This tool made the migration extremely simple, and handled all of the hard work for me. I would like to note here that I realized after the fact that I did not, in fact need to extract the archives. I haven't tested it, but `immich-go` docs indicate that it can migrate still zipped data.
+
 
 ### Mobile Access with Tailscale
 
