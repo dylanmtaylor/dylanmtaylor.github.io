@@ -27,14 +27,17 @@ This has several advantages:
 
 ### Enable Transient Root
 
-First, add the `root.transient=true` kernel argument and reboot your system:
+To enable this, add the `root.transient=true` kernel argument. On modern images using **composefs**, you also need to explicitly configure ostree for a transient root and ensure that configuration is included in your initramfs:
 
 ```bash
 sudo rpm-ostree kargs --append='root.transient=true'
+sudo mkdir -p /etc/ostree
+echo -e "[composefs]\nenabled = yes\n\n[root]\ntransient = true" | sudo tee /etc/ostree/prepare-root.conf
+sudo rpm-ostree initramfs --enable --arg=-I --arg=/etc/ostree/prepare-root.conf
 sudo systemctl reboot
 ```
 
-Adding a kernel argument creates a new deployment, so you'll need to reboot into that. You can alway roll back to the previous one if you'd like.
+This creates a new deployment with the necessary hooks to provide a writable overlay for the root filesystem. You can always roll back to your previous deployment if needed.
 
 ### Install Nix with the Determinate Installer
 
