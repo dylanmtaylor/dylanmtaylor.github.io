@@ -10,7 +10,7 @@ The principal version exception is intentional: VitePress remains pinned to the 
 
 ## Version and dependency changes
 
-- Pinned Node.js 24.18.1 LTS in `.nvmrc` and both deployment pipelines.
+- Pinned Node.js 24.18.1 LTS in `.nvmrc` and GitHub Pages. GitLab uses the `24.18-alpine` patch channel because Docker Hub has not yet published the exact 24.18.1 Alpine image.
 - Declared npm 11.16.0 as the project package manager, matching the npm release bundled with Node 24.18.1. Validation used the locally installed npm 11.17.0.
 - Updated `markdown-it-attrs` from 5.0.0 to 5.0.1.
 - Aligned `@types/node` with the Node 24 runtime at 24.13.3 instead of using Node 26 declarations.
@@ -61,7 +61,7 @@ The following checks passed:
 - Post-generator functional smoke test and `bash -n` syntax validation.
 - `git diff --check` patch integrity validation.
 
-The cached production build completes in approximately three seconds. Local validation ran on Node 26.5.0 because Node 24.18.1 was not installed on the workstation; both CI pipelines are configured to exercise the exact pinned Node 24.18.1 runtime.
+The cached production build completes in approximately three seconds. Local validation ran on Node 26.5.0 because Node 24.18.1 was not installed on the workstation. GitHub Pages uses exact Node 24.18.1; GitLab uses the published Node 24.18 Alpine patch channel, currently 24.18.0.
 
 ## Residual risks and recommendations
 
@@ -70,5 +70,5 @@ The cached production build completes in approximately three seconds. Local vali
 3. **Mermaid bundle size (low):** Vite reports one 662 KB minified Mermaid chunk. Mermaid is now lazy-loaded, so pages without diagrams do not fetch it. Reassess if diagram traffic or mobile performance makes this material.
 4. **Host-level headers (medium):** `_headers` is not interpreted by every static host, including typical GitHub Pages and GitLab Pages configurations. Configure equivalent headers at the authoritative CDN or reverse proxy and verify them against the production domain.
 5. **Inline CSP allowances (low):** VitePress requires inline scripts/styles in the static output, so the policy still permits `'unsafe-inline'`. Removing this would require a host capable of per-response nonces or generated CSP hashes.
-6. **Runtime parity (low):** The exact Node 24 build was not available locally. The first GitHub and GitLab pipeline runs should be reviewed to confirm CI parity before treating the deployment migration as fully proven.
+6. **Runtime parity (low):** Exact Node 24.18.1 was not available locally, and its Alpine image was not yet published. Review the first successful GitHub run on 24.18.1 and the GitLab run on the 24.18 patch channel; return GitLab to an exact tag when Docker Hub publishes it.
 7. **Browser-level regression coverage (low):** The repository has build and artifact checks but no visual, accessibility, or end-to-end browser suite. A lightweight Playwright smoke test would be the next useful quality investment if the theme changes frequently.
