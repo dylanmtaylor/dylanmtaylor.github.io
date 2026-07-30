@@ -1,4 +1,4 @@
-type Post = {
+export type Post = {
     frontMatter: {
         date: string
         title: string
@@ -7,21 +7,17 @@ type Post = {
     regularPath: string
 }
 
-export function useYearSort(post: Post[]) {
-    const data: Post[][] = []
-    let year = '0'
-    let num = -1
-    for (const element of post) {
-        if (element.frontMatter.date) {
-            const y = element.frontMatter.date.split('-')[0]
-            if (y === year) {
-                data[num].push(element)
-            } else {
-                num++
-                data[num] = [element]
-                year = y
-            }
-        }
+export function useYearSort(posts: readonly Post[]): Post[][] {
+    const postsByYear = new Map<string, Post[]>()
+
+    for (const post of posts) {
+        const year = post.frontMatter.date.split('-', 1)[0]
+        if (!year) continue
+
+        const yearPosts = postsByYear.get(year) ?? []
+        yearPosts.push(post)
+        postsByYear.set(year, yearPosts)
     }
-    return data
+
+    return [...postsByYear.values()]
 }

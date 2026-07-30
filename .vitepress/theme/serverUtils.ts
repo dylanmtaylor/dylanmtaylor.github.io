@@ -1,66 +1,80 @@
+import { join, resolve } from 'node:path'
+import fs from 'fs-extra'
 import { globby } from 'globby'
 import matter from 'gray-matter'
-import fs from 'fs-extra'
-import { resolve } from 'path'
+import type { Post } from './functions.ts'
 
-async function getPosts(pageSize: number) {
-    let paths = await globby(['posts/**.md'])
-
+export async function getPosts(pageSize: number): Promise<Post[]> {
+    const paths = await globby(['posts/**/*.md'])
     await generatePaginationPages(paths.length, pageSize)
 
-    let posts = await Promise.all(
-        paths.map(async (item) => {
-            const content = await fs.readFile(item, 'utf-8')
-            const { data } = matter(content)
-            data.date = _convertDate(data.date)
-            return {
-                frontMatter: data,
-                regularPath: `/${item.replace('.md', '.html')}`
-            }
-        })
-    )
-    posts.sort((a, b) => a.frontMatter.date < b.frontMatter.date ? 1 : -1)
-    return posts
+    const posts = await Promise.all(paths.map(async (path): Promise<Post> => {
+        const content = await fs.readFile(path, 'utf8')
+        const { data } = matter(content)
+        const date = convertDate(data.date)
+
+        if (!date) throw new Error(`${path}: frontmatter must contain a valid date`)
+        if (typeof data.title !== 'string' || !data.title.trim()) {
+            throw new Error(`${path}: frontmatter must contain a title`)
+        }
+
+        return {
+            frontMatter: {
+                date,
+                title: data.title,
+                description: typeof data.description === 'string' ? data.description : ''
+            },
+            regularPath: `/${path.replace(/\.md$/, '.html')}`
+        }
+    }))
+
+    return posts.sort((a, b) => b.frontMatter.date.localeCompare(a.frontMatter.date))
 }
 
-async function generatePaginationPages(total: number, pageSize: number) {
-    let pagesNum = total % pageSize === 0 ? total / pageSize : Math.floor(total / pageSize) + 1
-    const paths = resolve('./')
-    if (total > 0) {
-        for (let i = 1; i < pagesNum + 1; i++) {
-            const page = `
+async function generatePaginationPages(total: number, pageSize: number): Promise<void> {
+    const pageCount = Math.max(1, Math.ceil(total / pageSize))
+    const blogDir = resolve('blog')
+    await fs.ensureDir(blogDir)
+
+    const stalePages = await globby(['page_*.md'], { cwd: blogDir, absolute: true })
+    await Promise.all(stalePages.map((path) => fs.remove(path)))
+    await fs.remove(join(blogDir, 'index.md'))
+
+    for (let page = 1; page <= pageCount; page++) {
+        const title = page === 1 ? 'Blog' : `Page ${page}`
+        const content = `
 ---
 page: true
-title: ${i === 1 ? 'Blog' : 'Page ' + i}
+title: ${JSON.stringify(title)}
 aside: false
 ---
-<script setup>
-import Page from "../.vitepress/theme/components/Page.vue";
-import { useData } from "vitepress";
-const { theme } = useData();
-const posts = theme.value.posts.slice(${pageSize * (i - 1)},${pageSize * i})
+<script setup lang="ts">
+import Page from "../.vitepress/theme/components/Page.vue"
+import { useData } from "vitepress"
+
+const { theme } = useData()
+const posts = theme.value.posts.slice(${pageSize * (page - 1)}, ${pageSize * page})
 </script>
-<Page :posts="posts" :pageCurrent="${i}" :pagesNum="${pagesNum}" />
+
+<Page :posts="posts" :pageCurrent="${page}" :pagesNum="${pageCount}" />
 
 <div style="text-align: center; margin-top: 1rem;">
 <a href="/blog/archives">Browse all posts by date →</a>
 </div>
 `.trim()
-            const file = paths + `/blog/page_${i}.md`
-            await fs.writeFile(file, page)
-        }
+
+        await fs.writeFile(join(blogDir, `page_${page}.md`), content)
     }
-    // blog homepage
-    await fs.move(paths + '/blog/page_1.md', paths + '/blog/index.md', { overwrite: true })
+
+    await fs.move(join(blogDir, 'page_1.md'), join(blogDir, 'index.md'), { overwrite: true })
 }
 
-function _convertDate(date = new Date().toString()): string {
-    const str = String(date)
-    const match = str.match(/(\d{4})-(\d{2})-(\d{2})/)
-    if (match) return match[0]
-    const d = new Date(str)
-    if (isNaN(d.getTime())) return '1970-01-01'
-    return d.toISOString().slice(0, 10)
-}
+function convertDate(value: unknown): string | undefined {
+    const text = String(value ?? '')
+    const isoDate = text.match(/(\d{4})-(\d{2})-(\d{2})/)
+    if (isoDate) return isoDate[0]
 
-export { getPosts }
+    const date = new Date(text)
+    if (Number.isNaN(date.getTime())) return undefined
+    return date.toISOString().slice(0, 10)
+}

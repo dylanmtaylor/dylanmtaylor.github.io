@@ -1,59 +1,43 @@
 <template>
-    <div v-for="(article, index) in posts" :key="index" class="post-list">
+    <div v-for="article in posts" :key="article.regularPath" class="post-list">
         <div class="post-header">
             <div class="post-title">
-                <a :href="withBase(article.regularPath)"> {{ article.frontMatter.title }}</a>
+                <a :href="withBase(article.regularPath)">{{ article.frontMatter.title }}</a>
             </div>
         </div>
         <p class="describe">{{ article.frontMatter.description }}</p>
-        <div class='post-info'>
+        <div class="post-info">
             {{ article.frontMatter.date }}
         </div>
     </div>
 
-    <div class="pagination">
+    <nav class="pagination" aria-label="Blog pagination">
         <a
+            v-for="page in pagesNum"
+            :key="page"
             class="link"
-            :class="{ active: pageCurrent === i }"
-            v-for="i in pagesNum"
-            :key="i"
-            :href="withBase(i === 1 ? '/blog/' : `/blog/page_${i}.html`)"
-        >{{ i }}</a>
-    </div>
+            :class="{ active: pageCurrent === page }"
+            :aria-current="pageCurrent === page ? 'page' : undefined"
+            :href="withBase(page === 1 ? '/blog/' : `/blog/page_${page}.html`)"
+        >{{ page }}</a>
+    </nav>
 </template>
 
-<script lang="ts" setup>
-
+<script setup lang="ts">
 import { withBase } from 'vitepress'
-import { PropType } from 'vue'
-interface Article {
-    regularPath: string
-    frontMatter: {
-        title: string
-        description: string
-        date: string
-    }
-}
-defineProps({
-    posts: {
-        type: Array as PropType<Article[]>,
-        required: true
-    },
-    pageCurrent: {
-        type: Number as PropType<number>,
-        required: true
-    },
-    pagesNum: {
-        type: Number as PropType<number>,
-        required: true
-    }
-})
+import type { Post } from '../functions.ts'
+
+defineProps<{
+    posts: Post[]
+    pageCurrent: number
+    pagesNum: number
+}>()
 </script>
 
 <style scoped>
 .post-list {
     border-bottom: 1px dashed var(--vp-c-divider-light);
-    padding: 14px 0 14px 0;
+    padding: 14px 0;
 }
 .post-header {
     display: flex;
@@ -63,13 +47,12 @@ defineProps({
 .post-title {
     font-size: 1.0625rem;
     font-weight: 500;
-    color: var(--bt-theme-title)!important;
+    color: var(--bt-theme-title) !important;
     margin: 0.1rem 0;
 }
-.post-title a{
-    color: var(--bt-theme-title)!important;
+.post-title a {
+    color: var(--bt-theme-title) !important;
 }
-
 .describe {
     font-size: 0.9375rem;
     display: -webkit-box;

@@ -1,9 +1,9 @@
-import sharp from 'sharp'
-import { globby } from 'globby'
-import { resolve, parse, relative } from 'path'
-import { createHash } from 'crypto'
+import { createHash } from 'node:crypto'
+import { availableParallelism } from 'node:os'
+import { parse, relative, resolve } from 'node:path'
 import fs from 'fs-extra'
-import os from 'os'
+import { globby } from 'globby'
+import sharp from 'sharp'
 import type MarkdownIt from 'markdown-it'
 import type { Plugin } from 'vite'
 
@@ -11,141 +11,163 @@ const formatOptions = {
     avif: { quality: 50, effort: 4, chromaSubsampling: '4:4:4' },
     webp: { quality: 80 }
 } as const
-const formats = Object.keys(formatOptions) as (keyof typeof formatOptions)[]
+
+type OutputFormat = keyof typeof formatOptions
+
+type CacheManifest = {
+    version: string
+    files: Record<string, string>
+}
+
+const formats = Object.keys(formatOptions) as OutputFormat[]
 const cacheDir = resolve('.cache/optimized-images')
 const cacheManifest = resolve(cacheDir, 'manifest.json')
-
-let validFormats: Record<string, Set<string>> = {}
+const cacheVersion = createHash('sha256')
+    .update(JSON.stringify(formatOptions))
+    .digest('hex')
 
 async function loadManifest(): Promise<Record<string, string>> {
-    if (await fs.pathExists(cacheManifest)) return fs.readJson(cacheManifest)
-    return {}
+    try {
+        if (!await fs.pathExists(cacheManifest)) return {}
+        const manifest = await fs.readJson(cacheManifest) as Partial<CacheManifest>
+        return manifest.version === cacheVersion && manifest.files ? manifest.files : {}
+    } catch {
+        console.warn('Ignoring an unreadable image optimization cache manifest')
+        return {}
+    }
 }
 
 async function fileHash(path: string): Promise<string> {
-    const buf = await fs.readFile(path)
-    return createHash('md5').update(buf).digest('hex')
+    const buffer = await fs.readFile(path)
+    return createHash('sha256').update(buffer).digest('hex')
 }
 
-async function pMap<T, R>(items: T[], fn: (item: T) => Promise<R>, concurrency: number): Promise<R[]> {
-    const results: R[] = []
-    let i = 0
-    async function next(): Promise<void> {
-        const idx = i++
-        if (idx >= items.length) return
-        results[idx] = await fn(items[idx])
-        return next()
+async function pMap<T, R>(
+    items: readonly T[],
+    transform: (item: T) => Promise<R>,
+    concurrency: number
+): Promise<R[]> {
+    const results = new Array<R>(items.length)
+    let nextIndex = 0
+
+    async function worker(): Promise<void> {
+        const index = nextIndex++
+        if (index >= items.length) return
+        results[index] = await transform(items[index])
+        await worker()
     }
-    await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, () => next()))
+
+    await Promise.all(
+        Array.from({ length: Math.min(concurrency, items.length) }, () => worker())
+    )
     return results
 }
 
 export function imageOptimizationPlugin(): Plugin {
+    let hasOptimized = false
+
     return {
         name: 'image-optimization',
         enforce: 'post',
-        // Serve AVIF/WebP on-demand during dev
         configureServer(server) {
-            server.middlewares.use(async (req, res, next) => {
-                const match = req.url?.match(/^(\/images\/.+)\.(avif|webp)$/)
+            server.middlewares.use(async (request, response, next) => {
+                const pathname = new URL(request.url ?? '/', 'http://localhost').pathname
+                const match = pathname.match(/^(\/images\/.+)\.(avif|webp)$/)
                 if (!match) return next()
-                const [, base, fmt] = match
-                const exts = ['png', 'jpg', 'jpeg']
-                let srcPath: string | undefined
-                for (const ext of exts) {
-                    const p = resolve('public', `${base.slice(1)}.${ext}`)
-                    if (await fs.pathExists(p)) { srcPath = p; break }
+
+                const [, base, format] = match
+                let sourcePath: string | undefined
+                for (const extension of ['png', 'jpg', 'jpeg']) {
+                    const candidate = resolve('public', `${base.slice(1)}.${extension}`)
+                    if (await fs.pathExists(candidate)) {
+                        sourcePath = candidate
+                        break
+                    }
                 }
-                if (!srcPath) return next()
+                if (!sourcePath) return next()
+
                 try {
-                    const buf = await sharp(srcPath)[fmt as 'avif' | 'webp'](formatOptions[fmt as keyof typeof formatOptions]).toBuffer()
-                    res.setHeader('Content-Type', fmt === 'avif' ? 'image/avif' : 'image/webp')
-                    res.end(buf)
-                } catch { next() }
+                    const outputFormat = format as OutputFormat
+                    const buffer = await sharp(sourcePath)[outputFormat](formatOptions[outputFormat]).toBuffer()
+                    response.setHeader('Content-Type', outputFormat === 'avif' ? 'image/avif' : 'image/webp')
+                    response.setHeader('Cache-Control', 'no-store')
+                    response.end(buffer)
+                } catch (error) {
+                    next(error)
+                }
             })
         },
-        // Prevent Rollup/SSR from resolving generated avif/webp paths
         resolveId(id) {
             if (/\/images\/.+\.(avif|webp)$/.test(id)) return `\0external:${id}`
         },
         load(id) {
-            if (id.startsWith('\0external:')) return `export default "${id.slice('\0external:'.length)}"`
+            if (id.startsWith('\0external:')) {
+                return `export default ${JSON.stringify(id.slice('\0external:'.length))}`
+            }
         },
         async closeBundle() {
+            if (hasOptimized) return
+            hasOptimized = true
+
             const distDir = resolve('.vitepress/dist')
             const images = await globby([`${distDir}/images/**/*.{png,jpg,jpeg}`])
             const manifest = await loadManifest()
             const newManifest: Record<string, string> = {}
             await fs.ensureDir(cacheDir)
 
-            const concurrency = Math.max(os.cpus().length, 4)
+            const concurrency = Math.max(1, Math.min(availableParallelism(), 8))
             console.log(`Optimizing ${images.length} images with concurrency ${concurrency}...`)
 
-            await pMap(images, async (img) => {
-                const key = relative(distDir, img)
-                const hash = await fileHash(img)
+            await pMap(images, async (image) => {
+                const key = relative(distDir, image).replaceAll('\\', '/')
+                const hash = await fileHash(image)
                 newManifest[key] = hash
-                const { dir, name } = parse(img)
-                const origSize = (await fs.stat(img)).size
-                if (!validFormats[key]) validFormats[key] = new Set()
+                const { dir, name } = parse(image)
 
-                for (const fmt of formats) {
-                    const outDist = resolve(dir, `${name}.${fmt}`)
-                    const cached = resolve(cacheDir, `${key}.${fmt}`)
+                for (const format of formats) {
+                    const outputPath = resolve(dir, `${name}.${format}`)
+                    const cachedPath = resolve(cacheDir, `${key}.${format}`)
+                    await fs.ensureDir(parse(cachedPath).dir)
 
-                    if (manifest[key] === hash && await fs.pathExists(cached)) {
-                        const cachedSize = (await fs.stat(cached)).size
-                        if (cachedSize < origSize) {
-                            await fs.copy(cached, outDist)
-                            validFormats[key].add(fmt)
+                    if (manifest[key] !== hash || !await fs.pathExists(cachedPath)) {
+                        try {
+                            await sharp(image)[format](formatOptions[format]).toFile(cachedPath)
+                        } catch (error) {
+                            throw new Error(`Failed to optimize ${key} as ${format}`, { cause: error })
                         }
-                        continue
                     }
 
-                    try {
-                        await sharp(img)[fmt](formatOptions[fmt]).toFile(outDist)
-                        const newSize = (await fs.stat(outDist)).size
-                        await fs.ensureDir(parse(cached).dir)
-
-                        if (newSize < origSize) {
-                            await fs.copy(outDist, cached)
-                            validFormats[key].add(fmt)
-                            console.log(`Generated ${name}.${fmt} (${Math.round((1 - newSize / origSize) * 100)}% smaller)`)
-                        } else {
-                            await fs.remove(outDist)
-                            console.log(`Skipped ${name}.${fmt} (larger than original)`)
-                        }
-                    } catch {
-                        console.warn(`Skipped ${key}: unsupported or corrupt`)
-                        break
-                    }
+                    await fs.copy(cachedPath, outputPath)
                 }
             }, concurrency)
 
-            await fs.writeJson(cacheManifest, newManifest)
+            const updatedManifest: CacheManifest = {
+                version: cacheVersion,
+                files: newManifest
+            }
+            await fs.writeJson(cacheManifest, updatedManifest, { spaces: 2 })
         }
     }
 }
 
-export function picturePlugin(md: MarkdownIt) {
+export function picturePlugin(md: MarkdownIt): void {
     const defaultRender = md.renderer.rules.image!
 
-    md.renderer.rules.image = (tokens, idx, options, env, self) => {
-        const token = tokens[idx]
-        const src = token.attrGet('src') || ''
-        const alt = token.content || ''
+    md.renderer.rules.image = (tokens, index, options, env, self) => {
+        const token = tokens[index]
+        const source = token.attrGet('src') ?? ''
+        const match = source.match(/^(\/images\/.+)\.(png|jpg|jpeg)$/)
+        if (!match) return defaultRender(tokens, index, options, env, self)
 
-        const match = src.match(/^(\/images\/.+)\.(png|jpg|jpeg)$/)
-        if (!match) return defaultRender(tokens, idx, options, env, self)
+        token.attrSet('loading', token.attrGet('loading') ?? 'lazy')
+        token.attrSet('decoding', token.attrGet('decoding') ?? 'async')
 
-        const [, base, ext] = match
-        const escapedAlt = md.utils.escapeHtml(alt)
-        const escapedSrc = md.utils.escapeHtml(src)
-
+        const base = md.utils.escapeHtml(match[1])
+        const image = defaultRender(tokens, index, options, env, self)
         return `<picture>` +
             `<source srcset="${base}.avif" type="image/avif">` +
             `<source srcset="${base}.webp" type="image/webp">` +
-            `<img src="${escapedSrc}" alt="${escapedAlt}" loading="lazy" decoding="async">` +
+            image +
             `</picture>`
     }
 }

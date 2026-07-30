@@ -2,17 +2,22 @@ stages:
   - deploy
 
 pages:
-  image: node:22-alpine
+  image: node:24.18.1-alpine
   stage: deploy
+  interruptible: true
+  variables:
+    NPM_CONFIG_CACHE: "$CI_PROJECT_DIR/.npm"
   cache:
-    key: ${CI_COMMIT_REF_SLUG}
+    key:
+      files:
+        - package-lock.json
     paths:
-      - node_modules/
+      - .npm/
       - .cache/
   script:
-    - npm ci
-    - npm run build
-    - mv .vitepress/dist public
-  artifacts:
-    paths:
-      - public
+    - npm ci --prefer-offline
+    - npm run check
+  pages:
+    publish: .vitepress/dist
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'

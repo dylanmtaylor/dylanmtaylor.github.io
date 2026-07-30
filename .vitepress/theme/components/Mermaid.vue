@@ -1,35 +1,53 @@
 <template>
-  <div v-html="svg" class="mermaid"></div>
+    <div v-if="svg" class="mermaid" v-html="svg"></div>
+    <p v-else-if="error" class="mermaid-error" role="alert">{{ error }}</p>
 </template>
 
-<script setup>
-import { onMounted, onUnmounted, ref } from "vue";
-import mermaid from "mermaid";
+<script setup lang="ts">
+import { onMounted, ref, watch } from 'vue'
+import { useData } from 'vitepress'
 
-const props = defineProps({
-  graph: { type: String, required: true },
-  id: { type: String, required: true },
-});
+const props = defineProps<{
+    graph: string
+    id: string
+}>()
 
-const svg = ref(null);
-let mut = null;
+const { isDark } = useData()
+const svg = ref('')
+const error = ref('')
+let renderSequence = 0
+let mermaidPromise: Promise<typeof import('mermaid')['default']> | undefined
 
-onMounted(async () => {
-  mermaid.initialize({ startOnLoad: false });
-  mut = new MutationObserver(() => renderChart());
-  mut.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-  await renderChart();
-});
+function loadMermaid(): Promise<typeof import('mermaid')['default']> {
+    mermaidPromise ??= import('mermaid').then(({ default: mermaid }) => mermaid)
+    return mermaidPromise
+}
 
-onUnmounted(() => mut?.disconnect());
+async function renderChart(): Promise<void> {
+    const sequence = ++renderSequence
+    error.value = ''
 
-const renderChart = async () => {
-  const hasDark = document.documentElement.classList.contains("dark");
-  mermaid.initialize({
-    startOnLoad: false,
-    theme: hasDark ? "dark" : "default",
-  });
-  const { svg: code } = await mermaid.render(props.id, decodeURIComponent(props.graph));
-  svg.value = code + `<span style="display:none">${Math.random()}</span>`;
-};
+    try {
+        const mermaid = await loadMermaid()
+        mermaid.initialize({
+            startOnLoad: false,
+            securityLevel: 'strict',
+            theme: isDark.value ? 'dark' : 'default'
+        })
+        const result = await mermaid.render(
+            `${props.id}-${sequence}`,
+            decodeURIComponent(props.graph)
+        )
+        if (sequence === renderSequence) svg.value = result.svg
+    } catch (renderError) {
+        console.error('Unable to render Mermaid diagram', renderError)
+        if (sequence === renderSequence) {
+            svg.value = ''
+            error.value = 'Unable to render this diagram.'
+        }
+    }
+}
+
+onMounted(() => void renderChart())
+watch(isDark, () => void renderChart())
 </script>
