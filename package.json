@@ -26,7 +26,7 @@
     "globby": "^16.2.2",
     "gray-matter": "^4.0.3",
     "markdown-it-attrs": "^5.0.1",
-    "mermaid": "^11.16.0",
+    "mermaid": "^11.16.1",
     "sharp": "^0.35.3",
     "typescript": "^7.0.2",
     "vitepress": "2.0.0-alpha.18"
