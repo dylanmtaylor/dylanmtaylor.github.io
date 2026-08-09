@@ -21,7 +21,7 @@
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
     "@types/node": "^26.1.2",
-    "@vue/compiler-sfc": "^3.5.40",
+    "@vue/compiler-sfc": "^3.5.41",
     "fs-extra": "^11.4.0",
     "globby": "^16.2.2",
     "gray-matter": "^4.0.3",
