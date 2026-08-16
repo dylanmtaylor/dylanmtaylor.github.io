@@ -20,7 +20,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
-    "@types/node": "^26.1.2",
+    "@types/node": "^26.2.0",
     "@vue/compiler-sfc": "^3.5.40",
     "fs-extra": "^11.4.0",
     "globby": "^16.2.2",
