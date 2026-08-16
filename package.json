@@ -23,7 +23,7 @@
     "@types/node": "^26.1.2",
     "@vue/compiler-sfc": "^3.5.40",
     "fs-extra": "^11.4.0",
-    "globby": "^16.2.2",
+    "globby": "^16.2.3",
     "gray-matter": "^4.0.3",
     "markdown-it-attrs": "^5.0.1",
     "mermaid": "^11.16.0",
