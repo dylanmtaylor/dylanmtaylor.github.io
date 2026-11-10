@@ -4,7 +4,7 @@ import { parse, relative, resolve } from 'node:path'
 import fs from 'fs-extra'
 import { globby } from 'globby'
 import sharp from 'sharp'
-import type MarkdownIt from 'markdown-it'
+import type { MarkdownRenderer } from 'vitepress'
 import type { Plugin } from 'vite'
 
 const formatOptions = {
@@ -150,12 +150,12 @@ export function imageOptimizationPlugin(): Plugin {
     }
 }
 
-export function picturePlugin(md: MarkdownIt): void {
+export function picturePlugin(md: MarkdownRenderer): void {
     const defaultRender = md.renderer.rules.image!
 
     md.renderer.rules.image = (tokens, index, options, env, self) => {
         const token = tokens[index]
-        const source = token.attrGet('src') ?? ''
+        const source = String(token.attrGet('src') ?? '')
         const match = source.match(/^(\/images\/.+)\.(png|jpg|jpeg)$/)
         if (!match) return defaultRender(tokens, index, options, env, self)
 
